@@ -1,0 +1,18 @@
+{
+  "posts": [
+    {
+      "id": "2026-01-20-welcome-to-my-blog",
+      "title": "Welcome to My Blog",
+      "date": "2026-01-20",
+      "tags": [
+        "security",
+        "webdev"
+      ],
+      "excerpt": "First post on my new blog! Exploring cybersecurity, web development, and CTF adventures.",
+      "featuredImage": "",
+      "published": true,
+      "content": "# Welcome to My Blog! \r\n\r\nHey there! 👋 Welcome to my corner of the internet where I'll be sharing my journey through the world of cybersecurity and web development.\r\n\r\n## What to Expect\r\n\r\nI'll be writing about:\r\n\r\n- **Cybersecurity**: Latest vulnerabilities, security best practices, and ethical hacking insights\r\n- **Web Development**: Modern frameworks, CSS tricks, and building cool projects\r\n- **CTF Writeups**: Detailed walkthroughs of Capture The Flag challenges\r\n- **Tutorials**: Step-by-step guides for security tools and techniques\r\n\r\n## Why I Started This Blog\r\n\r\nAs a student passionate about both building and breaking things, I wanted a place to document my learning journey. Whether you're a fellow security enthusiast or just curious about tech, I hope you find something useful here.\r\n\r\n## Stay Tuned\r\n\r\nMore content coming soon! Feel free to reach out if you have any questions or topics you'd like me to cover.\r\n\r\nHappy hacking! 🔐\r\n"
+    }
+  ],
+  "generatedAt": "2026-01-19T22:17:37.746Z"
+}
