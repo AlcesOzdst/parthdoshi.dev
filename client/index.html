@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parth Doshi | ECE Portfolio</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              mono: ['Fira Code', 'monospace'],
+            },
+            colors: {
+              zinc: {
+                900: '#18181b', 
+                800: '#27272a', 
+                100: '#f4f4f5', 
+              }
+            }
+          }
+        }
+      }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Fira+Code:wght@400&display=swap" rel="stylesheet">
+    
+    <style>
+      html { scroll-behavior: smooth; }
+      body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+
+<body class="bg-zinc-900 text-zinc-100 min-h-screen selection:bg-yellow-400 selection:text-black antialiased">
+
+  <nav class="fixed top-0 left-0 w-full p-6 flex justify-between items-center z-50 bg-zinc-900/90 backdrop-blur-sm border-b border-zinc-800/50">
+    <div class="font-bold text-xl tracking-tighter">PARTH.DOSHI</div>
+    <a href="mailto:your-email@mitwpu.edu.in" class="text-xs md:text-sm font-mono text-zinc-400 hover:text-yellow-400 transition-colors border border-zinc-700 px-4 py-2 rounded-full">
+      AVAILABLE FOR WORK
+    </a>
+  </nav>
+
+  <main class="max-w-screen-xl mx-auto px-6 pt-40 pb-20">
+
+    <section class="mb-32 fade-in">
+      <h1 class="text-5xl md:text-8xl font-bold leading-tight tracking-tight mb-8">
+        ECE Student.<br>
+        <span class="text-zinc-500">Systems Thinker.</span><br>
+        Web Developer.
+      </h1>
+      <p class="text-lg md:text-xl text-zinc-400 max-w-2xl leading-relaxed">
+        I bridge the gap between hardware signals and software solutions. Currently studying Electronics & Communication (AI-ML) at <span class="text-white border-b border-yellow-400">MITWPU</span>.
+      </p>
+    </section>
+
+    <section class="mb-32 border-t border-zinc-800 pt-16">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+        <div class="md:col-span-4">
+          <h2 class="text-3xl font-bold mb-4 text-white">Tech Stack</h2>
+          <p class="text-zinc-500 text-sm leading-relaxed">A hybrid arsenal of low-level engineering tools and modern web technologies.</p>
+        </div>
+        <div class="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-10">
+          <div>
+            <h3 class="text-yellow-400 font-mono text-xs mb-4 uppercase tracking-widest">Web Ecosystem</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-zinc-800 rounded text-sm text-zinc-300 border border-zinc-700">Angular</span>
+              <span class="px-3 py-1 bg-zinc-800 rounded text-sm text-zinc-300 border border-zinc-700">TypeScript</span>
+              <span class="px-3 py-1 bg-zinc-800 rounded text-sm text-zinc-300 border border-zinc-700">Tailwind CSS</span>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-yellow-400 font-mono text-xs mb-4 uppercase tracking-widest">Core Engineering</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-zinc-800 rounded text-sm text-zinc-300 border border-zinc-700">C Programming</span>
+              <span class="px-3 py-1 bg-zinc-800 rounded text-sm text-zinc-300 border border-zinc-700">MATLAB</span>
+              <span class="px-3 py-1 bg-zinc-800 rounded text-sm text-zinc-300 border border-zinc-700">Verilog</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-32">
+        <h2 class="text-2xl font-bold mb-12 border-b border-zinc-800 pb-4 flex items-center gap-2">
+          Selected Work <span class="text-zinc-600 text-sm font-normal font-mono">(2025-26)</span>
+        </h2>
+        <div id="projects-container" class="space-y-6">
+    <div class="animate-pulse py-10 border-b border-zinc-800/50">
+        <div class="flex flex-col md:flex-row justify-between">
+            <div class="space-y-3 w-full max-w-lg">
+                <div class="h-8 bg-zinc-800 rounded w-3/4"></div> <div class="h-4 bg-zinc-800 rounded w-1/2"></div> <div class="h-4 bg-zinc-800/50 rounded w-full"></div> </div>
+            <div class="mt-4 md:mt-0">
+                <div class="h-6 bg-zinc-800 rounded w-20"></div> </div>
+        </div>
+    </div>
+    </div>
+    </section>
+
+  </main>
+
+  <footer class="p-6 text-center text-zinc-600 text-sm font-mono border-t border-zinc-900">
+    &copy; 2026 Parth Doshi. Engineering & Design.
+  </footer>
+
+  <script>
+    async function loadProjects() {
+        try {
+            // Fetch data from your local server
+            const response = await fetch('http://localhost:5000/api/projects');
+            const projects = await response.json();
+            
+            const container = document.getElementById('projects-container');
+            
+            // Clear the "Loading..." text
+            container.innerHTML = '';
+
+            // Loop through data and generate HTML
+            projects.forEach(project => {
+                const html = `
+                <a href="#" class="group block py-10 border-b border-zinc-800 hover:bg-zinc-800/30 transition-colors px-4 -mx-4 rounded-lg">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between">
+                    <div class="mb-4 md:mb-0">
+                        <h3 class="text-3xl md:text-4xl font-bold group-hover:text-yellow-400 transition-colors">${project.title}</h3>
+                        <p class="text-zinc-500 mt-2 font-mono text-sm uppercase">${project.tech}</p>
+                        <p class="text-zinc-600 mt-2 text-sm max-w-xl">${project.description}</p>
+                    </div>
+                    <div class="text-right">
+                        <span class="inline-block px-3 py-1 border border-zinc-700 rounded-full text-xs font-mono text-zinc-400 group-hover:border-yellow-400 group-hover:text-yellow-400 transition-colors">${project.date}</span>
+                    </div>
+                    </div>
+                </a>
+                `;
+                container.innerHTML += html;
+            });
+        } catch (error) {
+            console.error('Error fetching projects:', error);
+            document.getElementById('projects-container').innerHTML = `
+                <div class="p-4 border border-red-800 bg-red-900/20 rounded text-red-400">
+                    <p class="font-bold">⚠️ Server Connection Failed</p>
+                    <p class="text-sm">Make sure you are running 'node index.js' in your server folder.</p>
+                </div>
+            `;
+        }
+    }
+    loadProjects();
+  </script>
+
+</body>
+</html>
