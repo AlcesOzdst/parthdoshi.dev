@@ -28,6 +28,94 @@ function updateThemeIcon(element, theme) {
     element.innerHTML = theme === 'light' ? moonIcon : sunIcon;
 }
 
+// Page Transition Handler - Slide Up with WASD Keys (Exposed globally)
+function navigateWithTransition(url) {
+    const pageWrapper = document.querySelector('.page-wrapper');
+    const pageOverlay = document.getElementById('pageOverlay');
+
+    // Page name mapping for transitions
+    const pageNames = {
+        'index.html': 'Work',
+        'about.html': 'About',
+        'skills.html': 'Skills',
+        'certs.html': 'Certs',
+        'contact.html': 'Contact',
+        'blogs.html': 'Blogs'
+    };
+
+    // WASD key mapping based on destination
+    const wasdKeyMapping = {
+        'index.html': 'w',
+        'about.html': 'a',
+        'skills.html': 's',
+        'certs.html': 'd',
+        'contact.html': 'd',
+        'blogs.html': 'd'
+    };
+
+    if (!pageWrapper || !pageOverlay) {
+        window.location.href = url;
+        return;
+    }
+
+    // Don't transition if same page
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    const targetPath = url.split('/').pop() || 'index.html';
+    // Remove query params for comparison
+    const targetFile = targetPath.split('?')[0];
+
+    if (currentPath === targetFile && !url.includes('?')) {
+        return;
+    }
+
+    // Get page name for display
+    const pageName = pageNames[targetFile] || 'Project';
+    const pageNameEl = document.getElementById('pageName');
+    if (pageNameEl) {
+        pageNameEl.textContent = pageName;
+    }
+
+    // Get which WASD key to highlight
+    const activeKey = wasdKeyMapping[targetFile] || 'w';
+
+    // Reset all WASD keys to default state
+    const allKeys = pageOverlay.querySelectorAll('.wasd-key');
+    allKeys.forEach(key => {
+        key.classList.remove('wasd-key--active');
+    });
+
+    // Highlight the correct key based on destination
+    const keyElements = {
+        'w': pageOverlay.querySelector('.wasd-key--w'),
+        'a': pageOverlay.querySelector('.wasd-row--bottom .wasd-key:nth-child(1)'),
+        's': pageOverlay.querySelector('.wasd-row--bottom .wasd-key:nth-child(2)'),
+        'd': pageOverlay.querySelector('.wasd-row--bottom .wasd-key:nth-child(3)')
+    };
+
+    // Remove active class from W key (it's active by default in CSS)
+    const wKey = pageOverlay.querySelector('.wasd-key--w');
+    if (wKey && activeKey !== 'w') {
+        wKey.classList.add('wasd-key--inactive');
+    } else if (wKey) {
+        wKey.classList.remove('wasd-key--inactive');
+    }
+
+    // Add active class to the target key
+    const targetKeyEl = keyElements[activeKey];
+    if (targetKeyEl && activeKey !== 'w') {
+        targetKeyEl.classList.add('wasd-key--active');
+    }
+
+    // Start slide-up animation
+    pageOverlay.classList.remove('exit');
+    pageOverlay.classList.add('active');
+
+    // Navigate after overlay is fully visible and text is shown
+    setTimeout(() => {
+        window.location.href = url;
+    }, 900);
+}
+
 // Wait for DOM to be ready
 document.addEventListener('DOMContentLoaded', () => {
     const pageWrapper = document.querySelector('.page-wrapper');
@@ -50,89 +138,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateThemeIcon(themeIcon, newTheme);
             }
         });
-    }
-
-    // Page name mapping for transitions
-    const pageNames = {
-        'index.html': 'Work',
-        'about.html': 'About',
-        'skills.html': 'Skills',
-        'certs.html': 'Certs',
-        'contact.html': 'Contact',
-        'blogs.html': 'Blogs'
-    };
-
-    // WASD key mapping based on destination
-    // W = Work (up), A = About (left), S = Skills (down), D = Certs/Contact/Blogs (right)
-    const wasdKeyMapping = {
-        'index.html': 'w',
-        'about.html': 'a',
-        'skills.html': 's',
-        'certs.html': 'd',
-        'contact.html': 'd',
-        'blogs.html': 'd'
-    };
-
-    // Page Transition Handler - Slide Up with WASD Keys
-    function navigateWithTransition(url) {
-        if (!pageWrapper || !pageOverlay) {
-            window.location.href = url;
-            return;
-        }
-
-        // Don't transition if same page
-        const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-        const targetPath = url.split('/').pop() || 'index.html';
-        if (currentPath === targetPath) {
-            return;
-        }
-
-        // Get page name for display
-        const pageName = pageNames[targetPath] || 'Page';
-        const pageNameEl = document.getElementById('pageName');
-        if (pageNameEl) {
-            pageNameEl.textContent = pageName;
-        }
-
-        // Get which WASD key to highlight
-        const activeKey = wasdKeyMapping[targetPath] || 'w';
-
-        // Reset all WASD keys to default state
-        const allKeys = pageOverlay.querySelectorAll('.wasd-key');
-        allKeys.forEach(key => {
-            key.classList.remove('wasd-key--active');
-        });
-
-        // Highlight the correct key based on destination
-        const keyElements = {
-            'w': pageOverlay.querySelector('.wasd-key--w'),
-            'a': pageOverlay.querySelector('.wasd-row--bottom .wasd-key:nth-child(1)'),
-            's': pageOverlay.querySelector('.wasd-row--bottom .wasd-key:nth-child(2)'),
-            'd': pageOverlay.querySelector('.wasd-row--bottom .wasd-key:nth-child(3)')
-        };
-
-        // Remove active class from W key (it's active by default in CSS)
-        const wKey = pageOverlay.querySelector('.wasd-key--w');
-        if (wKey && activeKey !== 'w') {
-            wKey.classList.add('wasd-key--inactive');
-        } else if (wKey) {
-            wKey.classList.remove('wasd-key--inactive');
-        }
-
-        // Add active class to the target key
-        const targetKeyEl = keyElements[activeKey];
-        if (targetKeyEl && activeKey !== 'w') {
-            targetKeyEl.classList.add('wasd-key--active');
-        }
-
-        // Start slide-up animation
-        pageOverlay.classList.remove('exit');
-        pageOverlay.classList.add('active');
-
-        // Navigate after overlay is fully visible and text is shown
-        setTimeout(() => {
-            window.location.href = url;
-        }, 900);
     }
 
     // Intercept navigation link clicks

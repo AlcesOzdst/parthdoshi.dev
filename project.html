@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details | Parth Doshi</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Project Details - Parth Doshi Portfolio">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%239FEF00' rx='20' width='100' height='100'/><text x='50' y='68' font-size='50' text-anchor='middle' fill='%230B0F14' font-weight='bold'>P</text></svg>">
+
+    <!-- Apply theme immediately -->
+    <script>
+        (function () {
+            var theme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .project-detail {
+            padding: 80px 0;
+            min-height: 80vh;
+        }
+
+        .project-detail__header {
+            margin-bottom: 60px;
+        }
+
+        .project-detail__tagline {
+            font-size: var(--font-size-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 16px;
+            display: block;
+            font-weight: 600;
+        }
+
+        .project-detail__title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            line-height: 1;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+            text-transform: uppercase;
+        }
+
+        .project-detail__content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 80px;
+        }
+
+        .project-detail__brief {
+            font-size: var(--font-size-xl);
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .project-detail__brief h3 {
+            font-size: var(--font-size-lg);
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .project-detail__meta-column {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .project-detail__meta-section h3 {
+            font-size: var(--font-size-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .project-detail__meta-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .project-detail__meta-item {
+            font-size: var(--font-size-base);
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .project-detail__meta-item::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        @media (max-width: 768px) {
+            .project-detail__content-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Page Transition Overlay -->
+    <div class="page-transition-overlay" id="pageOverlay">
+        <div class="page-transition-content">
+            <div class="wasd-keys">
+                <div class="wasd-row wasd-row--top">
+                    <div class="wasd-key wasd-key--w" id="keyW">W</div>
+                </div>
+                <div class="wasd-row wasd-row--bottom">
+                    <div class="wasd-key">A</div>
+                    <div class="wasd-key">S</div>
+                    <div class="wasd-key">D</div>
+                </div>
+            </div>
+            <p class="page-transition-subtitle">Navigating to</p>
+            <h2 class="page-transition-name" id="pageName">Project</h2>
+        </div>
+    </div>
+
+    <!-- Page Wrapper -->
+    <div class="page-wrapper page-enter">
+
+        <!-- Navigation -->
+        <nav class="nav">
+            <div class="container nav__container">
+                <a href="index.html" class="nav__logo" data-nav-link>P</a>
+
+                <ul class="nav__menu">
+                    <li><a href="index.html" class="nav__link active" data-nav-link>Work</a></li>
+                    <li><a href="skills.html" class="nav__link" data-nav-link>Skills</a></li>
+                    <li><a href="about.html" class="nav__link" data-nav-link>About</a></li>
+                    <li><a href="contact.html" class="nav__link" data-nav-link>Contact</a></li>
+                    <li><a href="certs.html" class="nav__link" data-nav-link>Certs</a></li>
+                    <li><a href="blogs.html" class="nav__link" data-nav-link>Blogs</a></li>
+                </ul>
+
+                <div class="nav__actions">
+                    <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                        <span></span><span></span><span></span>
+                    </button>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                        <div class="theme-toggle__slider">
+                            <span id="themeIcon">🌙</span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Project Detail Section -->
+        <section class="project-detail">
+            <div class="container" id="projectContainer">
+                <!-- Content injected via JS -->
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container footer__container">
+                <div class="footer__info">
+                    <p class="footer__copyright">© 2026 Parth Doshi. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="transitions.js"></script>
+    <script src="projects-data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const projectId = urlParams.get('id');
+            const container = document.getElementById('projectContainer');
+
+            if (!projectId || !projectsData) {
+                container.innerHTML = '<h2>Project not found</h2><a href="index.html">Return to Work</a>';
+                return;
+            }
+
+            const project = projectsData.find(p => p.id === projectId);
+
+            if (!project) {
+                container.innerHTML = '<h2>Project not found</h2><a href="index.html">Return to Work</a>';
+                return;
+            }
+
+            // Update Page Title
+            document.title = `${project.title} | Parth Doshi`;
+
+            // Render Content
+            container.innerHTML = `
+                <div class="project-detail__header animate-on-scroll">
+                    <span class="project-detail__tagline">${project.tagline}</span>
+                    <h1 class="project-detail__title">${project.title}</h1>
+                </div>
+
+                <div class="project-detail__content-grid">
+                    <div class="project-detail__brief animate-on-scroll">
+                        <h3>Brief</h3>
+                        <p>${project.brief}</p>
+                        <p style="margin-top: 20px;">
+                            ${project.brief} <!-- Duplicate text for length visualization -->
+                        </p>
+                    </div>
+
+                    <div class="project-detail__meta-column animate-on-scroll">
+                        <div class="project-detail__meta-section">
+                            <h3>Role</h3>
+                            <div class="project-detail__meta-list">
+                                ${project.roles.map(role => `
+                                    <div class="project-detail__meta-item">${role}</div>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <div class="project-detail__meta-section">
+                            <h3>Deliverable</h3>
+                            <div class="project-detail__meta-list">
+                                ${project.deliverables.map(item => `
+                                    <div class="project-detail__meta-item">${item}</div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Trigger animation
+            setTimeout(() => {
+                document.querySelectorAll('.animate-on-scroll').forEach(el => el.classList.add('visible'));
+            }, 100);
+        });
+    </script>
+</body>
+
+</html>

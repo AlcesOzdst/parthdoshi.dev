@@ -141,7 +141,7 @@
             <div class="container">
                 <div class="projects__grid">
                     <!-- Project Card 1 -->
-                    <article class="project-card project-card--warm animate-on-scroll">
+                    <article class="project-card project-card--warm animate-on-scroll" data-id="project-one">
                         <div class="project-card__content">
                             <h3 class="project-card__logo">ProjectOne</h3>
                             <p class="project-card__tagline">Innovation at its finest</p>
@@ -149,7 +149,7 @@
                     </article>
 
                     <!-- Project Card 2 -->
-                    <article class="project-card project-card--dark animate-on-scroll">
+                    <article class="project-card project-card--dark animate-on-scroll" data-id="nexus">
                         <div class="project-card__content">
                             <h3 class="project-card__logo">Nexus</h3>
                             <p class="project-card__tagline">Connecting possibilities</p>
@@ -157,7 +157,7 @@
                     </article>
 
                     <!-- Project Card 3 -->
-                    <article class="project-card project-card--blue animate-on-scroll">
+                    <article class="project-card project-card--blue animate-on-scroll" data-id="orbit">
                         <div class="project-card__content">
                             <h3 class="project-card__logo">Orbit</h3>
                             <p class="project-card__tagline">Beyond boundaries</p>
@@ -165,7 +165,7 @@
                     </article>
 
                     <!-- Project Card 4 -->
-                    <article class="project-card project-card--teal animate-on-scroll">
+                    <article class="project-card project-card--teal animate-on-scroll" data-id="pulse">
                         <div class="project-card__content">
                             <h3 class="project-card__logo">Pulse</h3>
                             <p class="project-card__tagline">Feel the rhythm</p>
@@ -173,7 +173,7 @@
                     </article>
 
                     <!-- Project Card 5 -->
-                    <article class="project-card project-card--purple animate-on-scroll">
+                    <article class="project-card project-card--purple animate-on-scroll" data-id="prism">
                         <div class="project-card__content">
                             <h3 class="project-card__logo">Prism</h3>
                             <p class="project-card__tagline">A spectrum of ideas</p>
@@ -181,7 +181,7 @@
                     </article>
 
                     <!-- Project Card 6 -->
-                    <article class="project-card project-card--coral animate-on-scroll">
+                    <article class="project-card project-card--coral animate-on-scroll" data-id="ember">
                         <div class="project-card__content">
                             <h3 class="project-card__logo">Ember</h3>
                             <p class="project-card__tagline">Igniting creativity</p>
@@ -233,30 +233,41 @@
 
     </div><!-- End page-wrapper -->
 
+    <!-- Project Quick View Modal -->
+    <div class="project-modal" id="projectModal" aria-hidden="true">
+        <div class="project-modal__backdrop"></div>
+        <div class="project-modal__container">
+            <button class="project-modal__close" aria-label="Close modal">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="project-modal__content" id="modalContent">
+                <!-- Content injected via JS -->
+            </div>
+            <div class="project-modal__actions">
+                <a href="#" class="project-modal__expand-btn" id="modalExpandBtn">
+                    View Full Project
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        style="margin-left:8px;">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- Page Transition JavaScript -->
     <script src="transitions.js"></script>
+    <script src="projects-data.js"></script>
+    <script src="projects.js"></script>
 
     <!-- Page-specific JavaScript -->
     <script>
-        // Scroll Animation Observer
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            observer.observe(el);
-        });
+        // Scroll Animation Observer is now handled in transitions.js generally
+        // But keeping this for specific page logic if needed, or clean up if redundant
+        // For now, leaving as is to ensure no regression, but the transition.js has a global observer
     </script>
 </body>
 
