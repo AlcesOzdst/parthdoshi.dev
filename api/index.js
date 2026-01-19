@@ -1,14 +1,13 @@
-// server/index.js
 const express = require('express');
 const cors = require('cors');
 const app = express();
 const PORT = 5000;
 
-// Middleware (Allows your frontend to talk to this backend)
+// Middleware
 app.use(cors());
 app.use(express.json());
 
-// Mock Database (We will replace this with MongoDB later)
+// Database
 const projects = [
     {
         id: 1,
@@ -33,24 +32,23 @@ const projects = [
     }
 ];
 
-// Test Route
+// Routes
 app.get('/', (req, res) => {
     res.send('<h1>Parth Doshi API is Alive! 🚀</h1>');
 });
 
-// GET endpoint to fetch projects
 app.get('/api/projects', (req, res) => {
+    // We removed the delay for production so it loads instantly!
     res.json(projects);
 });
 
-// Start Server
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-});
+// THE SMART PART:
+// If running locally (node index.js), listen on port 5000.
+// If running on Vercel, don't listen (Vercel handles it), just export.
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`Server running locally on http://localhost:${PORT}`);
+    });
+}
 
-// GET endpoint with a 1-second delay to simulate real internet
-app.get('/api/projects', (req, res) => {
-    setTimeout(() => {
-        res.json(projects);
-    }, 1000); // 1000ms = 1 second delay
-});
+module.exports = app;
