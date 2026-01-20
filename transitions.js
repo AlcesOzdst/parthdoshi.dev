@@ -140,6 +140,35 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Mobile Menu Toggle
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    if (mobileMenuToggle && mobileMenu) {
+        mobileMenuToggle.addEventListener('click', () => {
+            const isOpen = mobileMenu.getAttribute('aria-hidden') === 'false';
+
+            if (isOpen) {
+                mobileMenu.setAttribute('aria-hidden', 'true');
+                mobileMenuToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            } else {
+                mobileMenu.setAttribute('aria-hidden', 'false');
+                mobileMenuToggle.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+
+        // Close mobile menu when clicking a link
+        mobileMenu.querySelectorAll('.mobile-menu__link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.setAttribute('aria-hidden', 'true');
+                mobileMenuToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+    }
+
     // Intercept navigation link clicks
     document.querySelectorAll('a[data-nav-link]').forEach(link => {
         link.addEventListener('click', (e) => {
