@@ -4,64 +4,64 @@
  */
 const projectsData = [
     {
-        id: 'project-one',
-        title: 'ProjectOne',
-        tagline: 'Innovation at its finest',
-        image: 'assets/project1.jpg', // Placeholder
-        brief: 'ProjectOne is a pioneering solution designed to revolutionize the way users interact with digital interfaces. By leveraging advanced AI algorithms and intuitive design patterns, it bridges the gap between complexity and usability.',
-        roles: ['UI/UX Design', 'Frontend Development', 'System Architecture'],
-        deliverables: ['Web Application', 'Mobile App', 'Design System'],
+        id: 'suricata-ids',
+        title: 'Suricata IDS',
+        tagline: 'Lightweight intrusion detection on Raspberry Pi 5',
+        image: 'assets/project1.jpg',
+        brief: 'Deployed a lightweight Intrusion Detection System using Suricata on a Raspberry Pi 5 to monitor live network traffic and detect suspicious patterns. Tuned Suricata rules to reduce noise and improve detection accuracy by 92%. Analyzed alerts, logs, and packet captures to generate structured investigation summaries and recommendations.',
+        roles: ['Network Security', 'IDS Configuration', 'Log Analysis'],
+        deliverables: ['IDS Deployment', 'Custom Rule Tuning', 'Investigation Reports'],
         theme: 'warm'
     },
     {
-        id: 'nexus',
-        title: 'Nexus',
-        tagline: 'Connecting possibilities',
+        id: 'ddos-toolkit',
+        title: 'DDoS Toolkit',
+        tagline: 'Network hardening through simulation',
         image: 'assets/project2.jpg',
-        brief: 'Nexus serves as a central hub for decentralized data management. It allows organizations to securely share and verify information across borders without compromising privacy or speed.',
-        roles: ['Backend Engineering', 'Cryptography', 'API Design'],
-        deliverables: ['Core API', 'Documentation', 'SDKs'],
+        brief: 'Developed a Python-based DDoS simulation tool to test IDS/IPS and firewall responsiveness. Optimized Suricata configurations to reduce false positives by 18%. Documented mitigation strategies, network defenses, and incident-handling workflows for comprehensive network hardening.',
+        roles: ['Cybersecurity Simulation', 'Python Development', 'Network Defense'],
+        deliverables: ['Simulation Tool', 'Hardened Configs', 'Mitigation Docs'],
         theme: 'dark'
     },
     {
-        id: 'orbit',
-        title: 'Orbit',
-        tagline: 'Beyond boundaries',
+        id: 'project-omnis',
+        title: 'Project Omnis',
+        tagline: 'AI-driven cybersecurity platform — SIH 2025',
         image: 'assets/project3.jpg',
-        brief: 'Orbit is an astronomical data visualization tool used by researchers to map celestial bodies in real-time. It processes petabytes of data to render high-fidelity 3D models of the universe.',
-        roles: ['Data Visualization', 'WebGL Shader Programming', 'Performance Optimization'],
-        deliverables: ['Interactive Dashboard', '3D Engine', 'Research Paper'],
+        brief: 'Contributed to "Omnis," an AI-driven cybersecurity platform integrating malware detection, threat intelligence, and blockchain logging for Smart India Hackathon 2025. Built multi-model orchestration of 150+ AI agents for automated scanning and threat reasoning. Implemented secure, immutable threat logging with under 5s response latency.',
+        roles: ['AI Integration', 'Blockchain Logging', 'Threat Intelligence'],
+        deliverables: ['AI Agent Orchestration', 'Blockchain Logger', 'Prototype Platform'],
         theme: 'blue'
     },
     {
-        id: 'pulse',
-        title: 'Pulse',
-        tagline: 'Feel the rhythm',
+        id: 'fire-detection',
+        title: 'Fire Detection',
+        tagline: 'IoT-based fire detection & auto-extinguisher',
         image: 'assets/project4.jpg',
-        brief: 'Pulse is a next-generation music streaming platform that adapts to the listener\'s biometric data. It curates playlists based on heart rate and mood detection.',
-        roles: ['Mobile Development', 'Integration', 'Algorithm Design'],
-        deliverables: ['iOS App', 'WatchOS App', 'curation Engine'],
+        brief: 'Built an IoT-based fire detection and automatic extinguisher prototype using ESP32 and sensor-based detection. Integrated IR sensors and basic electronic components to detect fire conditions. Automated water pump activation for immediate extinguishing response. Focused on low-cost hardware integration and real-world safety automation.',
+        roles: ['IoT Development', 'Embedded Systems', 'Hardware Prototyping'],
+        deliverables: ['ESP32 Firmware', 'Sensor Integration', 'Safety Prototype'],
+        theme: 'coral'
+    },
+    {
+        id: 'home-automation',
+        title: 'IoT Home Auto',
+        tagline: 'Smart home control with ESP8266',
+        image: 'assets/project5.jpg',
+        brief: 'Built an IoT-based home automation system using the ESP8266 microcontroller. Studied fundamentals of IoT and learned NodeMCU programming. Used Blynk Cloud to create a GUI for controlling the ESP8266, enabling remote control of home appliances via smartphone.',
+        roles: ['IoT Development', 'Cloud Integration', 'Embedded Programming'],
+        deliverables: ['ESP8266 Firmware', 'Blynk Cloud GUI', 'Documentation'],
         theme: 'teal'
     },
     {
-        id: 'prism',
-        title: 'Prism',
-        tagline: 'A spectrum of ideas',
-        image: 'assets/project5.jpg',
-        brief: 'Prism is a collaborative design tool that enables teams to explore color theory and accessibility in real-time. It ensures all digital products meet global inclusion standards.',
-        roles: ['Product Design', 'Accessibility Auditing', 'React Development'],
-        deliverables: ['SaaS Platform', 'Browser Extension', 'Community Hub'],
-        theme: 'purple'
-    },
-    {
-        id: 'ember',
-        title: 'Ember',
-        tagline: 'Igniting creativity',
+        id: 'noise-indicator',
+        title: 'Noise Indicator',
+        tagline: 'Sound-reactive LED circuit design',
         image: 'assets/project6.jpg',
-        brief: 'Ember is a content creation suite for digital artists. It provides procedural generation tools that spark inspiration and accelerate the concept art workflow.',
-        roles: ['Tool Development', 'C++ / Wasm', 'UX Research'],
-        deliverables: ['Desktop Application', 'Plugin Ecosystem', 'Tutorial Series'],
-        theme: 'coral'
+        brief: 'Developed a circuit to detect and amplify sound levels using basic electronic components — an evolution of the classic clap switch. Designed LED indicators that react to varying sound intensities for visual feedback. Documented project workflow, component usage, and future improvement suggestions.',
+        roles: ['Circuit Design', 'Hardware Prototyping', 'Documentation'],
+        deliverables: ['Circuit Board', 'Multisim Simulation', 'Technical Report'],
+        theme: 'purple'
     }
 ];
 
