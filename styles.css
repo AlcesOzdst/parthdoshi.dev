@@ -931,12 +931,11 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  perspective: 500px;
   transition: transform var(--transition-fast);
 }
 
 .nav__logo:hover {
-  transform: scale(1.15);
+  transform: scale(1.1);
 }
 
 .nav__logo-img {
@@ -944,44 +943,12 @@ button {
   height: 100%;
   object-fit: contain;
   border-radius: var(--radius-md);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
-  animation: logo-pulse 3s ease-in-out infinite;
+  transition: filter var(--transition-base);
 }
 
-/* Interactive hover effects */
-.nav__logo:hover .nav__logo-img {
-  transform: rotateY(15deg) rotateX(-5deg);
-  box-shadow:
-    0 0 20px rgba(159, 239, 0, 0.5),
-    0 0 40px rgba(159, 239, 0, 0.3),
-    0 0 60px rgba(159, 239, 0, 0.1);
-  animation: none;
-}
-
-/* Subtle idle pulse animation */
-@keyframes logo-pulse {
-
-  0%,
-  100% {
-    box-shadow: 0 0 8px rgba(159, 239, 0, 0.2);
-  }
-
-  50% {
-    box-shadow: 0 0 16px rgba(159, 239, 0, 0.4);
-  }
-}
-
-/* Dark mode - logo looks great as-is, just add enhanced glow */
+/* Theme-reactive filter for logo in dark mode */
 [data-theme="dark"] .nav__logo-img {
-  filter: none;
-  /* No invert needed for this logo */
-}
-
-[data-theme="dark"] .nav__logo:hover .nav__logo-img {
-  box-shadow:
-    0 0 25px rgba(159, 239, 0, 0.6),
-    0 0 50px rgba(159, 239, 0, 0.4),
-    0 0 75px rgba(159, 239, 0, 0.2);
+  filter: invert(1) hue-rotate(180deg);
 }
 
 .nav__menu {
