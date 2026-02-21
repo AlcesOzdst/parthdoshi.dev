@@ -39,24 +39,26 @@ export default function Blog() {
 
         <div className="ml-4 space-y-12">
           {posts.map((post) => (
-            <article key={post.id} className="border-l border-primary/20 pl-6 hover:border-primary transition-colors group">
-              <div className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-4 mb-2">
-                <h2 className="text-xl font-bold text-white group-hover:text-primary transition-colors cursor-pointer">
-                  {post.title}
-                </h2>
-                <div className="text-xs text-muted-foreground font-mono flex gap-3">
-                  <span>[{post.date}]</span>
-                  <span>[{post.readingTime} read]</span>
+            <Link key={post.id} href={"/blog/" + post.id}>
+              <a className="block border-l border-primary/20 pl-6 hover:border-primary transition-colors group cursor-pointer">
+                <div className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-4 mb-2">
+                  <h2 className="text-xl font-bold text-white group-hover:text-primary transition-colors">
+                    {post.title}
+                  </h2>
+                  <div className="text-xs text-muted-foreground font-mono flex gap-3">
+                    <span>[{post.date}]</span>
+                    <span>[{post.readingTime} read]</span>
+                  </div>
                 </div>
-              </div>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                {post.summary}
-              </p>
-              <div className="text-xs text-primary cursor-pointer hover:underline inline-flex items-center gap-2">
-                <span>&gt; cat {post.id}.md</span>
-                <span className="terminal-cursor opacity-0 group-hover:opacity-100 transition-opacity"></span>
-              </div>
-            </article>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                  {post.summary}
+                </p>
+                <div className="text-xs text-primary group-hover:underline inline-flex items-center gap-2">
+                  <span>&gt; cat {post.id}.md</span>
+                  <span className="terminal-cursor opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                </div>
+              </a>
+            </Link>
           ))}
         </div>
 
