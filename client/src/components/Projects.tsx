@@ -1,101 +1,73 @@
-import { motion } from "framer-motion";
-import { ShieldAlert, Database, Network, Cpu } from "lucide-react";
-
 const projects = [
   {
-    id: "OP-SURICATA",
-    title: "Edge IDS Framework",
-    domain: "Network Intelligence",
-    problem: "Topological blind spots in local infrastructure.",
-    solution: "Decentralized intrusion detection on Raspberry Pi 5 with custom heuristic rulesets.",
-    outcome: "100% threat detection at the network boundary.",
-    icon: <ShieldAlert className="w-6 h-6" />
+    permissions: "drwxr-xr-x",
+    size: "4.2K",
+    date: "Oct 12 14:20",
+    name: "suricata_ids",
+    desc: "Lightweight intrusion detection on Raspberry Pi 5. 100% detection rate."
   },
   {
-    id: "OP-OMNIS",
-    title: "Predictive AI Platform",
-    domain: "Threat Intelligence",
-    problem: "Manual vulnerability assessment latency.",
-    solution: "Machine learning platform analyzing large-scale logs to predict attack vectors.",
-    outcome: "Recognized innovation at SIH 2025.",
-    icon: <Database className="w-6 h-6" />
+    permissions: "-rw-r--r--",
+    size: "1.8M",
+    date: "Nov 05 09:15",
+    name: "ddos_toolkit.py",
+    desc: "Simulation toolkit for volumetric attacks. 10Gbps artificial surges."
   },
   {
-    id: "OP-RESILIENCE",
-    title: "DDoS Mitigation Protocol",
-    domain: "Infrastructure Hardening",
-    problem: "Unverified firewall resilience under heavy load.",
-    solution: "Stress-testing apparatus generating controlled volumetric attacks.",
-    outcome: "Validated against 10Gbps artificial surges.",
-    icon: <Network className="w-6 h-6" />
+    permissions: "drwxrwxr-x",
+    size: "8.1K",
+    date: "Dec 18 16:45",
+    name: "project_omnis",
+    desc: "AI-driven threat prediction platform (SIH 2025 Finalist)."
   },
   {
-    id: "OP-THERMAL",
-    title: "Autonomous Response Array",
-    domain: "IoT Hardware",
-    problem: "Delayed physical response to thermal anomalies.",
-    solution: "Closed-loop hardware combining sensors with automated extinguishing mechanisms.",
-    outcome: "Sub-two-second physical response capability.",
-    icon: <Cpu className="w-6 h-6" />
-  },
+    permissions: "-rwxr-xr-x",
+    size: "845B",
+    date: "Jan 22 11:30",
+    name: "thermal_response.cpp",
+    desc: "IoT hardware automation for fire detection. <2s response time."
+  }
 ];
 
 export function Projects() {
   return (
-    <section id="deployments" className="py-24 bg-[#030303] border-t border-white/5">
-      <div className="container mx-auto px-6 md:px-12">
+    <section id="projects" className="py-8 border-t border-primary/20 border-dashed">
+      <div className="container mx-auto px-4">
         
-        <div className="mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
-            Classified Operations
-          </h2>
+        <div className="text-sm md:text-base mb-6">
+          <span className="text-primary font-bold">guest@parthdoshi</span>
+          <span className="text-white">:</span>
+          <span className="text-blue-400">~/projects</span>
+          <span className="text-white">$</span> ls -la
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          {projects.map((project, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="tech-panel p-8"
-            >
-              <div className="flex justify-between items-start mb-6">
-                <div>
-                  <div className="font-mono text-xs text-primary mb-2 uppercase tracking-widest">
-                    {project.id} // {project.domain}
-                  </div>
-                  <h3 className="text-2xl font-bold text-white">
-                    {project.title}
-                  </h3>
-                </div>
-                <div className="text-white/20 p-3 bg-white/5 rounded-md">
-                  {project.icon}
-                </div>
-              </div>
-
-              <div className="space-y-4 mb-8">
-                <div>
-                  <div className="text-xs text-muted-foreground uppercase tracking-wider mb-1 font-mono">Problem</div>
-                  <div className="text-sm text-white/90">{project.problem}</div>
-                </div>
-                <div>
-                  <div className="text-xs text-muted-foreground uppercase tracking-wider mb-1 font-mono">Solution</div>
-                  <div className="text-sm text-white/90">{project.solution}</div>
-                </div>
-              </div>
-
-              <div className="pt-4 border-t border-white/5">
-                <div className="text-xs text-primary uppercase tracking-wider mb-1 font-mono">Verified Outcome</div>
-                <div className="text-base font-medium text-white">
-                  {project.outcome}
-                </div>
-              </div>
-            </motion.div>
-          ))}
+        <div className="ml-4 overflow-x-auto text-xs sm:text-sm">
+          <table className="w-full text-left border-collapse min-w-[600px]">
+            <thead>
+              <tr className="text-muted-foreground border-b border-primary/20">
+                <th className="font-normal py-2 pr-4">PERMISSIONS</th>
+                <th className="font-normal py-2 pr-4">SIZE</th>
+                <th className="font-normal py-2 pr-4">DATE</th>
+                <th className="font-normal py-2 pr-4">NAME</th>
+                <th className="font-normal py-2">DESCRIPTION</th>
+              </tr>
+            </thead>
+            <tbody>
+              {projects.map((p, i) => (
+                <tr key={i} className="hover:bg-primary/10 transition-colors">
+                  <td className="py-2 pr-4 text-white/70">{p.permissions}</td>
+                  <td className="py-2 pr-4 text-white/70">{p.size}</td>
+                  <td className="py-2 pr-4 text-white/70">{p.date}</td>
+                  <td className={`py-2 pr-4 font-bold ${p.permissions.startsWith('d') ? 'text-blue-400' : 'text-primary'}`}>
+                    {p.name}
+                  </td>
+                  <td className="py-2 text-muted-foreground"># {p.desc}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-        
+
       </div>
     </section>
   );

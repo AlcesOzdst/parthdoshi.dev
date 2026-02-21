@@ -1,61 +1,64 @@
-import { motion } from "framer-motion";
-
-const systems = [
-  {
-    class: "Network Defense",
-    specs: ["Suricata IDS/IPS", "Volumetric DDoS Mitigation", "Firewall Topography", "Packet Analysis"]
-  },
-  {
-    class: "Hardware Automation",
-    specs: ["Raspberry Pi Cortex", "ESP8266/ESP32 Logic", "Sensor Arrays", "Embedded C++"]
-  },
-  {
-    class: "Software Engineering",
-    specs: ["Python Engineering", "C/C++ Core", "Bash Scripting", "Linux Admin"]
-  },
-  {
-    class: "Threat Intelligence",
-    specs: ["SIEM Architecture", "Vulnerability Auditing", "Log Correlation", "ML Security"]
-  }
-];
-
 export function Skills() {
+  const specs = [
+    { key: "OS", value: "Linux (Debian/Arch), Unix" },
+    { key: "LANGUAGES", value: "Python, C/C++, Bash" },
+    { key: "NETWORK", value: "TCP/IP, Wireshark, Suricata, DDoS Mitigation" },
+    { key: "HARDWARE", value: "Raspberry Pi, ESP8266/ESP32, Sensor Arrays" },
+    { key: "SECURITY", value: "SIEM, Vulnerability Assessment, Threat Modeling" },
+  ];
+
   return (
-    <section id="capabilities" className="py-24 bg-background border-t border-white/5">
-      <div className="container mx-auto px-6 md:px-12">
+    <section id="skills" className="py-8 border-t border-primary/20 border-dashed">
+      <div className="container mx-auto px-4">
         
-        <div className="mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
-            Capabilities
-          </h2>
+        <div className="text-sm md:text-base mb-6">
+          <span className="text-primary font-bold">guest@parthdoshi</span>
+          <span className="text-white">:</span>
+          <span className="text-blue-400">~/skills</span>
+          <span className="text-white">$</span> neofetch
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {systems.map((sys, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="tech-panel p-6"
-            >
-              <h3 className="text-lg font-bold text-white mb-6">
-                {sys.class}
-              </h3>
-              
-              <ul className="space-y-4 font-mono text-sm">
-                {sys.specs.map((spec, i) => (
-                  <li key={i} className="flex items-start text-muted-foreground">
-                    <span className="text-primary mr-3 opacity-80">▹</span>
-                    {spec}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
+        <div className="ml-4 flex flex-col md:flex-row gap-8 text-sm">
+          {/* ASCII Logo for Neofetch */}
+          <div className="hidden md:block text-accent whitespace-pre leading-none select-none">
+{`
+      /\\
+     /  \\
+    /    \\
+   /______\\
+  /        \\
+ /          \\
+/____________\\
+`}
+          </div>
+
+          <div>
+            <div className="text-primary font-bold mb-2">parthdoshi@sys_specs</div>
+            <div className="text-muted-foreground mb-4">--------------------</div>
+            
+            <div className="space-y-1">
+              {specs.map((s, i) => (
+                <div key={i} className="flex">
+                  <span className="text-accent w-24 shrink-0">{s.key}</span>
+                  <span className="text-white/50 mr-2">:</span>
+                  <span className="text-primary">{s.value}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-6 flex gap-2">
+              <div className="w-4 h-4 bg-black border border-primary/50"></div>
+              <div className="w-4 h-4 bg-destructive"></div>
+              <div className="w-4 h-4 bg-primary"></div>
+              <div className="w-4 h-4 bg-accent"></div>
+              <div className="w-4 h-4 bg-blue-500"></div>
+              <div className="w-4 h-4 bg-purple-500"></div>
+              <div className="w-4 h-4 bg-cyan-500"></div>
+              <div className="w-4 h-4 bg-white"></div>
+            </div>
+          </div>
         </div>
-        
+
       </div>
     </section>
   );

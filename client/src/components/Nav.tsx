@@ -1,27 +1,20 @@
-import { motion } from "framer-motion";
-
 export function Nav() {
   return (
-    <motion.nav 
-      initial={{ y: -50, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-white/[0.05]"
-    >
-      <div className="container mx-auto px-6 md:px-12 h-16 flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <div className="w-2 h-2 bg-primary animate-pulse"></div>
-          <span className="font-mono text-sm font-bold tracking-widest text-white uppercase">
-            P.DOSHI // SYS_ARCHITECT
-          </span>
+    <nav className="w-full bg-black border-b border-primary/20 sticky top-0 z-50">
+      <div className="container mx-auto px-4 py-2 flex flex-col md:flex-row md:items-center justify-between">
+        <div className="text-sm">
+          <span className="text-primary font-bold">guest@parthdoshi</span>
+          <span className="text-white">:</span>
+          <span className="text-blue-400">~</span>
+          <span className="text-white">$</span>
         </div>
-        <div className="hidden md:flex gap-8 font-mono text-[10px] font-bold tracking-[0.2em] uppercase text-muted-foreground">
-          <a href="#directives" className="hover:text-primary transition-colors">Directives</a>
-          <a href="#deployments" className="hover:text-primary transition-colors">Deployments</a>
-          <a href="#capabilities" className="hover:text-primary transition-colors">Capabilities</a>
-          <a href="#comm-link" className="hover:text-primary transition-colors text-white">Comm Link</a>
+        <div className="flex gap-4 text-xs mt-2 md:mt-0 text-muted-foreground">
+          <a href="#about" className="hover:text-primary hover:underline">[1] ./about.sh</a>
+          <a href="#skills" className="hover:text-primary hover:underline">[2] cat sys_specs.txt</a>
+          <a href="#projects" className="hover:text-primary hover:underline">[3] ls -l ./projects</a>
+          <a href="#contact" className="hover:text-primary hover:underline">[4] ssh connect</a>
         </div>
       </div>
-    </motion.nav>
+    </nav>
   );
 }

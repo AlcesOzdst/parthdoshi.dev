@@ -4,13 +4,12 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: 'Geist', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 16px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
 
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
@@ -33,38 +32,37 @@
   --color-ring: hsl(var(--ring));
 }
 
-/* MINIMAL TACTICAL THEME - High Readability */
+/* RAW TERMINAL THEME */
 :root {
-  --background: 0 0% 4%; 
-  --foreground: 0 0% 98%; 
+  --background: 0 0% 0%; /* Pure Black */
+  --foreground: 120 100% 50%; /* Classic Terminal Green */
 
-  --card: 0 0% 6%;
-  --card-foreground: 0 0% 98%;
+  --card: 0 0% 0%;
+  --card-foreground: 120 100% 50%;
 
-  --popover: 0 0% 6%;
-  --popover-foreground: 0 0% 98%;
+  --popover: 0 0% 0%;
+  --popover-foreground: 120 100% 50%;
 
-  /* Clean Cyan */
-  --primary: 195 100% 50%;
+  --primary: 120 100% 50%; /* Terminal Green */
   --primary-foreground: 0 0% 0%;
 
-  --secondary: 220 10% 12%;
-  --secondary-foreground: 0 0% 98%;
+  --secondary: 0 0% 0%;
+  --secondary-foreground: 120 100% 40%;
 
-  --muted: 220 10% 20%;
-  --muted-foreground: 220 10% 65%;
+  --muted: 0 0% 0%;
+  --muted-foreground: 120 100% 30%; /* Dimmer Green */
 
-  --accent: 195 100% 50%;
+  --accent: 30 100% 50%; /* Amber for warnings/highlights */
   --accent-foreground: 0 0% 0%;
 
-  --destructive: 0 84% 60%;
-  --destructive-foreground: 0 0% 98%;
+  --destructive: 0 100% 50%; /* Red for errors */
+  --destructive-foreground: 0 0% 0%;
 
-  --border: 0 0% 15%;
-  --input: 0 0% 10%;
-  --ring: 195 100% 50%;
+  --border: 120 100% 20%;
+  --input: 0 0% 0%;
+  --ring: 120 100% 50%;
   
-  --radius: 8px; 
+  --radius: 0px; 
 }
 
 @layer base {
@@ -72,25 +70,67 @@
     @apply border-border;
   }
   body {
-    @apply font-sans antialiased bg-background text-foreground selection:bg-primary selection:text-black overflow-x-hidden;
-    /* Clean, subtle background without heavy noise */
+    @apply font-mono antialiased bg-background text-foreground selection:bg-primary selection:text-black overflow-x-hidden;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply tracking-tight;
+    @apply font-normal;
   }
 }
 
 @layer utilities {
-  .tech-panel {
-    @apply bg-card border border-white/5 rounded-lg hover:border-primary/30 transition-all duration-300;
-  }
-
-  .btn-tactical {
-    @apply inline-flex items-center justify-center bg-white/5 text-white font-mono text-xs uppercase tracking-widest px-6 py-3 rounded-md border border-white/10 hover:border-primary hover:bg-primary/5 hover:text-primary transition-all duration-300;
+  .terminal-cursor {
+    display: inline-block;
+    width: 0.6em;
+    height: 1.2em;
+    background-color: hsl(var(--primary));
+    animation: blink 1s step-end infinite;
+    vertical-align: text-bottom;
+    margin-left: 2px;
   }
   
-  .btn-tactical-primary {
-    @apply inline-flex items-center justify-center bg-primary text-black font-mono font-bold text-xs uppercase tracking-widest px-6 py-3 rounded-md hover:bg-white hover:text-black transition-all duration-300;
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .text-shadow-glow {
+    text-shadow: 0 0 5px hsla(var(--primary)/0.5);
+  }
+
+  /* Scanline effect for the whole body to simulate CRT monitor */
+  body::after {
+    content: " ";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 2;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+  }
+
+  /* CRT Flicker */
+  body::before {
+    content: " ";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: transparent;
+    z-index: 3;
+    pointer-events: none;
+    animation: flicker 0.15s infinite;
+  }
+
+  @keyframes flicker {
+    0% { background: rgba(0, 255, 0, 0.01); }
+    50% { background: rgba(0, 255, 0, 0.02); }
+    100% { background: transparent; }
   }
 }
