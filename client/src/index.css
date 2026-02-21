@@ -7,10 +7,10 @@
   --font-sans: 'Space Grotesk', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   
-  --radius-sm: 0px;
-  --radius-md: 0px;
-  --radius-lg: 0px;
-  --radius-xl: 0px;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
 
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
@@ -33,40 +33,40 @@
   --color-ring: hsl(var(--ring));
 }
 
-/* DARK FUTURE THEME */
+/* HIGH-END CYBER/ENTERPRISE THEME */
 :root {
-  --background: 0 0% 4%;
+  --background: 0 0% 0%; /* Pure black for maximum contrast */
   --foreground: 0 0% 98%;
 
-  --card: 0 0% 7%;
+  --card: 0 0% 3%;
   --card-foreground: 0 0% 98%;
 
-  --popover: 0 0% 7%;
+  --popover: 0 0% 3%;
   --popover-foreground: 0 0% 98%;
 
-  /* Neon Cyan */
-  --primary: 180 100% 50%;
+  /* Premium Cyan */
+  --primary: 185 100% 50%;
   --primary-foreground: 0 0% 0%;
 
-  /* Subtle dark grey */
-  --secondary: 0 0% 12%;
+  /* Dark Slate */
+  --secondary: 0 0% 9%;
   --secondary-foreground: 0 0% 98%;
 
-  --muted: 0 0% 15%;
-  --muted-foreground: 0 0% 65%;
+  --muted: 0 0% 12%;
+  --muted-foreground: 0 0% 60%;
 
-  /* Electric Purple/Blue Accent */
-  --accent: 260 100% 65%;
+  /* Electric Blue Accent */
+  --accent: 210 100% 50%;
   --accent-foreground: 0 0% 98%;
 
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 98%;
 
-  --border: 0 0% 20%;
-  --input: 0 0% 12%;
-  --ring: 180 100% 50%;
+  --border: 0 0% 12%;
+  --input: 0 0% 9%;
+  --ring: 185 100% 50%;
   
-  --radius: 0px;
+  --radius: 4px;
 }
 
 @layer base {
@@ -75,69 +75,79 @@
   }
   body {
     @apply font-sans antialiased bg-background text-foreground selection:bg-primary selection:text-black overflow-x-hidden;
-    /* Subtle grid background */
     background-image: 
-      linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
+      linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 64px 64px;
+    background-position: center top;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-mono uppercase tracking-tighter;
+    @apply tracking-tight;
   }
 }
 
 @layer utilities {
-  .glitch-effect {
-    position: relative;
+  .glass-panel {
+    @apply bg-background/40 backdrop-blur-xl border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)];
   }
   
-  .glitch-effect::before,
-  .glitch-effect::after {
-    content: attr(data-text);
+  .glow-text {
+    text-shadow: 0 0 20px hsla(var(--primary) / 0.5);
+  }
+  
+  .glow-box {
+    box-shadow: 0 0 30px hsla(var(--primary) / 0.15), inset 0 0 20px hsla(var(--primary) / 0.05);
+  }
+
+  /* Scanline effect for terminal */
+  .scanline {
+    position: relative;
+    overflow: hidden;
+  }
+  .scanline::after {
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: 0.8;
+    background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.4) 51%);
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 10;
+  }
+  .scanline::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10%;
+    background: linear-gradient(to bottom, transparent, rgba(0, 240, 255, 0.2), transparent);
+    opacity: 0.5;
+    animation: scan 4s linear infinite;
+    pointer-events: none;
+    z-index: 11;
   }
   
-  .glitch-effect::before {
-    left: 2px;
-    text-shadow: -1px 0 red;
-    clip: rect(24px, 550px, 90px, 0);
-    animation: glitch-anim 2s infinite linear alternate-reverse;
+  @keyframes scan {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(1000%); }
   }
   
-  .glitch-effect::after {
-    left: -2px;
-    text-shadow: -1px 0 blue;
-    clip: rect(85px, 550px, 140px, 0);
-    animation: glitch-anim 2.5s infinite linear alternate-reverse;
+  .typewriter-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 1em;
+    background-color: hsl(var(--primary));
+    animation: blink 1s step-end infinite;
+    vertical-align: text-bottom;
+    margin-left: 4px;
   }
   
-  @keyframes glitch-anim {
-    0% { clip: rect(70px, 9999px, 86px, 0); }
-    5% { clip: rect(64px, 9999px, 14px, 0); }
-    10% { clip: rect(100px, 9999px, 16px, 0); }
-    15% { clip: rect(14px, 9999px, 56px, 0); }
-    20% { clip: rect(41px, 9999px, 66px, 0); }
-    25% { clip: rect(96px, 9999px, 15px, 0); }
-    30% { clip: rect(62px, 9999px, 69px, 0); }
-    35% { clip: rect(54px, 9999px, 63px, 0); }
-    40% { clip: rect(31px, 9999px, 17px, 0); }
-    45% { clip: rect(48px, 9999px, 45px, 0); }
-    50% { clip: rect(22px, 9999px, 86px, 0); }
-    55% { clip: rect(74px, 9999px, 83px, 0); }
-    60% { clip: rect(66px, 9999px, 20px, 0); }
-    65% { clip: rect(43px, 9999px, 40px, 0); }
-    70% { clip: rect(88px, 9999px, 15px, 0); }
-    75% { clip: rect(21px, 9999px, 100px, 0); }
-    80% { clip: rect(76px, 9999px, 73px, 0); }
-    85% { clip: rect(81px, 9999px, 25px, 0); }
-    90% { clip: rect(98px, 9999px, 17px, 0); }
-    95% { clip: rect(36px, 9999px, 60px, 0); }
-    100% { clip: rect(10px, 9999px, 79px, 0); }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
   }
 }
