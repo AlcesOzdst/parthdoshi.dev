@@ -1,25 +1,31 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Mail, Send } from "lucide-react";
+import { Github, Linkedin, Mail, Zap } from "lucide-react";
 
 export function Contact() {
   return (
-    <section id="contact" className="py-24 relative border-t border-white/5 bg-black overflow-hidden">
-      {/* Background glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
+    <section id="contact" className="py-32 relative bg-background border-t-2 border-primary/20 overflow-hidden">
+      {/* Intense Background glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-[400px] bg-primary/20 rounded-full blur-[150px] pointer-events-none mix-blend-screen" />
       
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-4xl mx-auto glass-panel p-1 border-white/10 rounded-2xl overflow-hidden">
-          <div className="bg-[#050505] p-8 md:p-16 rounded-xl">
-            <div className="text-center mb-12">
+        <div className="max-w-5xl mx-auto glass-panel p-2">
+          <div className="bg-[#030105] p-8 md:p-16 border border-white/5 relative overflow-hidden">
+            {/* Corner decorations */}
+            <div className="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 border-primary"></div>
+            <div className="absolute top-0 right-0 w-8 h-8 border-t-4 border-r-4 border-primary"></div>
+            <div className="absolute bottom-0 left-0 w-8 h-8 border-b-4 border-l-4 border-primary"></div>
+            <div className="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 border-primary"></div>
+
+            <div className="text-center mb-16">
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full border border-primary/20 bg-primary/5"
+                className="inline-flex items-center gap-2 mb-6 px-6 py-2 border-2 border-accent bg-accent/10"
               >
-                <div className="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
-                <span className="font-mono text-xs text-primary uppercase tracking-widest">Connection Open</span>
+                <Zap className="w-5 h-5 text-accent animate-pulse" />
+                <span className="font-mono text-sm font-bold text-accent uppercase tracking-[0.2em]">Secure Channel Open</span>
               </motion.div>
               
               <motion.h2 
@@ -27,9 +33,9 @@ export function Contact() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                className="text-4xl md:text-6xl font-bold tracking-tighter text-white mb-6"
+                className="text-5xl md:text-7xl font-black tracking-tighter text-white mb-6 uppercase glow-text"
               >
-                Initiate <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Handshake</span>
+                Establish <span className="text-primary">Connection</span>
               </motion.h2>
               
               <motion.p 
@@ -37,9 +43,9 @@ export function Contact() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="text-muted-foreground font-light text-lg max-w-xl mx-auto"
+                className="text-muted-foreground font-mono text-lg max-w-2xl mx-auto leading-relaxed"
               >
-                Whether you need infrastructure secured, a resilient IoT system built, or are looking to expand your cybersecurity team, my inbox is open.
+                Seeking to fortify your infrastructure, build a resilient IoT product, or augment your cybersecurity team? Transmit your payload below.
               </motion.p>
             </div>
 
@@ -48,67 +54,61 @@ export function Contact() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="grid md:grid-cols-2 gap-12"
+              className="grid lg:grid-cols-[2fr_1fr] gap-12"
             >
-              {/* Form Side */}
-              <div className="space-y-4 font-mono">
-                <div className="space-y-2">
-                  <label className="text-xs text-muted-foreground uppercase tracking-wider pl-1">Protocol / Subject</label>
-                  <input type="text" placeholder="Project Inquiry" className="w-full bg-black/50 border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-primary/50 transition-colors" />
+              {/* Brutalist Form Side */}
+              <div className="space-y-6 font-mono bg-black/50 p-8 border border-white/10">
+                <div className="space-y-3">
+                  <label className="text-sm font-bold text-accent uppercase tracking-widest">Protocol [Subject]</label>
+                  <input type="text" placeholder="Project Inquiry" className="w-full bg-black border-2 border-white/10 px-4 py-4 text-white focus:outline-none focus:border-primary transition-colors text-lg shadow-inner" />
                 </div>
-                <div className="space-y-2">
-                  <label className="text-xs text-muted-foreground uppercase tracking-wider pl-1">Return Address / Email</label>
-                  <input type="email" placeholder="you@enterprise.com" className="w-full bg-black/50 border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-primary/50 transition-colors" />
+                <div className="space-y-3">
+                  <label className="text-sm font-bold text-accent uppercase tracking-widest">Return Address [Email]</label>
+                  <input type="email" placeholder="you@enterprise.com" className="w-full bg-black border-2 border-white/10 px-4 py-4 text-white focus:outline-none focus:border-primary transition-colors text-lg shadow-inner" />
                 </div>
-                <div className="space-y-2">
-                  <label className="text-xs text-muted-foreground uppercase tracking-wider pl-1">Encrypted Payload / Message</label>
-                  <textarea rows={4} placeholder="How can I help secure your next project?" className="w-full bg-black/50 border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-primary/50 transition-colors resize-none"></textarea>
+                <div className="space-y-3">
+                  <label className="text-sm font-bold text-accent uppercase tracking-widest">Payload [Message]</label>
+                  <textarea rows={5} placeholder="How can I help secure your next project?" className="w-full bg-black border-2 border-white/10 px-4 py-4 text-white focus:outline-none focus:border-primary transition-colors text-lg shadow-inner resize-none"></textarea>
                 </div>
-                <Button className="w-full h-12 bg-white text-black hover:bg-white/90 font-sans font-semibold text-sm uppercase tracking-widest rounded-md mt-4 group">
-                  Transmit Payload <Send className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
+                <button className="cyber-button w-full mt-4">
+                  Transmit Data
+                </button>
               </div>
 
-              {/* Info Side */}
-              <div className="flex flex-col justify-between p-6 rounded-lg bg-white/[0.02] border border-white/5">
-                <div>
-                  <h3 className="font-mono text-sm text-white uppercase tracking-widest mb-6 border-b border-white/10 pb-4">Direct Nodes</h3>
-                  
-                  <div className="space-y-6">
-                    <a href="mailto:contact@parthdoshi.me" className="flex items-center gap-4 group">
-                      <div className="w-10 h-10 rounded bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-primary/50 group-hover:text-primary transition-colors">
-                        <Mail className="w-4 h-4" />
-                      </div>
-                      <div>
-                        <div className="text-xs font-mono text-muted-foreground uppercase">Email</div>
-                        <div className="text-sm font-medium text-white group-hover:text-primary transition-colors">contact@parthdoshi.me</div>
-                      </div>
-                    </a>
-                    
-                    <a href="https://github.com/AlcesOzdst" target="_blank" rel="noreferrer" className="flex items-center gap-4 group">
-                      <div className="w-10 h-10 rounded bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-primary/50 group-hover:text-primary transition-colors">
-                        <Github className="w-4 h-4" />
-                      </div>
-                      <div>
-                        <div className="text-xs font-mono text-muted-foreground uppercase">GitHub</div>
-                        <div className="text-sm font-medium text-white group-hover:text-primary transition-colors">github.com/AlcesOzdst</div>
-                      </div>
-                    </a>
-                    
-                    <a href="#" className="flex items-center gap-4 group">
-                      <div className="w-10 h-10 rounded bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-primary/50 group-hover:text-primary transition-colors">
-                        <Linkedin className="w-4 h-4" />
-                      </div>
-                      <div>
-                        <div className="text-xs font-mono text-muted-foreground uppercase">LinkedIn</div>
-                        <div className="text-sm font-medium text-white group-hover:text-primary transition-colors">Connect Network</div>
-                      </div>
-                    </a>
+              {/* Aggressive Info Side */}
+              <div className="flex flex-col gap-6">
+                <a href="mailto:contact@parthdoshi.me" className="flex items-center gap-6 p-6 bg-black/50 border-2 border-white/10 hover:border-primary hover:bg-primary/5 transition-all duration-300 group">
+                  <div className="w-16 h-16 bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-primary group-hover:border-primary group-hover:text-black transition-colors">
+                    <Mail className="w-8 h-8" />
                   </div>
-                </div>
+                  <div>
+                    <div className="text-sm font-mono font-bold text-muted-foreground uppercase tracking-widest mb-1">Email Node</div>
+                    <div className="text-lg font-black text-white group-hover:text-primary transition-colors">contact@parthdoshi.me</div>
+                  </div>
+                </a>
                 
-                <div className="mt-12 pt-6 border-t border-white/10 font-mono text-[10px] text-muted-foreground uppercase">
-                  <span className="text-primary">Status:</span> Accepting new contract opportunities and full-time security engineering roles.
+                <a href="https://github.com/AlcesOzdst" target="_blank" rel="noreferrer" className="flex items-center gap-6 p-6 bg-black/50 border-2 border-white/10 hover:border-accent hover:bg-accent/5 transition-all duration-300 group">
+                  <div className="w-16 h-16 bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-accent group-hover:border-accent group-hover:text-black transition-colors">
+                    <Github className="w-8 h-8" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-mono font-bold text-muted-foreground uppercase tracking-widest mb-1">GitHub Repo</div>
+                    <div className="text-lg font-black text-white group-hover:text-accent transition-colors">AlcesOzdst</div>
+                  </div>
+                </a>
+                
+                <a href="#" className="flex items-center gap-6 p-6 bg-black/50 border-2 border-white/10 hover:border-white hover:bg-white/5 transition-all duration-300 group">
+                  <div className="w-16 h-16 bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-white group-hover:text-black transition-colors">
+                    <Linkedin className="w-8 h-8" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-mono font-bold text-muted-foreground uppercase tracking-widest mb-1">LinkedIn</div>
+                    <div className="text-lg font-black text-white group-hover:drop-shadow-[0_0_8px_white] transition-all">Connect</div>
+                  </div>
+                </a>
+
+                <div className="mt-auto p-6 border-l-4 border-primary bg-primary/10 font-mono text-sm font-bold text-primary uppercase tracking-widest">
+                  Status: Available for hire
                 </div>
               </div>
             </motion.div>

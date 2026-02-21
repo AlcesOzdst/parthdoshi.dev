@@ -33,40 +33,40 @@
   --color-ring: hsl(var(--ring));
 }
 
-/* HIGH-END CYBER/ENTERPRISE THEME */
+/* NEON CYBERPUNK THEME */
 :root {
-  --background: 0 0% 0%; /* Pure black for maximum contrast */
+  --background: 260 60% 4%; /* Very deep violet/black */
   --foreground: 0 0% 98%;
 
-  --card: 0 0% 3%;
+  --card: 260 40% 6%;
   --card-foreground: 0 0% 98%;
 
-  --popover: 0 0% 3%;
+  --popover: 260 40% 6%;
   --popover-foreground: 0 0% 98%;
 
-  /* Premium Cyan */
-  --primary: 185 100% 50%;
-  --primary-foreground: 0 0% 0%;
+  /* Hot Pink */
+  --primary: 335 100% 55%;
+  --primary-foreground: 0 0% 100%;
 
-  /* Dark Slate */
-  --secondary: 0 0% 9%;
+  /* Deep Purple/Indigo */
+  --secondary: 270 50% 15%;
   --secondary-foreground: 0 0% 98%;
 
-  --muted: 0 0% 12%;
-  --muted-foreground: 0 0% 60%;
+  --muted: 260 20% 15%;
+  --muted-foreground: 260 20% 70%;
 
-  /* Electric Blue Accent */
-  --accent: 210 100% 50%;
-  --accent-foreground: 0 0% 98%;
+  /* Electric Cyan Accent */
+  --accent: 175 100% 50%;
+  --accent-foreground: 0 0% 0%;
 
-  --destructive: 0 84% 60%;
+  --destructive: 0 100% 60%;
   --destructive-foreground: 0 0% 98%;
 
-  --border: 0 0% 12%;
-  --input: 0 0% 9%;
-  --ring: 185 100% 50%;
+  --border: 260 40% 20%;
+  --input: 260 40% 10%;
+  --ring: 335 100% 55%;
   
-  --radius: 4px;
+  --radius: 0px; /* Brutalist sharp edges */
 }
 
 @layer base {
@@ -74,30 +74,38 @@
     @apply border-border;
   }
   body {
-    @apply font-sans antialiased bg-background text-foreground selection:bg-primary selection:text-black overflow-x-hidden;
+    @apply font-sans antialiased bg-background text-foreground selection:bg-accent selection:text-black overflow-x-hidden;
+    /* Cyberpunk grid */
     background-image: 
-      linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
-    background-size: 64px 64px;
+      linear-gradient(to right, hsla(var(--primary)/0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, hsla(var(--accent)/0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
     background-position: center top;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply tracking-tight;
+    @apply tracking-tight uppercase font-black;
   }
 }
 
 @layer utilities {
   .glass-panel {
-    @apply bg-background/40 backdrop-blur-xl border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)];
+    @apply bg-background/60 backdrop-blur-xl border-l-[3px] border-l-primary border-t border-r border-b border-t-white/10 border-r-white/10 border-b-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.8)];
   }
   
   .glow-text {
-    text-shadow: 0 0 20px hsla(var(--primary) / 0.5);
+    text-shadow: 0 0 15px hsla(var(--primary) / 0.8), 0 0 30px hsla(var(--primary) / 0.4);
+  }
+  .glow-text-accent {
+    text-shadow: 0 0 15px hsla(var(--accent) / 0.8), 0 0 30px hsla(var(--accent) / 0.4);
   }
   
   .glow-box {
-    box-shadow: 0 0 30px hsla(var(--primary) / 0.15), inset 0 0 20px hsla(var(--primary) / 0.05);
+    box-shadow: 0 0 40px hsla(var(--primary) / 0.2), inset 0 0 20px hsla(var(--primary) / 0.1);
+  }
+  
+  .glow-box-accent {
+    box-shadow: 0 0 40px hsla(var(--accent) / 0.2), inset 0 0 20px hsla(var(--accent) / 0.1);
   }
 
   /* Scanline effect for terminal */
@@ -124,9 +132,9 @@
     left: 0;
     width: 100%;
     height: 10%;
-    background: linear-gradient(to bottom, transparent, rgba(0, 240, 255, 0.2), transparent);
+    background: linear-gradient(to bottom, transparent, hsla(var(--accent)/0.3), transparent);
     opacity: 0.5;
-    animation: scan 4s linear infinite;
+    animation: scan 3s linear infinite;
     pointer-events: none;
     z-index: 11;
   }
@@ -138,16 +146,40 @@
   
   .typewriter-cursor {
     display: inline-block;
-    width: 8px;
-    height: 1em;
+    width: 10px;
+    height: 1.2em;
     background-color: hsl(var(--primary));
     animation: blink 1s step-end infinite;
     vertical-align: text-bottom;
-    margin-left: 4px;
+    margin-left: 6px;
   }
   
   @keyframes blink {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
+  }
+  
+  .cyber-button {
+    @apply relative overflow-hidden bg-primary text-primary-foreground font-bold uppercase tracking-widest px-8 py-4 border-2 border-primary hover:bg-transparent hover:text-primary transition-all duration-300 z-10;
+  }
+  
+  .cyber-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, hsla(var(--accent)/0.4), transparent);
+    transition: all 0.5s;
+    z-index: -1;
+  }
+  
+  .cyber-button:hover::before {
+    left: 100%;
+  }
+
+  .cyber-button-outline {
+    @apply relative overflow-hidden bg-transparent text-accent font-bold uppercase tracking-widest px-8 py-4 border-2 border-accent hover:bg-accent hover:text-accent-foreground transition-all duration-300 z-10;
   }
 }
