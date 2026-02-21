@@ -1,9 +1,8 @@
 ---
 permissions: "drwxrwxr-x"
 size: "8.1K"
-date: "Dec 18 16:45"
 name: "project_omnis"
-desc: "AI-driven threat prediction platform (SIH 2025 Finalist)."
+desc: "AI platform using Isolation Forests & Autoencoders to predict vulnerability exploitation paths. SIH 2025 Finalist — 94% true-positive rate."
 ---
 # Project Omnis: AI Threat Prediction
 

@@ -1,9 +1,8 @@
 ---
 permissions: "-rwxr-xr-x"
 size: "845B"
-date: "Jan 22 11:30"
 name: "thermal_response.cpp"
-desc: "IoT hardware automation for fire detection. <2s response time."
+desc: "ESP32-based autonomous fire detection using IR thermal camera (MLX90640) and MQ-2 gas sensor with sub-2s CO2 suppression trigger."
 ---
 # Autonomous Thermal Response Array
 

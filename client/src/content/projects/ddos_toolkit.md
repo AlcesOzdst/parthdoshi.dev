@@ -1,9 +1,8 @@
 ---
 permissions: "-rw-r--r--"
 size: "1.8M"
-date: "Nov 05 09:15"
 name: "ddos_toolkit.py"
-desc: "Simulation toolkit for volumetric attacks. 10Gbps artificial surges."
+desc: "Python-based SYN Flood, UDP Amplification & HTTP GET Flood simulator for testing network resilience in sandboxed environments."
 ---
 # DDoS Volumetric Simulation Toolkit
 

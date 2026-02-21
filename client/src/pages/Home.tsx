@@ -3,6 +3,7 @@ import { Hero } from "@/components/Hero";
 import { Skills } from "@/components/Skills";
 import { Projects } from "@/components/Projects";
 import { Contact } from "@/components/Contact";
+import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -14,14 +15,7 @@ export default function Home() {
         <Projects />
         <Contact />
       </main>
-      <footer className="border-t border-white/5 py-8 text-center font-mono text-xs text-muted-foreground bg-black flex flex-col items-center justify-center">
-        <div className="flex gap-2 mb-2">
-          <div className="w-1.5 h-1.5 bg-primary/50 rounded-full"></div>
-          <div className="w-1.5 h-1.5 bg-primary/50 rounded-full"></div>
-          <div className="w-1.5 h-1.5 bg-primary/50 rounded-full"></div>
-        </div>
-        <p>SYSTEM.LOG("© {new Date().getFullYear()} Parth Doshi. Secure Session Terminated.")</p>
-      </footer>
+      <Footer />
     </div>
   );
 }

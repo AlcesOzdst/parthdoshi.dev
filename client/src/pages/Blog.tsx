@@ -1,15 +1,14 @@
 import { Nav } from "@/components/Nav";
+import { Footer } from "@/components/Footer";
 import { Link } from "wouter";
 import { parseMarkdown } from "@/lib/markdown";
 
-// Load all markdown files from the blog directory using Vite's import.meta.glob
 const mdFiles = import.meta.glob('../content/blog/*.md', { query: '?raw', import: 'default', eager: true });
 
 const posts = Object.entries(mdFiles).map(([path, raw]) => {
   const { meta } = parseMarkdown(raw as string);
-  // Extract id from path (e.g., "../content/blog/post-1.md" -> "post-1")
   const id = path.split('/').pop()?.replace('.md', '') || '';
-  
+
   return {
     id,
     date: meta.date || "Unknown date",
@@ -64,10 +63,7 @@ export default function Blog() {
           <span className="terminal-cursor"></span>
         </div>
       </main>
-      
-      <footer className="border-t border-primary/20 py-8 mt-12 text-center font-mono text-xs text-muted-foreground border-dashed">
-        <p>SYSTEM.LOG("© {new Date().getFullYear()} Parth Doshi.")</p>
-      </footer>
+      <Footer />
     </div>
   );
 }

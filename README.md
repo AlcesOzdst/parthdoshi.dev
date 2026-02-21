@@ -1,22 +1,38 @@
-# Parth Doshi — Portfolio
+# parthdoshi.dev
 
-This repository hosts my personal portfolio website.
+Personal portfolio website built with React, TypeScript, and TailwindCSS.
 
-## About Me
-Cybersecurity enthusiast with hands-on experience in:
-- VAPT
-- CTFs
-- Secure system design
-- Automation scripts
-
-## What You'll Find
-- Selected security-focused projects
-- Writeups & learning notes
-- Professional background & contact
+Terminal-themed portfolio showcasing cybersecurity projects, IoT work, and blog posts.
 
 ## Tech Stack
-- HTML, CSS, JavaScript
-- GitHub Pages
 
-## Live Website
-🔗 (alcesozdst.com)
+- **React 19** + TypeScript
+- **TailwindCSS 4** for styling
+- **Vite 7** for building
+- **Wouter** for routing
+
+## Development
+
+```bash
+npm install
+npm run dev
+```
+
+## Build
+
+```bash
+npm run build
+```
+
+Output goes to `dist/` directory.
+
+## Structure
+
+```
+client/
+  src/
+    components/   # Nav, Hero, Skills, Projects, Contact, Footer
+    content/      # Markdown files for projects and blog posts
+    pages/        # Home, Blog, BlogPost, ProjectPost, NotFound
+    lib/          # Markdown parser utility
+```

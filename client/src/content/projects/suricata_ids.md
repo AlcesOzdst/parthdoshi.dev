@@ -1,9 +1,8 @@
 ---
 permissions: "drwxr-xr-x"
 size: "4.2K"
-date: "Oct 12 14:20"
 name: "suricata_ids"
-desc: "Lightweight intrusion detection on Raspberry Pi 5. 100% detection rate."
+desc: "Deployed Suricata on Raspberry Pi 5 for live network traffic monitoring. Tuned custom rules for 92% improved detection accuracy."
 ---
 # Suricata IDS Deployment on ARM Architecture
 
