@@ -1,39 +1,21 @@
 import { useLocation } from "wouter";
+import { parseMarkdown } from "@/lib/markdown";
 
-const projects = [
-  {
-    id: "suricata_ids",
-    permissions: "drwxr-xr-x",
-    size: "4.2K",
-    date: "Oct 12 14:20",
-    name: "suricata_ids",
-    desc: "Lightweight intrusion detection on Raspberry Pi 5. 100% detection rate."
-  },
-  {
-    id: "ddos_toolkit",
-    permissions: "-rw-r--r--",
-    size: "1.8M",
-    date: "Nov 05 09:15",
-    name: "ddos_toolkit.py",
-    desc: "Simulation toolkit for volumetric attacks. 10Gbps artificial surges."
-  },
-  {
-    id: "project_omnis",
-    permissions: "drwxrwxr-x",
-    size: "8.1K",
-    date: "Dec 18 16:45",
-    name: "project_omnis",
-    desc: "AI-driven threat prediction platform (SIH 2025 Finalist)."
-  },
-  {
-    id: "thermal_response",
-    permissions: "-rwxr-xr-x",
-    size: "845B",
-    date: "Jan 22 11:30",
-    name: "thermal_response.cpp",
-    desc: "IoT hardware automation for fire detection. <2s response time."
-  }
-];
+const mdFiles = import.meta.glob('../content/projects/*.md', { query: '?raw', import: 'default', eager: true });
+
+const projects = Object.entries(mdFiles).map(([path, raw]) => {
+  const { meta } = parseMarkdown(raw as string);
+  const id = path.split('/').pop()?.replace('.md', '') || '';
+  
+  return {
+    id,
+    permissions: meta.permissions || "drwxr-xr-x",
+    size: meta.size || "4.0K",
+    date: meta.date || "Unknown",
+    name: meta.name || id,
+    desc: meta.desc || ""
+  };
+});
 
 export function Projects() {
   const [, setLocation] = useLocation();

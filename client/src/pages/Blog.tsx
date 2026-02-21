@@ -1,29 +1,23 @@
 import { Nav } from "@/components/Nav";
 import { Link } from "wouter";
+import { parseMarkdown } from "@/lib/markdown";
 
-const posts = [
-  {
-    id: "zero-trust-architecture",
-    date: "2026-02-15",
-    title: "Implementing Zero Trust Architecture in Legacy Systems",
-    summary: "A practical guide to securing outdated infrastructure without breaking operational dependencies. We explore micro-segmentation and identity-aware proxies.",
-    readingTime: "8 min"
-  },
-  {
-    id: "iot-vulnerabilities-2026",
-    date: "2026-01-28",
-    title: "The State of IoT Security: Firmware Analysis",
-    summary: "Reverse-engineering common smart home devices to expose hardcoded credentials and unencrypted communication channels over MQTT.",
-    readingTime: "12 min"
-  },
-  {
-    id: "ddos-mitigation-strategies",
-    date: "2025-11-10",
-    title: "Beyond the Firewall: Advanced DDoS Mitigation",
-    summary: "How to handle volumetric attacks exceeding 10Gbps using BGP Anycast, rate limiting, and edge-based traffic scrubbing.",
-    readingTime: "6 min"
-  }
-];
+// Load all markdown files from the blog directory using Vite's import.meta.glob
+const mdFiles = import.meta.glob('../content/blog/*.md', { query: '?raw', import: 'default', eager: true });
+
+const posts = Object.entries(mdFiles).map(([path, raw]) => {
+  const { meta } = parseMarkdown(raw as string);
+  // Extract id from path (e.g., "../content/blog/post-1.md" -> "post-1")
+  const id = path.split('/').pop()?.replace('.md', '') || '';
+  
+  return {
+    id,
+    date: meta.date || "Unknown date",
+    title: meta.title || "Untitled",
+    summary: meta.summary || "",
+    readingTime: meta.readingTime || "5 min"
+  };
+}).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 export default function Blog() {
   return (
