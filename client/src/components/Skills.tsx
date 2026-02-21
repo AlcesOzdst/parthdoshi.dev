@@ -1,81 +1,76 @@
 import { motion } from "framer-motion";
-import { Code2, Cpu, ShieldAlert, Network, Terminal, Crosshair } from "lucide-react";
 
 const skills = [
   {
-    category: "Cybersecurity",
-    icon: <ShieldAlert className="w-8 h-8" />,
-    items: ["Intrusion Detection (IDS/IPS)", "Network Hardening", "DDoS Mitigation", "Vulnerability Assessment", "SIEM Architecture"]
+    category: "Intrusion Detection",
+    items: ["Suricata IDS/IPS", "SIEM Architecture", "Vulnerability Assessment", "Threat Modeling"]
   },
   {
-    category: "IoT & Hardware",
-    icon: <Cpu className="w-8 h-8" />,
-    items: ["Raspberry Pi Ecosystem", "ESP8266/ESP32", "Sensor Integration", "Embedded C++", "Microcontroller Comm."]
+    category: "Hardware Autonomy",
+    items: ["Raspberry Pi Cortex", "ESP8266/ESP32", "Embedded C++", "Sensor Fusion"]
   },
   {
-    category: "Networking & Protocols",
-    icon: <Network className="w-8 h-8" />,
-    items: ["TCP/IP Stack", "MQTT / CoAP", "Firewall Configuration", "Packet Analysis (Wireshark)", "Traffic Simulation"]
+    category: "Network Topography",
+    items: ["TCP/IP Stack", "Firewall Architecture", "DDoS Mitigation", "Packet Analysis"]
   },
   {
-    category: "Development",
-    icon: <Terminal className="w-8 h-8" />,
-    items: ["Python", "C / C++", "Bash Scripting", "Linux (Debian/Arch)", "Git Version Control"]
+    category: "Command & Control",
+    items: ["Python Engineering", "C / C++ Foundations", "Linux Infrastructure", "Bash Scripting"]
   }
 ];
 
 export function Skills() {
   return (
-    <section id="expertise" className="py-32 relative bg-[#05010a] border-t-2 border-accent/20 overflow-hidden">
-      {/* Glitch text background watermark */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20vw] font-black text-white/[0.02] whitespace-nowrap select-none pointer-events-none uppercase tracking-tighter mix-blend-overlay">
-        ARSENAL
-      </div>
+    <section id="architecture" className="py-32 relative bg-background overflow-hidden">
+      
+      {/* Abstract Background Element */}
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/[0.02] rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-6">
+      <div className="container mx-auto px-8 md:px-12 relative z-10">
+        
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 mb-24">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-2xl"
           >
-            <div className="inline-block px-4 py-1 bg-primary/10 border border-primary/30 text-primary font-mono text-sm uppercase tracking-widest mb-6 font-bold flex items-center gap-2 w-fit">
-              <Crosshair className="w-4 h-4" /> Weapons & Tactics
-            </div>
-            <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-white uppercase glow-text-accent">
-              Core <span className="text-accent">Competencies</span>
+            <div className="editorial-line"></div>
+            <h2 className="text-4xl md:text-6xl font-serif text-white mb-6">
+              Core <span className="italic text-primary">Infrastructure</span>
             </h2>
+            <p className="font-sans text-muted-foreground font-light leading-relaxed text-lg">
+              The tools and protocols that form the bedrock of a secure digital empire. Mastery over the lowest levels of hardware to the highest levels of network abstraction.
+            </p>
           </motion.div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {skills.map((skill, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group"
+              transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              <div className="h-full bg-black/60 border-2 border-white/5 p-8 hover:border-accent hover:-translate-y-2 transition-all duration-300 relative overflow-hidden shadow-xl">
-                {/* Number watermark */}
-                <div className="absolute -bottom-4 -right-4 text-8xl font-black text-white/[0.03] group-hover:text-accent/[0.05] transition-colors duration-300 font-mono">
+              <div className="monolith-card p-10 h-full border-t border-t-primary/20 hover:border-t-primary transition-all duration-500 relative group">
+                
+                {/* Subtle numbering */}
+                <div className="absolute top-6 right-6 font-sans text-[10px] text-white/20">
                   0{index + 1}
                 </div>
                 
-                <div className="mb-8 p-4 bg-white/5 w-fit border border-white/10 text-white group-hover:bg-accent group-hover:text-black group-hover:border-accent transition-all duration-300 relative z-10 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
-                  {skill.icon}
-                </div>
+                <h3 className="font-serif text-2xl text-white mb-8 group-hover:text-primary transition-colors duration-500">
+                  {skill.category}
+                </h3>
                 
-                <h3 className="text-2xl font-black text-white mb-6 uppercase tracking-tight relative z-10">{skill.category}</h3>
-                
-                <ul className="space-y-4 relative z-10">
+                <ul className="space-y-4">
                   {skill.items.map((item, i) => (
-                    <li key={i} className="flex items-start gap-3 text-sm text-muted-foreground font-mono font-medium">
-                      <span className="text-accent font-bold mt-0.5 group-hover:animate-pulse">_</span>
-                      <span className="group-hover:text-white transition-colors">{item}</span>
+                    <li key={i} className="flex flex-col font-sans text-sm font-light text-muted-foreground group-hover:text-white/80 transition-colors">
+                      <span className="text-white/20 mb-1">■</span>
+                      {item}
                     </li>
                   ))}
                 </ul>
@@ -83,6 +78,7 @@ export function Skills() {
             </motion.div>
           ))}
         </div>
+        
       </div>
     </section>
   );

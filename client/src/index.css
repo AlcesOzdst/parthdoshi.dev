@@ -4,13 +4,13 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: 'Space Grotesk', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-sans: 'Inter', sans-serif;
+  --font-serif: 'Playfair Display', serif;
   
-  --radius-sm: 2px;
-  --radius-md: 4px;
-  --radius-lg: 8px;
-  --radius-xl: 12px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
 
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
@@ -33,40 +33,39 @@
   --color-ring: hsl(var(--ring));
 }
 
-/* NEON CYBERPUNK THEME */
+/* VISIONARY MONOLITH THEME */
 :root {
-  --background: 260 60% 4%; /* Very deep violet/black */
-  --foreground: 0 0% 98%;
+  --background: 0 0% 3%; /* Deep Obsidian */
+  --foreground: 0 0% 96%; /* Off-white */
 
-  --card: 260 40% 6%;
-  --card-foreground: 0 0% 98%;
+  --card: 0 0% 5%;
+  --card-foreground: 0 0% 96%;
 
-  --popover: 260 40% 6%;
-  --popover-foreground: 0 0% 98%;
+  --popover: 0 0% 5%;
+  --popover-foreground: 0 0% 96%;
 
-  /* Hot Pink */
-  --primary: 335 100% 55%;
-  --primary-foreground: 0 0% 100%;
+  /* Noble Bronze / Gold */
+  --primary: 43 60% 55%;
+  --primary-foreground: 0 0% 5%;
 
-  /* Deep Purple/Indigo */
-  --secondary: 270 50% 15%;
-  --secondary-foreground: 0 0% 98%;
+  /* Dark Stone */
+  --secondary: 0 0% 10%;
+  --secondary-foreground: 0 0% 90%;
 
-  --muted: 260 20% 15%;
-  --muted-foreground: 260 20% 70%;
+  --muted: 0 0% 15%;
+  --muted-foreground: 0 0% 60%;
 
-  /* Electric Cyan Accent */
-  --accent: 175 100% 50%;
-  --accent-foreground: 0 0% 0%;
+  --accent: 43 60% 55%;
+  --accent-foreground: 0 0% 5%;
 
-  --destructive: 0 100% 60%;
+  --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 98%;
 
-  --border: 260 40% 20%;
-  --input: 260 40% 10%;
-  --ring: 335 100% 55%;
+  --border: 0 0% 15%;
+  --input: 0 0% 10%;
+  --ring: 43 60% 55%;
   
-  --radius: 0px; /* Brutalist sharp edges */
+  --radius: 0px; 
 }
 
 @layer base {
@@ -74,112 +73,58 @@
     @apply border-border;
   }
   body {
-    @apply font-sans antialiased bg-background text-foreground selection:bg-accent selection:text-black overflow-x-hidden;
-    /* Cyberpunk grid */
-    background-image: 
-      linear-gradient(to right, hsla(var(--primary)/0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, hsla(var(--accent)/0.05) 1px, transparent 1px);
-    background-size: 50px 50px;
-    background-position: center top;
+    @apply font-sans font-light antialiased bg-background text-foreground selection:bg-primary selection:text-black overflow-x-hidden;
+    /* Subtle noise texture for a premium matte finish */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply tracking-tight uppercase font-black;
+    @apply font-serif font-normal tracking-tight;
   }
 }
 
 @layer utilities {
-  .glass-panel {
-    @apply bg-background/60 backdrop-blur-xl border-l-[3px] border-l-primary border-t border-r border-b border-t-white/10 border-r-white/10 border-b-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.8)];
+  .gold-gradient-text {
+    background: linear-gradient(135deg, #f6d365 0%, #ffb347 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
   
-  .glow-text {
-    text-shadow: 0 0 15px hsla(var(--primary) / 0.8), 0 0 30px hsla(var(--primary) / 0.4);
-  }
-  .glow-text-accent {
-    text-shadow: 0 0 15px hsla(var(--accent) / 0.8), 0 0 30px hsla(var(--accent) / 0.4);
-  }
-  
-  .glow-box {
-    box-shadow: 0 0 40px hsla(var(--primary) / 0.2), inset 0 0 20px hsla(var(--primary) / 0.1);
-  }
-  
-  .glow-box-accent {
-    box-shadow: 0 0 40px hsla(var(--accent) / 0.2), inset 0 0 20px hsla(var(--accent) / 0.1);
+  .bronze-gradient-text {
+    background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
-  /* Scanline effect for terminal */
-  .scanline {
-    position: relative;
-    overflow: hidden;
+  .editorial-line {
+    @apply w-12 h-[1px] bg-primary mb-6;
   }
-  .scanline::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.4) 51%);
-    background-size: 100% 4px;
-    pointer-events: none;
-    z-index: 10;
+
+  .monolith-card {
+    @apply bg-card border border-white/[0.03] shadow-[0_20px_40px_-15px_rgba(0,0,0,1)] hover:border-primary/30 transition-all duration-700;
   }
-  .scanline::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 10%;
-    background: linear-gradient(to bottom, transparent, hsla(var(--accent)/0.3), transparent);
-    opacity: 0.5;
-    animation: scan 3s linear infinite;
-    pointer-events: none;
-    z-index: 11;
+
+  .btn-editorial {
+    @apply relative overflow-hidden bg-transparent text-white font-sans text-xs uppercase tracking-[0.2em] px-8 py-4 border border-white/20 hover:border-primary transition-colors duration-500;
   }
   
-  @keyframes scan {
-    0% { transform: translateY(-100%); }
-    100% { transform: translateY(1000%); }
-  }
-  
-  .typewriter-cursor {
-    display: inline-block;
-    width: 10px;
-    height: 1.2em;
+  .btn-editorial::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
     background-color: hsl(var(--primary));
-    animation: blink 1s step-end infinite;
-    vertical-align: text-bottom;
-    margin-left: 6px;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
   }
   
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-  }
-  
-  .cyber-button {
-    @apply relative overflow-hidden bg-primary text-primary-foreground font-bold uppercase tracking-widest px-8 py-4 border-2 border-primary hover:bg-transparent hover:text-primary transition-all duration-300 z-10;
-  }
-  
-  .cyber-button::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, hsla(var(--accent)/0.4), transparent);
-    transition: all 0.5s;
-    z-index: -1;
-  }
-  
-  .cyber-button:hover::before {
-    left: 100%;
-  }
-
-  .cyber-button-outline {
-    @apply relative overflow-hidden bg-transparent text-accent font-bold uppercase tracking-widest px-8 py-4 border-2 border-accent hover:bg-accent hover:text-accent-foreground transition-all duration-300 z-10;
+  .btn-editorial:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
   }
 }
