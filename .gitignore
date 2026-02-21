@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Logs
 logs
 *.log
@@ -144,3 +145,11 @@ PLAN.md
 
 node_modules
 .env
+=======
+node_modules
+dist
+.DS_Store
+server/public
+vite.config.ts.*
+*.tar.gz
+>>>>>>> d6d7288 (Extracted stack files)
