@@ -1,101 +1,102 @@
 import { motion } from "framer-motion";
+import { ShieldAlert, Database, Network, Cpu } from "lucide-react";
 
 const projects = [
   {
-    number: "01",
-    title: "Suricata IDS Framework",
+    id: "OP-SURICATA",
+    title: "Edge IDS Framework",
     domain: "Network Intelligence",
-    description: "An edge-computing intrusion detection paradigm deployed on Raspberry Pi 5. Engineered to parse, log, and neutralize anomalous traffic streams at the network boundary.",
-    outcome: "Eliminated blind spots in local infrastructure.",
+    description: "Architected a decentralized intrusion detection paradigm deployed on Raspberry Pi 5. Engineered custom heuristic rulesets to parse, log, and neutralize anomalous traffic streams directly at the network boundary.",
+    outcome: "Eliminated topological blind spots in local infrastructure.",
+    icon: <ShieldAlert className="w-5 h-5" />
   },
   {
-    number: "02",
-    title: "Project Omnis",
-    domain: "AI Threat Prediction",
-    description: "A visionary SIH 2025 platform bridging machine learning and cybersecurity. Automates vulnerability assessment to proactively dismantle attack vectors.",
-    outcome: "Recognized as a leading innovation at the national level.",
+    id: "OP-OMNIS",
+    title: "Predictive AI Platform",
+    domain: "Threat Intelligence",
+    description: "A visionary SIH 2025 platform bridging machine learning and cybersecurity. Automates vulnerability assessment and analyzes large-scale logs to proactively dismantle attack vectors before exploitation.",
+    outcome: "Recognized as a leading innovation at national level.",
+    icon: <Database className="w-5 h-5" />
   },
   {
-    number: "03",
+    id: "OP-RESILIENCE",
     title: "DDoS Mitigation Protocol",
-    domain: "System Resilience",
-    description: "A stress-testing apparatus designed to simulate volumetric attacks. Used to forge unbreakable firewall configurations and validate load-balancing architectures.",
+    domain: "Infrastructure Hardening",
+    description: "A stress-testing apparatus designed to simulate controlled volumetric attacks. Utilized to forge unbreakable firewall configurations and validate the integrity of load-balancing architectures.",
     outcome: "Validated infrastructure against 10Gbps artificial surges.",
+    icon: <Network className="w-5 h-5" />
   },
   {
-    number: "04",
-    title: "Thermal Response Array",
-    domain: "Hardware Automation",
-    description: "A closed-loop IoT hardware manifestation combining real-time thermal sensors with an automated extinguishing response. True convergence of physical safety and digital logic.",
-    outcome: "Sub-two-second physical response capability.",
+    id: "OP-THERMAL",
+    title: "Autonomous Response Array",
+    domain: "IoT Hardware",
+    description: "A closed-loop hardware manifestation combining real-time thermal sensors with an automated extinguishing response. True convergence of physical safety and digital logic.",
+    outcome: "Achieved sub-two-second physical response capability.",
+    icon: <Cpu className="w-5 h-5" />
   },
 ];
 
 export function Projects() {
   return (
-    <section id="foundations" className="py-32 relative bg-[#050505]">
-      <div className="container mx-auto px-8 md:px-12">
+    <section id="deployments" className="py-24 relative bg-[#030303] border-t border-white/5">
+      <div className="container mx-auto px-6 md:px-12">
         
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 mb-24">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 mb-16">
           <motion.div 
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
             className="max-w-2xl"
           >
-            <div className="editorial-line"></div>
-            <h2 className="text-4xl md:text-6xl font-serif text-white mb-6">
-              Foundational <span className="italic text-primary">Pillars</span>
+            <div className="font-mono text-[10px] text-primary uppercase tracking-[0.2em] mb-4">
+              [ DIRECTORY: /ARCHIVE/DEPLOYMENTS ]
+            </div>
+            <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight uppercase">
+              Classified <span className="text-primary">Operations</span>
             </h2>
-            <p className="font-sans text-muted-foreground font-light leading-relaxed text-lg">
-              A legacy is not built on concepts; it is built on execution. These architectural works represent the convergence of high-level theory and low-level precision.
-            </p>
           </motion.div>
         </div>
 
-        <div className="space-y-4">
+        <div className="grid md:grid-cols-2 gap-6">
           {projects.map((project, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group cursor-pointer"
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="tech-panel p-8 group relative"
             >
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-center py-10 border-b border-white/[0.05] hover:border-primary/50 transition-colors duration-500">
-                
-                {/* Number */}
-                <div className="md:col-span-1 font-sans text-xs font-medium text-muted-foreground group-hover:text-primary transition-colors">
-                  {project.number}.
+              {/* Corner Accents */}
+              <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-primary opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-primary opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              
+              <div className="flex justify-between items-start mb-6">
+                <div className="font-mono text-[10px] bg-white/5 px-2 py-1 text-muted-foreground border border-white/10 group-hover:border-primary/30 group-hover:text-primary transition-colors">
+                  {project.id}
                 </div>
-
-                {/* Title & Domain */}
-                <div className="md:col-span-4">
-                  <h3 className="font-serif text-2xl md:text-3xl text-white mb-2 group-hover:pl-4 transition-all duration-500">
-                    {project.title}
-                  </h3>
-                  <div className="font-sans text-xs uppercase tracking-[0.2em] text-primary/70 group-hover:pl-4 transition-all duration-500 delay-75">
-                    {project.domain}
-                  </div>
+                <div className="text-white/20 group-hover:text-primary transition-colors">
+                  {project.icon}
                 </div>
+              </div>
 
-                {/* Description */}
-                <div className="md:col-span-5">
-                  <p className="font-sans text-sm font-light text-muted-foreground leading-relaxed">
-                    {project.description}
-                  </p>
+              <h3 className="text-2xl font-bold text-white mb-1 hover-glitch transition-all">
+                {project.title}
+              </h3>
+              <div className="font-mono text-xs text-primary mb-6 uppercase tracking-wider">
+                {project.domain}
+              </div>
+
+              <p className="text-sm font-light text-muted-foreground leading-relaxed mb-8 h-24 overflow-hidden text-ellipsis">
+                {project.description}
+              </p>
+
+              <div className="pt-6 border-t border-white/5">
+                <div className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground mb-2">Verified Outcome</div>
+                <div className="text-sm font-medium text-white">
+                  {project.outcome}
                 </div>
-
-                {/* Outcome */}
-                <div className="md:col-span-2 text-right">
-                  <div className="font-sans text-[10px] uppercase tracking-[0.2em] text-white/40 mb-1">Impact</div>
-                  <div className="font-sans text-sm text-white/90 group-hover:text-primary transition-colors">
-                    {project.outcome}
-                  </div>
-                </div>
-
               </div>
             </motion.div>
           ))}

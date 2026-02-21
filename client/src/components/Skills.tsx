@@ -1,76 +1,69 @@
 import { motion } from "framer-motion";
 
-const skills = [
+const systems = [
   {
-    category: "Intrusion Detection",
-    items: ["Suricata IDS/IPS", "SIEM Architecture", "Vulnerability Assessment", "Threat Modeling"]
+    class: "Network Defense",
+    specs: ["Suricata IDS/IPS Config", "Volumetric DDoS Mitigation", "Firewall Topography", "Packet Analysis (Wireshark)"]
   },
   {
-    category: "Hardware Autonomy",
-    items: ["Raspberry Pi Cortex", "ESP8266/ESP32", "Embedded C++", "Sensor Fusion"]
+    class: "Hardware Automation",
+    specs: ["Raspberry Pi Ecosystem", "ESP8266/ESP32 Logic", "Sensor Array Integration", "Embedded C++"]
   },
   {
-    category: "Network Topography",
-    items: ["TCP/IP Stack", "Firewall Architecture", "DDoS Mitigation", "Packet Analysis"]
+    class: "Software Engineering",
+    specs: ["Python Automation", "C/C++ Core Logic", "Bash/Shell Scripting", "Linux Server Admin"]
   },
   {
-    category: "Command & Control",
-    items: ["Python Engineering", "C / C++ Foundations", "Linux Infrastructure", "Bash Scripting"]
+    class: "Threat Intelligence",
+    specs: ["SIEM Architecture", "Vulnerability Auditing", "Log Correlation", "Machine Learning Security"]
   }
 ];
 
 export function Skills() {
   return (
-    <section id="architecture" className="py-32 relative bg-background overflow-hidden">
+    <section id="capabilities" className="py-24 relative bg-background border-t border-white/5">
       
-      {/* Abstract Background Element */}
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/[0.02] rounded-full blur-[100px] pointer-events-none" />
+      {/* Technical Grid Overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
 
-      <div className="container mx-auto px-8 md:px-12 relative z-10">
+      <div className="container mx-auto px-6 md:px-12 relative z-10">
         
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 mb-24">
+        <div className="mb-16">
           <motion.div 
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="max-w-2xl"
+            transition={{ duration: 0.6 }}
           >
-            <div className="editorial-line"></div>
-            <h2 className="text-4xl md:text-6xl font-serif text-white mb-6">
-              Core <span className="italic text-primary">Infrastructure</span>
+            <div className="font-mono text-[10px] text-primary uppercase tracking-[0.2em] mb-4">
+              [ SYSTEM QUERY: CAPABILITIES ]
+            </div>
+            <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight uppercase">
+              Technical <span className="text-primary">Arsenal</span>
             </h2>
-            <p className="font-sans text-muted-foreground font-light leading-relaxed text-lg">
-              The tools and protocols that form the bedrock of a secure digital empire. Mastery over the lowest levels of hardware to the highest levels of network abstraction.
-            </p>
           </motion.div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {skills.map((skill, index) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {systems.map((sys, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <div className="monolith-card p-10 h-full border-t border-t-primary/20 hover:border-t-primary transition-all duration-500 relative group">
-                
-                {/* Subtle numbering */}
-                <div className="absolute top-6 right-6 font-sans text-[10px] text-white/20">
-                  0{index + 1}
-                </div>
-                
-                <h3 className="font-serif text-2xl text-white mb-8 group-hover:text-primary transition-colors duration-500">
-                  {skill.category}
+              <div className="tech-border bg-black/50 p-6 h-full hover:bg-white/[0.02] transition-colors group">
+                <div className="font-mono text-[10px] text-muted-foreground mb-4">SYS.{index + 1}</div>
+                <h3 className="text-lg font-bold text-white mb-6 uppercase tracking-wide group-hover:text-primary transition-colors">
+                  {sys.class}
                 </h3>
                 
-                <ul className="space-y-4">
-                  {skill.items.map((item, i) => (
-                    <li key={i} className="flex flex-col font-sans text-sm font-light text-muted-foreground group-hover:text-white/80 transition-colors">
-                      <span className="text-white/20 mb-1">■</span>
-                      {item}
+                <ul className="space-y-3 font-mono text-xs">
+                  {sys.specs.map((spec, i) => (
+                    <li key={i} className="flex items-start text-muted-foreground group-hover:text-white/80 transition-colors">
+                      <span className="text-primary mr-2 opacity-50">&gt;</span>
+                      {spec}
                     </li>
                   ))}
                 </ul>

@@ -4,8 +4,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: 'Inter', sans-serif;
-  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Geist', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
   
   --radius-sm: 0px;
   --radius-md: 0px;
@@ -33,37 +33,37 @@
   --color-ring: hsl(var(--ring));
 }
 
-/* VISIONARY MONOLITH THEME */
+/* TACTICAL INTELLIGENCE THEME */
 :root {
-  --background: 0 0% 3%; /* Deep Obsidian */
-  --foreground: 0 0% 96%; /* Off-white */
+  --background: 0 0% 2%; /* Almost absolute black */
+  --foreground: 0 0% 98%; /* Pure white */
 
-  --card: 0 0% 5%;
-  --card-foreground: 0 0% 96%;
+  --card: 0 0% 4%;
+  --card-foreground: 0 0% 98%;
 
-  --popover: 0 0% 5%;
-  --popover-foreground: 0 0% 96%;
+  --popover: 0 0% 4%;
+  --popover-foreground: 0 0% 98%;
 
-  /* Noble Bronze / Gold */
-  --primary: 43 60% 55%;
-  --primary-foreground: 0 0% 5%;
+  /* Glacier Blue / Tactical Cyan */
+  --primary: 195 100% 50%;
+  --primary-foreground: 0 0% 0%;
 
-  /* Dark Stone */
-  --secondary: 0 0% 10%;
-  --secondary-foreground: 0 0% 90%;
+  /* Tactical Slate */
+  --secondary: 220 10% 10%;
+  --secondary-foreground: 0 0% 98%;
 
-  --muted: 0 0% 15%;
-  --muted-foreground: 0 0% 60%;
+  --muted: 220 10% 15%;
+  --muted-foreground: 220 10% 60%;
 
-  --accent: 43 60% 55%;
-  --accent-foreground: 0 0% 5%;
+  --accent: 195 100% 50%;
+  --accent-foreground: 0 0% 0%;
 
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 98%;
 
-  --border: 0 0% 15%;
-  --input: 0 0% 10%;
-  --ring: 43 60% 55%;
+  --border: 0 0% 12%;
+  --input: 0 0% 8%;
+  --ring: 195 100% 50%;
   
   --radius: 0px; 
 }
@@ -73,58 +73,65 @@
     @apply border-border;
   }
   body {
-    @apply font-sans font-light antialiased bg-background text-foreground selection:bg-primary selection:text-black overflow-x-hidden;
-    /* Subtle noise texture for a premium matte finish */
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+    @apply font-sans antialiased bg-background text-foreground selection:bg-primary selection:text-black overflow-x-hidden;
+    /* Strict, technical dot grid */
+    background-image: radial-gradient(circle at center, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 32px 32px;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif font-normal tracking-tight;
+    @apply tracking-tight;
   }
 }
 
 @layer utilities {
-  .gold-gradient-text {
-    background: linear-gradient(135deg, #f6d365 0%, #ffb347 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  .tech-border {
+    @apply border border-white/10 relative;
   }
   
-  .bronze-gradient-text {
-    background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .editorial-line {
-    @apply w-12 h-[1px] bg-primary mb-6;
-  }
-
-  .monolith-card {
-    @apply bg-card border border-white/[0.03] shadow-[0_20px_40px_-15px_rgba(0,0,0,1)] hover:border-primary/30 transition-all duration-700;
-  }
-
-  .btn-editorial {
-    @apply relative overflow-hidden bg-transparent text-white font-sans text-xs uppercase tracking-[0.2em] px-8 py-4 border border-white/20 hover:border-primary transition-colors duration-500;
-  }
-  
-  .btn-editorial::after {
+  .tech-border::before {
     content: '';
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 1px;
+    top: -1px;
+    left: -1px;
+    width: 4px;
+    height: 4px;
     background-color: hsl(var(--primary));
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
   }
   
-  .btn-editorial:hover::after {
-    transform: scaleX(1);
-    transform-origin: left;
+  .tech-border::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+    width: 4px;
+    height: 4px;
+    background-color: hsl(var(--primary));
+  }
+
+  .tech-panel {
+    @apply bg-card border border-white/[0.05] shadow-[0_10px_30px_-10px_rgba(0,0,0,1)] hover:border-primary/40 hover:shadow-[0_0_20px_hsla(var(--primary)/0.1)] transition-all duration-300;
+  }
+
+  .btn-tactical {
+    @apply relative overflow-hidden bg-white/5 text-white font-mono text-xs uppercase tracking-[0.1em] px-8 py-4 border border-white/10 hover:border-primary hover:bg-primary/5 hover:text-primary transition-all duration-300;
+  }
+  
+  .btn-tactical-primary {
+    @apply relative overflow-hidden bg-primary text-black font-mono font-bold text-xs uppercase tracking-[0.1em] px-8 py-4 hover:bg-white hover:text-black transition-all duration-300 shadow-[0_0_15px_hsla(var(--primary)/0.3)];
+  }
+
+  /* Glitch hover effect on text */
+  .hover-glitch:hover {
+    text-shadow: 2px 0 hsla(var(--primary)/0.5), -2px 0 hsla(var(--destructive)/0.5);
+    animation: text-shake 0.2s linear infinite;
+  }
+
+  @keyframes text-shake {
+    0% { transform: translate(0) }
+    25% { transform: translate(1px, 1px) }
+    50% { transform: translate(-1px, -1px) }
+    75% { transform: translate(1px, -1px) }
+    100% { transform: translate(0) }
   }
 }
