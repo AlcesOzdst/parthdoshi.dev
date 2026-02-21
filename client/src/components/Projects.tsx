@@ -6,95 +6,89 @@ const projects = [
     id: "OP-SURICATA",
     title: "Edge IDS Framework",
     domain: "Network Intelligence",
-    description: "Architected a decentralized intrusion detection paradigm deployed on Raspberry Pi 5. Engineered custom heuristic rulesets to parse, log, and neutralize anomalous traffic streams directly at the network boundary.",
-    outcome: "Eliminated topological blind spots in local infrastructure.",
-    icon: <ShieldAlert className="w-5 h-5" />
+    problem: "Topological blind spots in local infrastructure.",
+    solution: "Decentralized intrusion detection on Raspberry Pi 5 with custom heuristic rulesets.",
+    outcome: "100% threat detection at the network boundary.",
+    icon: <ShieldAlert className="w-6 h-6" />
   },
   {
     id: "OP-OMNIS",
     title: "Predictive AI Platform",
     domain: "Threat Intelligence",
-    description: "A visionary SIH 2025 platform bridging machine learning and cybersecurity. Automates vulnerability assessment and analyzes large-scale logs to proactively dismantle attack vectors before exploitation.",
-    outcome: "Recognized as a leading innovation at national level.",
-    icon: <Database className="w-5 h-5" />
+    problem: "Manual vulnerability assessment latency.",
+    solution: "Machine learning platform analyzing large-scale logs to predict attack vectors.",
+    outcome: "Recognized innovation at SIH 2025.",
+    icon: <Database className="w-6 h-6" />
   },
   {
     id: "OP-RESILIENCE",
     title: "DDoS Mitigation Protocol",
     domain: "Infrastructure Hardening",
-    description: "A stress-testing apparatus designed to simulate controlled volumetric attacks. Utilized to forge unbreakable firewall configurations and validate the integrity of load-balancing architectures.",
-    outcome: "Validated infrastructure against 10Gbps artificial surges.",
-    icon: <Network className="w-5 h-5" />
+    problem: "Unverified firewall resilience under heavy load.",
+    solution: "Stress-testing apparatus generating controlled volumetric attacks.",
+    outcome: "Validated against 10Gbps artificial surges.",
+    icon: <Network className="w-6 h-6" />
   },
   {
     id: "OP-THERMAL",
     title: "Autonomous Response Array",
     domain: "IoT Hardware",
-    description: "A closed-loop hardware manifestation combining real-time thermal sensors with an automated extinguishing response. True convergence of physical safety and digital logic.",
-    outcome: "Achieved sub-two-second physical response capability.",
-    icon: <Cpu className="w-5 h-5" />
+    problem: "Delayed physical response to thermal anomalies.",
+    solution: "Closed-loop hardware combining sensors with automated extinguishing mechanisms.",
+    outcome: "Sub-two-second physical response capability.",
+    icon: <Cpu className="w-6 h-6" />
   },
 ];
 
 export function Projects() {
   return (
-    <section id="deployments" className="py-24 relative bg-[#030303] border-t border-white/5">
+    <section id="deployments" className="py-24 bg-[#030303] border-t border-white/5">
       <div className="container mx-auto px-6 md:px-12">
         
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 mb-16">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="max-w-2xl"
-          >
-            <div className="font-mono text-[10px] text-primary uppercase tracking-[0.2em] mb-4">
-              [ DIRECTORY: /ARCHIVE/DEPLOYMENTS ]
-            </div>
-            <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight uppercase">
-              Classified <span className="text-primary">Operations</span>
-            </h2>
-          </motion.div>
+        <div className="mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
+            Classified Operations
+          </h2>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
           {projects.map((project, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="tech-panel p-8 group relative"
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              className="tech-panel p-8"
             >
-              {/* Corner Accents */}
-              <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-primary opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-primary opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              
               <div className="flex justify-between items-start mb-6">
-                <div className="font-mono text-[10px] bg-white/5 px-2 py-1 text-muted-foreground border border-white/10 group-hover:border-primary/30 group-hover:text-primary transition-colors">
-                  {project.id}
+                <div>
+                  <div className="font-mono text-xs text-primary mb-2 uppercase tracking-widest">
+                    {project.id} // {project.domain}
+                  </div>
+                  <h3 className="text-2xl font-bold text-white">
+                    {project.title}
+                  </h3>
                 </div>
-                <div className="text-white/20 group-hover:text-primary transition-colors">
+                <div className="text-white/20 p-3 bg-white/5 rounded-md">
                   {project.icon}
                 </div>
               </div>
 
-              <h3 className="text-2xl font-bold text-white mb-1 hover-glitch transition-all">
-                {project.title}
-              </h3>
-              <div className="font-mono text-xs text-primary mb-6 uppercase tracking-wider">
-                {project.domain}
+              <div className="space-y-4 mb-8">
+                <div>
+                  <div className="text-xs text-muted-foreground uppercase tracking-wider mb-1 font-mono">Problem</div>
+                  <div className="text-sm text-white/90">{project.problem}</div>
+                </div>
+                <div>
+                  <div className="text-xs text-muted-foreground uppercase tracking-wider mb-1 font-mono">Solution</div>
+                  <div className="text-sm text-white/90">{project.solution}</div>
+                </div>
               </div>
 
-              <p className="text-sm font-light text-muted-foreground leading-relaxed mb-8 h-24 overflow-hidden text-ellipsis">
-                {project.description}
-              </p>
-
-              <div className="pt-6 border-t border-white/5">
-                <div className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground mb-2">Verified Outcome</div>
-                <div className="text-sm font-medium text-white">
+              <div className="pt-4 border-t border-white/5">
+                <div className="text-xs text-primary uppercase tracking-wider mb-1 font-mono">Verified Outcome</div>
+                <div className="text-base font-medium text-white">
                   {project.outcome}
                 </div>
               </div>

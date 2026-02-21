@@ -7,10 +7,10 @@
   --font-sans: 'Geist', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   
-  --radius-sm: 0px;
-  --radius-md: 0px;
-  --radius-lg: 0px;
-  --radius-xl: 0px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
 
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
@@ -33,27 +33,26 @@
   --color-ring: hsl(var(--ring));
 }
 
-/* TACTICAL INTELLIGENCE THEME */
+/* MINIMAL TACTICAL THEME - High Readability */
 :root {
-  --background: 0 0% 2%; /* Almost absolute black */
-  --foreground: 0 0% 98%; /* Pure white */
+  --background: 0 0% 4%; 
+  --foreground: 0 0% 98%; 
 
-  --card: 0 0% 4%;
+  --card: 0 0% 6%;
   --card-foreground: 0 0% 98%;
 
-  --popover: 0 0% 4%;
+  --popover: 0 0% 6%;
   --popover-foreground: 0 0% 98%;
 
-  /* Glacier Blue / Tactical Cyan */
+  /* Clean Cyan */
   --primary: 195 100% 50%;
   --primary-foreground: 0 0% 0%;
 
-  /* Tactical Slate */
-  --secondary: 220 10% 10%;
+  --secondary: 220 10% 12%;
   --secondary-foreground: 0 0% 98%;
 
-  --muted: 220 10% 15%;
-  --muted-foreground: 220 10% 60%;
+  --muted: 220 10% 20%;
+  --muted-foreground: 220 10% 65%;
 
   --accent: 195 100% 50%;
   --accent-foreground: 0 0% 0%;
@@ -61,11 +60,11 @@
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 98%;
 
-  --border: 0 0% 12%;
-  --input: 0 0% 8%;
+  --border: 0 0% 15%;
+  --input: 0 0% 10%;
   --ring: 195 100% 50%;
   
-  --radius: 0px; 
+  --radius: 8px; 
 }
 
 @layer base {
@@ -74,9 +73,7 @@
   }
   body {
     @apply font-sans antialiased bg-background text-foreground selection:bg-primary selection:text-black overflow-x-hidden;
-    /* Strict, technical dot grid */
-    background-image: radial-gradient(circle at center, rgba(255,255,255,0.05) 1px, transparent 1px);
-    background-size: 32px 32px;
+    /* Clean, subtle background without heavy noise */
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -85,53 +82,15 @@
 }
 
 @layer utilities {
-  .tech-border {
-    @apply border border-white/10 relative;
-  }
-  
-  .tech-border::before {
-    content: '';
-    position: absolute;
-    top: -1px;
-    left: -1px;
-    width: 4px;
-    height: 4px;
-    background-color: hsl(var(--primary));
-  }
-  
-  .tech-border::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    right: -1px;
-    width: 4px;
-    height: 4px;
-    background-color: hsl(var(--primary));
-  }
-
   .tech-panel {
-    @apply bg-card border border-white/[0.05] shadow-[0_10px_30px_-10px_rgba(0,0,0,1)] hover:border-primary/40 hover:shadow-[0_0_20px_hsla(var(--primary)/0.1)] transition-all duration-300;
+    @apply bg-card border border-white/5 rounded-lg hover:border-primary/30 transition-all duration-300;
   }
 
   .btn-tactical {
-    @apply relative overflow-hidden bg-white/5 text-white font-mono text-xs uppercase tracking-[0.1em] px-8 py-4 border border-white/10 hover:border-primary hover:bg-primary/5 hover:text-primary transition-all duration-300;
+    @apply inline-flex items-center justify-center bg-white/5 text-white font-mono text-xs uppercase tracking-widest px-6 py-3 rounded-md border border-white/10 hover:border-primary hover:bg-primary/5 hover:text-primary transition-all duration-300;
   }
   
   .btn-tactical-primary {
-    @apply relative overflow-hidden bg-primary text-black font-mono font-bold text-xs uppercase tracking-[0.1em] px-8 py-4 hover:bg-white hover:text-black transition-all duration-300 shadow-[0_0_15px_hsla(var(--primary)/0.3)];
-  }
-
-  /* Glitch hover effect on text */
-  .hover-glitch:hover {
-    text-shadow: 2px 0 hsla(var(--primary)/0.5), -2px 0 hsla(var(--destructive)/0.5);
-    animation: text-shake 0.2s linear infinite;
-  }
-
-  @keyframes text-shake {
-    0% { transform: translate(0) }
-    25% { transform: translate(1px, 1px) }
-    50% { transform: translate(-1px, -1px) }
-    75% { transform: translate(1px, -1px) }
-    100% { transform: translate(0) }
+    @apply inline-flex items-center justify-center bg-primary text-black font-mono font-bold text-xs uppercase tracking-widest px-6 py-3 rounded-md hover:bg-white hover:text-black transition-all duration-300;
   }
 }
