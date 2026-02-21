@@ -1,5 +1,8 @@
+import { useLocation } from "wouter";
+
 const projects = [
   {
+    id: "suricata_ids",
     permissions: "drwxr-xr-x",
     size: "4.2K",
     date: "Oct 12 14:20",
@@ -7,6 +10,7 @@ const projects = [
     desc: "Lightweight intrusion detection on Raspberry Pi 5. 100% detection rate."
   },
   {
+    id: "ddos_toolkit",
     permissions: "-rw-r--r--",
     size: "1.8M",
     date: "Nov 05 09:15",
@@ -14,6 +18,7 @@ const projects = [
     desc: "Simulation toolkit for volumetric attacks. 10Gbps artificial surges."
   },
   {
+    id: "project_omnis",
     permissions: "drwxrwxr-x",
     size: "8.1K",
     date: "Dec 18 16:45",
@@ -21,6 +26,7 @@ const projects = [
     desc: "AI-driven threat prediction platform (SIH 2025 Finalist)."
   },
   {
+    id: "thermal_response",
     permissions: "-rwxr-xr-x",
     size: "845B",
     date: "Jan 22 11:30",
@@ -30,6 +36,8 @@ const projects = [
 ];
 
 export function Projects() {
+  const [, setLocation] = useLocation();
+
   return (
     <section id="projects" className="py-8 border-t border-primary/20 border-dashed">
       <div className="container mx-auto px-4">
@@ -54,11 +62,15 @@ export function Projects() {
             </thead>
             <tbody>
               {projects.map((p, i) => (
-                <tr key={i} className="hover:bg-primary/10 transition-colors">
+                <tr 
+                  key={i} 
+                  onClick={() => setLocation(`/projects/${p.id}`)}
+                  className="hover:bg-primary/10 transition-colors cursor-pointer group"
+                >
                   <td className="py-2 pr-4 text-white/70">{p.permissions}</td>
                   <td className="py-2 pr-4 text-white/70">{p.size}</td>
                   <td className="py-2 pr-4 text-white/70">{p.date}</td>
-                  <td className={`py-2 pr-4 font-bold ${p.permissions.startsWith('d') ? 'text-blue-400' : 'text-primary'}`}>
+                  <td className={`py-2 pr-4 font-bold group-hover:underline ${p.permissions.startsWith('d') ? 'text-blue-400' : 'text-primary'}`}>
                     {p.name}
                   </td>
                   <td className="py-2 text-muted-foreground"># {p.desc}</td>
