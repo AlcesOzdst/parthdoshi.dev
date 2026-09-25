@@ -23,4 +23,4 @@ The script leverages **asyncio** and raw sockets to bypass standard kernel limit
 
 ## Verified Outcome
 
-Successfully generated artificial surges up to 10Gbps on a closed 10G local loop, allowing the testing and subsequent optimization of BGP null-routing and iptables rules.
+Generated controlled traffic surges on an isolated local loop to test and tune iptables rate-limiting and null-routing rules in a safe, sandboxed environment.

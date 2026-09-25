@@ -10,13 +10,12 @@ Despite massive advancements in consumer technology, IoT devices remain the weak
 
 ## Hardcoded Credentials
 
-Over 40% of the firmware analyzed contained hardcoded credentials. These aren't just backdoors; they are front doors left wide open.
+Hardcoded credentials remain common in shipped firmware — not hidden backdoors, but front doors left wide open. Extracting and inspecting an image with tools like Binwalk and strings often surfaces them quickly.
 
 ## Unencrypted MQTT
 
 Many devices rely on MQTT for telemetry. Astonishingly, a significant portion still transmits payloads over port 1883 without TLS. This allows for trivial man-in-the-middle (MitM) attacks.
 
-![Circuit Board](https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1000)
 
 ## Mitigation
 

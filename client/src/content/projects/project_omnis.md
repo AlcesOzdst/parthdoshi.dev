@@ -2,7 +2,7 @@
 permissions: "drwxrwxr-x"
 size: "8.1K"
 name: "project_omnis"
-desc: "AI platform using Isolation Forests & Autoencoders to predict vulnerability exploitation paths. SIH 2025 Finalist — 94% true-positive rate."
+desc: "AI platform using Isolation Forests & Autoencoders to flag anomalous access patterns in server logs."
 ---
 # Project Omnis: AI Threat Prediction
 
@@ -21,4 +21,4 @@ The frontend is a dark, terminal-inspired React application that visualizes thre
 
 ## Verified Outcome
 
-Omnis reached the finals of SIH 2025 by demonstrating a 94% true-positive rate in predicting lateral movement during a live red-team exercise.
+Omnis flags anomalous access patterns that may indicate lateral movement, trained on Apache/Nginx logs combined with OSSEC alerts.

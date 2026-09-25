@@ -12,7 +12,6 @@ Legacy infrastructure wasn't built with the assumption that the internal network
 
 Historically, once an attacker bypassed the perimeter firewall, they had unrestricted lateral movement. In modern environments, this is a catastrophic vulnerability. 
 
-![Network Diagram](https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=1000)
 
 ## Micro-segmentation is Key
 

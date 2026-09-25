@@ -21,7 +21,6 @@ The logic runs on a FreeRTOS task schedule. It doesn't just look for high temper
 - **Failsafe**: If the WiFi connection to the central server drops, the node continues to operate autonomously.
 - **Telemetry**: Publishes state data over encrypted MQTT.
 
-![Circuit Assembly](https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?auto=format&fit=crop&q=80&w=1000)
 
 ## Verified Outcome
 
