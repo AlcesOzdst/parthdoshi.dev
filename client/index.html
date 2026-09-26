@@ -6,24 +6,110 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Parth Doshi — I take things apart to understand them</title>
   <meta name="description"
-    content="Parth Doshi — third-year ECE student in Pune doing security research on the hardware side. Firmware, radios, GPS tracks, and too many IEMs." />
+    content="Parth Doshi — third-year ECE (AI-ML) student in Pune doing security research on the hardware side: embedded & IoT security, firmware reverse engineering, radios, GPS, and too many IEMs." />
+  <link rel="canonical" href="https://www.parthdoshi.me/" />
 
   <meta property="og:title" content="Parth Doshi — I take things apart to understand them" />
   <meta property="og:description"
-    content="Security research on the hardware side — firmware, radios, and the odd side project." />
+    content="Embedded & IoT security research on the hardware side — firmware, radios, and the odd side project." />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.parthdoshi.me/" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Parth Doshi — I take things apart to understand them" />
-  <meta name="twitter:description" content="Security research, embedded systems, and side projects." />
+  <meta name="twitter:description" content="Embedded & IoT security research — firmware, radios, and side projects." />
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Prerendered fallback: real, crawlable content shown before the app mounts and
+       to readers/crawlers that don't execute JavaScript. React replaces #root on load. -->
+  <style>
+    body { background: #0E0A06; margin: 0; }
+    #root .pr { max-width: 720px; margin: 0 auto; padding: 56px 22px; color: #E9DFC9;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif; line-height: 1.62; }
+    #root .pr h1, #root .pr h2 { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; letter-spacing: .01em; }
+    #root .pr h1 { font-size: 2.6rem; margin: 0 0 .25em; }
+    #root .pr h2 { font-size: 1.5rem; margin: 1.9em 0 .5em; }
+    #root .pr .lead { font-size: 1.2rem; color: #E9DFC9; }
+    #root .pr p, #root .pr li { color: #C8BCA3; }
+    #root .pr a { color: #5FCE86; text-decoration: none; }
+    #root .pr ul { padding-left: 1.1rem; }
+    #root .pr li { margin: .35em 0; }
+    #root .pr strong { color: #E9DFC9; }
+    #root .pr footer { margin-top: 2.5em; font-size: .8rem; color: #9E8C6F; }
+  </style>
 </head>
 
 <body>
-  <div id="root"></div>
+  <div id="root">
+    <main class="pr">
+      <header>
+        <h1>Parth Doshi</h1>
+        <p class="lead">I take things apart to understand them.</p>
+        <p>Embedded &amp; IoT security research on the hardware side — a third-year ECE (AI&nbsp;·&nbsp;ML)
+          student in Pune, India. Firmware and radios, a city on foot with a GPS logger, a stack of
+          chi-fi IEMs, and the odd bad argument in debate club. Open to embedded / IoT / firmware
+          security internships (2026–27).</p>
+        <p>
+          <a href="mailto:parthdoshi404@gmail.com">parthdoshi404@gmail.com</a> ·
+          <a href="https://github.com/AlcesOzdst">GitHub</a> ·
+          <a href="https://linkedin.com/in/parthdoshi404">LinkedIn</a> ·
+          <a href="https://tryhackme.com/p/AlcesOzdst">TryHackMe</a> ·
+          <a href="https://profile.hackthebox.com/profile/019c59d7-edfc-7172-b666-bedfbe635e49">Hack The Box</a> ·
+          <a href="/blog">Writing</a>
+        </p>
+      </header>
+
+      <section>
+        <h2>Selected work</h2>
+        <ul>
+          <li><strong>GNSS Receiver Build</strong> — a custom GPS receiver parsing live satellite data; an NMEA&nbsp;0183 parser over UART via a CP2102 bridge, sub-3&nbsp;m accuracy logging GPX tracks around Pune. (Python · UART)</li>
+          <li><strong>Multi-Sensor Embedded Firmware</strong> — bare-metal firmware for a C8051F340 driving an SSD1306 OLED, DHT11, HC-SR04 and PIR on a single 8-bit bus. (C · I²C · SPI · GPIO)</li>
+          <li><strong>DDoS Traffic Classification</strong> — an ML pipeline classifying attack vectors from raw packet captures. (Python · tshark · scikit-learn) — <a href="https://github.com/AlcesOzdst/DDoS_AssMnt">repository</a></li>
+          <li><strong>SkillBridge</strong> — a peer-to-peer skill-exchange platform with matchmaking, scheduling and reviews. (Node.js · MySQL · Express) — <a href="https://github.com/AlcesOzdst/SkillBridge">repository</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Security findings</h2>
+        <ul>
+          <li>CORS misconfiguration &amp; exposed admin panel → account takeover (Under Armour)</li>
+          <li>GraphQL introspection-based recon (Whatnot · HackerOne)</li>
+          <li>Smart-contract audit &amp; CTF exploitation (The Graph · Immunefi)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Achievements</h2>
+        <ul>
+          <li>2nd runner-up — HackMITWPU&rsquo;25 CTF, with team PARAM</li>
+          <li>Robotics &amp; Innovation Intern — PHN Technology Pvt. Ltd. (embedded / IoT R&amp;D)</li>
+          <li>President — Hack-X, the campus security club (CTFs, workshops, hackathons, recruitment)</li>
+          <li>Competed — NCIIPC-AICTE Pentathon · DEFCON Pune · CyberVault Connect · SIH</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Where I&rsquo;m headed</h2>
+        <p>Toward embedded &amp; hardware security research — firmware reverse engineering (Ghidra,
+          Binwalk), secure boot and signed images, and hardware-interface analysis (UART/SPI/I²C,
+          JTAG/SWD). Building it in public, one teardown and writeup at a time.</p>
+      </section>
+
+      <section>
+        <h2>Off the clock</h2>
+        <p>Firmware teardowns, slow GPX-logged runs around Baner and Aundh, a chi-fi IEM habit I
+          can&rsquo;t shake, and debate club — taking apart an argument uses the same muscle as
+          taking apart a binary.</p>
+      </section>
+
+      <footer>
+        <p>© 2026 Parth Doshi — Pune, India. Code: all rights reserved · writing: CC BY-NC-ND 4.0.</p>
+      </footer>
+    </main>
+  </div>
   <script type="module" src="/src/main.tsx"></script>
 </body>
 
