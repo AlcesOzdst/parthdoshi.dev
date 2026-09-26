@@ -27,10 +27,10 @@ const findings = [
 export function Research() {
   return (
     <section id="findings" className="section-spacing border-t border-border">
-      <div className="shell">
+      <div>
         <Reveal>
           <div className="flex items-end justify-between gap-4 mb-10">
-            <p className="eyebrow">03 — Bugs I've found</p>
+            <p className="eyebrow">02 — Findings</p>
             <a href="https://tryhackme.com/p/AlcesOzdst" target="_blank" rel="noreferrer" className="mono-label u-link hover:text-text transition-colors">
               tryhackme ↗
             </a>

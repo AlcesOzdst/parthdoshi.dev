@@ -1,10 +1,11 @@
-import { Nav } from "@/components/Nav";
+import { SideRail } from "@/components/SideRail";
+import { TopBar } from "@/components/TopBar";
 import { Hero } from "@/components/Hero";
-import { Marquee } from "@/components/Marquee";
-import { Signals } from "@/components/Signals";
 import { Projects } from "@/components/Projects";
 import { Research } from "@/components/Research";
-import { About } from "@/components/About";
+import { Signals } from "@/components/Signals";
+import { Trajectory } from "@/components/Trajectory";
+import { Experience } from "@/components/Experience";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { Cursor } from "@/components/Cursor";
@@ -16,16 +17,21 @@ export default function Home() {
       <div className="grain" aria-hidden="true" />
       <ScrollProgress />
       <Cursor />
-      <Nav />
-      <main>
-        <Hero />
-        <Marquee />
-        <Signals />
-        <Projects />
-        <Research />
-        <About />
-        <Contact />
-      </main>
+      <TopBar />
+
+      <div className="shell md:grid md:grid-cols-[200px_minmax(0,1fr)] lg:grid-cols-[220px_minmax(0,1fr)] md:gap-12 lg:gap-20">
+        <SideRail />
+        <main className="min-w-0">
+          <Hero />
+          <Projects />
+          <Research />
+          <Signals />
+          <Trajectory />
+          <Experience />
+          <Contact />
+        </main>
+      </div>
+
       <Footer />
     </div>
   );

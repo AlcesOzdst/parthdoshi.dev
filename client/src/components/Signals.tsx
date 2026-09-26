@@ -68,9 +68,9 @@ function Panel({
 export function Signals() {
   return (
     <section id="signals" className="section-spacing border-t border-border relative">
-      <div className="shell">
+      <div>
         <Reveal>
-          <p className="eyebrow mb-5">01 — Signals I read</p>
+          <p className="eyebrow mb-5">03 — Off the clock</p>
         </Reveal>
         <Reveal delay={0.05}>
           <p className="display text-3xl md:text-5xl mb-4 measure">

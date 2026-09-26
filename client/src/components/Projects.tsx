@@ -33,10 +33,10 @@ const projects = [
 export function Projects() {
   return (
     <section id="work" className="section-spacing border-t border-border">
-      <div className="shell">
+      <div>
         <Reveal>
           <div className="flex items-end justify-between gap-4 mb-12">
-            <p className="eyebrow">02 — Things I've built</p>
+            <p className="eyebrow">01 — Selected work</p>
             <span className="mono-label hidden sm:inline">{projects.length} of them</span>
           </div>
         </Reveal>
@@ -48,7 +48,7 @@ export function Projects() {
               <Reveal key={p.number} delay={i * 0.06}>
                 <Wrapper
                   {...(p.href ? { href: p.href, target: "_blank", rel: "noreferrer", "data-cursor": "view ↗" } : { "data-cursor": "build" })}
-                  className="group grid grid-cols-[auto_1fr] md:grid-cols-[auto_1fr_auto] gap-x-5 md:gap-x-10 gap-y-2 items-baseline py-8 md:py-10 border-b border-border transition-colors duration-300 hover:bg-surface/30 -mx-5 px-5 sm:-mx-8 sm:px-8"
+                  className="group grid grid-cols-[auto_1fr] md:grid-cols-[auto_1fr_auto] gap-x-5 md:gap-x-10 gap-y-2 items-baseline py-8 md:py-10 border-b border-border transition-colors duration-300 hover:bg-surface/30 rounded-sm -mx-4 px-4"
                 >
                   <span className="font-mono text-xs text-text-secondary group-hover:text-accent transition-colors pt-2">
                     {p.number}

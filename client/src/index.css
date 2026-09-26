@@ -46,7 +46,8 @@
   html { scroll-behavior: smooth; scroll-padding-top: 5rem; background: var(--c-bg); }
 
   body {
-    @apply font-sans antialiased overflow-x-hidden;
+    @apply font-sans antialiased;
+    overflow-x: clip; /* prevents h-scroll without breaking position: sticky */
     background: var(--c-bg);
     color: var(--c-text);
     font-size: 15px; line-height: 1.65;
@@ -66,7 +67,8 @@
 }
 
 @layer utilities {
-  .shell { @apply mx-auto px-5 sm:px-8; max-width: 1080px; }
+  .shell { @apply mx-auto px-5 sm:px-8; max-width: 1200px; }
+  .rail-num { font-variant-numeric: tabular-nums; }
   .measure { max-width: 60ch; }
   .page-container { @apply mx-auto px-6; max-width: 720px; }   /* legacy: blog pages */
   .section-spacing { @apply py-20 md:py-28; }
