@@ -40,13 +40,12 @@ export function Hero() {
         </motion.div>
       </motion.div>
 
-      {/* signature signal */}
+      {/* signature signal minigame */}
       <motion.div variants={fade} initial="hidden" animate="show"
         className="mt-14 md:mt-20 w-full">
-        <div className="flex items-center gap-3 mb-2">
-          <span className="mono-label uppercase tracking-[0.2em]">signal · ch1</span>
-          <span className="flex-1 h-px bg-border" />
-          <span className="mono-label accent">hover to tune ↝</span>
+        <div className="flex items-center justify-between gap-3 mb-2">
+          <span className="mono-label uppercase tracking-[0.2em] font-semibold">signal · ch1 [active intercept]</span>
+          <span className="mono-label accent">interactive tuner &amp; demodulator minigame ↝</span>
         </div>
         <ScopeTrace height={110} />
       </motion.div>

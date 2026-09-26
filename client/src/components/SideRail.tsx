@@ -4,6 +4,7 @@ import { useScrollSpy } from "@/lib/useScrollSpy";
 const SECTIONS = [
   { id: "focus", label: "Focus" },
   { id: "work", label: "Work" },
+  { id: "experience", label: "Experience" },
   { id: "findings", label: "Findings" },
   { id: "achievements", label: "Achievements" },
   { id: "signals", label: "Off the clock" },

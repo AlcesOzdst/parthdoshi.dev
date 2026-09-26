@@ -121,9 +121,9 @@ function Panel({ p, open, onToggle }: { p: typeof panels[number]; open: boolean;
 export function Signals() {
   const [open, setOpen] = useState<number | null>(null);
   return (
-    <section id="signals" className="section-spacing border-t border-border">
+    <section id="signals" className="section-spacing">
       <div>
-        <Reveal><p className="eyebrow mb-5">05 — Off the clock</p></Reveal>
+        <Reveal><p className="eyebrow mb-5">06 — Off the clock</p></Reveal>
         <Reveal delay={0.05}>
           <p className="display text-3xl md:text-5xl mb-4 measure">
             Most things are just <span className="italic-accent">signals</span> once you slow them down.

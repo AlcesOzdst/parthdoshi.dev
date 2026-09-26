@@ -3,6 +3,7 @@ import { TopBar } from "@/components/TopBar";
 import { Hero } from "@/components/Hero";
 import { Focus } from "@/components/Focus";
 import { Projects } from "@/components/Projects";
+import { Experience } from "@/components/Experience";
 import { Research } from "@/components/Research";
 import { Achievements } from "@/components/Achievements";
 import { Signals } from "@/components/Signals";
@@ -26,6 +27,7 @@ export default function Home() {
           <Hero />
           <Focus />
           <Projects />
+          <Experience />
           <Research />
           <Achievements />
           <Signals />

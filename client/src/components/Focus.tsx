@@ -20,7 +20,7 @@ const pillars = [
 
 export function Focus() {
   return (
-    <section id="focus" className="section-spacing border-t border-border">
+    <section id="focus" className="section-spacing">
       <Reveal><p className="eyebrow mb-10">01 — Focus</p></Reveal>
       <div className="grid md:grid-cols-3 gap-5">
         {pillars.map((p, i) => (

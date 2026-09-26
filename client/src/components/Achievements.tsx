@@ -6,35 +6,35 @@ const items = [
     metric: "2nd",
     unit: "runner-up",
     title: "HackMITWPU’25 CTF",
-    detail: "Capture-the-flag, on-campus — with team PARAM.",
+    detail: "Capture-the-flag, on-campus — with team PARAM competing across reverse engineering and crypto tracks.",
   },
   {
-    tag: "Experience",
-    metric: "R&D",
-    unit: "intern",
-    title: "Robotics & Innovation — PHN Technology",
-    detail: "Embedded / IoT prototyping across research projects.",
+    tag: "AI Security",
+    metric: "Top",
+    unit: "finalist",
+    title: "Smart India Hackathon (SIH 2025)",
+    detail: "Project Omnis — AI-driven threat prediction and attack path forecasting with a 94% true-positive rate.",
   },
   {
-    tag: "Leadership",
-    metric: "Lead",
-    unit: "Hack-X",
-    title: "President, campus security club",
-    detail: "Runs CTFs, workshops, hackathons, and recruitment.",
+    tag: "Disclosures",
+    metric: "100%",
+    unit: "resolved",
+    title: "Responsible Vulnerability Disclosures",
+    detail: "Validated reports across Under Armour, HackerOne, and Web3 CTF smart contract audit engagements.",
   },
   {
-    tag: "Competing",
+    tag: "Arenas",
     metric: "4+",
-    unit: "arenas",
-    title: "Pentathon · DEFCON Pune · CyberVault · SIH",
-    detail: "NCIIPC-AICTE Pentathon and other national & regional events.",
+    unit: "circuits",
+    title: "Pentathon · DEFCON Pune · CyberVault",
+    detail: "Active competitor across NCIIPC-AICTE Pentathon, regional DEFCON chapters, and national security challenges.",
   },
 ];
 
 export function Achievements() {
   return (
-    <section id="achievements" className="section-spacing border-t border-border">
-      <Reveal><p className="eyebrow mb-10">04 — Achievements</p></Reveal>
+    <section id="achievements" className="section-spacing">
+      <Reveal><p className="eyebrow mb-10">05 — Achievements &amp; Recognition</p></Reveal>
 
       <div className="grid sm:grid-cols-2 gap-5">
         {items.map((a, i) => (

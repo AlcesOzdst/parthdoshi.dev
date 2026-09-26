@@ -32,7 +32,7 @@ const projects = [
 
 export function Projects() {
   return (
-    <section id="work" className="section-spacing border-t border-border">
+    <section id="work" className="section-spacing">
       <div>
         <Reveal>
           <div className="flex items-end justify-between gap-4 mb-12">
