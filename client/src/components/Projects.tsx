@@ -4,29 +4,28 @@ import { ArrowUpRight } from "lucide-react";
 const projects = [
   {
     number: "01",
+    title: "ESP32 Marauder Custom Firmware",
+    desc: "Customized ESP32 Marauder firmware for wireless security experimentation — integrated NRF24L01 transceivers, custom OLED UI, and menu navigation over SPI, I²C, and 2.4GHz RF communication.",
+    tags: ["ESP32", "PlatformIO", "Embedded C++", "NRF24L01"],
+  },
+  {
+    number: "02",
     title: "GNSS Receiver Build",
     desc: "Custom GPS receiver parsing live satellite data — an NMEA 0183 parser over UART via a CP2102 bridge. Sub-3m accuracy, logging GPX tracks around Pune.",
     tags: ["Python", "UART", "CP2102"],
   },
   {
-    number: "02",
+    number: "03",
     title: "Multi-Sensor Embedded Firmware",
     desc: "Bare-metal firmware for a C8051F340 driving four sensor peripherals on one 8-bit bus — register-level drivers for an SSD1306 OLED, DHT11, HC-SR04 and PIR.",
     tags: ["C", "I²C", "SPI", "GPIO"],
   },
   {
-    number: "03",
+    number: "04",
     title: "DDoS Traffic Classification",
     desc: "An ML pipeline that classifies attack patterns from raw packet captures: tshark → statistical flow features → labelled by vector → classifier + mitigation report.",
     tags: ["Python", "tshark", "scikit-learn"],
     href: "https://github.com/AlcesOzdst/DDoS_AssMnt",
-  },
-  {
-    number: "04",
-    title: "SkillBridge",
-    desc: "Peer-to-peer skill-exchange platform — barter knowledge instead of paying for courses. Full-stack matchmaking with scheduling, profiles and reviews. Solo-built.",
-    tags: ["Node.js", "MySQL", "Express"],
-    href: "https://github.com/AlcesOzdst/SkillBridge",
   },
 ];
 

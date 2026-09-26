@@ -2,7 +2,6 @@ import { useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Plus } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
-import { ScopeTrace } from "@/components/ScopeTrace";
 
 /* ── graphics ─────────────────────────────────────────────── */
 function RouteLine() {
@@ -45,6 +44,26 @@ function Hexdump() {
   );
 }
 
+function AirwavesWave() {
+  const reduce = useReducedMotion();
+  return (
+    <svg viewBox="0 0 300 120" className="w-full h-[110px]" fill="none" aria-hidden="true">
+      <line x1="0" y1="60" x2="300" y2="60" stroke="var(--c-border)" strokeWidth="1" strokeDasharray="3 3" />
+      <motion.path
+        d="M0 60 C 20 20, 35 100, 55 60 C 75 20, 90 100, 110 60 C 130 30, 145 90, 165 60 C 185 25, 200 95, 220 60 C 240 35, 260 85, 280 60 L 300 60"
+        stroke="var(--c-accent)"
+        strokeWidth="2"
+        strokeLinecap="round"
+        initial={reduce ? { pathLength: 1 } : { pathLength: 0 }}
+        whileInView={{ pathLength: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 2, ease: "easeInOut" }}
+      />
+      <circle cx="280" cy="60" r="3.5" fill="var(--c-accent)" />
+    </svg>
+  );
+}
+
 /* ── panels ───────────────────────────────────────────────── */
 const panels = [
   {
@@ -64,7 +83,7 @@ const panels = [
     more: "Rotating a few budget sets at any time. Ask me about tuning and I won't stop: the Harman target is a suggestion, not a rule, and treble is where cheap sets go to die.",
   },
   {
-    tag: "airwaves", title: "Radios & GNSS", graphic: <div className="h-[110px] flex items-center"><ScopeTrace height={90} /></div>,
+    tag: "airwaves", title: "Radios & GNSS", graphic: <AirwavesWave />,
     line: "ESP32, NRF24, LoRa, a GPS module decoding NMEA over UART.",
     more: "NRF24 for 2.4 GHz poking, LoRa for the long haul, a GPS module spitting NMEA sentences over UART. Radios are just the physical layer of everything — slow them down and they're all waveforms.",
   },

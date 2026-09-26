@@ -12,11 +12,12 @@ export function Nav() {
     ? [
         { label: "signals", href: "#signals" },
         { label: "built", href: "#work" },
-        { label: "elsewhere", href: "#about" },
+        { label: "resume", href: "/resume", isRoute: true },
         { label: "writing", href: "/blog", isRoute: true },
       ]
     : [
         { label: "home", href: "/", isRoute: true },
+        { label: "resume", href: "/resume", isRoute: true },
         { label: "writing", href: "/blog", isRoute: true },
       ];
 

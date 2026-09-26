@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { useScrollSpy } from "@/lib/useScrollSpy";
+import { FileText } from "lucide-react";
 
 const SECTIONS = [
   { id: "focus", label: "Focus" },
@@ -15,11 +16,11 @@ const SECTIONS = [
 const socials = [
   { label: "GH", href: "https://github.com/AlcesOzdst" },
   { label: "IN", href: "https://linkedin.com/in/parthdoshi404" },
+  { label: "CV", href: "/resume" },
   { label: "THM", href: "https://tryhackme.com/p/AlcesOzdst" },
-  { label: "HTB", href: "https://profile.hackthebox.com/profile/019c59d7-edfc-7172-b666-bedfbe635e49" },
 ];
 
-export function SideRail() {
+export function SideRail({ onOpenResume }: { onOpenResume?: () => void }) {
   const active = useScrollSpy(["top", ...SECTIONS.map((s) => s.id)]);
 
   return (
@@ -49,6 +50,28 @@ export function SideRail() {
             </a>
           );
         })}
+
+        {/* Resume Viewer / Downloader Button */}
+        {onOpenResume ? (
+          <button
+            onClick={onOpenResume}
+            className="group inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.14em] text-accent hover:text-text transition-colors cursor-pointer text-left pt-1"
+            data-cursor="resume"
+          >
+            <span className="rail-num text-accent">↓</span>
+            <span className="h-px bg-accent/60" style={{ width: 14 }} />
+            <span className="font-semibold">Resume / CV</span>
+          </button>
+        ) : (
+          <Link href="/resume">
+            <a className="group inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.14em] text-accent hover:text-text transition-colors cursor-pointer pt-1" data-cursor="resume">
+              <span className="rail-num text-accent">↓</span>
+              <span className="h-px bg-accent/60" style={{ width: 14 }} />
+              <span className="font-semibold">Resume / CV</span>
+            </a>
+          </Link>
+        )}
+
         <Link href="/blog">
           <a className="group inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.14em] text-text-secondary hover:text-text transition-colors cursor-pointer" data-cursor="read">
             <span className="rail-num accent">↗</span>
@@ -64,7 +87,7 @@ export function SideRail() {
         </p>
         <div className="flex gap-4 mb-4">
           {socials.map((s) => (
-            <a key={s.label} href={s.href} target="_blank" rel="noreferrer"
+            <a key={s.label} href={s.href} target={s.label === "CV" ? undefined : "_blank"} rel="noreferrer"
               className="mono-label u-link hover:text-text transition-colors">{s.label}</a>
           ))}
         </div>

@@ -47,6 +47,55 @@ export interface FindingDetail {
 const findingsData: FindingDetail[] = [
   {
     number: "001",
+    title: "Responsible Disclosure – IDOR in University ERP Portal",
+    program: "MIT-WPU University ERP Portal",
+    icon: "🎓",
+    severity: "High",
+    cvss: "8.5 (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N)",
+    cwe: "CWE-639: Authorization Bypass Through User-Controlled Key (IDOR)",
+    status: "Resolved & Disclosed",
+    date: "July 2024",
+    bounty: "Responsible Disclosure Acknowledgment",
+    shortDesc:
+      "Identified an Insecure Direct Object Reference (IDOR) affecting the university ERP portal by manipulating student PRN identifiers, demonstrating unauthorized access to student profile resources.",
+    tags: ["idor", "burp-suite", "access-control", "responsible-disclosure"],
+    callout:
+      "Parameter manipulation of student PRN identifiers in session-authenticated requests allowed unprivileged queries to access profile databases of any enrolled student.",
+    overview:
+      "During security assessments of the campus enterprise resource planning (ERP) portal, I analyzed the student profile and record query endpoints. While session tokens authenticated that the user was an enrolled student, individual database queries trusted raw PRN request parameters without validating object-level ownership.",
+    technicalAnalysis:
+      "By intercepting HTTP requests using Burp Suite and modifying the 'student_prn' parameter in the query payload, the backend API returned full student demographic, academic, and fee-payment records belonging to arbitrary students. I prepared a formal vulnerability assessment report with CVSS v3.1 scoring and submitted it directly to the university administration.",
+    pocSnippet: {
+      language: "http",
+      code: `POST /api/v1/portal/student/profile-fetch HTTP/1.1
+Host: erp.mitwpu.edu.in
+Authorization: Bearer <valid_student_jwt>
+Content-Type: application/json
+
+{"target_prn": "1032210892"} <!-- Modified to target PRN -->
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "status": "success",
+  "prn": "1032210892",
+  "name": "REDACTED",
+  "dob": "2003-08-14",
+  "contact": "+91-98XXXXXXXX",
+  "academic_record": { "gpa": 8.92, "branch": "ECE" }
+}`,
+      caption: "IDOR parameter modification via Burp Suite exfiltrating unauthorized student records.",
+    },
+    impact:
+      "Unauthorized horizontal privilege escalation permitting any authenticated student to scrape thousands of sensitive personal records, contact information, and academic histories across the entire university student body.",
+    remediation:
+      "The university development team instituted server-side session-binding checks ensuring that requested PRN resources strictly match the authenticated user identity extracted from the verified JWT claim.",
+    keyTakeaway:
+      "Authentication proves who a user is; authorization proves what they are allowed to touch. Object-level access control must be validated on every single query.",
+  },
+  {
+    number: "002",
     title: "CORS Misconfiguration & Unauthenticated Admin Endpoints → Account Takeover",
     program: "Under Armour Bug Bounty",
     icon: "🛡️",
@@ -90,7 +139,7 @@ Content-Type: application/json
       "Never rely on network perimeter or regex prefix matches for cross-origin security. CORS policies must treat every domain as hostile unless explicitly validated against a hard-coded canonical origin set.",
   },
   {
-    number: "002",
+    number: "003",
     title: "GraphQL Introspection Leakage Exposing Hidden Mutations & PII Storage Routes",
     program: "Whatnot · HackerOne",
     icon: "⚡",
@@ -140,7 +189,7 @@ Content-Type: application/json
       "GraphQL without introspection disabled is equivalent to giving attackers your complete source code database schema. Defense in depth requires schema hiding combined with field-level authorization.",
   },
   {
-    number: "003",
+    number: "004",
     title: "Smart-Contract Reentrancy & Hash Collision Signature Bypass",
     program: "The Graph · Immunefi & HTB CTF",
     icon: "🔬",

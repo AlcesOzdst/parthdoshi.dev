@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { Link } from "wouter";
 import { Reveal } from "@/components/Reveal";
-import { ArrowUpRight, Shield, Cpu, Terminal, Award, ChevronRight } from "lucide-react";
+import { ArrowUpRight, Shield, Cpu, Terminal, Award, ChevronRight, FileText, Globe } from "lucide-react";
 
 interface RoleItem {
   id: string;
@@ -14,73 +15,78 @@ interface RoleItem {
   tech: string[];
 }
 
-const hackXTimeline: RoleItem[] = [
+const experiences: RoleItem[] = [
   {
     id: "president",
     role: "President",
-    organization: "Hack-X Cybersecurity Club · MIT-WPU",
+    organization: "Hack-X, Cybersecurity Club – MIT World Peace University",
     location: "Pune, India",
-    period: "Jul 2025 — Present",
+    period: "Aug 2025 — Present",
     status: "Current",
     summary:
-      "Directing a 60+ member student security collective. Refocused the club from surface-level web vulnerabilities to physical hardware security, embedded bus auditing, and binary exploitation.",
+      "Leading the university cybersecurity community by organizing Capture The Flag (CTF) competitions, workshops, and technical events.",
     highlights: [
-      "Orchestrated campus-wide CTF competitions with bespoke hardware hacking & reverse engineering challenge tracks.",
-      "Established technical syncs and hands-on workshop collaborations with DEFCON Pune and CyberVault Connect.",
-      "Designed and lead weekly firmware teardown clinics: dumping SPI flash, tracing UART logic, and analyzing bootloaders.",
+      "Lead the university cybersecurity community by organizing Capture The Flag (CTF) competitions, workshops, and technical events.",
+      "Coordinate club operations, executive members, and technical initiatives promoting hands-on cybersecurity learning.",
+      "Refocused club initiatives toward physical hardware security, embedded bus auditing, and offensive security labs.",
     ],
-    tech: ["Hardware Security", "CTF Architecture", "Firmware RE", "Embedded Systems", "Leadership"],
+    tech: ["Cybersecurity Leadership", "CTF Architecture", "Hardware Security", "Embedded Systems", "Workshops"],
   },
   {
-    id: "tech-lead",
-    role: "Technical Lead & Core Team",
-    organization: "Hack-X Cybersecurity Club · MIT-WPU",
+    id: "phn-intern",
+    role: "Research & Development Intern",
+    organization: "PHN Technology Pvt. Ltd.",
     location: "Pune, India",
-    period: "Aug 2024 — Jun 2025",
+    period: "Jan 2025 — May 2025",
     summary:
-      "Engineered automated challenge infrastructure and led offensive/defensive training tracks for junior cohorts.",
+      "Contributed to the research and development of IoT, embedded systems, and cybersecurity-focused solutions using ESP32, Raspberry Pi, and hardware platforms.",
     highlights: [
-      "Authored original reverse engineering (x86/ARM binaries) and protocol analysis challenges for internal CTF qualifiers.",
-      "Maintained containerized target sandboxes on local server clusters, simulating realistic multi-stage corporate network breaches.",
-      "Conducted weekly live technical walk-throughs on GDB debugging, ELF binary structures, and wireless sniffing methodologies.",
+      "Contributed to the research and development of IoT, embedded systems, and cybersecurity-focused solutions using ESP32, Raspberry Pi, and platforms.",
+      "Performed vulnerability assessments and security testing for embedded and web-based applications using industry-standard security methodologies.",
+      "Assisted in developing ESP32 and Raspberry Pi-based IoT security prototypes.",
+      "Documented security findings, testing procedures, and mitigation recommendations for internal R&D projects.",
     ],
-    tech: ["GDB / Ghidra", "Docker Sandboxing", "Network Forensics", "x86/ARM Assembly", "Linux Internals"],
+    tech: ["ESP32", "Raspberry Pi", "Vulnerability Assessment", "Embedded Security", "IoT R&D"],
   },
   {
-    id: "tech-member",
-    role: "Technical Member",
-    organization: "Hack-X Cybersecurity Club · MIT-WPU",
-    location: "Pune, India",
-    period: "Sep 2023 — Jul 2024",
+    id: "hackerone",
+    role: "Independent Security Research Projects",
+    organization: "HackerOne Bug Bounty Platform",
+    location: "Remote",
+    period: "2024 — Present",
     summary:
-      "Earned placement via competitive CTF qualifiers. Supported hands-on workshop delivery and created reference writeups.",
+      "Actively performing web application security assessments across public bug bounty programs on HackerOne.",
     highlights: [
-      "Built custom testbed setups using ESP32 and Raspberry Pi for IoT vulnerability demonstrations and packet capture analysis.",
-      "Co-facilitated beginner workshops on Linux security foundations, Bash scripting, and port scanning with Nmap.",
-      "Documented attack vectors and authored reference walkthroughs for past national competition challenges.",
+      "Actively perform web application security assessments across public bug bounty programs on HackerOne.",
+      "Practiced identification of Broken Access Control, IDOR, Authentication, GraphQL and API security issues.",
+      "Documented testing methodology and findings to improve vulnerability assessment workflow.",
     ],
-    tech: ["ESP32 / RPi", "Wireshark", "Bash Scripting", "Nmap", "Linux Labs"],
+    tech: ["HackerOne", "Burp Suite Pro", "IDOR", "GraphQL", "Broken Access Control", "API Security"],
+  },
+  {
+    id: "sterg",
+    role: "Assistant Sponsorship Executive",
+    organization: "STeRG, MIT World Peace University",
+    location: "Pune, India",
+    period: "Sep 2023 — Sep 2024",
+    summary:
+      "Managed sponsorship outreach and coordinated with industry partners to support technical events and student initiatives.",
+    highlights: [
+      "Managed sponsorship outreach and coordinated with industry partners to support technical events and student initiatives.",
+      "Facilitated industry relationships to drive student participation in engineering hackathons and symposiums.",
+    ],
+    tech: ["Industry Sponsorship", "Partner Outreach", "Event Coordination", "Technical Operations"],
   },
 ];
 
-const internship: RoleItem = {
-  id: "phn-intern",
-  role: "Robotics & Innovation Intern",
-  organization: "PHN Technology Pvt. Ltd.",
-  location: "Pune, India",
-  period: "Embedded & IoT R&D",
-  summary:
-    "Embedded systems R&D and hardware-software integration. Developed firmware routines across microcontroller architectures (ESP32, STM32, Arduino) interfacing analog sensors and hardware buses.",
-  highlights: [
-    "Programmed register-level and HAL firmware to interface sensor suites over UART, SPI, and I²C communication buses.",
-    "Engineered serial telemetry logging scripts to stream real-time sensor packets for hardware-in-the-loop diagnostic testing.",
-    "Validated prototype power draw and timing tolerances, eliminating serial communication jitter on edge test rigs.",
-  ],
-  tech: ["ESP32 / STM32", "Embedded C / C++", "UART / SPI / I²C", "Telemetry Pipelines", "Hardware Debugging"],
-};
+export function Experience({ onOpenResume }: { onOpenResume?: () => void }) {
+  const [activeFilter, setActiveFilter] = useState<"all" | "security" | "embedded">("all");
 
-export function Experience() {
-  const [activeTab, setActiveTab] = useState<"all" | "hackx" | "internship">("all");
+  const filteredItems = experiences.filter((item) => {
+    if (activeFilter === "security") return item.id === "president" || item.id === "hackerone";
+    if (activeFilter === "embedded") return item.id === "phn-intern" || item.id === "president";
+    return true;
+  });
 
   return (
     <section id="experience" className="section-spacing">
@@ -93,7 +99,27 @@ export function Experience() {
                 Where I&rsquo;ve <span className="italic-accent">built &amp; led</span>.
               </h2>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-3">
+              {onOpenResume ? (
+                <button
+                  onClick={onOpenResume}
+                  className="btn !py-1.5 !px-3 font-mono text-xs inline-flex items-center gap-1.5 cursor-pointer text-accent border-accent/40 hover:border-accent"
+                  data-cursor="resume"
+                >
+                  <FileText size={13} />
+                  <span>Resume / CV ↗</span>
+                </button>
+              ) : (
+                <Link href="/resume">
+                  <a
+                    className="btn !py-1.5 !px-3 font-mono text-xs inline-flex items-center gap-1.5 cursor-pointer text-accent border-accent/40 hover:border-accent"
+                    data-cursor="resume"
+                  >
+                    <FileText size={13} />
+                    <span>Resume / CV ↗</span>
+                  </a>
+                </Link>
+              )}
               <a
                 href="https://linkedin.com/in/parthdoshi404"
                 target="_blank"
@@ -111,167 +137,92 @@ export function Experience() {
         <Reveal delay={0.05}>
           <div className="flex gap-2 p-1 bg-surface border border-border rounded-lg inline-flex mb-8">
             <button
-              onClick={() => setActiveTab("all")}
+              onClick={() => setActiveFilter("all")}
               className={`px-3 py-1.5 font-mono text-xs uppercase tracking-wider rounded transition-colors ${
-                activeTab === "all" ? "bg-accent text-accent-ink font-semibold" : "text-text-secondary hover:text-text"
+                activeFilter === "all" ? "bg-accent text-accent-ink font-semibold" : "text-text-secondary hover:text-text"
               }`}
             >
-              All Timeline
+              All Roles ({experiences.length})
             </button>
             <button
-              onClick={() => setActiveTab("hackx")}
+              onClick={() => setActiveFilter("security")}
               className={`px-3 py-1.5 font-mono text-xs uppercase tracking-wider rounded transition-colors ${
-                activeTab === "hackx" ? "bg-accent text-accent-ink font-semibold" : "text-text-secondary hover:text-text"
+                activeFilter === "security" ? "bg-accent text-accent-ink font-semibold" : "text-text-secondary hover:text-text"
               }`}
             >
-              Hack-X Progression
+              Security Research
             </button>
             <button
-              onClick={() => setActiveTab("internship")}
+              onClick={() => setActiveFilter("embedded")}
               className={`px-3 py-1.5 font-mono text-xs uppercase tracking-wider rounded transition-colors ${
-                activeTab === "internship" ? "bg-accent text-accent-ink font-semibold" : "text-text-secondary hover:text-text"
+                activeFilter === "embedded" ? "bg-accent text-accent-ink font-semibold" : "text-text-secondary hover:text-text"
               }`}
             >
-              Industry R&amp;D
+              IoT &amp; Embedded
             </button>
           </div>
         </Reveal>
 
-        <div className="space-y-12">
-          {/* Hack-X Progression Section */}
-          {(activeTab === "all" || activeTab === "hackx") && (
-            <div>
-              <Reveal delay={0.08}>
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-8 h-8 rounded border border-border bg-surface flex items-center justify-center text-accent">
-                    <Shield size={16} />
+        {/* Timeline List */}
+        <div className="relative border-l-2 border-border ml-4 sm:ml-6 pl-6 sm:pl-8 space-y-8">
+          {filteredItems.map((item, i) => (
+            <Reveal key={item.id} delay={0.08 + i * 0.07}>
+              <div className="relative group">
+                {/* Timeline node */}
+                <div
+                  className={`absolute -left-[31px] sm:-left-[39px] top-1.5 w-3.5 h-3.5 rounded-full border-2 transition-transform duration-300 group-hover:scale-125 ${
+                    item.status === "Current"
+                      ? "bg-accent border-accent shadow-[0_0_10px_var(--c-accent)]"
+                      : "bg-bg border-border-accent group-hover:border-accent"
+                  }`}
+                />
+
+                <div className="card p-6 md:p-7">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+                    <div className="flex items-center gap-3">
+                      <h3 className="font-display text-xl md:text-2xl font-semibold tracking-tight">
+                        {item.role}
+                      </h3>
+                      {item.status && (
+                        <span className="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded bg-accent/15 text-accent border border-accent/30 font-medium">
+                          {item.status}
+                        </span>
+                      )}
+                    </div>
+                    <span className="mono-label font-medium">{item.period}</span>
                   </div>
-                  <div>
-                    <h3 className="font-display text-xl font-medium">Hack-X Cybersecurity Club</h3>
-                    <p className="mono-label">Campus Security Collective · From Tech Member to President</p>
+
+                  <p className="mono-label text-accent mb-4 block">
+                    {item.organization} &nbsp;·&nbsp; {item.location}
+                  </p>
+
+                  <p className="text-sm text-text-secondary leading-relaxed mb-5">
+                    {item.summary}
+                  </p>
+
+                  <div className="space-y-2 mb-6">
+                    {item.highlights.map((h, idx) => (
+                      <div key={idx} className="flex items-start gap-2.5 text-xs text-text-secondary">
+                        <span className="text-accent mt-1 select-none">▸</span>
+                        <span className="leading-relaxed">{h}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="flex flex-wrap gap-2 pt-4 border-t border-border">
+                    {item.tech.map((t) => (
+                      <span
+                        key={t}
+                        className="font-mono text-[11px] px-2.5 py-1 rounded bg-surface border border-border text-text-secondary"
+                      >
+                        {t}
+                      </span>
+                    ))}
                   </div>
                 </div>
-              </Reveal>
-
-              <div className="relative border-l-2 border-border ml-4 sm:ml-6 pl-6 sm:pl-8 space-y-8">
-                {hackXTimeline.map((item, i) => (
-                  <Reveal key={item.id} delay={0.1 + i * 0.08}>
-                    <div className="relative group">
-                      {/* Timeline dot */}
-                      <div
-                        className={`absolute -left-[31px] sm:-left-[39px] top-1.5 w-3.5 h-3.5 rounded-full border-2 transition-transform duration-300 group-hover:scale-125 ${
-                          item.status === "Current"
-                            ? "bg-accent border-accent shadow-[0_0_10px_var(--c-accent)]"
-                            : "bg-bg border-border-accent group-hover:border-accent"
-                        }`}
-                      />
-
-                      <div className="card p-6 md:p-7">
-                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
-                          <div className="flex items-center gap-3">
-                            <h4 className="font-display text-xl md:text-2xl font-semibold tracking-tight">
-                              {item.role}
-                            </h4>
-                            {item.status && (
-                              <span className="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded bg-accent/15 text-accent border border-accent/30 font-medium">
-                                {item.status}
-                              </span>
-                            )}
-                          </div>
-                          <span className="mono-label font-medium">{item.period}</span>
-                        </div>
-
-                        <p className="mono-label text-accent mb-4 block">{item.organization}</p>
-                        <p className="text-sm text-text-secondary leading-relaxed mb-5">{item.summary}</p>
-
-                        <div className="space-y-2 mb-6">
-                          {item.highlights.map((h, idx) => (
-                            <div key={idx} className="flex items-start gap-2.5 text-xs text-text-secondary">
-                              <span className="text-accent mt-1 select-none">▸</span>
-                              <span className="leading-relaxed">{h}</span>
-                            </div>
-                          ))}
-                        </div>
-
-                        <div className="flex flex-wrap gap-2 pt-4 border-t border-border">
-                          {item.tech.map((t) => (
-                            <span
-                              key={t}
-                              className="font-mono text-[11px] px-2.5 py-1 rounded bg-surface border border-border text-text-secondary"
-                            >
-                              {t}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </Reveal>
-                ))}
               </div>
-            </div>
-          )}
-
-          {/* Internship Experience */}
-          {(activeTab === "all" || activeTab === "internship") && (
-            <div>
-              <Reveal delay={0.1}>
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-8 h-8 rounded border border-border bg-surface flex items-center justify-center text-accent">
-                    <Cpu size={16} />
-                  </div>
-                  <div>
-                    <h3 className="font-display text-xl font-medium">Industry Engineering</h3>
-                    <p className="mono-label">Robotics, Microcontrollers &amp; Hardware Telemetry</p>
-                  </div>
-                </div>
-              </Reveal>
-
-              <div className="relative border-l-2 border-border ml-4 sm:ml-6 pl-6 sm:pl-8">
-                <Reveal delay={0.12}>
-                  <div className="relative group">
-                    <div className="absolute -left-[31px] sm:-left-[39px] top-1.5 w-3.5 h-3.5 rounded-full border-2 bg-bg border-border-accent group-hover:border-accent transition-transform duration-300 group-hover:scale-125" />
-
-                    <div className="card p-6 md:p-7">
-                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
-                        <div className="flex items-center gap-3">
-                          <h4 className="font-display text-xl md:text-2xl font-semibold tracking-tight">
-                            {internship.role}
-                          </h4>
-                          <span className="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded bg-surface border border-border text-text-secondary">
-                            R&amp;D Intern
-                          </span>
-                        </div>
-                        <span className="mono-label font-medium">{internship.period}</span>
-                      </div>
-
-                      <p className="mono-label text-accent mb-4 block">{internship.organization} · {internship.location}</p>
-                      <p className="text-sm text-text-secondary leading-relaxed mb-5">{internship.summary}</p>
-
-                      <div className="space-y-2 mb-6">
-                        {internship.highlights.map((h, idx) => (
-                          <div key={idx} className="flex items-start gap-2.5 text-xs text-text-secondary">
-                            <span className="text-accent mt-1 select-none">▸</span>
-                            <span className="leading-relaxed">{h}</span>
-                          </div>
-                        ))}
-                      </div>
-
-                      <div className="flex flex-wrap gap-2 pt-4 border-t border-border">
-                        {internship.tech.map((t) => (
-                          <span
-                            key={t}
-                            className="font-mono text-[11px] px-2.5 py-1 rounded bg-surface border border-border text-text-secondary"
-                          >
-                            {t}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </Reveal>
-              </div>
-            </div>
-          )}
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>

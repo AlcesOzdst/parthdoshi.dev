@@ -5,7 +5,7 @@ import { ScopeTrace } from "@/components/ScopeTrace";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-export function Hero() {
+export function Hero({ onOpenResume }: { onOpenResume?: () => void }) {
   const reduce = useReducedMotion();
   const container = { hidden: {}, show: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } } };
   const line = { hidden: { y: "112%" }, show: { y: "0%", transition: { duration: 0.9, ease: EASE } } };
@@ -29,14 +29,19 @@ export function Hero() {
 
         <motion.p variants={fade} className="mt-8 measure text-base md:text-lg text-text-secondary leading-relaxed">
           Embedded &amp; IoT security on the hardware side — I pull firmware off devices, follow the
-          signal from a pin into the binary, and document how they break and how to fix them. Third-year
-          ECE (AI&nbsp;·&nbsp;ML) student in Pune. (The running, radios and chi-fi IEMs live further down.)
+          signal from a pin into the binary, and document how they break and how to fix them. ECE (AI&nbsp;·&nbsp;ML)
+          student at MIT-WPU, Pune. (The running, radios and chi-fi IEMs live further down.)
         </motion.p>
 
         <motion.div variants={fade} className="mt-9 flex flex-wrap items-center gap-4">
           <Magnetic><a href="#work" className="btn btn-solid" data-cursor="see">the work</a></Magnetic>
+          {onOpenResume ? (
+            <Magnetic><button onClick={onOpenResume} className="btn" data-cursor="resume">resume / cv ↗</button></Magnetic>
+          ) : (
+            <Magnetic><Link href="/resume"><a className="btn" data-cursor="resume">resume / cv ↗</a></Link></Magnetic>
+          )}
           <Magnetic><a href="mailto:parthdoshi404@gmail.com" className="btn" data-cursor="say hi">get in touch</a></Magnetic>
-          <Magnetic><Link href="/blog" className="btn" data-cursor="read">the log</Link></Magnetic>
+          <Magnetic><Link href="/blog"><a className="btn" data-cursor="read">the log</a></Link></Magnetic>
         </motion.div>
       </motion.div>
 
