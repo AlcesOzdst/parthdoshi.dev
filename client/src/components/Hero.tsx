@@ -14,7 +14,7 @@ export function Hero() {
   return (
     <section id="top" className="min-h-[88vh] md:min-h-screen flex flex-col justify-center pt-16 md:pt-0">
       <motion.div variants={container} initial="hidden" animate="show">
-        <motion.p variants={fade} className="eyebrow mb-8">Portfolio — 2026</motion.p>
+        <motion.p variants={fade} className="eyebrow mb-8">Embedded &amp; IoT security · in training</motion.p>
 
         <h1 className="display" style={{ fontSize: "clamp(2.7rem, 8vw, 6rem)" }}>
           <span className="block overflow-hidden pb-[0.05em]">
@@ -28,9 +28,9 @@ export function Hero() {
         </h1>
 
         <motion.p variants={fade} className="mt-8 measure text-base md:text-lg text-text-secondary leading-relaxed">
-          I&rsquo;m Parth — a third-year ECE (AI&nbsp;·&nbsp;ML) student in Pune doing security
-          research on the hardware side. Firmware and radios, sure, but also a city on foot with a
-          GPS logger, a stack of chi-fi IEMs, and the odd bad argument in debate club.
+          Embedded &amp; IoT security on the hardware side — I pull firmware off devices, follow the
+          signal from a pin into the binary, and document how they break and how to fix them. Third-year
+          ECE (AI&nbsp;·&nbsp;ML) student in Pune. (The running, radios and chi-fi IEMs live further down.)
         </motion.p>
 
         <motion.div variants={fade} className="mt-9 flex flex-wrap items-center gap-4">

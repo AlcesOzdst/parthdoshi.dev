@@ -36,7 +36,7 @@ export function Projects() {
       <div>
         <Reveal>
           <div className="flex items-end justify-between gap-4 mb-12">
-            <p className="eyebrow">01 — Selected work</p>
+            <p className="eyebrow">02 — Selected work</p>
             <span className="mono-label hidden sm:inline">{projects.length} of them</span>
           </div>
         </Reveal>

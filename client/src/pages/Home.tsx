@@ -1,6 +1,7 @@
 import { SideRail } from "@/components/SideRail";
 import { TopBar } from "@/components/TopBar";
 import { Hero } from "@/components/Hero";
+import { Focus } from "@/components/Focus";
 import { Projects } from "@/components/Projects";
 import { Research } from "@/components/Research";
 import { Achievements } from "@/components/Achievements";
@@ -23,6 +24,7 @@ export default function Home() {
         <SideRail />
         <main className="min-w-0">
           <Hero />
+          <Focus />
           <Projects />
           <Research />
           <Achievements />

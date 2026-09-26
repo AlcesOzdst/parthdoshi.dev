@@ -9,7 +9,7 @@ const roadmap = [
 export function Trajectory() {
   return (
     <section id="now" className="section-spacing border-t border-border">
-      <Reveal><p className="eyebrow mb-8">05 — Where I&rsquo;m headed</p></Reveal>
+      <Reveal><p className="eyebrow mb-8">06 — Where I&rsquo;m headed</p></Reveal>
 
       <div className="grid md:grid-cols-[1.4fr_1fr] gap-10 md:gap-16">
         <div>

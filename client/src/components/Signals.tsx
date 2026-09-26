@@ -123,7 +123,7 @@ export function Signals() {
   return (
     <section id="signals" className="section-spacing border-t border-border">
       <div>
-        <Reveal><p className="eyebrow mb-5">04 — Off the clock</p></Reveal>
+        <Reveal><p className="eyebrow mb-5">05 — Off the clock</p></Reveal>
         <Reveal delay={0.05}>
           <p className="display text-3xl md:text-5xl mb-4 measure">
             Most things are just <span className="italic-accent">signals</span> once you slow them down.
