@@ -1,3 +1,5 @@
+import { Link } from "wouter";
+
 export function TopBar() {
   return (
     <div
@@ -8,7 +10,10 @@ export function TopBar() {
         <span className="status-dot" aria-hidden="true" />
         parthdoshi<span className="accent">.me</span>
       </a>
-      <a href="#contact" className="font-mono text-[11px] uppercase tracking-[0.14em] accent">say hi →</a>
+      <div className="flex items-center gap-5">
+        <Link href="/blog"><a className="font-mono text-[11px] uppercase tracking-[0.14em] text-text-secondary">writing</a></Link>
+        <a href="#contact" className="font-mono text-[11px] uppercase tracking-[0.14em] accent">say hi →</a>
+      </div>
     </div>
   );
 }

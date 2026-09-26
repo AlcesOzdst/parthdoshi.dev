@@ -64,7 +64,7 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  h1, h2, h3 { @apply font-display; line-height: 0.98; letter-spacing: -0.01em; font-weight: 400; }
+  h1, h2, h3 { @apply font-display; line-height: 1.08; letter-spacing: 0.01em; font-weight: 400; }
 
   ::selection { background: var(--c-accent); color: var(--c-accent-ink); }
   a { color: inherit; }
@@ -84,7 +84,7 @@
   .section-spacing { @apply py-20 md:py-28; }
 
   /* Serif display sizing helper */
-  .display { @apply font-display; font-weight: 400; letter-spacing: -0.015em; line-height: 0.96; }
+  .display { @apply font-display; font-weight: 400; letter-spacing: 0.015em; line-height: 1.05; }
   .italic-accent { font-style: italic; color: var(--c-accent); }
 
   /* Section marker: "01 — Signals I read" */

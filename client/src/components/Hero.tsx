@@ -1,3 +1,4 @@
+import { Link } from "wouter";
 import { motion, useReducedMotion } from "framer-motion";
 import { Magnetic } from "@/components/Magnetic";
 import { ScopeTrace } from "@/components/ScopeTrace";
@@ -35,6 +36,7 @@ export function Hero() {
         <motion.div variants={fade} className="mt-9 flex flex-wrap items-center gap-4">
           <Magnetic><a href="#work" className="btn btn-solid" data-cursor="see">the work</a></Magnetic>
           <Magnetic><a href="mailto:parthdoshi404@gmail.com" className="btn" data-cursor="say hi">get in touch</a></Magnetic>
+          <Magnetic><Link href="/blog" className="btn" data-cursor="read">the log</Link></Magnetic>
         </motion.div>
       </motion.div>
 
@@ -44,7 +46,7 @@ export function Hero() {
         <div className="flex items-center gap-3 mb-2">
           <span className="mono-label uppercase tracking-[0.2em]">signal · ch1</span>
           <span className="flex-1 h-px bg-border" />
-          <span className="mono-label">read below ↓</span>
+          <span className="mono-label accent">hover to tune ↝</span>
         </div>
         <ScopeTrace height={110} />
       </motion.div>
