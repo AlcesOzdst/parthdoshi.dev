@@ -30,7 +30,7 @@ export function Research() {
       <div className="shell">
         <Reveal>
           <div className="flex items-end justify-between gap-4 mb-10">
-            <p className="eyebrow">03 — Findings</p>
+            <p className="eyebrow">03 — Bugs I've found</p>
             <a href="https://tryhackme.com/p/AlcesOzdst" target="_blank" rel="noreferrer" className="mono-label u-link hover:text-text transition-colors">
               tryhackme ↗
             </a>

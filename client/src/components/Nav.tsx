@@ -10,9 +10,9 @@ export function Nav() {
 
   const links = isHome
     ? [
-        { label: "work", href: "#work" },
-        { label: "findings", href: "#findings" },
-        { label: "about", href: "#about" },
+        { label: "signals", href: "#signals" },
+        { label: "built", href: "#work" },
+        { label: "elsewhere", href: "#about" },
         { label: "writing", href: "/blog", isRoute: true },
       ]
     : [

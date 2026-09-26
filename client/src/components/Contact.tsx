@@ -11,7 +11,7 @@ export function Contact() {
     <section id="contact" className="section-spacing border-t border-border relative overflow-hidden">
       <div className="glow" style={{ width: 520, height: 520, bottom: -220, left: -120 }} />
       <div className="shell relative z-10">
-        <Reveal><p className="eyebrow mb-8">04 — Contact</p></Reveal>
+        <Reveal><p className="eyebrow mb-8">05 — Say hi</p></Reveal>
 
         <Reveal delay={0.05}>
           <h2 className="font-display font-extrabold tracking-[-0.03em] leading-[0.95] mb-10"

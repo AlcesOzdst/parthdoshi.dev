@@ -1,16 +1,16 @@
 const ITEMS = [
-  "FIRMWARE EXTRACTION",
-  "UART / SPI / I²C",
+  "FIRMWARE",
+  "GPX TRACKS",
+  "CHI-FI IEMs",
   "GHIDRA",
-  "BINWALK",
+  "6AM RUNS",
   "ESP32",
-  "SECURE BOOT",
-  "REVERSE ENGINEERING",
-  "RASPBERRY PI",
-  "MQTT / TLS",
-  "LOGIC ANALYZER",
   "CTF",
-  "THREAT MODELING",
+  "SOLDERING IRON",
+  "NMEA OVER UART",
+  "DEBATE CLUB",
+  "BINWALK",
+  "LORA / NRF24",
 ];
 
 export function Marquee() {

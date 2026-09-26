@@ -36,8 +36,8 @@ export function Projects() {
       <div className="shell">
         <Reveal>
           <div className="flex items-end justify-between gap-4 mb-12">
-            <p className="eyebrow">02 — Selected Work</p>
-            <span className="mono-label hidden sm:inline">{projects.length} projects</span>
+            <p className="eyebrow">02 — Things I've built</p>
+            <span className="mono-label hidden sm:inline">{projects.length} of them</span>
           </div>
         </Reveal>
 
