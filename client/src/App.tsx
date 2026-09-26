@@ -4,6 +4,7 @@ import Blog from "@/pages/Blog";
 import BlogPost from "@/pages/BlogPost";
 import ProjectPost from "@/pages/ProjectPost";
 import NotFound from "@/pages/NotFound";
+import { Preloader } from "@/components/Preloader";
 
 function Router() {
   return (
@@ -18,5 +19,10 @@ function Router() {
 }
 
 export default function App() {
-  return <Router />;
+  return (
+    <>
+      <Preloader />
+      <Router />
+    </>
+  );
 }

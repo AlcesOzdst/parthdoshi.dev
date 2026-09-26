@@ -47,7 +47,7 @@ export function Projects() {
             return (
               <Reveal key={p.number} delay={i * 0.06}>
                 <Wrapper
-                  {...(p.href ? { href: p.href, target: "_blank", rel: "noreferrer" } : {})}
+                  {...(p.href ? { href: p.href, target: "_blank", rel: "noreferrer", "data-cursor": "view ↗" } : { "data-cursor": "build" })}
                   className="group grid grid-cols-[auto_1fr] md:grid-cols-[auto_1fr_auto] gap-x-5 md:gap-x-10 gap-y-2 items-baseline py-8 md:py-10 border-b border-border transition-colors duration-300 hover:bg-surface/30 -mx-5 px-5 sm:-mx-8 sm:px-8"
                 >
                   <span className="font-mono text-xs text-text-secondary group-hover:text-accent transition-colors pt-2">

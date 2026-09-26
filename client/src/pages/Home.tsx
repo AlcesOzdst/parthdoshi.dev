@@ -6,11 +6,15 @@ import { Research } from "@/components/Research";
 import { About } from "@/components/About";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
+import { Cursor } from "@/components/Cursor";
+import { ScrollProgress } from "@/components/ScrollProgress";
 
 export default function Home() {
   return (
     <div className="min-h-screen relative">
       <div className="grain" aria-hidden="true" />
+      <ScrollProgress />
+      <Cursor />
       <Nav />
       <main>
         <Hero />

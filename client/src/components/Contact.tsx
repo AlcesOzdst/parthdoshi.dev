@@ -31,6 +31,7 @@ export function Contact() {
 
         <Reveal delay={0.15}>
           <a href="mailto:parthdoshi404@gmail.com"
+             data-cursor="copy ↗"
              className="inline-block font-display font-semibold tracking-[-0.02em] u-link"
              style={{ fontSize: "clamp(1.4rem, 4.5vw, 2.6rem)" }}>
             parthdoshi404@gmail.com
