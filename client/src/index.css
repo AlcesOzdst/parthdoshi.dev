@@ -28,16 +28,26 @@
 
 /* Warm near-black + a signal-orange accent */
 :root, .dark, .light {
-  --c-bg: #0D0C0B;
-  --c-surface: #15120F;
-  --c-surface-alt: #1C1712;
-  --c-text: #EFE9DE;
-  --c-text-secondary: #9A9184;
-  --c-faint: #5C554B;
-  --c-border: #262019;
-  --c-border-accent: #38302818;
-  --c-accent: #52E0C4;      /* signal aqua — calm, legible, alive */
-  --c-accent-ink: #06110E;
+
+  --c-bg: #0C0A09;
+
+  --c-surface: #15110F;
+
+  --c-surface-alt: #1D1714;
+
+  --c-text: #EEE9E3;
+
+  --c-text-secondary: #9D958C;
+
+  --c-faint: #5F5851;
+
+  --c-border: #29231F;
+
+  --c-border-accent: #3C3028;
+
+  --c-accent: #B85C38;
+
+  --c-accent-ink: #200B04;
 }
 
 @layer base {
