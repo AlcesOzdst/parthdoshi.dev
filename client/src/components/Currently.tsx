@@ -4,14 +4,15 @@ export function Currently() {
   const ref = useScrollReveal();
 
   return (
-    <section className="pb-8" ref={ref}>
+    <section className="pb-10" ref={ref}>
       <div className="page-container">
-        <div className="entry entry-amber py-3 reveal" data-delay="0">
-          <span className="mono-label block mb-1" style={{ color: "var(--c-amber)" }}>
-            currently
+        <div className="reveal border-t border-b py-3 flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-4" data-delay="0">
+          <span className="mono-label uppercase tracking-[0.14em] flex-shrink-0" style={{ color: "var(--c-accent)" }}>
+            // currently
           </span>
           <p className="text-sm text-text-secondary leading-relaxed">
-            hunting IDORs, chasing GNSS packets, running slow miles in Baner
+            reversing ESP32 firmware, parsing GNSS packets over UART, and prepping the
+            next CTF — plus slow miles around Baner.
           </p>
         </div>
       </div>

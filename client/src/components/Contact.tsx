@@ -1,55 +1,34 @@
 import { useScrollReveal } from "@/lib/useScrollReveal";
 
 const links = [
-  {
-    label: "email",
-    href: "mailto:parthdoshi404@gmail.com",
-    display: "parthdoshi404@gmail.com",
-  },
-  {
-    label: "github",
-    href: "https://github.com/AlcesOzdst",
-    display: "AlcesOzdst",
-    external: true,
-  },
-  {
-    label: "linkedin",
-    href: "https://linkedin.com/in/parthdoshi404",
-    display: "parthdoshi404",
-    external: true,
-  },
+  { label: "email", href: "mailto:parthdoshi404@gmail.com", display: "parthdoshi404@gmail.com" },
+  { label: "github", href: "https://github.com/AlcesOzdst", display: "AlcesOzdst", external: true },
+  { label: "linkedin", href: "https://linkedin.com/in/parthdoshi404", display: "parthdoshi404", external: true },
+  { label: "tryhackme", href: "https://tryhackme.com/p/AlcesOzdst", display: "AlcesOzdst", external: true },
 ];
 
 export function Contact() {
   const ref = useScrollReveal();
 
   return (
-    <section id="contact" className="section-spacing" ref={ref}>
+    <section id="contact" className="section-spacing border-t" ref={ref}>
       <div className="page-container">
-        <h2 className="text-xl md:text-2xl font-serif font-semibold tracking-tight mb-2 reveal" data-delay="0">
-          Contact
-        </h2>
+        <p className="eyebrow mb-2 reveal" data-delay="0">04 / contact</p>
 
-        <p className="text-sm text-text-secondary mb-8 reveal" data-delay="30">
-          <span
-            className="inline-block w-1.5 h-1.5 rounded-full mr-1.5 relative top-[-1px]"
-            style={{ backgroundColor: "var(--c-amber)" }}
-            aria-hidden="true"
-          />
-          president, Hack-X · MIT-WPU
+        <p className="text-sm text-text-secondary mb-8 reveal flex items-center gap-2" data-delay="30">
+          <span className="status-dot" aria-hidden="true" />
+          open to embedded / IoT security internships · 2026–27
         </p>
 
-        <div className="space-y-3 reveal" data-delay="60">
+        <div className="space-y-2.5 reveal" data-delay="60">
           {links.map((link) => (
-            <div key={link.label} className="flex items-baseline gap-4">
-              <span className="mono-label w-12 flex-shrink-0">
-                {link.label}
-              </span>
+            <div key={link.label} className="spec-row items-baseline">
+              <span className="spec-key">{link.label}</span>
               <a
                 href={link.href}
                 target={link.external ? "_blank" : undefined}
                 rel={link.external ? "noreferrer" : undefined}
-                className="text-sm text-text hover:text-text-secondary transition-colors link-underline"
+                className="text-text hover:text-accent transition-colors link-underline"
               >
                 {link.display}
               </a>

@@ -4,10 +4,12 @@
 
 /* ── Design tokens ──────────────────────────────────────────────── */
 @theme inline {
-  /* Typography */
-  --font-serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+  /* Typography — grotesk display, clean sans body, mono for the machine parts */
+  --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
   --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', monospace;
+  /* legacy alias — existing pages use `font-serif`; map it to the display grotesk */
+  --font-serif: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
 
   /* Semantic colors */
   --color-bg: var(--c-bg);
@@ -18,40 +20,37 @@
   --color-border: var(--c-border);
   --color-border-accent: var(--c-border-accent);
 
-  /* Accents — used sparingly as border/text tints, NOT backgrounds */
-  --color-coral: var(--c-coral);
-  --color-amber: var(--c-amber);
-  --color-pink: var(--c-pink);
+  /* Single signal accent (amber). Legacy names kept, all mapped to it. */
+  --color-accent: var(--c-accent);
+  --color-coral: var(--c-accent);
+  --color-amber: var(--c-accent);
+  --color-pink: var(--c-accent);
 }
 
 /* ── Light mode ─────────────────────────────────────────────────── */
 :root {
-  --c-bg: #FAF8F3;
-  --c-surface: #F5F2EB;
-  --c-surface-alt: #EFECE4;
-  --c-text: #2C2C2A;
-  --c-text-secondary: #7A7872;
-  --c-border: #DDD9D0;
-  --c-border-accent: #C8C3B8;
-
-  --c-coral: #A8432A;
-  --c-amber: #8B5E14;
-  --c-pink: #8A3355;
+  --c-bg: #F4F3EE;
+  --c-surface: #FFFFFF;
+  --c-surface-alt: #EAE8E0;
+  --c-text: #17150F;
+  --c-text-secondary: #6A675E;
+  --c-border: #DAD7CC;
+  --c-border-accent: #B9B5A6;
+  --c-accent: #B5480B;
+  --c-grid: #00000008;
 }
 
-/* ── Dark mode ──────────────────────────────────────────────────── */
+/* ── Dark mode (default feel for an engineering tool) ────────────── */
 .dark {
-  --c-bg: #1C1B18;
-  --c-surface: #252320;
-  --c-surface-alt: #2E2C28;
-  --c-text: #D8D4CC;
-  --c-text-secondary: #8C8880;
-  --c-border: #3A3733;
-  --c-border-accent: #4A4640;
-
-  --c-coral: #D4836A;
-  --c-amber: #C9973E;
-  --c-pink: #C46B8F;
+  --c-bg: #0C0C0B;
+  --c-surface: #141311;
+  --c-surface-alt: #1B1A16;
+  --c-text: #ECE9E1;
+  --c-text-secondary: #8B887E;
+  --c-border: #262420;
+  --c-border-accent: #3A372F;
+  --c-accent: #E8983B;
+  --c-grid: #FFFFFF07;
 }
 
 /* ── Base ────────────────────────────────────────────────────────── */
@@ -62,7 +61,7 @@
 
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 5rem;
+    scroll-padding-top: 4.5rem;
   }
 
   body {
@@ -70,75 +69,71 @@
     background-color: var(--c-bg);
     color: var(--c-text);
     font-size: 15px;
-    line-height: 1.7;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    line-height: 1.65;
+    transition: background-color 0.25s ease, color 0.25s ease;
+    /* Faint engineering grid — lab notebook / PCB substrate */
+    background-image:
+      linear-gradient(var(--c-grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--c-grid) 1px, transparent 1px);
+    background-size: 28px 28px;
+    background-position: -1px -1px;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif;
-    line-height: 1.2;
-    font-variation-settings: 'WONK' 1, 'opsz' 36;
-  }
-
-  h1 {
-    font-variation-settings: 'WONK' 1, 'opsz' 72;
+    @apply font-display;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    font-weight: 600;
   }
 
   ::selection {
-    background: #8B5E1433;
-    color: var(--c-text);
-  }
-
-  .dark ::selection {
-    background: #C9973E33;
+    background: var(--c-accent);
+    color: var(--c-bg);
   }
 }
 
 /* ── Utilities ───────────────────────────────────────────────────── */
 @layer utilities {
 
-  /* Page container — narrower for editorial feel */
   .page-container {
     @apply mx-auto px-6;
-    max-width: 640px;
+    max-width: 680px;
   }
 
-  /* Section spacing */
   .section-spacing {
-    @apply py-16 md:py-24;
+    @apply py-14 md:py-20;
   }
 
-  /* ── Entry: the core repeating unit (replaces cards) ────────── */
-  /* A thin left border accent + text. No background. No box. */
+  /* Eyebrow — the datasheet-style section marker: "02 / WORK" */
+  .eyebrow {
+    @apply font-mono flex items-center gap-2;
+    font-size: 0.6875rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--c-text-secondary);
+  }
+  .eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background-color: var(--c-accent);
+    flex-shrink: 0;
+  }
+
+  /* Entry: the core repeating unit — a hairline left rule, no box */
   .entry {
-    padding-left: 1.25rem;
-    border-left: 2px solid var(--c-border);
+    padding-left: 1.15rem;
+    border-left: 1px solid var(--c-border);
     transition: border-color 0.2s ease-out;
   }
-  .entry:hover {
-    border-left-color: var(--c-border-accent);
-  }
-  .entry-coral {
-    border-left-color: var(--c-coral);
-  }
-  .entry-coral:hover {
-    border-left-color: var(--c-coral);
-    opacity: 0.92;
-  }
-  .entry-amber {
-    border-left-color: var(--c-amber);
-  }
-  .entry-amber:hover {
-    border-left-color: var(--c-amber);
-    opacity: 0.92;
-  }
-  .entry-pink {
-    border-left-color: var(--c-pink);
-  }
-  .entry-pink:hover {
-    border-left-color: var(--c-pink);
-    opacity: 0.92;
-  }
+  .entry:hover { border-left-color: var(--c-accent); }
+  .entry-coral,
+  .entry-amber,
+  .entry-pink { border-left-color: var(--c-border-accent); }
+  .entry-coral:hover,
+  .entry-amber:hover,
+  .entry-pink:hover { border-left-color: var(--c-accent); }
 
   /* Monospace label — the quiet technical signature */
   .mono-label {
@@ -147,6 +142,38 @@
     font-size: 0.6875rem;
     letter-spacing: 0.03em;
     line-height: 1.4;
+  }
+
+  /* Spec line: mono key/value metadata rows */
+  .spec-row {
+    @apply font-mono flex gap-3;
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+  .spec-key {
+    color: var(--c-text-secondary);
+    min-width: 5.5rem;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.6875rem;
+    padding-top: 0.05rem;
+  }
+
+  /* Status dot — the "signal on" indicator */
+  .status-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background-color: var(--c-accent);
+    box-shadow: 0 0 0 0 var(--c-accent);
+    animation: pulse 2.4s infinite;
+  }
+  @keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--c-accent) 55%, transparent); }
+    70%  { box-shadow: 0 0 0 6px transparent; }
+    100% { box-shadow: 0 0 0 0 transparent; }
   }
 
   /* Link underline animation */
@@ -161,50 +188,53 @@
     bottom: -2px;
     width: 100%;
     height: 1px;
-    background-color: currentColor;
+    background-color: var(--c-accent);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.25s ease-out;
   }
-  .link-underline:hover::after {
-    transform: scaleX(1);
+  .link-underline:hover::after { transform: scaleX(1); }
+
+  /* Bracket link — [ résumé ] style, monospace, technical */
+  .bracket-link {
+    @apply font-mono inline-flex items-center;
+    font-size: 0.8125rem;
+    color: var(--c-text);
+    transition: color 0.15s ease-out;
   }
+  .bracket-link::before { content: "["; color: var(--c-accent); margin-right: 0.35rem; }
+  .bracket-link::after  { content: "]"; color: var(--c-accent); margin-left: 0.35rem; }
+  .bracket-link:hover { color: var(--c-accent); }
 
   /* Scroll reveal */
   .reveal {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(6px);
     transition: opacity 0.5s ease-out, transform 0.5s ease-out;
   }
-  .reveal.revealed {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .reveal.revealed { opacity: 1; transform: translateY(0); }
 
-  /* Pill button */
+  /* Pill button (kept for compatibility; restyled square + technical) */
   .btn-pill {
-    @apply inline-flex items-center gap-2 font-sans font-medium;
-    font-size: 13px;
-    padding: 0.5rem 1.125rem;
-    border-radius: 999px;
-    transition: background-color 0.2s ease-out, opacity 0.15s ease-out;
+    @apply inline-flex items-center gap-2 font-mono font-medium;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    border-radius: 2px;
+    transition: background-color 0.2s ease-out, opacity 0.15s ease-out, border-color 0.2s;
   }
   .btn-pill-primary {
     background-color: var(--c-text);
     color: var(--c-bg);
   }
-  .btn-pill-primary:hover {
-    opacity: 0.85;
-  }
+  .btn-pill-primary:hover { background-color: var(--c-accent); }
   .btn-pill-secondary {
     color: var(--c-text);
-    border: 1px solid var(--c-border);
+    border: 1px solid var(--c-border-accent);
   }
-  .btn-pill-secondary:hover {
-    background-color: var(--c-surface);
-  }
+  .btn-pill-secondary:hover { border-color: var(--c-accent); color: var(--c-accent); }
 
-  /* Divider — thin line between entries */
   .divider {
     border: none;
     border-top: 1px solid var(--c-border);
@@ -219,11 +249,7 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
-  .reveal {
-    opacity: 1;
-    transform: none;
-  }
-  html {
-    scroll-behavior: auto;
-  }
+  .reveal { opacity: 1; transform: none; }
+  .status-dot { animation: none; }
+  html { scroll-behavior: auto; }
 }

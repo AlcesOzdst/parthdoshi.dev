@@ -11,23 +11,26 @@ export function Nav() {
 
   const links = isHome
     ? [
-        { label: "Research", href: "#research" },
-        { label: "Projects", href: "#projects" },
-        { label: "About", href: "#about" },
-        { label: "Blog", href: "/blog", isRoute: true },
+        { label: "findings", href: "#research" },
+        { label: "work", href: "#projects" },
+        { label: "about", href: "#about" },
+        { label: "writing", href: "/blog", isRoute: true },
       ]
     : [
-        { label: "Home", href: "/", isRoute: true },
-        { label: "Blog", href: "/blog", isRoute: true },
+        { label: "home", href: "/", isRoute: true },
+        { label: "writing", href: "/blog", isRoute: true },
       ];
 
   return (
-    <nav className="sticky top-0 z-50 border-b" style={{ backgroundColor: "var(--c-bg)" }}>
-      <div className="page-container flex items-center justify-between h-12">
-        {/* Name */}
+    <nav
+      className="sticky top-0 z-50 border-b backdrop-blur-sm"
+      style={{ backgroundColor: "color-mix(in srgb, var(--c-bg) 88%, transparent)" }}
+    >
+      <div className="page-container flex items-center justify-between h-14">
+        {/* Name / mark */}
         <Link href="/">
-          <span className="font-serif text-[15px] font-semibold text-text cursor-pointer" style={{ fontVariationSettings: "'WONK' 1, 'opsz' 20" }}>
-            parth doshi
+          <span className="font-mono text-[13px] font-semibold text-text cursor-pointer tracking-tight">
+            parthdoshi<span style={{ color: "var(--c-accent)" }}>.me</span>
           </span>
         </Link>
 
@@ -36,7 +39,7 @@ export function Nav() {
           {links.map((link) =>
             link.isRoute ? (
               <Link key={link.label} href={link.href}>
-                <span className="text-[12px] font-sans text-text-secondary hover:text-text transition-colors cursor-pointer">
+                <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-text-secondary hover:text-text transition-colors cursor-pointer">
                   {link.label}
                 </span>
               </Link>
@@ -44,7 +47,7 @@ export function Nav() {
               <a
                 key={link.label}
                 href={link.href}
-                className="text-[12px] font-sans text-text-secondary hover:text-text transition-colors"
+                className="font-mono text-[11px] uppercase tracking-[0.12em] text-text-secondary hover:text-text transition-colors"
               >
                 {link.label}
               </a>
@@ -87,7 +90,7 @@ export function Nav() {
               <Link key={link.label} href={link.href}>
                 <span
                   onClick={() => setMenuOpen(false)}
-                  className="block text-sm text-text-secondary hover:text-text transition-colors cursor-pointer py-0.5"
+                  className="block font-mono text-xs uppercase tracking-[0.12em] text-text-secondary hover:text-text transition-colors cursor-pointer py-1"
                 >
                   {link.label}
                 </span>
@@ -97,7 +100,7 @@ export function Nav() {
                 key={link.label}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="block text-sm text-text-secondary hover:text-text transition-colors py-0.5"
+                className="block font-mono text-xs uppercase tracking-[0.12em] text-text-secondary hover:text-text transition-colors py-1"
               >
                 {link.label}
               </a>

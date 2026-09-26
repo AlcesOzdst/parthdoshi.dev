@@ -1,0 +1,29 @@
+Copyright (c) 2026 Parth Doshi. All rights reserved.
+
+This repository and its source code (the "Software") are the proprietary work of
+Parth Doshi. The Software is published publicly for portfolio, evaluation, and
+reference purposes only.
+
+YOU MAY:
+  - View and read the source code.
+  - Clone or fork the repository solely to evaluate the author's work.
+
+YOU MAY NOT, without the prior written permission of the author:
+  - Use the Software, in whole or in part, in any personal, academic, or
+    commercial project.
+  - Copy, modify, merge, publish, distribute, sublicense, or sell copies of the
+    Software.
+  - Redeploy this website, or publish any substantially similar derivative of it.
+
+The written content of this project — blog posts, project writeups, and other
+prose under client/src/content/ — is NOT covered by this license. That content is
+licensed separately under CC BY-NC-ND 4.0; see LICENSE-CONTENT.md.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHOR BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+For permissions beyond the scope of this license, contact: parthdoshi404@gmail.com
