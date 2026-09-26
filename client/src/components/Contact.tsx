@@ -1,40 +1,52 @@
-import { useScrollReveal } from "@/lib/useScrollReveal";
+import { Reveal } from "@/components/Reveal";
 
-const links = [
-  { label: "email", href: "mailto:parthdoshi404@gmail.com", display: "parthdoshi404@gmail.com" },
-  { label: "github", href: "https://github.com/AlcesOzdst", display: "AlcesOzdst", external: true },
-  { label: "linkedin", href: "https://linkedin.com/in/parthdoshi404", display: "parthdoshi404", external: true },
-  { label: "tryhackme", href: "https://tryhackme.com/p/AlcesOzdst", display: "AlcesOzdst", external: true },
+const socials = [
+  { label: "github", href: "https://github.com/AlcesOzdst" },
+  { label: "linkedin", href: "https://linkedin.com/in/parthdoshi404" },
+  { label: "tryhackme", href: "https://tryhackme.com/p/AlcesOzdst" },
 ];
 
 export function Contact() {
-  const ref = useScrollReveal();
-
   return (
-    <section id="contact" className="section-spacing border-t" ref={ref}>
-      <div className="page-container">
-        <p className="eyebrow mb-2 reveal" data-delay="0">04 / contact</p>
+    <section id="contact" className="section-spacing border-t border-border relative overflow-hidden">
+      <div className="glow" style={{ width: 520, height: 520, bottom: -220, left: -120 }} />
+      <div className="shell relative z-10">
+        <Reveal><p className="eyebrow mb-8">04 — Contact</p></Reveal>
 
-        <p className="text-sm text-text-secondary mb-8 reveal flex items-center gap-2" data-delay="30">
-          <span className="status-dot" aria-hidden="true" />
-          open to embedded / IoT security internships · 2026–27
-        </p>
+        <Reveal delay={0.05}>
+          <h2 className="font-display font-extrabold tracking-[-0.03em] leading-[0.95] mb-10"
+              style={{ fontSize: "clamp(2.4rem, 9vw, 6.5rem)" }}>
+            Let&rsquo;s build something<br />
+            that <span className="accent">doesn&rsquo;t break.</span>
+          </h2>
+        </Reveal>
 
-        <div className="space-y-2.5 reveal" data-delay="60">
-          {links.map((link) => (
-            <div key={link.label} className="spec-row items-baseline">
-              <span className="spec-key">{link.label}</span>
-              <a
-                href={link.href}
-                target={link.external ? "_blank" : undefined}
-                rel={link.external ? "noreferrer" : undefined}
-                className="text-text hover:text-accent transition-colors link-underline"
-              >
-                {link.display}
+        <Reveal delay={0.1}>
+          <p className="text-text-secondary max-w-[48ch] mb-10 leading-relaxed">
+            <span className="inline-flex items-center gap-2 mr-2"><span className="status-dot" aria-hidden="true" /></span>
+            Looking for embedded / IoT / firmware security internships (2026–27). If that&rsquo;s
+            your team, I&rsquo;d like to talk.
+          </p>
+        </Reveal>
+
+        <Reveal delay={0.15}>
+          <a href="mailto:parthdoshi404@gmail.com"
+             className="inline-block font-display font-semibold tracking-[-0.02em] u-link"
+             style={{ fontSize: "clamp(1.4rem, 4.5vw, 2.6rem)" }}>
+            parthdoshi404@gmail.com
+          </a>
+        </Reveal>
+
+        <Reveal delay={0.2}>
+          <div className="mt-10 flex flex-wrap gap-x-8 gap-y-2">
+            {socials.map((s) => (
+              <a key={s.label} href={s.href} target="_blank" rel="noreferrer"
+                 className="font-mono text-[11px] uppercase tracking-[0.16em] text-text-secondary hover:text-text transition-colors u-link">
+                {s.label} ↗
               </a>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </Reveal>
       </div>
     </section>
   );
