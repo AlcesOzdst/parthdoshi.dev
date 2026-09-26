@@ -29,25 +29,17 @@
 /* Warm near-black + a signal-orange accent */
 :root, .dark, .light {
 
-  --c-bg: #0C0A09;
-
-  --c-surface: #15110F;
-
-  --c-surface-alt: #1D1714;
-
-  --c-text: #EEE9E3;
-
-  --c-text-secondary: #9D958C;
-
-  --c-faint: #5F5851;
-
-  --c-border: #29231F;
-
-  --c-border-accent: #3C3028;
-
-  --c-accent: #B85C38;
-
-  --c-accent-ink: #200B04;
+  /* Old legacy hardware: rustic brown chassis, phosphor-green signal */
+  --c-bg: #0E0A06;
+  --c-surface: #17110A;
+  --c-surface-alt: #20170B;
+  --c-text: #E9DFC9;
+  --c-text-secondary: #9E8C6F;
+  --c-faint: #5E4E38;
+  --c-border: #281E12;
+  --c-border-accent: #3B2C19;
+  --c-accent: #5FCE86;
+  --c-accent-ink: #0E1409;
 }
 
 @layer base {
