@@ -1,64 +1,106 @@
-import { useLocation } from "wouter";
-import { parseMarkdown } from "@/lib/markdown";
+import { useScrollReveal } from "@/lib/useScrollReveal";
 
-const mdFiles = import.meta.glob('../content/projects/*.md', { query: '?raw', import: 'default', eager: true });
+const projects = [
+  {
+    number: "004",
+    title: "SkillBridge",
+    accent: "amber" as const,
+    line: "Peer-to-peer skill exchange platform. Users barter knowledge instead of paying for courses.",
+    detail: "Full-stack matchmaking with session scheduling, profiles, and reviews. Solo-built from scratch.",
+    stack: "Node.js · MySQL · Express",
+    github: "https://github.com/AlcesOzdst",
+  },
+  {
+    number: "005",
+    title: "GNSS receiver build",
+    accent: "pink" as const,
+    line: "Custom GPS receiver parsing live satellite data from a Quectel L89 module.",
+    detail: "NMEA 0183 sentence parser over UART via CP2102 bridge. Sub-3m accuracy, GPX tracks around Pune.",
+    stack: "Python · UART · CP2102",
+  },
+  {
+    number: "006",
+    title: "Multi-sensor embedded firmware",
+    accent: "amber" as const,
+    line: "Bare-metal firmware for a C8051F340 driving four sensor peripherals on a single 8-bit bus.",
+    detail: "Register-level drivers for SSD1306 OLED, DHT11, HC-SR04, and PIR. Real-time dashboard on-device.",
+    stack: "C · I²C · SPI · GPIO",
+  },
+  {
+    number: "007",
+    title: "DDoS traffic classification",
+    accent: "pink" as const,
+    line: "ML pipeline that classifies DDoS attack patterns from raw packet captures.",
+    detail: "tshark → statistical flow features → labeled by vector (SYN flood, UDP amp, slowloris) → classifier + mitigation report.",
+    stack: "Python · tshark · scikit-learn",
+    github: "https://github.com/AlcesOzdst",
+  },
+];
 
-const projects = Object.entries(mdFiles).map(([path, raw]) => {
-  const { meta } = parseMarkdown(raw as string);
-  const id = path.split('/').pop()?.replace('.md', '') || '';
-
-  return {
-    id,
-    permissions: meta.permissions || "drwxr-xr-x",
-    size: meta.size || "4.0K",
-    name: meta.name || id,
-    desc: meta.desc || ""
-  };
-});
+const accentClass = {
+  amber: "entry-amber",
+  pink: "entry-pink",
+};
 
 export function Projects() {
-  const [, setLocation] = useLocation();
+  const ref = useScrollReveal();
 
   return (
-    <section id="projects" className="py-8 border-t border-primary/20 border-dashed">
-      <div className="container mx-auto px-4">
+    <section id="projects" className="section-spacing" ref={ref}>
+      <div className="page-container">
+        <h2 className="text-xl md:text-2xl font-serif font-semibold tracking-tight mb-2 reveal" data-delay="0">
+          Projects
+        </h2>
+        <p className="text-sm text-text-secondary mb-10 reveal" data-delay="30">
+          Things I've built, wired up, or trained.
+        </p>
 
-        <div className="text-sm md:text-base mb-6">
-          <span className="text-primary font-bold">guest@parthdoshi</span>
-          <span className="text-white">:</span>
-          <span className="text-blue-400">~/projects</span>
-          <span className="text-white">$</span> ls -la
+        <div className="space-y-8">
+          {projects.map((p, i) => (
+            <div
+              key={p.number}
+              className={`entry ${accentClass[p.accent]} reveal`}
+              data-delay={String(60 + i * 80)}
+            >
+              {/* Number */}
+              <span className="mono-label block mb-1.5" style={{ color: p.accent === "amber" ? "var(--c-amber)" : "var(--c-pink)" }}>
+                {p.number}
+              </span>
+
+              {/* Title */}
+              <h3 className="font-serif font-semibold text-base mb-1 leading-snug" style={{ fontVariationSettings: "'WONK' 1, 'opsz' 24" }}>
+                {p.title}
+              </h3>
+
+              {/* One-liner */}
+              <p className="text-sm text-text-secondary leading-relaxed mb-1">
+                {p.line}
+              </p>
+
+              {/* Detail */}
+              <p className="text-sm text-text-secondary leading-relaxed mb-2 opacity-75">
+                {p.detail}
+              </p>
+
+              {/* Stack + link */}
+              <div className="flex flex-wrap items-center gap-x-3">
+                <span className="mono-label text-[10px] opacity-50">
+                  {p.stack}
+                </span>
+                {p.github && (
+                  <a
+                    href={p.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mono-label text-[10px] hover:text-text transition-colors link-underline"
+                  >
+                    github ↗
+                  </a>
+                )}
+              </div>
+            </div>
+          ))}
         </div>
-
-        <div className="ml-4 overflow-x-auto text-xs sm:text-sm">
-          <table className="w-full text-left border-collapse min-w-[500px]">
-            <thead>
-              <tr className="text-muted-foreground border-b border-primary/20">
-                <th className="font-normal py-2 pr-4">PERMISSIONS</th>
-                <th className="font-normal py-2 pr-4">SIZE</th>
-                <th className="font-normal py-2 pr-4">NAME</th>
-                <th className="font-normal py-2">DESCRIPTION</th>
-              </tr>
-            </thead>
-            <tbody>
-              {projects.map((p, i) => (
-                <tr
-                  key={i}
-                  onClick={() => setLocation(`/projects/${p.id}`)}
-                  className="hover:bg-primary/10 transition-colors cursor-pointer group"
-                >
-                  <td className="py-2 pr-4 text-white/70">{p.permissions}</td>
-                  <td className="py-2 pr-4 text-white/70">{p.size}</td>
-                  <td className={`py-2 pr-4 font-bold group-hover:underline ${p.permissions.startsWith('d') ? 'text-blue-400' : 'text-primary'}`}>
-                    {p.name}
-                  </td>
-                  <td className="py-2 text-muted-foreground"># {p.desc}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
       </div>
     </section>
   );

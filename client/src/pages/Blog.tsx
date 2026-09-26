@@ -20,47 +20,34 @@ const posts = Object.entries(mdFiles).map(([path, raw]) => {
 
 export default function Blog() {
   return (
-    <div className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-black">
+    <div className="min-h-screen">
       <Nav />
-      <main className="container mx-auto px-4 py-12">
-        <div className="text-sm md:text-base mb-8">
-          <span className="text-primary font-bold">guest@parthdoshi</span>
-          <span className="text-white">:</span>
-          <span className="text-blue-400">~/blog</span>
-          <span className="text-white">$</span> ls -la --time-style=long-iso
-        </div>
+      <main className="page-container py-20 md:py-28">
+        <h1 className="text-2xl md:text-3xl font-serif font-bold tracking-tight mb-2">
+          Writing
+        </h1>
+        <p className="text-sm text-text-secondary mb-12">
+          Notes on cybersecurity, embedded systems, and building things.
+        </p>
 
-        <div className="ml-4 space-y-12">
+        <div className="space-y-10">
           {posts.map((post) => (
             <Link key={post.id} href={"/blog/" + post.id}>
-              <a className="block border-l border-primary/20 pl-6 hover:border-primary transition-colors group cursor-pointer">
-                <div className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-4 mb-2">
-                  <h2 className="text-xl font-bold text-white group-hover:text-primary transition-colors">
-                    {post.title}
-                  </h2>
-                  <div className="text-xs text-muted-foreground font-mono flex gap-3">
-                    <span>[{post.date}]</span>
-                    <span>[{post.readingTime} read]</span>
-                  </div>
-                </div>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+              <a className="group block">
+                <span className="mono-label text-[11px] block mb-1">
+                  {post.date} · {post.readingTime}
+                </span>
+
+                <h2 className="font-serif font-semibold text-lg text-text group-hover:opacity-70 transition-opacity mb-1" style={{ fontVariationSettings: "'WONK' 1, 'opsz' 24" }}>
+                  {post.title}
+                </h2>
+
+                <p className="text-sm text-text-secondary leading-relaxed max-w-lg">
                   {post.summary}
                 </p>
-                <div className="text-xs text-primary group-hover:underline inline-flex items-center gap-2">
-                  <span>&gt; cat {post.id}.md</span>
-                  <span className="terminal-cursor opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                </div>
               </a>
             </Link>
           ))}
-        </div>
-
-        <div className="text-sm md:text-base mt-16 mb-2 flex items-center">
-          <span className="text-primary font-bold">guest@parthdoshi</span>
-          <span className="text-white">:</span>
-          <span className="text-blue-400">~/blog</span>
-          <span className="text-white">$</span>
-          <span className="terminal-cursor"></span>
         </div>
       </main>
       <Footer />

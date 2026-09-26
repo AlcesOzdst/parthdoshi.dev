@@ -2,128 +2,228 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ── Design tokens ──────────────────────────────────────────────── */
 @theme inline {
-  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  /* Typography */
+  --font-serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', monospace;
 
-  --radius-sm: 0px;
-  --radius-md: 0px;
-  --radius-lg: 0px;
-  --radius-xl: 0px;
+  /* Semantic colors */
+  --color-bg: var(--c-bg);
+  --color-surface: var(--c-surface);
+  --color-surface-alt: var(--c-surface-alt);
+  --color-text: var(--c-text);
+  --color-text-secondary: var(--c-text-secondary);
+  --color-border: var(--c-border);
+  --color-border-accent: var(--c-border-accent);
 
-  --color-background: hsl(var(--background));
-  --color-foreground: hsl(var(--foreground));
-  --color-card: hsl(var(--card));
-  --color-card-foreground: hsl(var(--card-foreground));
-  --color-popover: hsl(var(--popover));
-  --color-popover-foreground: hsl(var(--popover-foreground));
-  --color-primary: hsl(var(--primary));
-  --color-primary-foreground: hsl(var(--primary-foreground));
-  --color-secondary: hsl(var(--secondary));
-  --color-secondary-foreground: hsl(var(--secondary-foreground));
-  --color-muted: hsl(var(--muted));
-  --color-muted-foreground: hsl(var(--muted-foreground));
-  --color-accent: hsl(var(--accent));
-  --color-accent-foreground: hsl(var(--accent-foreground));
-  --color-destructive: hsl(var(--destructive));
-  --color-destructive-foreground: hsl(var(--destructive-foreground));
-  --color-border: hsl(var(--border));
-  --color-input: hsl(var(--input));
-  --color-ring: hsl(var(--ring));
+  /* Accents — used sparingly as border/text tints, NOT backgrounds */
+  --color-coral: var(--c-coral);
+  --color-amber: var(--c-amber);
+  --color-pink: var(--c-pink);
 }
 
-/* RAW TERMINAL THEME */
+/* ── Light mode ─────────────────────────────────────────────────── */
 :root {
-  --background: 0 0% 0%;
-  --foreground: 120 100% 50%;
+  --c-bg: #FAF8F3;
+  --c-surface: #F5F2EB;
+  --c-surface-alt: #EFECE4;
+  --c-text: #2C2C2A;
+  --c-text-secondary: #7A7872;
+  --c-border: #DDD9D0;
+  --c-border-accent: #C8C3B8;
 
-  --card: 0 0% 0%;
-  --card-foreground: 120 100% 50%;
-
-  --popover: 0 0% 0%;
-  --popover-foreground: 120 100% 50%;
-
-  --primary: 120 100% 50%;
-  --primary-foreground: 0 0% 0%;
-
-  --secondary: 0 0% 0%;
-  --secondary-foreground: 120 100% 40%;
-
-  --muted: 0 0% 0%;
-  --muted-foreground: 120 100% 30%;
-
-  --accent: 30 100% 50%;
-  --accent-foreground: 0 0% 0%;
-
-  --destructive: 0 100% 50%;
-  --destructive-foreground: 0 0% 0%;
-
-  --border: 120 100% 20%;
-  --input: 0 0% 0%;
-  --ring: 120 100% 50%;
-
-  --radius: 0px;
+  --c-coral: #A8432A;
+  --c-amber: #8B5E14;
+  --c-pink: #8A3355;
 }
 
+/* ── Dark mode ──────────────────────────────────────────────────── */
+.dark {
+  --c-bg: #1C1B18;
+  --c-surface: #252320;
+  --c-surface-alt: #2E2C28;
+  --c-text: #D8D4CC;
+  --c-text-secondary: #8C8880;
+  --c-border: #3A3733;
+  --c-border-accent: #4A4640;
+
+  --c-coral: #D4836A;
+  --c-amber: #C9973E;
+  --c-pink: #C46B8F;
+}
+
+/* ── Base ────────────────────────────────────────────────────────── */
 @layer base {
   * {
-    @apply border-border;
+    border-color: var(--c-border);
   }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
   body {
-    @apply font-mono antialiased bg-background text-foreground selection:bg-primary selection:text-black overflow-x-hidden;
+    @apply font-sans antialiased overflow-x-hidden;
+    background-color: var(--c-bg);
+    color: var(--c-text);
+    font-size: 15px;
+    line-height: 1.7;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-normal;
+    @apply font-serif;
+    line-height: 1.2;
+    font-variation-settings: 'WONK' 1, 'opsz' 36;
   }
 
-  /* Smooth scrolling for anchor links */
-  html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 3rem;
+  h1 {
+    font-variation-settings: 'WONK' 1, 'opsz' 72;
+  }
+
+  ::selection {
+    background: #8B5E1433;
+    color: var(--c-text);
+  }
+
+  .dark ::selection {
+    background: #C9973E33;
   }
 }
 
+/* ── Utilities ───────────────────────────────────────────────────── */
 @layer utilities {
-  .terminal-cursor {
-    display: inline-block;
-    width: 0.6em;
-    height: 1.2em;
-    background-color: hsl(var(--primary));
-    animation: blink 1s step-end infinite;
-    vertical-align: text-bottom;
-    margin-left: 2px;
+
+  /* Page container — narrower for editorial feel */
+  .page-container {
+    @apply mx-auto px-6;
+    max-width: 640px;
   }
 
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+  /* Section spacing */
+  .section-spacing {
+    @apply py-16 md:py-24;
   }
 
-  .text-shadow-glow {
-    text-shadow: 0 0 5px hsla(var(--primary)/0.5);
+  /* ── Entry: the core repeating unit (replaces cards) ────────── */
+  /* A thin left border accent + text. No background. No box. */
+  .entry {
+    padding-left: 1.25rem;
+    border-left: 2px solid var(--c-border);
+    transition: border-color 0.2s ease-out;
+  }
+  .entry:hover {
+    border-left-color: var(--c-border-accent);
+  }
+  .entry-coral {
+    border-left-color: var(--c-coral);
+  }
+  .entry-coral:hover {
+    border-left-color: var(--c-coral);
+    opacity: 0.92;
+  }
+  .entry-amber {
+    border-left-color: var(--c-amber);
+  }
+  .entry-amber:hover {
+    border-left-color: var(--c-amber);
+    opacity: 0.92;
+  }
+  .entry-pink {
+    border-left-color: var(--c-pink);
+  }
+  .entry-pink:hover {
+    border-left-color: var(--c-pink);
+    opacity: 0.92;
   }
 
-  /* Subtle scanline overlay — less aggressive than Replit's version */
-  body::after {
-    content: " ";
-    display: block;
-    position: fixed;
-    top: 0;
+  /* Monospace label — the quiet technical signature */
+  .mono-label {
+    @apply font-mono;
+    color: var(--c-text-secondary);
+    font-size: 0.6875rem;
+    letter-spacing: 0.03em;
+    line-height: 1.4;
+  }
+
+  /* Link underline animation */
+  .link-underline {
+    position: relative;
+    text-decoration: none;
+  }
+  .link-underline::after {
+    content: '';
+    position: absolute;
     left: 0;
-    bottom: 0;
-    right: 0;
-    background: linear-gradient(
-      rgba(18, 16, 16, 0) 50%,
-      rgba(0, 0, 0, 0.15) 50%
-    );
-    z-index: 2;
-    background-size: 100% 2px;
-    pointer-events: none;
-    opacity: 0.4;
+    bottom: -2px;
+    width: 100%;
+    height: 1px;
+    background-color: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease-out;
+  }
+  .link-underline:hover::after {
+    transform: scaleX(1);
   }
 
-  /* Subtle green ambient glow on text */
-  .glow-text {
-    text-shadow: 0 0 8px hsla(120, 100%, 50%, 0.3), 0 0 20px hsla(120, 100%, 50%, 0.1);
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+  .reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Pill button */
+  .btn-pill {
+    @apply inline-flex items-center gap-2 font-sans font-medium;
+    font-size: 13px;
+    padding: 0.5rem 1.125rem;
+    border-radius: 999px;
+    transition: background-color 0.2s ease-out, opacity 0.15s ease-out;
+  }
+  .btn-pill-primary {
+    background-color: var(--c-text);
+    color: var(--c-bg);
+  }
+  .btn-pill-primary:hover {
+    opacity: 0.85;
+  }
+  .btn-pill-secondary {
+    color: var(--c-text);
+    border: 1px solid var(--c-border);
+  }
+  .btn-pill-secondary:hover {
+    background-color: var(--c-surface);
+  }
+
+  /* Divider — thin line between entries */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--c-border);
+    margin: 0;
+  }
+}
+
+/* ── Reduced motion ─────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  html {
+    scroll-behavior: auto;
   }
 }
