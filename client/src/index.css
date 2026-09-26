@@ -36,8 +36,8 @@
   --c-faint: #5C554B;
   --c-border: #262019;
   --c-border-accent: #38302818;
-  --c-accent: #FF6A3D;      /* signal orange — warm, curious, awake */
-  --c-accent-ink: #0D0C0B;
+  --c-accent: #52E0C4;      /* signal aqua — calm, legible, alive */
+  --c-accent-ink: #06110E;
 }
 
 @layer base {

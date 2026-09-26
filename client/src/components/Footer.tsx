@@ -4,11 +4,11 @@ export function Footer() {
     <footer className="border-t border-border pt-14 pb-10 overflow-hidden">
       <div className="shell">
         <div
-          className="font-display font-extrabold tracking-[-0.04em] leading-[0.8] text-text/90 select-none"
-          style={{ fontSize: "clamp(3rem, 16vw, 12rem)" }}
+          className="display tracking-[-0.02em] leading-none text-text/90 select-none"
+          style={{ fontSize: "clamp(1.8rem, 6vw, 3.5rem)" }}
           aria-hidden="true"
         >
-          PARTH<span className="accent">.</span>
+          Parth Doshi<span className="accent">.</span>
         </div>
 
         <div className="mt-8 flex flex-col md:flex-row md:items-center justify-between gap-4 border-t border-border pt-6">
