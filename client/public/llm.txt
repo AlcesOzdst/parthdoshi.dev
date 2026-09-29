@@ -67,13 +67,9 @@ He is a security researcher focusing on:
 - Built customized firmware for the ESP32 Marauder wireless security research suite.
 - Added support for NRF24L01 2.4 GHz transceivers, custom OLED navigation, and optimized menu controls for hardware penetration testing.
 
-### GNSS Receiver Build
-- **Focus**: Python, UART, CP2102 Bridge, NMEA 0183
-- Constructed a hardware GPS receiver parsing real-time satellite telemetry over UART with sub-3m accuracy, recording GPX tracks.
-
-### Multi-Sensor Embedded Firmware
-- **Focus**: C, C8051F340, Register-Level Programming, I²C, SPI, GPIO
-- Developed bare-metal firmware driving an SSD1306 OLED display, DHT11 temperature/humidity sensor, HC-SR04 ultrasonic distance sensor, and PIR sensor on a shared bus.
+### C8051 Bare-Metal Sensor Hub
+- **Focus**: Bare-Metal C, C8051F340, Register-Level Programming, I²C, SPI, GPIO
+- Developed bare-metal firmware driving an SSD1306 OLED display, DHT11 temperature/humidity sensor, HC-SR04 ultrasonic distance sensor, and PIR sensor on a shared 8-bit bus.
 
 ### DDoS Traffic Classification & Mitigation
 - **Focus**: Python, tshark, Scikit-Learn

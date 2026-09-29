@@ -5,20 +5,20 @@ const projects = [
   {
     number: "01",
     title: "ESP32 Marauder Custom Firmware",
-    desc: "Customized ESP32 Marauder firmware for wireless security experimentation — integrated NRF24L01 transceivers, custom OLED UI, and menu navigation over SPI, I²C, and 2.4GHz RF communication.",
+    desc: "Customized ESP32 Marauder firmware for wireless security experimentation - integrated NRF24L01 transceivers, custom OLED UI, and menu navigation over SPI, I²C, and 2.4GHz RF communication.",
     tags: ["ESP32", "PlatformIO", "Embedded C++", "NRF24L01"],
   },
   {
     number: "02",
-    title: "GNSS Receiver Build",
-    desc: "Custom GPS receiver parsing live satellite data — an NMEA 0183 parser over UART via a CP2102 bridge. Sub-3m accuracy, logging GPX tracks around Pune.",
-    tags: ["Python", "UART", "CP2102"],
+    title: "Responsible Disclosure: ERP IDOR",
+    desc: "Discovered and reported an Insecure Direct Object Reference (IDOR) flaw in university ERP portal by manipulating PRN parameter tokens - demonstrated unauthorized student record access, mapped severity via CVSS v3.1, and prepared remediation report.",
+    tags: ["Burp Suite", "Web Security", "CVSS v3.1", "IDOR"],
   },
   {
     number: "03",
-    title: "Multi-Sensor Embedded Firmware",
-    desc: "Bare-metal firmware for a C8051F340 driving four sensor peripherals on one 8-bit bus — register-level drivers for an SSD1306 OLED, DHT11, HC-SR04 and PIR.",
-    tags: ["C", "I²C", "SPI", "GPIO"],
+    title: "C8051 Bare-Metal Sensor Hub",
+    desc: "Bare-metal firmware for a Silicon Labs C8051F340 driving four peripherals on one 8-bit bus - hand-written register-level drivers for an SSD1306 OLED, DHT11, HC-SR04, and PIR sensor.",
+    tags: ["Bare-Metal C", "C8051F340", "I²C", "SPI", "GPIO"],
   },
   {
     number: "04",
