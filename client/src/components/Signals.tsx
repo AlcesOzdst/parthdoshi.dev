@@ -4,22 +4,16 @@ import { Plus } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 
 /* ── graphics ─────────────────────────────────────────────── */
-const cwAngles = [0, 18, 36, 54, 72, 90, 108, 126, 144, 162, 180, 198, 216, 234, 252, 270, 288, 306, 324, 342];
-const twAngles = [0, 22.5, 45, 67.5, 90, 112.5, 135, 157.5, 180, 202.5, 225, 247.5, 270, 292.5, 315, 337.5];
-const escAngles = [0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330];
+const barrelTeeth = Array.from({ length: 24 }, (_, i) => (i * 360) / 24);
+const pinionTeeth = Array.from({ length: 12 }, (_, i) => (i * 360) / 12);
 const poiseAngles = [15, 45, 75, 105, 135, 165, 195, 225, 255, 285, 315, 345];
-const balSpokes = [
-  "M 250.0 70.0 Q 262.5 73.5 272.5 84.0",
-  "M 241.0 75.2 Q 231.8 84.2 218.0 87.5",
-  "M 241.0 64.8 Q 237.7 52.0 241.5 38.5",
-];
-const hairspringD = "M 244.5 69.7 L 244.2 70.5 L 243.6 71.2 L 242.8 71.7 L 241.9 72.0 L 240.8 72.1 L 239.7 71.9 L 238.6 71.3 L 237.7 70.5 L 237.0 69.4 L 236.5 68.2 L 236.4 66.7 L 236.7 65.3 L 237.4 63.9 L 238.4 62.7 L 239.8 61.7 L 241.4 61.1 L 243.1 61.0 L 244.9 61.2 L 246.7 62.0 L 248.2 63.2 L 249.4 64.8 L 250.2 66.7 L 250.5 68.8 L 250.3 71.0 L 249.5 73.1 L 248.1 75.0 L 246.3 76.5 L 244.1 77.5 L 241.7 78.0 L 239.1 77.8 L 236.6 77.0 L 234.4 75.5 L 232.6 73.5 L 231.2 71.1 L 230.6 68.3 L 230.6 65.4 L 231.4 62.6 L 232.9 59.9 L 235.1 57.7 L 237.8 56.1 L 240.8 55.2 L 244.1 55.1 L 247.3 55.8 L 250.4 57.3 L 252.9 59.6 L 254.9 62.5 L 256.1 65.8 L 256.5 69.4 L 255.9 73.0 L 254.4 76.5 L 252.0 79.5 L 249.0 81.8 L 245.4 83.4 L 241.4 84.0 L 237.4 83.5 L 233.6 82.1 L 230.2 79.8 L 227.4 76.6 L 225.5 72.7 L 224.6 68.5";
+const hairspringD = "M 2.1 1.2 L 1.9 1.8 L 1.5 2.5 L 0.9 3.0 L 0.1 3.3 L -0.9 3.4 L -1.8 3.3 L -2.8 2.9 L -3.6 2.1 L -4.3 1.2 L -4.7 0.0 L -4.7 -1.3 L -4.4 -2.6 L -3.8 -3.8 L -2.8 -4.8 L -1.5 -5.6 L 0.1 -6.0 L 1.7 -6.0 L 3.3 -5.6 L 4.8 -4.7 L 6.0 -3.3 L 6.9 -1.7 L 7.4 0.2 L 7.3 2.1 L 6.7 4.1 L 5.5 5.8 L 3.9 7.3 L 1.9 8.3 L -0.3 8.7 L -2.6 8.5 L -4.9 7.7 L -6.9 6.4 L -8.5 4.4 L -9.6 2.1 L -10.0 -0.5 L -9.8 -3.1 L -8.8 -5.7 L -7.2 -8.0 L -4.9 -9.8 L -2.3 -10.9 L 0.7 -11.4 L 3.7 -11.0 L 6.6 -9.9 L 9.1 -7.9 L 11.0 -5.4 L 12.3 -2.4 L 12.7 0.9 L 12.2 4.3 L 10.9 7.5 L 8.7 10.2 L 5.8 12.3";
 
 function CaliberScrew({ cx, cy }: { cx: number; cy: number }) {
   return (
     <g>
-      <circle cx={cx} cy={cy} r={2.4} stroke="var(--c-border)" strokeWidth={1} fill="var(--c-bg)" />
-      <line x1={cx - 1.6} y1={cy - 1.6} x2={cx + 1.6} y2={cy + 1.6} stroke="var(--c-border)" strokeWidth={0.8} />
+      <circle cx={cx} cy={cy} r={2.2} stroke="var(--c-border)" strokeWidth={0.9} fill="var(--c-bg)" />
+      <line x1={cx - 1.5} y1={cy - 1.5} x2={cx + 1.5} y2={cy + 1.5} stroke="var(--c-border)" strokeWidth={0.7} />
     </g>
   );
 }
@@ -28,222 +22,321 @@ function WatchMovement() {
   const reduce = useReducedMotion();
   return (
     <svg viewBox="0 0 300 140" className="w-full h-[110px]" fill="none" aria-hidden="true">
-      {/* Skeleton caliber plates & bridges */}
-      <path
-        d="M 25 35 C 50 18, 120 18, 180 24 C 230 20, 275 35, 285 70 C 290 100, 260 122, 200 122 C 140 122, 60 124, 25 95 C 15 75, 15 50, 25 35 Z"
-        stroke="var(--c-border)"
-        strokeWidth="1"
-        strokeDasharray="4 4"
-        opacity="0.35"
-      />
-      <path
-        d="M 40 45 C 65 32, 105 32, 142 42 C 160 48, 180 58, 198 56"
-        stroke="var(--c-border)"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-      <CaliberScrew cx={40} cy={45} />
-      <CaliberScrew cx={142} cy={42} />
-      <CaliberScrew cx={52} cy={98} />
+      {/* Symmetrical Caliber Flange & Chassis */}
+      <rect x="10" y="8" width="280" height="124" rx="18" stroke="var(--c-border)" strokeWidth="1.2" opacity="0.35" fill="none" />
+      <rect x="16" y="14" width="268" height="112" rx="14" stroke="var(--c-border)" strokeWidth="0.8" strokeDasharray="3 3" opacity="0.2" fill="none" />
 
-      {/* Drive / Center Wheel (cx: 72, cy: 70) */}
-      <motion.g
-        style={{ originX: "72px", originY: "70px" }}
-        animate={reduce ? {} : { rotate: -360 }}
-        transition={{ repeat: Infinity, duration: 24, ease: "linear" }}
-      >
-        <circle cx="72" cy="70" r="31.5" stroke="var(--c-border)" strokeWidth="1.5" />
-        <circle cx="72" cy="70" r="26" stroke="var(--c-border)" strokeWidth="0.8" opacity="0.6" />
-        {cwAngles.map((deg) => {
-          const rad = (deg * Math.PI) / 180;
-          return (
+      {/* Perimeter Mounting Screws */}
+      <CaliberScrew cx={22} cy={20} />
+      <CaliberScrew cx={150} cy={14} />
+      <CaliberScrew cx={278} cy={20} />
+      <CaliberScrew cx={278} cy={120} />
+      <CaliberScrew cx={150} cy={126} />
+      <CaliberScrew cx={22} cy={120} />
+
+      {/* Symmetrical Structural Bridges (Arnold & Son 7-bridge architecture) */}
+      {/* Left Horizontal Barrel Bridge */}
+      <path d="M 18 64 L 62 67 L 72 70 L 62 73 L 18 76 Z" stroke="var(--c-border)" strokeWidth="1.5" fill="var(--c-bg)" />
+      <CaliberScrew cx={26} cy={70} />
+
+      {/* Right Horizontal Barrel Bridge */}
+      <path d="M 282 64 L 238 67 L 228 70 L 238 73 L 282 76 Z" stroke="var(--c-border)" strokeWidth="1.5" fill="var(--c-bg)" />
+      <CaliberScrew cx={274} cy={70} />
+
+      {/* Diagonal Top Bridges */}
+      <path d="M 45 16 L 85 45 M 255 16 L 215 45" stroke="var(--c-border)" strokeWidth="1.2" opacity="0.45" />
+      <CaliberScrew cx={45} cy={16} />
+      <CaliberScrew cx={255} cy={16} />
+
+      {/* Upper Escapement Bridge */}
+      <path d="M 136 34 L 150 26 L 164 34" stroke="var(--c-border)" strokeWidth="1.3" strokeLinecap="round" fill="none" />
+      <CaliberScrew cx={150} cy={26} />
+
+      {/* Left Twin Barrel (cx: 72, cy: 70, r: 28) */}
+      <g transform="translate(72, 70)">
+        <g>
+          {!reduce && (
+            <animateTransform
+              attributeName="transform"
+              type="rotate"
+              from="0"
+              to="360"
+              dur="28s"
+              repeatCount="indefinite"
+            />
+          )}
+          <circle cx="0" cy="0" r="28" stroke="var(--c-border)" strokeWidth="1.4" fill="none" />
+          <circle cx="0" cy="0" r="23" stroke="var(--c-border)" strokeWidth="0.8" opacity="0.5" fill="none" />
+          {barrelTeeth.map((deg) => {
+            const rad = (deg * Math.PI) / 180;
+            return (
+              <line
+                key={deg}
+                x1={27 * Math.cos(rad)}
+                y1={27 * Math.sin(rad)}
+                x2={30.5 * Math.cos(rad)}
+                y2={30.5 * Math.sin(rad)}
+                stroke="var(--c-border)"
+                strokeWidth="1.3"
+                strokeLinecap="round"
+              />
+            );
+          })}
+          {[0, 72, 144, 216, 288].map((deg) => {
+            const rad = (deg * Math.PI) / 180;
+            return (
+              <circle
+                key={deg}
+                cx={15 * Math.cos(rad)}
+                cy={15 * Math.sin(rad)}
+                r="4.8"
+                stroke="var(--c-border)"
+                strokeWidth="1"
+                fill="none"
+              />
+            );
+          })}
+          <circle cx="0" cy="0" r="7" stroke="var(--c-border)" strokeWidth="0.8" opacity="0.6" fill="none" />
+          <circle cx="0" cy="0" r="4.5" stroke="#D4AF37" strokeWidth="1" fill="var(--c-bg)" />
+          <circle cx="0" cy="0" r="2.6" fill="#E5484D" />
+        </g>
+      </g>
+
+      {/* Right Twin Barrel (cx: 228, cy: 70, r: 28) */}
+      <g transform="translate(228, 70)">
+        <g>
+          {!reduce && (
+            <animateTransform
+              attributeName="transform"
+              type="rotate"
+              from="0"
+              to="-360"
+              dur="28s"
+              repeatCount="indefinite"
+            />
+          )}
+          <circle cx="0" cy="0" r="28" stroke="var(--c-border)" strokeWidth="1.4" fill="none" />
+          <circle cx="0" cy="0" r="23" stroke="var(--c-border)" strokeWidth="0.8" opacity="0.5" fill="none" />
+          {barrelTeeth.map((deg) => {
+            const rad = (deg * Math.PI) / 180;
+            return (
+              <line
+                key={deg}
+                x1={27 * Math.cos(rad)}
+                y1={27 * Math.sin(rad)}
+                x2={30.5 * Math.cos(rad)}
+                y2={30.5 * Math.sin(rad)}
+                stroke="var(--c-border)"
+                strokeWidth="1.3"
+                strokeLinecap="round"
+              />
+            );
+          })}
+          {[0, 72, 144, 216, 288].map((deg) => {
+            const rad = (deg * Math.PI) / 180;
+            return (
+              <circle
+                key={deg}
+                cx={15 * Math.cos(rad)}
+                cy={15 * Math.sin(rad)}
+                r="4.8"
+                stroke="var(--c-border)"
+                strokeWidth="1"
+                fill="none"
+              />
+            );
+          })}
+          <circle cx="0" cy="0" r="7" stroke="var(--c-border)" strokeWidth="0.8" opacity="0.6" fill="none" />
+          <circle cx="0" cy="0" r="4.5" stroke="#D4AF37" strokeWidth="1" fill="var(--c-bg)" />
+          <circle cx="0" cy="0" r="2.6" fill="#E5484D" />
+        </g>
+      </g>
+
+      {/* Left Transmission Pinion (cx: 114, cy: 70, r: 14) */}
+      <g transform="translate(114, 70)">
+        <g>
+          {!reduce && (
+            <animateTransform
+              attributeName="transform"
+              type="rotate"
+              from="0"
+              to="-360"
+              dur="14s"
+              repeatCount="indefinite"
+            />
+          )}
+          <circle cx="0" cy="0" r="14" stroke="var(--c-border)" strokeWidth="1.2" fill="none" />
+          {pinionTeeth.map((deg) => {
+            const rad = (deg * Math.PI) / 180;
+            return (
+              <line
+                key={deg}
+                x1={13 * Math.cos(rad)}
+                y1={13 * Math.sin(rad)}
+                x2={15.5 * Math.cos(rad)}
+                y2={15.5 * Math.sin(rad)}
+                stroke="var(--c-border)"
+                strokeWidth="1.3"
+                strokeLinecap="round"
+              />
+            );
+          })}
+          {[0, 90, 180, 270].map((deg) => (
             <line
               key={deg}
-              x1={72 + 31.5 * Math.cos(rad)}
-              y1={70 + 31.5 * Math.sin(rad)}
-              x2={72 + 35.5 * Math.cos(rad)}
-              y2={70 + 35.5 * Math.sin(rad)}
+              x1="0"
+              y1="0"
+              x2={13 * Math.cos((deg * Math.PI) / 180)}
+              y2={13 * Math.sin((deg * Math.PI) / 180)}
               stroke="var(--c-border)"
-              strokeWidth="1.8"
-              strokeLinecap="round"
+              strokeWidth="0.9"
             />
-          );
-        })}
-        {[0, 72, 144, 216, 288].map((deg) => {
-          const rad = (deg * Math.PI) / 180;
-          return (
-            <circle
-              key={deg}
-              cx={72 + 16 * Math.cos(rad)}
-              cy={70 + 16 * Math.sin(rad)}
-              r="4.8"
-              stroke="var(--c-border)"
-              strokeWidth="1"
-              fill="none"
-            />
-          );
-        })}
-        <circle cx="72" cy="70" r="5.5" stroke="var(--c-border)" strokeWidth="1" fill="var(--c-bg)" />
-        <line x1="69.5" y1="67.5" x2="74.5" y2="72.5" stroke="var(--c-border)" strokeWidth="0.9" />
-      </motion.g>
+          ))}
+          <circle cx="0" cy="0" r="2.2" fill="#E5484D" />
+        </g>
+      </g>
 
-      {/* Third Wheel (cx: 128, cy: 62) - Meshes with Center Wheel */}
-      <motion.g
-        style={{ originX: "128px", originY: "62px" }}
-        animate={reduce ? {} : { rotate: 360 }}
-        transition={{ repeat: Infinity, duration: 12, ease: "linear" }}
-      >
-        <circle cx="128" cy="62" r="21.5" stroke="var(--c-border)" strokeWidth="1.4" />
-        <circle cx="128" cy="62" r="16.5" stroke="var(--c-border)" strokeWidth="0.8" opacity="0.6" />
-        {twAngles.map((deg) => {
-          const rad = (deg * Math.PI) / 180;
-          return (
+      {/* Right Transmission Pinion (cx: 186, cy: 70, r: 14) */}
+      <g transform="translate(186, 70)">
+        <g>
+          {!reduce && (
+            <animateTransform
+              attributeName="transform"
+              type="rotate"
+              from="0"
+              to="360"
+              dur="14s"
+              repeatCount="indefinite"
+            />
+          )}
+          <circle cx="0" cy="0" r="14" stroke="var(--c-border)" strokeWidth="1.2" fill="none" />
+          {pinionTeeth.map((deg) => {
+            const rad = (deg * Math.PI) / 180;
+            return (
+              <line
+                key={deg}
+                x1={13 * Math.cos(rad)}
+                y1={13 * Math.sin(rad)}
+                x2={15.5 * Math.cos(rad)}
+                y2={15.5 * Math.sin(rad)}
+                stroke="var(--c-border)"
+                strokeWidth="1.3"
+                strokeLinecap="round"
+              />
+            );
+          })}
+          {[0, 90, 180, 270].map((deg) => (
             <line
               key={deg}
-              x1={128 + 21.5 * Math.cos(rad)}
-              y1={62 + 21.5 * Math.sin(rad)}
-              x2={128 + 25.0 * Math.cos(rad)}
-              y2={62 + 25.0 * Math.sin(rad)}
+              x1="0"
+              y1="0"
+              x2={13 * Math.cos((deg * Math.PI) / 180)}
+              y2={13 * Math.sin((deg * Math.PI) / 180)}
               stroke="var(--c-border)"
-              strokeWidth="1.6"
-              strokeLinecap="round"
+              strokeWidth="0.9"
             />
-          );
-        })}
-        {[0, 90, 180, 270].map((deg) => {
-          const rad0 = (deg * Math.PI) / 180;
-          const rad1 = ((deg + 20) * Math.PI) / 180;
-          return (
-            <path
-              key={deg}
-              d={`M ${128 + 6 * Math.cos(rad0)} ${62 + 6 * Math.sin(rad0)} Q ${128 + 12 * Math.cos(rad1)} ${62 + 12 * Math.sin(rad1)} ${128 + 21.5 * Math.cos(rad1)} ${62 + 21.5 * Math.sin(rad1)}`}
-              stroke="var(--c-border)"
-              strokeWidth="1"
-              fill="none"
+          ))}
+          <circle cx="0" cy="0" r="2.2" fill="#E5484D" />
+        </g>
+      </g>
+
+      {/* Pallet Fork / Anchor (pivot cx: 150, cy: 48) */}
+      <g transform="translate(150, 48)">
+        <g>
+          {!reduce && (
+            <animateTransform
+              attributeName="transform"
+              type="rotate"
+              values="-8; 8; -8"
+              keyTimes="0; 0.5; 1"
+              dur="0.42s"
+              repeatCount="indefinite"
+              calcMode="spline"
+              keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"
             />
-          );
-        })}
-        <circle cx="128" cy="62" r="5" stroke="#D4AF37" strokeWidth="1" fill="none" />
-        <circle cx="128" cy="62" r="3.2" fill="#E5484D" />
-      </motion.g>
+          )}
+          <circle cx="0" cy="0" r="1.8" fill="var(--c-border)" />
+          <path d="M 0 0 L -8 7 M 0 0 L 8 7 M 0 0 L 0 14" stroke="var(--c-border)" strokeWidth="1.3" strokeLinecap="round" />
+          <rect x="-9.5" y="6" width="3" height="3" rx="0.5" fill="#E5484D" />
+          <rect x="6.5" y="6" width="3" height="3" rx="0.5" fill="#E5484D" />
+          <path d="M -2.5 12 L 0 14.5 L 2.5 12" stroke="var(--c-border)" strokeWidth="1" fill="none" />
+        </g>
+      </g>
 
-      {/* Escape Wheel (cx: 174, cy: 76) - Swiss club teeth */}
-      <motion.g
-        style={{ originX: "174px", originY: "76px" }}
-        animate={reduce ? {} : { rotate: -360 }}
-        transition={{ repeat: Infinity, duration: 4.2, ease: "linear" }}
-      >
-        <circle cx="174" cy="76" r="14" stroke="var(--c-border)" strokeWidth="1.2" />
-        {escAngles.map((deg) => {
-          const rad = (deg * Math.PI) / 180;
-          const radClub = rad + 0.22;
-          const x1 = 174 + 13 * Math.cos(rad);
-          const y1 = 76 + 13 * Math.sin(rad);
-          const x2 = 174 + 17.5 * Math.cos(rad);
-          const y2 = 76 + 17.5 * Math.sin(rad);
-          const x3 = 174 + 18.5 * Math.cos(radClub);
-          const y3 = 76 + 18.5 * Math.sin(radClub);
-          return (
-            <path
-              key={deg}
-              d={`M ${x1} ${y1} L ${x2} ${y2} L ${x3} ${y3}`}
-              stroke="var(--c-border)"
-              strokeWidth="1.3"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              fill="none"
+      {/* Central Grand Balance Wheel (cx: 150, cy: 70, r: 26) - The Ticking Heart */}
+      <g transform="translate(150, 70)">
+        <g>
+          {!reduce && (
+            <animateTransform
+              attributeName="transform"
+              type="rotate"
+              values="-38; 38; -38"
+              keyTimes="0; 0.5; 1"
+              dur="0.42s"
+              repeatCount="indefinite"
+              calcMode="spline"
+              keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"
             />
-          );
-        })}
-        <circle cx="174" cy="76" r="2.4" fill="#E5484D" />
-      </motion.g>
+          )}
+          <circle cx="0" cy="0" r="26" stroke="var(--c-accent)" strokeWidth="1.8" fill="none" />
+          <circle cx="0" cy="0" r="23" stroke="var(--c-accent)" strokeWidth="0.8" opacity="0.4" fill="none" />
 
-      {/* Swiss Pallet Fork (pivot cx: 198, cy: 56) */}
-      <motion.g
-        style={{ originX: "198px", originY: "56px" }}
-        animate={reduce ? {} : { rotate: [-8, 8, -8] }}
-        transition={{ repeat: Infinity, duration: 0.42, ease: "easeInOut" }}
-      >
-        <circle cx="198" cy="56" r="2" fill="var(--c-border)" />
-        <path
-          d="M 198 56 L 186 64 M 198 56 L 192 72 M 198 56 L 217 64"
-          stroke="var(--c-border)"
-          strokeWidth="1.4"
-          strokeLinecap="round"
-        />
-        <rect x="184" y="62.5" width="3" height="4" rx="0.5" fill="#E5484D" />
-        <rect x="190.5" y="70" width="3" height="4" rx="0.5" fill="#E5484D" />
-        <path d="M 215 62 L 218.5 64 L 215 66" stroke="var(--c-border)" strokeWidth="1.2" fill="none" />
-      </motion.g>
+          {/* Microstella poise adjustment weights */}
+          {poiseAngles.map((deg) => {
+            const rad = (deg * Math.PI) / 180;
+            return (
+              <circle
+                key={deg}
+                cx={26 * Math.cos(rad)}
+                cy={26 * Math.sin(rad)}
+                r="1.1"
+                fill="#D4AF37"
+              />
+            );
+          })}
 
-      {/* Balance Wheel (cx: 244, cy: 70) - The Ticking Heart */}
-      <motion.g
-        style={{ originX: "244px", originY: "70px" }}
-        animate={reduce ? {} : { rotate: [-40, 40, -40] }}
-        transition={{ repeat: Infinity, duration: 0.42, ease: "easeInOut" }}
-      >
-        <circle cx="244" cy="70" r="34" stroke="var(--c-accent)" strokeWidth="1.8" />
-        <circle cx="244" cy="70" r="31" stroke="var(--c-accent)" strokeWidth="0.8" opacity="0.4" />
+          {/* 3 curved sweeping spokes (NO CROSSHAIRS / NO RETICLE) */}
+          <path d="M 5 0 Q 14 5 25 7" stroke="var(--c-accent)" strokeWidth="1.4" strokeLinecap="round" fill="none" />
+          <path d="M -2.5 4.3 Q -3 15 -19 16" stroke="var(--c-accent)" strokeWidth="1.4" strokeLinecap="round" fill="none" />
+          <path d="M -2.5 -4.3 Q -12 -10 -15 -20" stroke="var(--c-accent)" strokeWidth="1.4" strokeLinecap="round" fill="none" />
 
-        {/* Microstella poise adjustment weights */}
-        {poiseAngles.map((deg) => {
-          const rad = (deg * Math.PI) / 180;
-          return (
-            <circle
-              key={deg}
-              cx={244 + 34 * Math.cos(rad)}
-              cy={70 + 34 * Math.sin(rad)}
-              r="1.2"
-              fill="#D4AF37"
-            />
-          );
-        })}
+          {/* Coiled Breguet Hairspring */}
+          <path
+            d={hairspringD}
+            stroke="var(--c-accent)"
+            strokeWidth="0.85"
+            strokeLinecap="round"
+            fill="none"
+            opacity="0.85"
+          />
 
-        {/* 3 curved sweeping spokes */}
-        {balSpokes.map((d, i) => (
-          <path key={i} d={d} stroke="var(--c-accent)" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-        ))}
+          {/* Impulse roller ruby pin */}
+          <circle cx="0" cy="-6" r="1.4" fill="#E5484D" />
+        </g>
+      </g>
 
-        {/* Coiled Breguet Hairspring */}
-        <path
-          d={hairspringD}
-          stroke="var(--c-accent)"
-          strokeWidth="0.9"
-          strokeLinecap="round"
-          fill="none"
-          opacity="0.85"
-        />
+      {/* Central Triangular Balance Cock (Suspension Bridge) */}
+      <path d="M 130 118 L 150 70 L 170 118" stroke="var(--c-accent)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+      <path d="M 137 114 L 150 79 L 163 114" stroke="var(--c-border)" strokeWidth="1" opacity="0.5" fill="none" />
+      <CaliberScrew cx={130} cy={118} />
+      <CaliberScrew cx={170} cy={118} />
 
-        {/* Impulse roller ruby pin */}
-        <circle cx="236.5" cy="69" r="1.5" fill="#E5484D" />
-      </motion.g>
-
-      {/* Balance Cock & Incabloc Shock Setting */}
+      {/* Top Incabloc Shock Setting holding the balance staff */}
+      <circle cx="150" cy="70" r="5.5" stroke="#D4AF37" strokeWidth="1.2" fill="var(--c-bg)" />
+      <circle cx="150" cy="70" r="3.2" fill="#E5484D" />
       <path
-        d="M 188 24 C 210 22, 234 42, 244 70"
-        stroke="var(--c-accent)"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-        opacity="0.7"
-        fill="none"
-      />
-      <CaliberScrew cx={188} cy={24} />
-
-      <circle cx="244" cy="70" r="6" stroke="#D4AF37" strokeWidth="1.2" fill="var(--c-bg)" />
-      <circle cx="244" cy="70" r="3.4" fill="#E5484D" />
-      <path
-        d="M 241.5 68 C 242 66.5, 246 66.5, 246.5 68 C 247 70, 245 72.5, 244 73 C 243 72.5, 241 70, 241.5 68"
+        d="M 148 68 C 148.5 66.5, 151.5 66.5, 152 68 C 152.5 70, 151 72, 150 72.5 C 149 72, 147.5 70, 148 68"
         stroke="#D4AF37"
-        strokeWidth="0.8"
+        strokeWidth="0.75"
         fill="none"
       />
 
-      {/* Swiss Caliber Engravings */}
-      <text x="18" y="132" fill="var(--c-text-secondary)" opacity="0.45" className="font-mono text-[7px] uppercase tracking-[0.2em]">
-        CAL. 2824-2 · 28,800 VPH · 25 JEWELS
+      {/* Horological Text Engravings */}
+      <text x="150" y="132" textAnchor="middle" fill="var(--c-text-secondary)" opacity="0.5" className="font-mono text-[7px] uppercase tracking-[0.22em]">
+        ARNOLD &amp; SON INSPIRATION · CAL. A&amp;S5201 · TWIN BARREL · 28,800 VPH
       </text>
-      <text x="244" y="24" textAnchor="middle" fill="var(--c-text-secondary)" opacity="0.4" className="font-mono text-[6.5px] uppercase tracking-[0.16em]">
-        GLUCYDUR · INCABLOC
+      <text x="150" y="24" textAnchor="middle" fill="var(--c-text-secondary)" opacity="0.4" className="font-mono text-[6.5px] uppercase tracking-[0.18em]">
+        HAUTE HORLOGERIE SKELETON
       </text>
     </svg>
   );
@@ -348,8 +441,8 @@ const panels = [
   },
   {
     tag: "horology", title: "Mechanical movements", graphic: <WatchMovement />,
-    line: "Automatic calibers, balance springs, and the micro-mechanics of physical time.",
-    more: "Before microcontrollers and silicon, computing was gear trains, hairsprings, and jewels. I love popping a caseback to watch a mechanical escapement beat at 28,800 vibrations per hour: pure analog logic running on tension with zero firmware.",
+    line: "Symmetrical skeleton calibers, twin barrels, and the micro-mechanics of physical time.",
+    more: "Before microcontrollers and silicon, computing was gear trains, hairsprings, and jewels. Inspired by Swiss haute horlogerie like Arnold & Son's symmetrical skeleton calibers: twin mainspring barrels, radiating bridges, and an escapement beating at 28,800 vibrations per hour - pure analog logic running on tension with zero firmware.",
   },
   {
     tag: "sketching", title: "Ink & graphite", graphic: <SketchGraphic />,
