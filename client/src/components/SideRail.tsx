@@ -17,7 +17,6 @@ const socials = [
   { label: "GH", href: "https://github.com/AlcesOzdst" },
   { label: "IN", href: "https://linkedin.com/in/parthdoshi404" },
   { label: "CV", href: "/resume" },
-  { label: "THM", href: "https://tryhackme.com/p/AlcesOzdst" },
 ];
 
 export function SideRail({ onOpenResume }: { onOpenResume?: () => void }) {
@@ -30,7 +29,7 @@ export function SideRail({ onOpenResume }: { onOpenResume?: () => void }) {
           <span className="display block text-2xl leading-none">Parth Doshi</span>
         </a>
         <p className="mono-label mt-3 leading-relaxed">
-          Embedded &amp; IoT security<br />— in training · Pune, IN
+          Embedded &amp; IoT security<br />- in training · Pune, IN
         </p>
       </div>
 

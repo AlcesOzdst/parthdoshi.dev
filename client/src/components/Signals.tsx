@@ -55,19 +55,82 @@ function WatchMovement() {
     </svg>
   );
 }
-function FreqCurve() {
+function SketchGraphic() {
   const reduce = useReducedMotion();
-  const d = "M4 92 C 40 70, 70 80, 110 86 S 150 98, 174 64 C 194 46, 206 50, 222 76 C 248 108, 274 112, 296 118";
   return (
     <svg viewBox="0 0 300 140" className="w-full h-[110px]" fill="none" aria-hidden="true">
-      {[75, 150, 225].map((x) => <line key={x} x1={x} y1="8" x2={x} y2="120" stroke="var(--c-border)" strokeWidth="1" />)}
-      <line x1="0" y1="120" x2="300" y2="120" stroke="var(--c-border)" strokeWidth="1" />
-      <motion.path d={d} stroke="var(--c-accent)" strokeWidth="2" strokeLinecap="round"
-        initial={reduce ? { pathLength: 1 } : { pathLength: 0 }} whileInView={{ pathLength: 1 }}
-        viewport={{ once: true }} transition={{ duration: 2, ease: "easeInOut" }} />
+      {/* Sketch guide grid */}
+      <line x1="40" y1="120" x2="260" y2="120" stroke="var(--c-border)" strokeWidth="1" strokeDasharray="3 3" />
+      <line x1="80" y1="20" x2="80" y2="120" stroke="var(--c-border)" strokeWidth="0.75" strokeDasharray="2 2" opacity="0.6" />
+      <line x1="220" y1="20" x2="220" y2="120" stroke="var(--c-border)" strokeWidth="0.75" strokeDasharray="2 2" opacity="0.6" />
+
+      {/* Cross-hatching shading */}
+      {[0, 6, 12, 18, 24, 30].map((offset) => (
+        <line
+          key={offset}
+          x1={155 + offset}
+          y1={50 + offset * 0.5}
+          x2={135 + offset}
+          y2={95 + offset * 0.5}
+          stroke="var(--c-border)"
+          strokeWidth="1"
+          opacity="0.8"
+        />
+      ))}
+
+      {/* Hand-drawn contour paths using framer-motion pathLength */}
+      <motion.path
+        d="M90 75 L150 40 L210 75 L150 110 Z"
+        stroke="var(--c-accent)"
+        strokeWidth="1.8"
+        strokeLinejoin="round"
+        strokeLinecap="round"
+        initial={reduce ? { pathLength: 1 } : { pathLength: 0 }}
+        whileInView={{ pathLength: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.8, ease: "easeInOut" }}
+      />
+      <motion.path
+        d="M90 75 L90 100 L150 130 L150 110"
+        stroke="var(--c-accent)"
+        strokeWidth="1.6"
+        strokeLinejoin="round"
+        initial={reduce ? { pathLength: 1 } : { pathLength: 0 }}
+        whileInView={{ pathLength: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.6, delay: 0.3, ease: "easeInOut" }}
+      />
+      <motion.path
+        d="M210 75 L210 100 L150 130"
+        stroke="var(--c-accent)"
+        strokeWidth="1.6"
+        strokeLinejoin="round"
+        initial={reduce ? { pathLength: 1 } : { pathLength: 0 }}
+        whileInView={{ pathLength: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.6, delay: 0.4, ease: "easeInOut" }}
+      />
+
+      {/* Gesture curve */}
+      <motion.path
+        d="M70 115 C 110 125, 190 105, 230 115"
+        stroke="var(--c-accent)"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+        strokeDasharray="4 2"
+        initial={reduce ? { pathLength: 1 } : { pathLength: 0 }}
+        whileInView={{ pathLength: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.5, delay: 0.6, ease: "easeOut" }}
+      />
+
+      {/* Vertex nodes */}
+      <circle cx="150" cy="40" r="2.5" fill="var(--c-accent)" />
+      <circle cx="150" cy="110" r="2.5" fill="var(--c-accent)" />
     </svg>
   );
 }
+
 const hex = [
   "00000000  77 69 66 69 5f 70 61 73  73 3d 68 75 6e 74 65 72  |wifi_pass=hunter|",
   "00000010  32 00 61 70 69 5f 6b 65  79 3d 41 49 7a 61 53 79  |2.api_key=AIzaSy|",
@@ -79,26 +142,6 @@ function Hexdump() {
     <div className="font-mono text-[0.62rem] leading-relaxed text-text-secondary overflow-x-auto" aria-hidden="true">
       {hex.map((l, i) => <div key={i} className={i < 2 ? "text-text" : ""}>{l}</div>)}
     </div>
-  );
-}
-
-function AirwavesWave() {
-  const reduce = useReducedMotion();
-  return (
-    <svg viewBox="0 0 300 120" className="w-full h-[110px]" fill="none" aria-hidden="true">
-      <line x1="0" y1="60" x2="300" y2="60" stroke="var(--c-border)" strokeWidth="1" strokeDasharray="3 3" />
-      <motion.path
-        d="M0 60 C 20 20, 35 100, 55 60 C 75 20, 90 100, 110 60 C 130 30, 145 90, 165 60 C 185 25, 200 95, 220 60 C 240 35, 260 85, 280 60 L 300 60"
-        stroke="var(--c-accent)"
-        strokeWidth="2"
-        strokeLinecap="round"
-        initial={reduce ? { pathLength: 1 } : { pathLength: 0 }}
-        whileInView={{ pathLength: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 2, ease: "easeInOut" }}
-      />
-      <circle cx="280" cy="60" r="3.5" fill="var(--c-accent)" />
-    </svg>
   );
 }
 
@@ -116,14 +159,9 @@ const panels = [
     more: "Before microcontrollers and silicon, computing was gear trains, hairsprings, and jewels. I love popping a caseback to watch a mechanical escapement beat at 28,800 vibrations per hour: pure analog logic running on tension with zero firmware.",
   },
   {
-    tag: "sound", title: "Too many IEMs", graphic: <FreqCurve />,
-    line: "A chi-fi habit I can't shake. I can point at the 3 kHz peak — and I will.",
-    more: "Rotating a few budget sets at any time. Ask me about tuning and I won't stop: the Harman target is a suggestion, not a rule, and treble is where cheap sets go to die.",
-  },
-  {
-    tag: "airwaves", title: "Radios & GNSS", graphic: <AirwavesWave />,
-    line: "ESP32, NRF24, LoRa, a GPS module decoding NMEA over UART.",
-    more: "NRF24 for 2.4 GHz poking, LoRa for the long haul, a GPS module spitting NMEA sentences over UART. Radios are just the physical layer of everything — slow them down and they're all waveforms.",
+    tag: "sketching", title: "Ink & graphite", graphic: <SketchGraphic />,
+    line: "Pencil sketches, cross-hatching, and observing how physical objects are built.",
+    more: "When staring at binaries and terminals all day, sketching forces you to look at the physical world with real patience. Perspective, proportions, and mechanical structures: drawing something by hand is just another way of taking it apart to understand it.",
   },
 ];
 
@@ -188,11 +226,11 @@ export function Signals() {
         </Reveal>
         <Reveal delay={0.1}>
           <p className="text-text-secondary measure mb-4 leading-relaxed">
-            Firmware, footsteps, frequency response, the occasional bad argument. Tap a card to open it up.
+            Firmware teardowns, mechanical movements, and sketch studies. Tap a card to open it up.
           </p>
         </Reveal>
 
-        <div className="grid md:grid-cols-2 gap-5 mt-10">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
           {panels.map((p, i) => (
             <Reveal key={p.tag} delay={i * 0.06}>
               <Panel p={p} open={open === i} onToggle={() => setOpen(open === i ? null : i)} />

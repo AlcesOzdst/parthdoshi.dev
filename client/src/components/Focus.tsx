@@ -4,7 +4,7 @@ const pillars = [
   {
     n: "01",
     title: "Firmware & Reverse Engineering",
-    body: "Firmware extraction, static analysis, and binary inspection — plus controlled secure-boot research. Reading what a device is actually running.",
+    body: "Firmware extraction, static analysis, and binary inspection - plus controlled secure-boot research. Reading what a device is actually running.",
   },
   {
     n: "02",
@@ -14,7 +14,7 @@ const pillars = [
   {
     n: "03",
     title: "Hardware Interfaces",
-    body: "UART, SPI, I²C and the physical attack surface — probed, captured, and documented with real hardware evidence.",
+    body: "UART, SPI, I²C and the physical attack surface - probed, captured, and documented with real hardware evidence.",
   },
 ];
 

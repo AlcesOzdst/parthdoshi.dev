@@ -2,32 +2,32 @@ import { Reveal } from "@/components/Reveal";
 
 const items = [
   {
-    tag: "Competition",
-    metric: "2nd",
-    unit: "runner-up",
-    title: "HackMITWPU’25 CTF",
-    detail: "Capture-the-flag, on-campus — with team PARAM competing across reverse engineering and crypto tracks.",
+    tag: "Security",
+    metric: "CORS",
+    unit: "finding",
+    title: "Exposed Admin Panel Research",
+    detail: "Identified a CORS misconfiguration and exposed administrative panel that could lead to account takeover in security research."
   },
   {
     tag: "AI Security",
     metric: "Top",
     unit: "finalist",
     title: "Smart India Hackathon (SIH 2025)",
-    detail: "Project Omnis — AI-driven threat prediction and attack path forecasting with a 94% true-positive rate.",
+    detail: "Project Omnis - AI-driven threat prediction and attack path forecasting with a 94% true-positive rate.",
   },
   {
-    tag: "Disclosures",
-    metric: "100%",
-    unit: "resolved",
-    title: "Responsible Vulnerability Disclosures",
-    detail: "Validated reports across Under Armour, HackerOne, and Web3 CTF smart contract audit engagements.",
+    tag: "Firmware",
+    metric: "RE",
+    unit: "research",
+    title: "Firmware Reverse Engineering",
+    detail: "Investigating firmware extraction, static analysis and binary inspection with tools including Binwalk and Ghidra."
   },
   {
-    tag: "Arenas",
-    metric: "4+",
-    unit: "circuits",
-    title: "Pentathon · DEFCON Pune · CyberVault",
-    detail: "Active competitor across NCIIPC-AICTE Pentathon, regional DEFCON chapters, and national security challenges.",
+    tag: "Cybersecurity",
+    metric: "CTF",
+    unit: "host",
+    title: "HackMITWPU'25 Track Host",
+    detail: "Hosted a track at HackMITWPU'25, contributing to the execution of a campus cybersecurity competition rather than competing for the result."
   },
 ];
 
