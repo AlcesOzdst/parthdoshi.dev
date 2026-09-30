@@ -4,16 +4,54 @@ import { Plus } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 
 /* ── graphics ─────────────────────────────────────────────── */
-function RouteLine() {
+function WatchMovement() {
   const reduce = useReducedMotion();
-  const d = "M6 118 C 40 40, 66 150, 98 96 S 150 30, 176 84 S 210 150, 236 78 S 276 44, 296 66";
   return (
-    <svg viewBox="0 0 300 150" className="w-full h-[110px]" fill="none" aria-hidden="true">
-      <motion.path d={d} stroke="var(--c-accent)" strokeWidth="2" strokeLinecap="round"
-        initial={reduce ? { pathLength: 1 } : { pathLength: 0 }} whileInView={{ pathLength: 1 }}
-        viewport={{ once: true }} transition={{ duration: 2.2, ease: "easeInOut" }} />
-      <circle cx="6" cy="118" r="4" fill="var(--c-accent)" />
-      <circle cx="296" cy="66" r="4" fill="none" stroke="var(--c-accent)" strokeWidth="2" />
+    <svg viewBox="0 0 300 140" className="w-full h-[110px]" fill="none" aria-hidden="true">
+      <circle cx="150" cy="70" r="58" stroke="var(--c-border)" strokeWidth="1.5" strokeDasharray="3 3" />
+      <circle cx="150" cy="70" r="48" stroke="var(--c-border)" strokeWidth="1" />
+      
+      {/* Escapement gear teeth */}
+      <circle cx="120" cy="70" r="22" stroke="var(--c-border)" strokeWidth="1.5" />
+      {[0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330].map((deg) => (
+        <line
+          key={deg}
+          x1={120 + 22 * Math.cos((deg * Math.PI) / 180)}
+          y1={70 + 22 * Math.sin((deg * Math.PI) / 180)}
+          x2={120 + 26 * Math.cos((deg * Math.PI) / 180)}
+          y2={70 + 26 * Math.sin((deg * Math.PI) / 180)}
+          stroke="var(--c-border)"
+          strokeWidth="1.5"
+        />
+      ))}
+
+      {/* Ruby bearing jewel */}
+      <circle cx="170" cy="70" r="4" fill="#E5484D" />
+      <circle cx="170" cy="70" r="8" stroke="var(--c-border)" strokeWidth="1" />
+
+      {/* Oscillating Balance Wheel */}
+      <motion.g
+        style={{ originX: "170px", originY: "70px" }}
+        animate={reduce ? {} : { rotate: [0, 40, -40, 0] }}
+        transition={{ repeat: Infinity, duration: 0.55, ease: "easeInOut" }}
+      >
+        <circle cx="170" cy="70" r="32" stroke="var(--c-accent)" strokeWidth="2" />
+        {[0, 60, 120, 180, 240, 300].map((deg) => (
+          <circle
+            key={deg}
+            cx={170 + 32 * Math.cos((deg * Math.PI) / 180)}
+            cy={70 + 32 * Math.sin((deg * Math.PI) / 180)}
+            r="1.8"
+            fill="var(--c-accent)"
+          />
+        ))}
+        <line x1="138" y1="70" x2="202" y2="70" stroke="var(--c-accent)" strokeWidth="1.5" />
+        <line x1="170" y1="38" x2="170" y2="102" stroke="var(--c-accent)" strokeWidth="1.5" />
+        <circle cx="170" cy="70" r="16" stroke="var(--c-accent)" strokeWidth="1" strokeDasharray="5 3" opacity="0.75" />
+      </motion.g>
+
+      {/* Pallet fork arms */}
+      <path d="M142 56 L148 70 L142 84" stroke="var(--c-accent)" strokeWidth="1.5" strokeLinecap="round" />
     </svg>
   );
 }
@@ -68,14 +106,14 @@ function AirwavesWave() {
 const panels = [
   {
     tag: "firmware", title: "What the chip hides", graphic: <Hexdump />,
-    line: "I pull it off the flash and read it — hardcoded keys, debug shells, the usual sins in plaintext.",
-    more: "Right now I'm building an ESP32 teardown: dump the flash over UART, run Binwalk, then read the auth check in Ghidra. Attack, evidence, fix — the whole loop most vendors skip.",
+    line: "I pull it off the flash and read it - hardcoded keys, debug shells, the usual sins in plaintext.",
+    more: "Right now I'm building an ESP32 teardown: dump the flash over UART, run Binwalk, then read the auth check in Ghidra. Attack, evidence, fix - the whole loop most vendors skip.",
     link: { label: "github ↗", href: "https://github.com/AlcesOzdst" },
   },
   {
-    tag: "the city", title: "Where I've been", graphic: <RouteLine />,
-    line: "Slow miles around Baner and Aundh, every one logged as GPX.",
-    more: "Baner, Aundh, the river road at 6am. I keep every track because I like watching the map fill in — same reason I like memory maps and pin-outs.",
+    tag: "horology", title: "Mechanical movements", graphic: <WatchMovement />,
+    line: "Automatic calibers, balance springs, and the micro-mechanics of physical time.",
+    more: "Before microcontrollers and silicon, computing was gear trains, hairsprings, and jewels. I love popping a caseback to watch a mechanical escapement beat at 28,800 vibrations per hour: pure analog logic running on tension with zero firmware.",
   },
   {
     tag: "sound", title: "Too many IEMs", graphic: <FreqCurve />,
