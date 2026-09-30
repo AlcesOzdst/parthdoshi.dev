@@ -28,7 +28,7 @@ export function Hero({ onOpenResume }: { onOpenResume?: () => void }) {
         </h1>
 
         <motion.p variants={fade} className="mt-8 measure text-base md:text-lg text-text-secondary leading-relaxed">
-          Embedded &amp; IoT security on the hardware side — I pull firmware off devices, follow the
+          Embedded &amp; IoT security on the hardware side - I pull firmware off devices, follow the
           signal from a pin into the binary, and document how they break and how to fix them. ECE (AI&nbsp;·&nbsp;ML)
           student at MIT-WPU, Pune. (The running, radios and chi-fi IEMs live further down.)
         </motion.p>
