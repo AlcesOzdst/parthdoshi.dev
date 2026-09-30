@@ -4,54 +4,247 @@ import { Plus } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 
 /* ── graphics ─────────────────────────────────────────────── */
+const cwAngles = [0, 18, 36, 54, 72, 90, 108, 126, 144, 162, 180, 198, 216, 234, 252, 270, 288, 306, 324, 342];
+const twAngles = [0, 22.5, 45, 67.5, 90, 112.5, 135, 157.5, 180, 202.5, 225, 247.5, 270, 292.5, 315, 337.5];
+const escAngles = [0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330];
+const poiseAngles = [15, 45, 75, 105, 135, 165, 195, 225, 255, 285, 315, 345];
+const balSpokes = [
+  "M 250.0 70.0 Q 262.5 73.5 272.5 84.0",
+  "M 241.0 75.2 Q 231.8 84.2 218.0 87.5",
+  "M 241.0 64.8 Q 237.7 52.0 241.5 38.5",
+];
+const hairspringD = "M 244.5 69.7 L 244.2 70.5 L 243.6 71.2 L 242.8 71.7 L 241.9 72.0 L 240.8 72.1 L 239.7 71.9 L 238.6 71.3 L 237.7 70.5 L 237.0 69.4 L 236.5 68.2 L 236.4 66.7 L 236.7 65.3 L 237.4 63.9 L 238.4 62.7 L 239.8 61.7 L 241.4 61.1 L 243.1 61.0 L 244.9 61.2 L 246.7 62.0 L 248.2 63.2 L 249.4 64.8 L 250.2 66.7 L 250.5 68.8 L 250.3 71.0 L 249.5 73.1 L 248.1 75.0 L 246.3 76.5 L 244.1 77.5 L 241.7 78.0 L 239.1 77.8 L 236.6 77.0 L 234.4 75.5 L 232.6 73.5 L 231.2 71.1 L 230.6 68.3 L 230.6 65.4 L 231.4 62.6 L 232.9 59.9 L 235.1 57.7 L 237.8 56.1 L 240.8 55.2 L 244.1 55.1 L 247.3 55.8 L 250.4 57.3 L 252.9 59.6 L 254.9 62.5 L 256.1 65.8 L 256.5 69.4 L 255.9 73.0 L 254.4 76.5 L 252.0 79.5 L 249.0 81.8 L 245.4 83.4 L 241.4 84.0 L 237.4 83.5 L 233.6 82.1 L 230.2 79.8 L 227.4 76.6 L 225.5 72.7 L 224.6 68.5";
+
+function CaliberScrew({ cx, cy }: { cx: number; cy: number }) {
+  return (
+    <g>
+      <circle cx={cx} cy={cy} r={2.4} stroke="var(--c-border)" strokeWidth={1} fill="var(--c-bg)" />
+      <line x1={cx - 1.6} y1={cy - 1.6} x2={cx + 1.6} y2={cy + 1.6} stroke="var(--c-border)" strokeWidth={0.8} />
+    </g>
+  );
+}
+
 function WatchMovement() {
   const reduce = useReducedMotion();
   return (
     <svg viewBox="0 0 300 140" className="w-full h-[110px]" fill="none" aria-hidden="true">
-      <circle cx="150" cy="70" r="58" stroke="var(--c-border)" strokeWidth="1.5" strokeDasharray="3 3" />
-      <circle cx="150" cy="70" r="48" stroke="var(--c-border)" strokeWidth="1" />
-      
-      {/* Escapement gear teeth */}
-      <circle cx="120" cy="70" r="22" stroke="var(--c-border)" strokeWidth="1.5" />
-      {[0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330].map((deg) => (
-        <line
-          key={deg}
-          x1={120 + 22 * Math.cos((deg * Math.PI) / 180)}
-          y1={70 + 22 * Math.sin((deg * Math.PI) / 180)}
-          x2={120 + 26 * Math.cos((deg * Math.PI) / 180)}
-          y2={70 + 26 * Math.sin((deg * Math.PI) / 180)}
-          stroke="var(--c-border)"
-          strokeWidth="1.5"
-        />
-      ))}
+      {/* Skeleton caliber plates & bridges */}
+      <path
+        d="M 25 35 C 50 18, 120 18, 180 24 C 230 20, 275 35, 285 70 C 290 100, 260 122, 200 122 C 140 122, 60 124, 25 95 C 15 75, 15 50, 25 35 Z"
+        stroke="var(--c-border)"
+        strokeWidth="1"
+        strokeDasharray="4 4"
+        opacity="0.35"
+      />
+      <path
+        d="M 40 45 C 65 32, 105 32, 142 42 C 160 48, 180 58, 198 56"
+        stroke="var(--c-border)"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+      <CaliberScrew cx={40} cy={45} />
+      <CaliberScrew cx={142} cy={42} />
+      <CaliberScrew cx={52} cy={98} />
 
-      {/* Ruby bearing jewel */}
-      <circle cx="170" cy="70" r="4" fill="#E5484D" />
-      <circle cx="170" cy="70" r="8" stroke="var(--c-border)" strokeWidth="1" />
-
-      {/* Oscillating Balance Wheel */}
+      {/* Drive / Center Wheel (cx: 72, cy: 70) */}
       <motion.g
-        style={{ originX: "170px", originY: "70px" }}
-        animate={reduce ? {} : { rotate: [0, 40, -40, 0] }}
-        transition={{ repeat: Infinity, duration: 0.55, ease: "easeInOut" }}
+        style={{ originX: "72px", originY: "70px" }}
+        animate={reduce ? {} : { rotate: -360 }}
+        transition={{ repeat: Infinity, duration: 24, ease: "linear" }}
       >
-        <circle cx="170" cy="70" r="32" stroke="var(--c-accent)" strokeWidth="2" />
-        {[0, 60, 120, 180, 240, 300].map((deg) => (
-          <circle
-            key={deg}
-            cx={170 + 32 * Math.cos((deg * Math.PI) / 180)}
-            cy={70 + 32 * Math.sin((deg * Math.PI) / 180)}
-            r="1.8"
-            fill="var(--c-accent)"
-          />
-        ))}
-        <line x1="138" y1="70" x2="202" y2="70" stroke="var(--c-accent)" strokeWidth="1.5" />
-        <line x1="170" y1="38" x2="170" y2="102" stroke="var(--c-accent)" strokeWidth="1.5" />
-        <circle cx="170" cy="70" r="16" stroke="var(--c-accent)" strokeWidth="1" strokeDasharray="5 3" opacity="0.75" />
+        <circle cx="72" cy="70" r="31.5" stroke="var(--c-border)" strokeWidth="1.5" />
+        <circle cx="72" cy="70" r="26" stroke="var(--c-border)" strokeWidth="0.8" opacity="0.6" />
+        {cwAngles.map((deg) => {
+          const rad = (deg * Math.PI) / 180;
+          return (
+            <line
+              key={deg}
+              x1={72 + 31.5 * Math.cos(rad)}
+              y1={70 + 31.5 * Math.sin(rad)}
+              x2={72 + 35.5 * Math.cos(rad)}
+              y2={70 + 35.5 * Math.sin(rad)}
+              stroke="var(--c-border)"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+            />
+          );
+        })}
+        {[0, 72, 144, 216, 288].map((deg) => {
+          const rad = (deg * Math.PI) / 180;
+          return (
+            <circle
+              key={deg}
+              cx={72 + 16 * Math.cos(rad)}
+              cy={70 + 16 * Math.sin(rad)}
+              r="4.8"
+              stroke="var(--c-border)"
+              strokeWidth="1"
+              fill="none"
+            />
+          );
+        })}
+        <circle cx="72" cy="70" r="5.5" stroke="var(--c-border)" strokeWidth="1" fill="var(--c-bg)" />
+        <line x1="69.5" y1="67.5" x2="74.5" y2="72.5" stroke="var(--c-border)" strokeWidth="0.9" />
       </motion.g>
 
-      {/* Pallet fork arms */}
-      <path d="M142 56 L148 70 L142 84" stroke="var(--c-accent)" strokeWidth="1.5" strokeLinecap="round" />
+      {/* Third Wheel (cx: 128, cy: 62) - Meshes with Center Wheel */}
+      <motion.g
+        style={{ originX: "128px", originY: "62px" }}
+        animate={reduce ? {} : { rotate: 360 }}
+        transition={{ repeat: Infinity, duration: 12, ease: "linear" }}
+      >
+        <circle cx="128" cy="62" r="21.5" stroke="var(--c-border)" strokeWidth="1.4" />
+        <circle cx="128" cy="62" r="16.5" stroke="var(--c-border)" strokeWidth="0.8" opacity="0.6" />
+        {twAngles.map((deg) => {
+          const rad = (deg * Math.PI) / 180;
+          return (
+            <line
+              key={deg}
+              x1={128 + 21.5 * Math.cos(rad)}
+              y1={62 + 21.5 * Math.sin(rad)}
+              x2={128 + 25.0 * Math.cos(rad)}
+              y2={62 + 25.0 * Math.sin(rad)}
+              stroke="var(--c-border)"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+            />
+          );
+        })}
+        {[0, 90, 180, 270].map((deg) => {
+          const rad0 = (deg * Math.PI) / 180;
+          const rad1 = ((deg + 20) * Math.PI) / 180;
+          return (
+            <path
+              key={deg}
+              d={`M ${128 + 6 * Math.cos(rad0)} ${62 + 6 * Math.sin(rad0)} Q ${128 + 12 * Math.cos(rad1)} ${62 + 12 * Math.sin(rad1)} ${128 + 21.5 * Math.cos(rad1)} ${62 + 21.5 * Math.sin(rad1)}`}
+              stroke="var(--c-border)"
+              strokeWidth="1"
+              fill="none"
+            />
+          );
+        })}
+        <circle cx="128" cy="62" r="5" stroke="#D4AF37" strokeWidth="1" fill="none" />
+        <circle cx="128" cy="62" r="3.2" fill="#E5484D" />
+      </motion.g>
+
+      {/* Escape Wheel (cx: 174, cy: 76) - Swiss club teeth */}
+      <motion.g
+        style={{ originX: "174px", originY: "76px" }}
+        animate={reduce ? {} : { rotate: -360 }}
+        transition={{ repeat: Infinity, duration: 4.2, ease: "linear" }}
+      >
+        <circle cx="174" cy="76" r="14" stroke="var(--c-border)" strokeWidth="1.2" />
+        {escAngles.map((deg) => {
+          const rad = (deg * Math.PI) / 180;
+          const radClub = rad + 0.22;
+          const x1 = 174 + 13 * Math.cos(rad);
+          const y1 = 76 + 13 * Math.sin(rad);
+          const x2 = 174 + 17.5 * Math.cos(rad);
+          const y2 = 76 + 17.5 * Math.sin(rad);
+          const x3 = 174 + 18.5 * Math.cos(radClub);
+          const y3 = 76 + 18.5 * Math.sin(radClub);
+          return (
+            <path
+              key={deg}
+              d={`M ${x1} ${y1} L ${x2} ${y2} L ${x3} ${y3}`}
+              stroke="var(--c-border)"
+              strokeWidth="1.3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+            />
+          );
+        })}
+        <circle cx="174" cy="76" r="2.4" fill="#E5484D" />
+      </motion.g>
+
+      {/* Swiss Pallet Fork (pivot cx: 198, cy: 56) */}
+      <motion.g
+        style={{ originX: "198px", originY: "56px" }}
+        animate={reduce ? {} : { rotate: [-8, 8, -8] }}
+        transition={{ repeat: Infinity, duration: 0.42, ease: "easeInOut" }}
+      >
+        <circle cx="198" cy="56" r="2" fill="var(--c-border)" />
+        <path
+          d="M 198 56 L 186 64 M 198 56 L 192 72 M 198 56 L 217 64"
+          stroke="var(--c-border)"
+          strokeWidth="1.4"
+          strokeLinecap="round"
+        />
+        <rect x="184" y="62.5" width="3" height="4" rx="0.5" fill="#E5484D" />
+        <rect x="190.5" y="70" width="3" height="4" rx="0.5" fill="#E5484D" />
+        <path d="M 215 62 L 218.5 64 L 215 66" stroke="var(--c-border)" strokeWidth="1.2" fill="none" />
+      </motion.g>
+
+      {/* Balance Wheel (cx: 244, cy: 70) - The Ticking Heart */}
+      <motion.g
+        style={{ originX: "244px", originY: "70px" }}
+        animate={reduce ? {} : { rotate: [-40, 40, -40] }}
+        transition={{ repeat: Infinity, duration: 0.42, ease: "easeInOut" }}
+      >
+        <circle cx="244" cy="70" r="34" stroke="var(--c-accent)" strokeWidth="1.8" />
+        <circle cx="244" cy="70" r="31" stroke="var(--c-accent)" strokeWidth="0.8" opacity="0.4" />
+
+        {/* Microstella poise adjustment weights */}
+        {poiseAngles.map((deg) => {
+          const rad = (deg * Math.PI) / 180;
+          return (
+            <circle
+              key={deg}
+              cx={244 + 34 * Math.cos(rad)}
+              cy={70 + 34 * Math.sin(rad)}
+              r="1.2"
+              fill="#D4AF37"
+            />
+          );
+        })}
+
+        {/* 3 curved sweeping spokes */}
+        {balSpokes.map((d, i) => (
+          <path key={i} d={d} stroke="var(--c-accent)" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+        ))}
+
+        {/* Coiled Breguet Hairspring */}
+        <path
+          d={hairspringD}
+          stroke="var(--c-accent)"
+          strokeWidth="0.9"
+          strokeLinecap="round"
+          fill="none"
+          opacity="0.85"
+        />
+
+        {/* Impulse roller ruby pin */}
+        <circle cx="236.5" cy="69" r="1.5" fill="#E5484D" />
+      </motion.g>
+
+      {/* Balance Cock & Incabloc Shock Setting */}
+      <path
+        d="M 188 24 C 210 22, 234 42, 244 70"
+        stroke="var(--c-accent)"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        opacity="0.7"
+        fill="none"
+      />
+      <CaliberScrew cx={188} cy={24} />
+
+      <circle cx="244" cy="70" r="6" stroke="#D4AF37" strokeWidth="1.2" fill="var(--c-bg)" />
+      <circle cx="244" cy="70" r="3.4" fill="#E5484D" />
+      <path
+        d="M 241.5 68 C 242 66.5, 246 66.5, 246.5 68 C 247 70, 245 72.5, 244 73 C 243 72.5, 241 70, 241.5 68"
+        stroke="#D4AF37"
+        strokeWidth="0.8"
+        fill="none"
+      />
+
+      {/* Swiss Caliber Engravings */}
+      <text x="18" y="132" fill="var(--c-text-secondary)" opacity="0.45" className="font-mono text-[7px] uppercase tracking-[0.2em]">
+        CAL. 2824-2 · 28,800 VPH · 25 JEWELS
+      </text>
+      <text x="244" y="24" textAnchor="middle" fill="var(--c-text-secondary)" opacity="0.4" className="font-mono text-[6.5px] uppercase tracking-[0.16em]">
+        GLUCYDUR · INCABLOC
+      </text>
     </svg>
   );
 }
