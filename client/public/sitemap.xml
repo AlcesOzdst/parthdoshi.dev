@@ -30,24 +30,12 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Technical Articles / Blog -->
+  <!-- Technical Articles / Field Notes -->
   <url>
-    <loc>https://www.parthdoshi.me/blog/ddos-mitigation-strategies</loc>
+    <loc>https://www.parthdoshi.me/blog/building-in-public</loc>
     <lastmod>2026-09-30</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.parthdoshi.me/blog/iot-vulnerabilities-2026</loc>
-    <lastmod>2026-09-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.parthdoshi.me/blog/zero-trust-architecture</loc>
-    <lastmod>2026-09-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
 
   <!-- Engineering & Research Projects -->

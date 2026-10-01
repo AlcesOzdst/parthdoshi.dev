@@ -54,7 +54,21 @@ export default function Blog() {
             </p>
           </Reveal>
 
-          <div className="mt-14 border-t border-border">
+          <Reveal delay={0.08}>
+            <div className="mt-10 p-6 md:p-7 border border-border/80 rounded-md bg-surface/50 backdrop-blur-sm relative overflow-hidden">
+              <div className="flex items-center gap-3 mb-3">
+                <span className="inline-block w-2 h-2 rounded-full bg-accent animate-pulse" />
+                <span className="mono-label uppercase tracking-[0.16em] accent text-[11px]">Building in public · Active Research</span>
+              </div>
+              <p className="text-sm md:text-base text-text-secondary leading-relaxed">
+                Rather than generic summaries, this space documents raw lab notes: UART flash dumping,
+                hardware bus auditing, logic analyzer traces, and responsible vulnerability disclosures.
+                Deep-dives are published here as research milestones conclude.
+              </p>
+            </div>
+          </Reveal>
+
+          <div className="mt-12 border-t border-border">
             {posts.length === 0 && (
               <p className="mono-label py-10">No entries yet - the first writeup is on its way.</p>
             )}
