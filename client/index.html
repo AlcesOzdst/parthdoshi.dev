@@ -4,19 +4,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Parth Doshi — I take things apart to understand them</title>
+  <title>Parth Doshi - I take things apart to understand them</title>
   <meta name="description"
-    content="Parth Doshi — third-year ECE (AI-ML) student in Pune doing security research on the hardware side: embedded & IoT security, firmware reverse engineering, radios, GPS, and too many IEMs." />
+    content="Parth Doshi - third-year ECE (AI-ML) student in Pune doing security research on the hardware side: embedded & IoT security, firmware reverse engineering, responsible disclosure, and bare-metal systems." />
   <link rel="canonical" href="https://www.parthdoshi.me/" />
 
-  <meta property="og:title" content="Parth Doshi — I take things apart to understand them" />
+  <meta property="og:title" content="Parth Doshi - I take things apart to understand them" />
   <meta property="og:description"
-    content="Embedded & IoT security research on the hardware side — firmware, radios, and the odd side project." />
+    content="Embedded & IoT security research on the hardware side: firmware reverse engineering, hardware interfaces, and responsible disclosures." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.parthdoshi.me/" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Parth Doshi — I take things apart to understand them" />
-  <meta name="twitter:description" content="Embedded & IoT security research — firmware, radios, and side projects." />
+  <meta name="twitter:title" content="Parth Doshi - I take things apart to understand them" />
+  <meta name="twitter:description" content="Embedded & IoT security research: firmware reverse engineering, hardware security, and responsible disclosures." />
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
@@ -25,6 +25,53 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://www.parthdoshi.me/#person",
+        "name": "Parth Doshi",
+        "url": "https://www.parthdoshi.me/",
+        "jobTitle": "Security Researcher & Embedded Engineer",
+        "description": "Third-year ECE (AI-ML) student in Pune doing security research on the hardware side: embedded & IoT security, firmware reverse engineering, and bare-metal systems.",
+        "email": "mailto:parthdoshi404@gmail.com",
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "MIT World Peace University",
+          "sameAs": "https://mitwpu.edu.in/"
+        },
+        "sameAs": [
+          "https://github.com/AlcesOzdst",
+          "https://linkedin.com/in/parthdoshi404",
+          "https://profile.hackthebox.com/profile/019c59d7-edfc-7172-b666-bedfbe635e49",
+          "https://g.dev/Alcesozdst"
+        ],
+        "knowsAbout": [
+          "Embedded Systems Security",
+          "IoT Security",
+          "Firmware Reverse Engineering",
+          "Responsible Vulnerability Disclosure",
+          "Hardware Interfaces (UART, SPI, I2C)",
+          "C8051 & ESP32 Microcontrollers",
+          "Horology & Mechanical Movements",
+          "Technical Pencil Sketching"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.parthdoshi.me/#website",
+        "url": "https://www.parthdoshi.me/",
+        "name": "Parth Doshi Portfolio",
+        "publisher": {
+          "@id": "https://www.parthdoshi.me/#person"
+        }
+      }
+    ]
+  }
+  </script>
 
   <!-- Prerendered fallback: real, crawlable content shown before the app mounts and
        to readers/crawlers that don't execute JavaScript. React replaces #root on load. -->
@@ -51,16 +98,16 @@
       <header>
         <h1>Parth Doshi</h1>
         <p class="lead">I take things apart to understand them.</p>
-        <p>Embedded &amp; IoT security research on the hardware side — a third-year ECE (AI&nbsp;·&nbsp;ML)
-          student in Pune, India. Firmware and radios, a city on foot with a GPS logger, a stack of
-          chi-fi IEMs, and the odd bad argument in debate club. Open to embedded / IoT / firmware
-          security internships (2026–27).</p>
+        <p>Embedded &amp; IoT security research on the hardware side - a third-year ECE (AI&nbsp;·&nbsp;ML)
+          student in Pune, India. Firmware reverse engineering, hardware interfaces, responsible vulnerability
+          disclosures, mechanical horology, and pencil sketching. Open to embedded / IoT / firmware
+          security internships (2026-27).</p>
         <p>
           <a href="mailto:parthdoshi404@gmail.com">parthdoshi404@gmail.com</a> ·
           <a href="https://github.com/AlcesOzdst">GitHub</a> ·
           <a href="https://linkedin.com/in/parthdoshi404">LinkedIn</a> ·
-          <a href="https://tryhackme.com/p/AlcesOzdst">TryHackMe</a> ·
           <a href="https://profile.hackthebox.com/profile/019c59d7-edfc-7172-b666-bedfbe635e49">Hack The Box</a> ·
+          <a href="/resume">Resume</a> ·
           <a href="/blog">Writing</a>
         </p>
       </header>
@@ -68,19 +115,19 @@
       <section>
         <h2>Focus</h2>
         <ul>
-          <li><strong>Firmware &amp; Reverse Engineering</strong> — firmware extraction, static analysis, binary inspection, and controlled secure-boot research.</li>
-          <li><strong>Embedded &amp; IoT Security</strong> — the device-to-cloud attack surface: MQTT, TLS, OTA, credential storage — attacked in a lab, then hardened.</li>
-          <li><strong>Hardware Interfaces</strong> — UART, SPI, I²C and the physical attack surface, documented with real hardware evidence.</li>
+          <li><strong>Firmware &amp; Reverse Engineering</strong> - firmware extraction, static analysis, binary inspection, and controlled secure-boot research.</li>
+          <li><strong>Embedded &amp; IoT Security</strong> - the device-to-cloud attack surface: MQTT, TLS, OTA, credential storage - attacked in a lab, then hardened.</li>
+          <li><strong>Hardware Interfaces</strong> - UART, SPI, I²C and the physical attack surface, documented with real hardware evidence.</li>
         </ul>
       </section>
 
       <section>
         <h2>Selected work</h2>
         <ul>
-          <li><strong>ESP32 Marauder Custom Firmware</strong> — customized ESP32 Marauder firmware for wireless security experimentation with NRF24L01 transceivers and custom OLED UI. (ESP32 · PlatformIO · Embedded C++)</li>
-          <li><strong>Responsible Disclosure: ERP IDOR</strong> — identified and reported an Insecure Direct Object Reference (IDOR) flaw in university ERP portal by manipulating PRN parameter tokens. (Burp Suite · Web Security · CVSS v3.1)</li>
-          <li><strong>C8051 Bare-Metal Sensor Hub</strong> — bare-metal firmware for a Silicon Labs C8051F340 driving four peripherals on one 8-bit bus with register-level drivers. (Bare-Metal C · C8051F340 · I²C · SPI)</li>
-          <li><strong>DDoS Traffic Classification</strong> — an ML pipeline classifying attack vectors from raw packet captures. (Python · tshark · scikit-learn) — <a href="https://github.com/AlcesOzdst/DDoS_AssMnt">repository</a></li>
+          <li><strong>ESP32 Marauder Custom Firmware</strong> - customized ESP32 Marauder firmware for wireless security experimentation with NRF24L01 transceivers and custom OLED UI. (ESP32 · PlatformIO · Embedded C++)</li>
+          <li><strong>Responsible Disclosure: ERP IDOR</strong> - identified and reported an Insecure Direct Object Reference (IDOR) flaw in university ERP portal by manipulating PRN parameter tokens. (Burp Suite · Web Security · CVSS v3.1)</li>
+          <li><strong>C8051 Bare-Metal Sensor Hub</strong> - bare-metal firmware for a Silicon Labs C8051F340 driving four peripherals on one 8-bit bus with register-level drivers. (Bare-Metal C · C8051F340 · I²C · SPI)</li>
+          <li><strong>DDoS Traffic Classification</strong> - an ML pipeline classifying attack vectors from raw packet captures. (Python · tshark · scikit-learn) - <a href="https://github.com/AlcesOzdst/DDoS_AssMnt">repository</a></li>
         </ul>
       </section>
 
@@ -96,29 +143,34 @@
       <section>
         <h2>Achievements</h2>
         <ul>
-          <li>2nd runner-up — HackMITWPU&rsquo;25 CTF, with team PARAM</li>
-          <li>Robotics &amp; Innovation Intern — PHN Technology Pvt. Ltd. (embedded / IoT R&amp;D)</li>
-          <li>President — Hack-X, the campus security club (CTFs, workshops, hackathons, recruitment)</li>
-          <li>Competed — NCIIPC-AICTE Pentathon · DEFCON Pune · CyberVault Connect · SIH</li>
+          <li>HackMITWPU'25 Track Host - hosted a track at HackMITWPU'25, contributing to the execution of a campus cybersecurity competition.</li>
+          <li>Smart India Hackathon (SIH 2025) Top Finalist - Project Omnis: AI-driven threat prediction and attack path forecasting with a 94% true-positive rate.</li>
+          <li>Exposed Admin Panel Research - identified a CORS misconfiguration and exposed administrative panel in security research.</li>
+          <li>Firmware Reverse Engineering - investigating firmware extraction, static analysis and binary inspection with Binwalk and Ghidra.</li>
         </ul>
       </section>
 
       <section>
         <h2>Where I&rsquo;m headed</h2>
-        <p>Toward embedded &amp; hardware security research — firmware reverse engineering (Ghidra,
+        <p>Toward embedded &amp; hardware security research: firmware reverse engineering (Ghidra,
           Binwalk), secure boot and signed images, and hardware-interface analysis (UART/SPI/I²C,
           JTAG/SWD). Building it in public, one teardown and writeup at a time.</p>
       </section>
 
       <section>
         <h2>Off the clock</h2>
-        <p>Firmware teardowns, slow GPX-logged runs around Baner and Aundh, a chi-fi IEM habit I
-          can&rsquo;t shake, and debate club — taking apart an argument uses the same muscle as
-          taking apart a binary.</p>
+        <p>Firmware teardowns (ESP32 flash dumping over UART and Ghidra inspection), mechanical horology
+          (symmetrical skeleton movements with twin barrels and 28,800 VPH escapements), and pencil
+          sketching studies (observing physical structures, perspective, and form).</p>
+      </section>
+
+      <section>
+        <h2>Secret console</h2>
+        <p>An interactive hardware oscilloscope terminal is hidden inside the portfolio. Enter the secret access sequence on the scope controls to unlock.</p>
       </section>
 
       <footer>
-        <p>© 2026 Parth Doshi — Pune, India. Code: all rights reserved · writing: CC BY-NC-ND 4.0.</p>
+        <p>© 2026 Parth Doshi - Pune, India. Code: all rights reserved · writing: CC BY-NC-ND 4.0.</p>
       </footer>
     </main>
   </div>

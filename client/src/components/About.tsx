@@ -15,12 +15,11 @@ export function About() {
             </Reveal>
             <Reveal delay={0.1}>
               <p className="mt-7 text-text-secondary leading-relaxed measure">
-                We run CTFs, workshops, and the kind of late-night debugging that turns a club
-                into a team. My own team, <span className="text-text">PARAM</span>, took 2nd
-                runner-up at HackMITWPU&rsquo;25. Beyond that I&rsquo;m in debate club — taking
-                apart an argument uses the same muscle as taking apart a binary — and I&rsquo;m
-                a third-year ECE (AI&nbsp;·&nbsp;ML) student who just likes understanding how
-                things actually work.
+                We run CTFs, workshops, and the kind of hands-on laboratory sessions that turn
+                a club into a team. I hosted an official competition track at HackMITWPU&rsquo;25,
+                contributing to challenge execution. Beyond that, I study mechanical horology
+                and pencil sketching, and I&rsquo;m a third-year ECE (AI&nbsp;·&nbsp;ML) student
+                who just likes understanding how things actually work.
               </p>
             </Reveal>
           </div>

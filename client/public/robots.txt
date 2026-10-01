@@ -1,8 +1,8 @@
-# www.parthdoshi.me — crawlers welcome
+# www.parthdoshi.me - crawlers welcome
 User-agent: *
 Allow: /
 
-# AI / answer engines — explicitly allowed
+# AI / answer engines - explicitly allowed
 User-agent: GPTBot
 Allow: /
 

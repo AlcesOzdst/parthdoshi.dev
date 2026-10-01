@@ -12,7 +12,7 @@ export function Footer() {
         </div>
 
         <div className="mt-8 flex flex-col md:flex-row md:items-center justify-between gap-4 border-t border-border pt-6">
-          <span className="mono-label">© {year} Parth Doshi — Pune, India</span>
+          <span className="mono-label">© {year} Parth Doshi · Pune, India</span>
           <div className="flex flex-wrap gap-x-6 gap-y-2">
             <a href="https://github.com/AlcesOzdst" target="_blank" rel="noreferrer" className="mono-label u-link hover:text-text transition-colors">github</a>
             <a href="https://linkedin.com/in/parthdoshi404" target="_blank" rel="noreferrer" className="mono-label u-link hover:text-text transition-colors">linkedin</a>

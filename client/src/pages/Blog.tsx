@@ -56,7 +56,7 @@ export default function Blog() {
 
           <div className="mt-14 border-t border-border">
             {posts.length === 0 && (
-              <p className="mono-label py-10">No entries yet — the first writeup is on its way.</p>
+              <p className="mono-label py-10">No entries yet - the first writeup is on its way.</p>
             )}
             {posts.map((post, i) => (
               <Reveal key={post.id} delay={i * 0.05}>

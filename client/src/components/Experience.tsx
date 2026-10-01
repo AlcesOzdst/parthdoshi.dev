@@ -19,9 +19,9 @@ const experiences: RoleItem[] = [
   {
     id: "president",
     role: "President",
-    organization: "Hack-X, Cybersecurity Club – MIT World Peace University",
+    organization: "Hack-X, Cybersecurity Club - MIT World Peace University",
     location: "Pune, India",
-    period: "Aug 2025 — Present",
+    period: "Aug 2025 - Present",
     status: "Current",
     summary:
       "Leading the university cybersecurity community by organizing Capture The Flag (CTF) competitions, workshops, and technical events.",
@@ -37,7 +37,7 @@ const experiences: RoleItem[] = [
     role: "Research & Development Intern",
     organization: "PHN Technology Pvt. Ltd.",
     location: "Pune, India",
-    period: "Jan 2025 — May 2025",
+    period: "Jan 2025 - May 2025",
     summary:
       "Contributed to the research and development of IoT, embedded systems, and cybersecurity-focused solutions using ESP32, Raspberry Pi, and hardware platforms.",
     highlights: [
@@ -53,7 +53,7 @@ const experiences: RoleItem[] = [
     role: "Independent Security Research Projects",
     organization: "HackerOne Bug Bounty Platform",
     location: "Remote",
-    period: "2024 — Present",
+    period: "2024 - Present",
     summary:
       "Actively performing web application security assessments across public bug bounty programs on HackerOne.",
     highlights: [
@@ -68,7 +68,7 @@ const experiences: RoleItem[] = [
     role: "Assistant Sponsorship Executive",
     organization: "STeRG, MIT World Peace University",
     location: "Pune, India",
-    period: "Sep 2023 — Sep 2024",
+    period: "Sep 2023 - Sep 2024",
     summary:
       "Managed sponsorship outreach and coordinated with industry partners to support technical events and student initiatives.",
     highlights: [
