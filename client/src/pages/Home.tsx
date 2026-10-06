@@ -4,6 +4,7 @@ import { TopBar } from "@/components/TopBar";
 import { Hero } from "@/components/Hero";
 import { Focus } from "@/components/Focus";
 import { Projects } from "@/components/Projects";
+import { Writing } from "@/components/Writing";
 import { Experience } from "@/components/Experience";
 import { Research } from "@/components/Research";
 import { Achievements } from "@/components/Achievements";
@@ -31,6 +32,7 @@ export default function Home() {
           <Hero onOpenResume={() => setResumeOpen(true)} />
           <Focus />
           <Projects />
+          <Writing />
           <Experience onOpenResume={() => setResumeOpen(true)} />
           <Research />
           <Achievements />

@@ -34,7 +34,7 @@ const items = [
 export function Achievements() {
   return (
     <section id="achievements" className="section-spacing">
-      <Reveal><p className="eyebrow mb-10">05 — Achievements &amp; Recognition</p></Reveal>
+      <Reveal><h2 className="eyebrow mb-10">06 · Achievements &amp; Recognition</h2></Reveal>
 
       <div className="grid sm:grid-cols-2 gap-5">
         {items.map((a, i) => (

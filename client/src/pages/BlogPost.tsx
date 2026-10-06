@@ -107,7 +107,7 @@ export default function BlogPost() {
       <div className="min-h-screen">
         <div className="shell py-32 text-center" style={{ maxWidth: 680 }}>
           <p className="display text-3xl mb-6">Nothing here.</p>
-          <Link href="/blog"><a className="btn">← back to writing</a></Link>
+          <Link href="/blog" className="btn">← back to writing</Link>
         </div>
       </div>
     );
@@ -120,23 +120,32 @@ export default function BlogPost() {
       <Cursor />
 
       <header className="shell flex items-center justify-between h-16 border-b border-border" style={{ maxWidth: 760 }}>
-        <Link href="/blog">
-          <a className="font-mono text-[12px] uppercase tracking-[0.14em] text-text-secondary hover:text-text transition-colors inline-flex items-center gap-2 group" data-cursor="back">
-            <ArrowLeft size={13} className="group-hover:-translate-x-0.5 transition-transform" /> The log
-          </a>
+        <Link
+          href="/blog"
+          className="font-mono text-[12px] uppercase tracking-[0.14em] text-text-secondary hover:text-text transition-colors inline-flex items-center gap-2 group"
+          data-cursor="back"
+        >
+          <ArrowLeft size={13} className="group-hover:-translate-x-0.5 transition-transform" /> The log
         </Link>
-        <Link href="/"><a className="mono-label uppercase tracking-[0.16em] hover:text-text transition-colors" data-cursor="home">Parth Doshi</a></Link>
+        <Link href="/" className="mono-label uppercase tracking-[0.16em] hover:text-text transition-colors" data-cursor="home">Parth Doshi</Link>
       </header>
 
       <main className="shell" style={{ maxWidth: 720 }}>
         <article className="py-14 md:py-20">
+          <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-text-secondary font-mono mb-6">
+            <Link href="/" className="hover:text-text transition-colors">Home</Link>
+            <span className="opacity-50">/</span>
+            <Link href="/blog" className="hover:text-text transition-colors">Writing</Link>
+            <span className="opacity-50">/</span>
+            <span className="text-text truncate max-w-[280px]">{post.title}</span>
+          </nav>
           <p className="mono-label mb-4">{fmtDate(post.date)} · {post.readingTime}</p>
           <h1 className="display leading-[1.05] mb-5" style={{ fontSize: "clamp(2rem, 5vw, 3.2rem)" }}>{post.title}</h1>
           {post.summary && <p className="text-lg text-text-secondary leading-relaxed measure mb-10 pb-10 border-b border-border">{post.summary}</p>}
           <div>{renderMarkdown(post.content)}</div>
 
           <div className="mt-16 pt-6 border-t border-border">
-            <Link href="/blog"><a className="btn" data-cursor="back">← more writing</a></Link>
+            <Link href="/blog" className="btn" data-cursor="back">← more writing</Link>
           </div>
         </article>
       </main>

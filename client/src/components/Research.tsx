@@ -272,10 +272,10 @@ export function Research() {
         <Reveal>
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
             <div>
-              <p className="eyebrow mb-3">04 — Security Findings</p>
-              <h2 className="display text-3xl md:text-5xl leading-tight">
+              <h2 className="eyebrow mb-3">05 · Security Findings</h2>
+              <p className="display text-3xl md:text-5xl leading-tight">
                 Vulnerabilities &amp; <span className="italic-accent">research writeups</span>.
-              </h2>
+              </p>
             </div>
             <div className="flex items-center gap-4">
               <span className="mono-label hidden sm:inline-flex items-center gap-1.5 text-text-secondary">

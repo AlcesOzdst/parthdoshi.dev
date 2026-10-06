@@ -11,7 +11,7 @@ export function Contact() {
     <section id="contact" className="section-spacing relative overflow-hidden">
       <div className="glow" style={{ width: 520, height: 520, bottom: -220, left: -120 }} />
       <div className="relative z-10">
-        <Reveal><p className="eyebrow mb-8">08 — Contact</p></Reveal>
+        <Reveal><span className="eyebrow mb-8 block">08 · Contact</span></Reveal>
 
         <Reveal delay={0.05}>
           <h2 className="font-display font-extrabold tracking-[-0.03em] leading-[0.95] mb-10"
@@ -24,7 +24,7 @@ export function Contact() {
         <Reveal delay={0.1}>
           <p className="text-text-secondary max-w-[48ch] mb-10 leading-relaxed">
             <span className="inline-flex items-center gap-2 mr-2"><span className="status-dot" aria-hidden="true" /></span>
-            Looking for embedded / IoT / firmware security internships (2026–27). If that&rsquo;s
+            Looking for embedded / IoT / firmware security internships (2026-2027). If that&rsquo;s
             your team, I&rsquo;d like to talk.
           </p>
         </Reveal>

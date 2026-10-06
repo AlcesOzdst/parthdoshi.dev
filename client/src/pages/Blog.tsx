@@ -74,15 +74,17 @@ export default function Blog() {
             )}
             {posts.map((post, i) => (
               <Reveal key={post.id} delay={i * 0.05}>
-                <Link href={"/blog/" + post.id}>
-                  <a className="group block border-b border-border py-8 -mx-4 px-4 rounded-sm hover:bg-surface/40 transition-colors" data-cursor="read ↗">
-                    <span className="mono-label block mb-2">{fmtDate(post.date)} · {post.readingTime}</span>
-                    <h2 className="display text-2xl md:text-[1.9rem] leading-snug mb-2 inline-flex items-center gap-2 group-hover:text-accent transition-colors">
-                      {post.title}
-                      <ArrowUpRight size={20} className="opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all text-accent" />
-                    </h2>
-                    <p className="text-sm text-text-secondary leading-relaxed measure">{post.summary}</p>
-                  </a>
+                <Link
+                  href={"/blog/" + post.id}
+                  className="group block border-b border-border py-8 -mx-4 px-4 rounded-sm hover:bg-surface/40 transition-colors"
+                  data-cursor="read ↗"
+                >
+                  <span className="mono-label block mb-2">{fmtDate(post.date)} · {post.readingTime}</span>
+                  <h2 className="display text-2xl md:text-[1.9rem] leading-snug mb-2 inline-flex items-center gap-2 group-hover:text-accent transition-colors">
+                    {post.title}
+                    <ArrowUpRight size={20} className="opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all text-accent" />
+                  </h2>
+                  <p className="text-sm text-text-secondary leading-relaxed measure">{post.summary}</p>
                 </Link>
               </Reveal>
             ))}
