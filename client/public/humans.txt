@@ -1,0 +1,10 @@
+/* TEAM */
+  Researcher & Engineer: Parth Doshi
+  Contact: parthdoshi404@gmail.com
+  Location: Pune, Maharashtra, India
+  University: MIT World Peace University (MIT-WPU)
+
+/* SITE */
+  Standards: HTML5, CSS3, ES2022, Schema.org JSON-LD, RFC 9116
+  Components: React 19, Vite, Tailwind CSS
+  Fonts: Instrument Serif, Inter, JetBrains Mono (Self-hosted)

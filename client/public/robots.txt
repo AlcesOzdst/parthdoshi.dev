@@ -1,8 +1,9 @@
-# www.parthdoshi.me - crawlers welcome
+# https://www.parthdoshi.me - Technical SEO & AI Search Visibility
+# All crawlers, search engines, and LLM indexing bots are explicitly welcomed.
 User-agent: *
 Allow: /
 
-# AI / answer engines - explicitly allowed
+# OpenAI Crawlers
 User-agent: GPTBot
 Allow: /
 
@@ -12,19 +13,36 @@ Allow: /
 User-agent: ChatGPT-User
 Allow: /
 
+# Perplexity AI
 User-agent: PerplexityBot
 Allow: /
 
+# Anthropic Crawlers
 User-agent: ClaudeBot
 Allow: /
 
 User-agent: Claude-Web
 Allow: /
 
+User-agent: anthropic-ai
+Allow: /
+
+# Google & Microsoft
 User-agent: Google-Extended
 Allow: /
 
 User-agent: Bingbot
+Allow: /
+
+# Apple Crawlers
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Common Crawl
+User-agent: CCBot
 Allow: /
 
 Sitemap: https://www.parthdoshi.me/sitemap.xml

@@ -1,0 +1,323 @@
+# Parth Doshi - Complete Security Research & Portfolio Knowledge Base
+Source: https://www.parthdoshi.me/
+Contact: parthdoshi404@gmail.com
+Location: Pune, Maharashtra, India
+Disambiguation: Parth Doshi (alias AlcesOzdst), third-year ECE (AI-ML) student at MIT-WPU Pune. Focuses on embedded systems, IoT security, firmware reverse engineering, and bare-metal programming.
+
+---
+
+# SECTION 1: IDENTITY & CORE FOCUS
+Source: https://www.parthdoshi.me/
+
+Focus Areas:
+1. Firmware & Reverse Engineering: Firmware extraction over UART and SPI, static analysis, partition extraction with Binwalk, decompilation with Ghidra.
+2. Embedded & IoT Security: Device-to-cloud attack surfaces including MQTT, TLS, OTA updates, and credential storage in lab testbenches.
+3. Hardware Interfaces: Physical probing of UART, SPI, I2C buses with logic analyzers and oscilloscopes.
+4. Bare-Metal Architecture: Register-level C development on microcontrollers like Silicon Labs C8051F340 and ESP32.
+
+---
+
+# SECTION 2: RESUME & BACKGROUND
+Source: https://www.parthdoshi.me/resume
+
+# Parth Doshi - Curriculum Vitae
+Source: https://www.parthdoshi.me/resume
+Contact: parthdoshi404@gmail.com
+Location: Pune, Maharashtra, India
+
+## Summary
+Third-year ECE (AI-ML) student at MIT World Peace University (MIT-WPU), Pune.
+Embedded and IoT security researcher, firmware reverse engineering, bare-metal C, and responsible vulnerability disclosures.
+
+## Education
+- MIT World Peace University (MIT-WPU), Pune, India
+- B.Tech in Electronics & Communication Engineering (ECE), AI/ML Specialization (Expected May 2028)
+
+## Experience
+- Research & Development Intern - PHN Technology Pvt. Ltd., Pune (Jan 2025 - May 2025)
+  - Researched IoT and embedded security solutions using ESP32 and Raspberry Pi.
+  - Performed vulnerability testing on embedded and web prototypes.
+- President - Hack-X, Cybersecurity Club, MIT-WPU (Aug 2025 - Present)
+  - Leading CTF competitions, hardware workshops, and student security initiatives.
+- Independent Security Researcher (2024 - Present)
+  - Web and API vulnerability research across bug bounty programs and university portals.
+
+## Technical Skills
+- Security: Burp Suite Pro, Nmap, Wireshark, Metasploit, LinPEAS, Ghidra, Binwalk, OWASP Top 10
+- Embedded & Hardware: ESP32, Raspberry Pi, Silicon Labs C8051F340, UART, SPI, I2C, Logic Analyzers
+- Languages: Python, C, C++, Bash, JavaScript, TypeScript, SQL
+- Operating Systems: Linux, Kali Linux, Windows
+
+
+---
+
+# SECTION 3: WRITING & FIELD NOTES
+Source: https://www.parthdoshi.me/blog/building-in-public
+
+# Building in Public: Hardware Security & Firmware
+Source: https://www.parthdoshi.me/blog/building-in-public
+Date: 2026-09-30
+Author: Parth Doshi (https://www.parthdoshi.me/#person)
+
+Instead of publishing generic high-level summaries, this space is dedicated to raw, authentic technical field notes from my workbench.
+
+Security research is best understood and validated through transparent evidence: logic analyzer traces, binary disassembly, register maps, and reproducible proof-of-concepts.
+
+## Active Workbench Focus Areas
+
+### 1. Firmware Reverse Engineering & Binary Inspection
+
+Dumping flash chips over UART and SPI, analyzing partition tables, mapping entropy with Binwalk, and decompiling binaries in Ghidra. I focus on identifying hardcoded secrets, unprotected debug interfaces, and authentication bypasses in embedded firmware.
+
+### 2. Physical Hardware Attack Surfaces
+
+Probing physical interfaces (UART, SPI, I²C, JTAG) with logic analyzers and oscilloscopes. Capturing bus traffic to inspect how hardware devices communicate with peripherals and sensors before security boundaries are established in software.
+
+### 3. Bare-Metal Systems & Custom Firmware
+
+Writing register-level bare-metal C for 8-bit and 32-bit microcontrollers (such as the Silicon Labs C8051F340 and ESP32). Building custom firmware for security tools like the ESP32 Marauder, integrating NRF24L01 transceivers and custom OLED interfaces.
+
+### 4. Responsible Disclosure Workflows
+
+Conducting systematic vulnerability research across web portals, APIs, and connected systems. Documenting issues with CVSS v3.1 scoring and working directly with developers and administrators to remediate flaws (such as the university ERP IDOR disclosure).
+
+---
+
+## Following Along
+
+Technical deep-dives, hardware teardowns, and exploit writeups will be published here as projects conclude. In the meantime, all active code, experimental scripts, and schematics are maintained publicly on [GitHub](https://github.com/AlcesOzdst).
+
+
+---
+
+# SECTION 4: PROJECTS & RESEARCH BUILDS
+
+---
+
+# PROJECT: ddos-toolkit
+Source: https://www.parthdoshi.me/projects/ddos-toolkit
+
+# DDoS Volumetric Simulation Toolkit
+Source: https://www.parthdoshi.me/projects/ddos-toolkit
+Date: 2025-06-01
+Author: Parth Doshi (https://www.parthdoshi.me/#person)
+
+---
+permissions: "-rw-r--r--"
+size: "1.8M"
+name: "ddos_toolkit.py"
+desc: "Python-based SYN Flood, UDP Amplification & HTTP GET Flood simulator for testing network resilience in sandboxed environments."
+---
+# DDoS Volumetric Simulation Toolkit
+
+To build resilient systems, you must learn how to break them. This toolkit was written in Python to simulate massive volumetric attacks against local infrastructure in a controlled sandbox.
+
+## Attack Vectors Supported
+
+- **SYN Flood**: Exhausting the target's connection queue.
+- **UDP Amplification**: Spoofed IP requests to open NTP/DNS servers.
+- **HTTP GET Flood**: Layer 7 exhaustion by requesting heavy assets.
+
+## The Script Structure
+
+The script leverages **asyncio** and raw sockets to bypass standard kernel limitations, maximizing the output of packets per second (PPS).
+
+- **Multi-threading**: Utilizes all CPU cores for packet generation.
+- **Randomization**: Payload sizes and intervals are randomized to bypass basic heuristic firewalls.
+
+## Verified Outcome
+
+Generated controlled traffic surges on an isolated local loop to test and tune iptables rate-limiting and null-routing rules in a safe, sandboxed environment.
+
+
+---
+
+# PROJECT: project-omnis
+Source: https://www.parthdoshi.me/projects/project-omnis
+
+# Project Omnis: AI Threat Prediction
+Source: https://www.parthdoshi.me/projects/project-omnis
+Date: 2025-08-20
+Author: Parth Doshi (https://www.parthdoshi.me/#person)
+
+---
+permissions: "drwxrwxr-x"
+size: "8.1K"
+name: "project_omnis"
+desc: "AI platform using Isolation Forests & Autoencoders to flag anomalous access patterns in server logs."
+---
+# Project Omnis: AI Threat Prediction
+
+Developed as a submission for the Smart India Hackathon (SIH) 2025. Project Omnis is an AI-driven platform that ingests raw server logs and predicts vulnerability exploitation paths.
+
+## The Machine Learning Model
+
+We trained an anomaly detection model using Isolation Forests and Autoencoders on standard Apache/Nginx logs combined with OSSEC alerts.
+
+- **Feature Engineering**: Extracted IP geolocation, request frequency, user-agent entropy, and payload signatures.
+- **Inference Speed**: The model evaluates new log entries in < 5ms.
+
+## Dashboard & Visualization
+
+The frontend is a dark, terminal-inspired React application that visualizes threat vectors on a global map and provides actionable mitigation commands.
+
+## Verified Outcome
+
+Omnis flags anomalous access patterns that may indicate lateral movement, trained on Apache/Nginx logs combined with OSSEC alerts.
+
+
+---
+
+# PROJECT: suricata-ids
+Source: https://www.parthdoshi.me/projects/suricata-ids
+
+# Suricata IDS Deployment on ARM
+Source: https://www.parthdoshi.me/projects/suricata-ids
+Date: 2025-02-14
+Author: Parth Doshi (https://www.parthdoshi.me/#person)
+
+---
+permissions: "drwxr-xr-x"
+size: "4.2K"
+name: "suricata_ids"
+desc: "Deployed Suricata on a Raspberry Pi 5 as an edge IDS node, with custom rules tuned for a home-lab network."
+---
+# Suricata IDS Deployment on ARM Architecture
+
+Traditional Intrusion Detection Systems (IDS) are heavy and resource-intensive. This project demonstrates deploying Suricata on a Raspberry Pi 5 to create a formidable, edge-computing security node.
+
+## Architecture & Setup
+
+The system is configured to monitor all traffic traversing the local gateway. We compiled Suricata from source to optimize for the ARM64 architecture, disabling unnecessary modules to preserve RAM.
+
+- **Hardware**: Raspberry Pi 5 (8GB RAM)
+- **OS**: Debian Bookworm
+- **Software**: Suricata 7.0, ELK Stack for log aggregation
+
+
+## Custom Rulesets
+
+We didn't just use Emerging Threats (ET) open rules. I wrote custom PCRE (Perl Compatible Regular Expressions) to detect anomalous IoT telemetry specific to my local network, catching unencrypted MQTT packets instantly.
+
+## Verified Outcome
+
+The node monitored live gateway traffic on the home lab and flagged the simulated attacks its rules were tuned for.
+
+
+---
+
+# PROJECT: thermal-response
+Source: https://www.parthdoshi.me/projects/thermal-response
+
+# Autonomous Thermal Response Array
+Source: https://www.parthdoshi.me/projects/thermal-response
+Date: 2024-11-05
+Author: Parth Doshi (https://www.parthdoshi.me/#person)
+
+---
+permissions: "-rwxr-xr-x"
+size: "845B"
+name: "thermal_response.cpp"
+desc: "ESP32-based autonomous fire detection using IR thermal camera (MLX90640) and MQ-2 gas sensor with sub-2s CO2 suppression trigger."
+---
+# Autonomous Thermal Response Array
+
+An IoT hardware automation project designed to detect rapid thermal anomalies and trigger localized extinguishing mechanisms without human intervention.
+
+## Hardware Stack
+
+- **Microcontroller**: ESP32
+- **Sensors**: MLX90640 (IR Thermal Camera) & MQ-2 (Gas Sensor)
+- **Actuator**: Relays connected to a localized CO2 suppression valve.
+
+## Embedded Logic (C++)
+
+The logic runs on a FreeRTOS task schedule. It doesn't just look for high temperatures; it calculates the *rate of change* (delta T over time) to distinguish between a fire and a hot ambient environment.
+
+- **Failsafe**: If the WiFi connection to the central server drops, the node continues to operate autonomously.
+- **Telemetry**: Publishes state data over encrypted MQTT.
+
+
+## Verified Outcome
+
+Achieved a sub-two-second physical response capability from detection to actuator trigger during controlled burn tests.
+
+
+---
+
+# PROJECT: home-automation
+Source: https://www.parthdoshi.me/projects/home-automation
+
+# IoT Home Automation Node
+Source: https://www.parthdoshi.me/projects/home-automation
+Date: 2024-04-10
+Author: Parth Doshi (https://www.parthdoshi.me/#person)
+
+---
+permissions: "-rwxr-xr-x"
+size: "1.2K"
+name: "home_automation.ino"
+desc: "ESP8266 NodeMCU smart home system with Blynk Cloud for remote relay-based appliance control via smartphone. Sub-second response over WiFi."
+---
+# Home Automation System Using IoT
+
+A smart home control system built around the ESP8266 NodeMCU microcontroller, enabling remote control of home appliances through a cloud-connected smartphone interface.
+
+## Hardware & Software Stack
+
+- **Microcontroller**: ESP8266 NodeMCU
+- **Cloud Platform**: Blynk IoT Cloud
+- **Language**: C/C++ (Arduino Framework)
+- **Communication**: WiFi (IEEE 802.11)
+
+## Architecture
+
+The ESP8266 connects to a local WiFi network and establishes a persistent connection with the Blynk Cloud server. The Blynk mobile app provides a drag-and-drop GUI for creating virtual buttons, sliders, and indicators that map directly to GPIO pins on the microcontroller.
+
+- **Virtual Pins**: Abstract hardware pins into software-controlled endpoints.
+- **OTA Updates**: Firmware can be updated remotely without physical access.
+- **State Persistence**: Device states are stored on the cloud and restored after power cycles.
+
+## Verified Outcome
+
+Successfully controlled multiple relay-connected appliances (lights, fans) from a smartphone with sub-second response times over the local network.
+
+
+---
+
+# PROJECT: noise-indicator
+Source: https://www.parthdoshi.me/projects/noise-indicator
+
+# Acoustic Noise Level Indicator
+Source: https://www.parthdoshi.me/projects/noise-indicator
+Date: 2024-05-15
+Author: Parth Doshi (https://www.parthdoshi.me/#person)
+
+---
+permissions: "-rw-r--r--"
+size: "680B"
+name: "noise_indicator.sim"
+desc: "Analog circuit using electret mic, op-amp amplifier & voltage comparators to drive a 5-band LED volume meter. Simulated in NI Multisim."
+---
+# Noise Level Indicator (Clap Switch Evolution)
+
+A circuit design project that detects and amplifies ambient sound levels, using basic analog electronic components to drive LED indicators that respond to varying sound intensities.
+
+## Circuit Design
+
+- **Sensor**: Electret condenser microphone for sound capture
+- **Amplification**: Op-amp based signal conditioning circuit
+- **Output**: Multi-level LED array with threshold comparators
+- **Simulation**: Full circuit validated in NI Multisim
+
+## How It Works
+
+The microphone converts sound waves into electrical signals. An op-amp amplifies the weak mic output, and a series of voltage comparators trigger different LEDs based on the amplitude. Higher noise levels light up more LEDs, creating a visual volume meter.
+
+- **Threshold Calibration**: Resistor divider networks set the trigger points for each LED level.
+- **Hysteresis**: Schmitt trigger configuration prevents LED flickering at boundary conditions.
+
+## Verified Outcome
+
+Successfully demonstrated real-time sound level visualization with 5 distinct intensity bands. Documented workflow, component specifications, and future improvement scope including digital readout integration.
+
