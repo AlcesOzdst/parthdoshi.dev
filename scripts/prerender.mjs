@@ -16,6 +16,19 @@ if (!fs.existsSync(templatePath)) {
 
 const template = fs.readFileSync(templatePath, 'utf8');
 
+// Extract Vite-generated asset tags (compiled CSS bundles, JS bundles, preloads) from template
+const viteAssets = [];
+const linkStylesheets = template.match(/<link[^>]+rel=["']stylesheet["'][^>]*>/gi) || [];
+const linkModulePreloads = template.match(/<link[^>]+rel=["']modulepreload["'][^>]*>/gi) || [];
+const moduleScripts = template.match(/<script[^>]+(?:type=["']module["'][^>]*|src=["'][^"']*assets\/[^"']*["'])[^>]*><\/script>/gi) || [];
+
+for (const item of [...linkStylesheets, ...linkModulePreloads, ...moduleScripts]) {
+  if (!viteAssets.includes(item)) {
+    viteAssets.push(item);
+  }
+}
+const viteAssetsSnippet = viteAssets.length > 0 ? `\n  ${viteAssets.join('\n  ')}` : '';
+
 // Import server entry
 const serverEntryPath = path.join(distSsrDir, 'entry-server.js');
 if (!fs.existsSync(serverEntryPath)) {
@@ -114,8 +127,8 @@ ${JSON.stringify(r.jsonLd, null, 2)}
   // We will replace from <title> to the end of </script> before </head>
   let html = template;
 
-  // Replace <head> content cleanly
-  html = html.replace(/<head>[\s\S]*?<\/head>/i, `<head>\n  <meta charset="UTF-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0" />${headInject}\n</head>`);
+  // Replace <head> content cleanly, retaining Vite asset bundles
+  html = html.replace(/<head>[\s\S]*?<\/head>/i, `<head>\n  <meta charset="UTF-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1.0" />${headInject}${viteAssetsSnippet}\n</head>`);
 
   // Inject rendered React app into #root
   html = html.replace(/<div id=["']root["']>[\s\S]*?<\/div>/i, `<div id="root">${appHtml}</div>`);
