@@ -11,10 +11,35 @@ const publicOgDir = path.resolve(__dirname, '../client/public/og');
 fs.mkdirSync(distOgDir, { recursive: true });
 fs.mkdirSync(publicOgDir, { recursive: true });
 
-// Load local TTF fonts
-const fontSerif = fs.readFileSync(path.join(__dirname, 'fonts/InstrumentSerif-Regular.ttf'));
-const fontInter = fs.readFileSync(path.join(__dirname, 'fonts/Inter-Regular.ttf'));
-const fontInterBold = fs.readFileSync(path.join(__dirname, 'fonts/Inter-SemiBold.ttf'));
+// Load local TTF fonts with auto-download fallback
+const fontDir = path.join(__dirname, 'fonts');
+fs.mkdirSync(fontDir, { recursive: true });
+
+async function getFont(filename, url) {
+  const localPath = path.join(fontDir, filename);
+  if (fs.existsSync(localPath)) {
+    return fs.readFileSync(localPath);
+  }
+  console.log(`Downloading font ${filename} for OG generation...`);
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`Failed to fetch font ${url}: ${res.statusText}`);
+  const buf = Buffer.from(await res.arrayBuffer());
+  fs.writeFileSync(localPath, buf);
+  return buf;
+}
+
+const fontSerif = await getFont(
+  'InstrumentSerif-Regular.ttf',
+  'https://fonts.gstatic.com/s/instrumentserif/v5/jizBRFtNs2ka5fXjeivQ4LroWlx-2zI.ttf'
+);
+const fontInter = await getFont(
+  'Inter-Regular.ttf',
+  'https://fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZg.ttf'
+);
+const fontInterBold = await getFont(
+  'Inter-SemiBold.ttf',
+  'https://fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYMZg.ttf'
+);
 
 const cards = [
   {
