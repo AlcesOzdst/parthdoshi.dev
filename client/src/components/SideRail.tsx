@@ -62,27 +62,31 @@ export function SideRail({ onOpenResume }: { onOpenResume?: () => void }) {
             <span className="font-semibold">Resume / CV</span>
           </button>
         ) : (
-          <Link href="/resume">
-            <a className="group inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.14em] text-accent hover:text-text transition-colors cursor-pointer pt-1" data-cursor="resume">
-              <span className="rail-num text-accent">↓</span>
-              <span className="h-px bg-accent/60" style={{ width: 14 }} />
-              <span className="font-semibold">Resume / CV</span>
-            </a>
+          <Link
+            href="/resume"
+            className="group inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.14em] text-accent hover:text-text transition-colors cursor-pointer pt-1"
+            data-cursor="resume"
+          >
+            <span className="rail-num text-accent">↓</span>
+            <span className="h-px bg-accent/60" style={{ width: 14 }} />
+            <span className="font-semibold">Resume / CV</span>
           </Link>
         )}
 
-        <Link href="/blog">
-          <a className="group inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.14em] text-text-secondary hover:text-text transition-colors cursor-pointer" data-cursor="read">
-            <span className="rail-num accent">↗</span>
-            <span className="h-px bg-border-accent" style={{ width: 10 }} />
-            <span>Writing</span>
-          </a>
+        <Link
+          href="/blog"
+          className="group inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.14em] text-text-secondary hover:text-text transition-colors cursor-pointer"
+          data-cursor="read"
+        >
+          <span className="rail-num accent">↗</span>
+          <span className="h-px bg-border-accent" style={{ width: 10 }} />
+          <span>Writing</span>
         </Link>
       </nav>
 
       <div>
         <p className="mono-label inline-flex items-center gap-2 mb-4">
-          <span className="status-dot" aria-hidden="true" /> open · 2026–27
+          <span className="status-dot" aria-hidden="true" /> open · 2026-2027
         </p>
         <div className="flex gap-4 mb-4">
           {socials.map((s) => (

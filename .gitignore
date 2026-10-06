@@ -3,6 +3,7 @@ node_modules/
 
 # Build
 dist/
+dist-ssr/
 
 # IDE
 .vscode/
@@ -22,3 +23,4 @@ __backup_static_site/
 # Personal docs (not pushed)
 MAINTENANCE.md
 PROFILE_README.md
+lh-home.json

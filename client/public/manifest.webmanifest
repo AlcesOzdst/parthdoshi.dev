@@ -1,0 +1,21 @@
+{
+  "name": "Parth Doshi - Embedded & IoT Security Researcher",
+  "short_name": "Parth Doshi",
+  "description": "Portfolio and research notes of Parth Doshi, third-year ECE (AI-ML) student at MIT-WPU, Pune.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0E0A06",
+  "theme_color": "#0E0A06",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

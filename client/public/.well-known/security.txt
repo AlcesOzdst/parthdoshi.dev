@@ -1,0 +1,6 @@
+Contact: mailto:parthdoshi404@gmail.com
+Expires: 2027-10-06T18:28:52.307Z
+Preferred-Languages: en
+Canonical: https://www.parthdoshi.me/.well-known/security.txt
+Policy: https://www.parthdoshi.me/blog/building-in-public
+Hiring: https://www.parthdoshi.me/resume

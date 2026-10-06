@@ -45,12 +45,12 @@ export function Trajectory() {
         <Reveal>
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
             <div>
-              <p className="eyebrow mb-3">07 — Where I&rsquo;m Headed</p>
+              <span className="eyebrow mb-3 block">07 · Where I&rsquo;m Headed</span>
               <h2 className="display text-3xl md:text-5xl leading-tight">
                 Toward <span className="italic-accent">embedded &amp; hardware</span> security research.
               </h2>
             </div>
-            <span className="mono-label text-accent font-medium">Roadmap · 2026–2027</span>
+            <span className="mono-label text-accent font-medium">Roadmap · 2026-2027</span>
           </div>
         </Reveal>
 

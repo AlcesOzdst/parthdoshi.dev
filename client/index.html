@@ -4,28 +4,48 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Parth Doshi - I take things apart to understand them</title>
+  <title>Parth Doshi | Embedded &amp; IoT Security Researcher, Pune</title>
   <meta name="description"
-    content="Parth Doshi - third-year ECE (AI-ML) student in Pune doing security research on the hardware side: embedded & IoT security, firmware reverse engineering, responsible disclosure, and bare-metal systems." />
+    content="Portfolio and research notes of Parth Doshi, third-year ECE (AI-ML) student at MIT-WPU, Pune. Embedded and IoT security, firmware reverse engineering, bare-metal C." />
   <link rel="canonical" href="https://www.parthdoshi.me/" />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
 
-  <meta property="og:title" content="Parth Doshi - I take things apart to understand them" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Parth Doshi | Embedded &amp; IoT Security Researcher, Pune" />
   <meta property="og:description"
-    content="Embedded & IoT security research on the hardware side: firmware reverse engineering, hardware interfaces, and responsible disclosures." />
+    content="Portfolio and research notes of Parth Doshi, third-year ECE (AI-ML) student at MIT-WPU, Pune. Embedded and IoT security, firmware reverse engineering, bare-metal C." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.parthdoshi.me/" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Parth Doshi - I take things apart to understand them" />
-  <meta name="twitter:description" content="Embedded & IoT security research: firmware reverse engineering, hardware security, and responsible disclosures." />
+  <meta property="og:site_name" content="Parth Doshi" />
+  <meta property="og:locale" content="en_IN" />
+  <meta property="og:image" content="https://www.parthdoshi.me/og/home.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Parth Doshi - Embedded &amp; IoT Security Researcher based in Pune" />
 
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Parth Doshi | Embedded &amp; IoT Security Researcher, Pune" />
+  <meta name="twitter:description"
+    content="Portfolio and research notes of Parth Doshi, third-year ECE (AI-ML) student at MIT-WPU, Pune. Embedded and IoT security, firmware reverse engineering, bare-metal C." />
+  <meta name="twitter:image" content="https://www.parthdoshi.me/og/home.png" />
+  <meta name="twitter:image:alt" content="Parth Doshi - Embedded &amp; IoT Security Researcher based in Pune" />
+
+  <!-- Icons & Web Identity -->
+  <meta name="theme-color" content="#0E0A06" />
+  <meta name="color-scheme" content="dark" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="alternate icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/manifest.webmanifest" />
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
-  <link rel="alternate" type="text/plain" href="/llm.txt" title="LLM Context" />
-  <link rel="help" type="text/plain" href="/llms.txt" title="LLM Context" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="alternate" type="application/rss+xml" title="Parth Doshi - Feed" href="/feed.xml" />
 
+  <!-- Font Preloads (Self-hosted) -->
+  <link rel="preload" href="/fonts/inter-latin-variable.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/instrument-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+
+  <!-- Structured Data Graph (Person & WebSite) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -35,9 +55,27 @@
         "@id": "https://www.parthdoshi.me/#person",
         "name": "Parth Doshi",
         "url": "https://www.parthdoshi.me/",
-        "jobTitle": "Security Researcher & Embedded Engineer",
-        "description": "Third-year ECE (AI-ML) student in Pune doing security research on the hardware side: embedded & IoT security, firmware reverse engineering, and bare-metal systems.",
+        "jobTitle": "Security Researcher & Embedded Systems Engineer",
+        "description": "Third-year ECE (AI-ML) student at MIT-WPU in Pune doing security research on embedded & IoT hardware, firmware reverse engineering, and bare-metal systems.",
         "email": "mailto:parthdoshi404@gmail.com",
+        "image": "https://www.parthdoshi.me/og/home.png",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Pune",
+          "addressRegion": "Maharashtra",
+          "addressCountry": "IN"
+        },
+        "alternateName": ["AlcesOzdst"],
+        "memberOf": {
+          "@type": "Organization",
+          "name": "Hack-X, Cybersecurity Club - MIT-WPU",
+          "roleName": "President"
+        },
+        "affiliation": {
+          "@type": "CollegeOrUniversity",
+          "name": "MIT World Peace University",
+          "sameAs": "https://mitwpu.edu.in/"
+        },
         "alumniOf": {
           "@type": "CollegeOrUniversity",
           "name": "MIT World Peace University",
@@ -73,107 +111,19 @@
   }
   </script>
 
-  <!-- Prerendered fallback: real, crawlable content shown before the app mounts and
-       to readers/crawlers that don't execute JavaScript. React replaces #root on load. -->
-  <style>
-    body { background: #0E0A06; margin: 0; }
-    #root .pr { max-width: 720px; margin: 0 auto; padding: 56px 22px; color: #E9DFC9;
-      font-family: 'Inter', system-ui, -apple-system, sans-serif; line-height: 1.62; }
-    #root .pr h1, #root .pr h2 { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; letter-spacing: .01em; }
-    #root .pr h1 { font-size: 2.6rem; margin: 0 0 .25em; }
-    #root .pr h2 { font-size: 1.5rem; margin: 1.9em 0 .5em; }
-    #root .pr .lead { font-size: 1.2rem; color: #E9DFC9; }
-    #root .pr p, #root .pr li { color: #C8BCA3; }
-    #root .pr a { color: #5FCE86; text-decoration: none; }
-    #root .pr ul { padding-left: 1.1rem; }
-    #root .pr li { margin: .35em 0; }
-    #root .pr strong { color: #E9DFC9; }
-    #root .pr footer { margin-top: 2.5em; font-size: .8rem; color: #9E8C6F; }
-  </style>
+  <noscript>
+    <style>
+      #root * {
+        opacity: 1 !important;
+        transform: none !important;
+        visibility: visible !important;
+      }
+    </style>
+  </noscript>
 </head>
 
 <body>
-  <div id="root">
-    <main class="pr">
-      <header>
-        <h1>Parth Doshi</h1>
-        <p class="lead">I take things apart to understand them.</p>
-        <p>Embedded &amp; IoT security research on the hardware side - a third-year ECE (AI&nbsp;·&nbsp;ML)
-          student in Pune, India. Firmware reverse engineering, hardware interfaces, responsible vulnerability
-          disclosures, mechanical horology, and pencil sketching. Open to embedded / IoT / firmware
-          security internships (2026-27).</p>
-        <p>
-          <a href="mailto:parthdoshi404@gmail.com">parthdoshi404@gmail.com</a> ·
-          <a href="https://github.com/AlcesOzdst">GitHub</a> ·
-          <a href="https://linkedin.com/in/parthdoshi404">LinkedIn</a> ·
-          <a href="https://profile.hackthebox.com/profile/019c59d7-edfc-7172-b666-bedfbe635e49">Hack The Box</a> ·
-          <a href="/resume">Resume</a> ·
-          <a href="/blog">Writing</a>
-        </p>
-      </header>
-
-      <section>
-        <h2>Focus</h2>
-        <ul>
-          <li><strong>Firmware &amp; Reverse Engineering</strong> - firmware extraction, static analysis, binary inspection, and controlled secure-boot research.</li>
-          <li><strong>Embedded &amp; IoT Security</strong> - the device-to-cloud attack surface: MQTT, TLS, OTA, credential storage - attacked in a lab, then hardened.</li>
-          <li><strong>Hardware Interfaces</strong> - UART, SPI, I²C and the physical attack surface, documented with real hardware evidence.</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>Selected work</h2>
-        <ul>
-          <li><strong>ESP32 Marauder Custom Firmware</strong> - customized ESP32 Marauder firmware for wireless security experimentation with NRF24L01 transceivers and custom OLED UI. (ESP32 · PlatformIO · Embedded C++)</li>
-          <li><strong>Responsible Disclosure: ERP IDOR</strong> - identified and reported an Insecure Direct Object Reference (IDOR) flaw in university ERP portal by manipulating PRN parameter tokens. (Burp Suite · Web Security · CVSS v3.1)</li>
-          <li><strong>C8051 Bare-Metal Sensor Hub</strong> - bare-metal firmware for a Silicon Labs C8051F340 driving four peripherals on one 8-bit bus with register-level drivers. (Bare-Metal C · C8051F340 · I²C · SPI)</li>
-          <li><strong>DDoS Traffic Classification</strong> - an ML pipeline classifying attack vectors from raw packet captures. (Python · tshark · scikit-learn) - <a href="https://github.com/AlcesOzdst/DDoS_AssMnt">repository</a></li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>Security findings</h2>
-        <ul>
-          <li>CORS misconfiguration &amp; exposed admin panel → account takeover (Under Armour)</li>
-          <li>GraphQL introspection-based recon (Whatnot · HackerOne)</li>
-          <li>Smart-contract audit &amp; CTF exploitation (The Graph · Immunefi)</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>Achievements</h2>
-        <ul>
-          <li>HackMITWPU'25 Track Host - hosted a track at HackMITWPU'25, contributing to the execution of a campus cybersecurity competition.</li>
-          <li>Smart India Hackathon (SIH 2025) Top Finalist - Project Omnis: AI-driven threat prediction and attack path forecasting with a 94% true-positive rate.</li>
-          <li>Exposed Admin Panel Research - identified a CORS misconfiguration and exposed administrative panel in security research.</li>
-          <li>Firmware Reverse Engineering - investigating firmware extraction, static analysis and binary inspection with Binwalk and Ghidra.</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>Where I&rsquo;m headed</h2>
-        <p>Toward embedded &amp; hardware security research: firmware reverse engineering (Ghidra,
-          Binwalk), secure boot and signed images, and hardware-interface analysis (UART/SPI/I²C,
-          JTAG/SWD). Building it in public, one teardown and writeup at a time.</p>
-      </section>
-
-      <section>
-        <h2>Off the clock</h2>
-        <p>Firmware teardowns (ESP32 flash dumping over UART and Ghidra inspection), mechanical horology
-          (symmetrical skeleton movements with twin barrels and 28,800 VPH escapements), and pencil
-          sketching studies (observing physical structures, perspective, and form).</p>
-      </section>
-
-      <section>
-        <h2>Secret console</h2>
-        <p>An interactive hardware oscilloscope terminal is hidden inside the portfolio. Enter the secret access sequence on the scope controls to unlock.</p>
-      </section>
-
-      <footer>
-        <p>© 2026 Parth Doshi - Pune, India. Code: all rights reserved · writing: CC BY-NC-ND 4.0.</p>
-      </footer>
-    </main>
-  </div>
+  <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
 </body>
 

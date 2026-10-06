@@ -12,10 +12,8 @@ export default function NotFound() {
           <h1 className="text-xl font-serif font-semibold text-text mb-3">
             Nothing here
           </h1>
-          <Link href="/">
-            <a className="text-sm text-text-secondary hover:text-text transition-colors link-underline">
-              ← Go home
-            </a>
+          <Link href="/" className="text-sm text-text-secondary hover:text-text transition-colors link-underline">
+            ← Go home
           </Link>
         </div>
       </main>

@@ -21,7 +21,7 @@ const pillars = [
 export function Focus() {
   return (
     <section id="focus" className="section-spacing">
-      <Reveal><p className="eyebrow mb-10">01 — Focus</p></Reveal>
+      <Reveal><h2 className="eyebrow mb-10">01 · Focus</h2></Reveal>
       <div className="grid md:grid-cols-3 gap-5">
         {pillars.map((p, i) => (
           <Reveal key={p.n} delay={i * 0.06}>

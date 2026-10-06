@@ -2,41 +2,42 @@ import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { useRoute } from "wouter";
 import { parseMarkdown } from "@/lib/markdown";
-import { ArrowLeft, ExternalLink } from "lucide-react";
+import { ArrowLeft, ExternalLink, ChevronRight } from "lucide-react";
 import { FaGithub } from "react-icons/fa6";
 import { Link } from "wouter";
 
-const mdFiles = import.meta.glob('../content/projects/*.md', { query: '?raw', import: 'default', eager: true });
+const mdFiles = import.meta.glob("../content/projects/*.md", { query: "?raw", import: "default", eager: true });
 
 const projectsData: Record<string, any> = {};
 
 Object.entries(mdFiles).forEach(([path, raw]) => {
   const { meta, content } = parseMarkdown(raw as string);
-  const id = path.split('/').pop()?.replace('.md', '') || '';
+  const id = path.split("/").pop()?.replace(".md", "") || "";
 
   projectsData[id] = {
+    id,
     name: meta.name || id,
     desc: meta.desc || "",
     link: meta.link || null,
     github: meta.github || null,
-    content
+    content,
   };
 });
 
 function renderMarkdown(content: string) {
-  const lines = content.trim().split('\n');
+  const lines = content.trim().split("\n");
   return lines.map((line, i) => {
-    if (line.startsWith('# ')) return <h1 key={i} className="text-2xl font-serif font-bold text-text mt-10 mb-4">{line.replace('# ', '')}</h1>;
-    if (line.startsWith('## ')) return <h2 key={i} className="text-xl font-serif font-semibold text-text mt-8 mb-3">{line.replace('## ', '')}</h2>;
-    if (line.startsWith('### ')) return <h3 key={i} className="text-lg font-serif font-semibold text-text mt-6 mb-2">{line.replace('### ', '')}</h3>;
-    if (line.startsWith('- ')) {
-      const text = line.replace('- ', '');
+    if (line.startsWith("# ")) return <h2 key={i} className="text-2xl font-serif font-bold text-text mt-10 mb-4">{line.replace("# ", "")}</h2>;
+    if (line.startsWith("## ")) return <h3 key={i} className="text-xl font-serif font-semibold text-text mt-8 mb-3">{line.replace("## ", "")}</h3>;
+    if (line.startsWith("### ")) return <h4 key={i} className="text-lg font-serif font-semibold text-text mt-6 mb-2">{line.replace("### ", "")}</h4>;
+    if (line.startsWith("- ")) {
+      const text = line.replace("- ", "");
       const parts = text.split(/(\*\*.*?\*\*)/g);
       return (
         <li key={i} className="ml-4 list-disc text-text-secondary my-1.5 pl-1">
           <span>
             {parts.map((part, index) => {
-              if (part.startsWith('**') && part.endsWith('**')) return <strong key={index} className="text-text font-medium">{part.slice(2, -2)}</strong>;
+              if (part.startsWith("**") && part.endsWith("**")) return <strong key={index} className="text-text font-medium">{part.slice(2, -2)}</strong>;
               return part;
             })}
           </span>
@@ -52,13 +53,13 @@ function renderMarkdown(content: string) {
         </figure>
       ) : null;
     }
-    if (line === '') return <div key={i} className="h-3"></div>;
+    if (line === "") return <div key={i} className="h-3"></div>;
 
     const parts = line.split(/(\*\*.*?\*\*)/g);
     return (
       <p key={i} className="mb-4 text-text-secondary leading-[1.75]">
         {parts.map((part, index) => {
-          if (part.startsWith('**') && part.endsWith('**')) return <strong key={index} className="text-text font-medium">{part.slice(2, -2)}</strong>;
+          if (part.startsWith("**") && part.endsWith("**")) return <strong key={index} className="text-text font-medium">{part.slice(2, -2)}</strong>;
           return part;
         })}
       </p>
@@ -68,8 +69,9 @@ function renderMarkdown(content: string) {
 
 export default function ProjectPost() {
   const [, params] = useRoute("/projects/:id");
-  const projectId = params?.id || "";
-  const project = projectsData[projectId];
+  const rawId = params?.id || "";
+  const normalizedId = rawId.replace(/_/g, "-");
+  const project = projectsData[rawId] || projectsData[normalizedId];
 
   if (!project) {
     return (
@@ -77,32 +79,36 @@ export default function ProjectPost() {
         <Nav />
         <div className="page-container py-32 text-center">
           <h1 className="text-lg font-serif text-text-secondary italic mb-6">Not found.</h1>
-          <Link href="/">
-            <a className="text-sm text-text-secondary hover:text-text transition-colors link-underline">
-              ← Back
-            </a>
+          <Link href="/" className="text-sm text-text-secondary hover:text-text transition-colors link-underline">
+            ← Back to portfolio
           </Link>
         </div>
       </div>
     );
   }
 
+  // Siblings for related navigation
+  const allProjects = Object.values(projectsData);
+  const siblings = allProjects.filter((p) => p.id !== project.id).slice(0, 3);
+
   return (
     <div className="min-h-screen">
       <Nav />
       <main className="page-container py-20 md:py-28">
-        <Link href="/">
-          <a className="inline-flex items-center gap-1.5 text-[13px] text-text-secondary hover:text-text transition-colors mb-8 group">
-            <ArrowLeft size={13} className="group-hover:-translate-x-0.5 transition-transform" />
-            Projects
-          </a>
-        </Link>
+        {/* Breadcrumb UI */}
+        <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-text-secondary font-mono mb-8">
+          <Link href="/" className="hover:text-text transition-colors">Home</Link>
+          <ChevronRight size={12} />
+          <Link href="/#work" className="hover:text-text transition-colors">Projects</Link>
+          <ChevronRight size={12} />
+          <span className="text-text truncate max-w-[240px]">{project.name}</span>
+        </nav>
 
         <div className="mb-10">
-          <h1 className="text-2xl md:text-3xl font-serif font-bold text-text leading-tight mb-2">
+          <h1 className="text-3xl md:text-4xl font-serif font-bold text-text leading-tight mb-3">
             {project.name}
           </h1>
-          <p className="text-text-secondary leading-relaxed mb-4">
+          <p className="text-text-secondary leading-relaxed mb-5 text-base">
             {project.desc}
           </p>
 
@@ -132,16 +138,36 @@ export default function ProjectPost() {
           </div>
         </div>
 
-        <article>
+        <article className="border-t border-border pt-6">
           {renderMarkdown(project.content)}
         </article>
 
-        <div className="mt-16 pt-6 border-t">
-          <Link href="/">
-            <a className="text-sm text-text-secondary hover:text-text transition-colors link-underline">
-              ← More work
-            </a>
-          </Link>
+        {/* Related Projects Navigation */}
+        <div className="mt-16 pt-8 border-t border-border">
+          <h2 className="mono-label uppercase tracking-[0.16em] text-accent mb-4">
+            Related Project Writeups
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            {siblings.map((sib) => (
+              <Link
+                key={sib.id}
+                href={`/projects/${sib.id}`}
+                className="p-3.5 rounded border border-border bg-surface/30 hover:bg-surface/70 hover:border-accent/40 transition-all block"
+              >
+                <span className="font-display font-semibold text-sm text-text block mb-1 truncate">{sib.name}</span>
+                <span className="mono-label text-[10px] text-accent">view project →</span>
+              </Link>
+            ))}
+          </div>
+
+          <div className="mt-8">
+            <Link
+              href="/#work"
+              className="inline-flex items-center gap-1.5 text-xs font-mono text-text-secondary hover:text-text transition-colors"
+            >
+              <ArrowLeft size={13} /> Back to all projects
+            </Link>
+          </div>
         </div>
       </main>
       <Footer />

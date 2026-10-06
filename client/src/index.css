@@ -1,11 +1,42 @@
 @import "tailwindcss";
 
-/* ════════════════════════════════════════════════════════════════
-   SIGNALS I READ — a personal site for Parth Doshi.
-   The idea: he takes things apart to understand them — firmware,
-   a city on foot, a pair of IEMs, an argument. Warm ink, editorial
-   serif, technical margin-notes.
-   ════════════════════════════════════════════════════════════════ */
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/instrument-serif-latin-400-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/instrument-serif-latin-400-italic.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/inter-latin-variable.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url('/fonts/jetbrains-mono-latin-variable.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* SIGNALS I READ - a personal site for Parth Doshi. */
 
 @theme inline {
   --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
@@ -34,7 +65,7 @@
   --c-surface: #17110A;
   --c-surface-alt: #20170B;
   --c-text: #E9DFC9;
-  --c-text-secondary: #9E8C6F;
+  --c-text-secondary: #B5A58B;
   --c-faint: #5E4E38;
   --c-border: #281E12;
   --c-border-accent: #3B2C19;
@@ -45,16 +76,21 @@
 @layer base {
   * { border-color: var(--c-border); }
 
-  html { scroll-behavior: smooth; scroll-padding-top: 5rem; background: var(--c-bg); }
+  html, body, #root {
+    background-color: var(--c-bg);
+    color: var(--c-text);
+  }
+
+  html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
 
   body {
     @apply font-sans antialiased;
     overflow-x: clip; /* prevents h-scroll without breaking position: sticky */
-    background: var(--c-bg);
-    color: var(--c-text);
     font-size: 15px; line-height: 1.65;
     -webkit-font-smoothing: antialiased;
   }
+
+  a { color: inherit; text-decoration: inherit; }
 
   h1, h2, h3 { @apply font-display; line-height: 1.12; letter-spacing: 0.02em; font-weight: 400; }
 
@@ -87,10 +123,10 @@
   .accent { color: var(--c-accent); }
 
   /* Buttons */
-  .btn { @apply inline-flex items-center gap-2 font-mono; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; padding: .8rem 1.35rem; border-radius: 999px; border: 1px solid var(--c-border-accent); transition: transform .25s cubic-bezier(.22,1,.36,1), background-color .25s, color .25s, border-color .25s; }
-  .btn:hover { transform: translateY(-2px); border-color: var(--c-accent); }
-  .btn-solid { background: var(--c-accent); color: var(--c-accent-ink); border-color: var(--c-accent); }
-  .btn-solid:hover { background: transparent; color: var(--c-accent); }
+  .btn { @apply inline-flex items-center gap-2 font-mono; color: var(--c-text); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; padding: .8rem 1.35rem; border-radius: 999px; border: 1px solid var(--c-border-accent); transition: transform .25s cubic-bezier(.22,1,.36,1), background-color .25s, color .25s, border-color .25s; }
+  .btn:hover { transform: translateY(-2px); border-color: var(--c-accent); color: var(--c-accent); }
+  .btn-solid { background: var(--c-accent) !important; color: var(--c-accent-ink) !important; border-color: var(--c-accent) !important; }
+  .btn-solid:hover { background: transparent !important; color: var(--c-accent) !important; }
   .btn-pill { display: inline-flex; align-items: center; gap: .5rem; font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; padding: .8rem 1.35rem; border-radius: 999px; border: 1px solid var(--c-border-accent); transition: transform .25s, border-color .25s, background-color .25s, color .25s; }
   .btn-pill:hover { transform: translateY(-2px); border-color: var(--c-accent); }
   .btn-pill-primary { background: var(--c-accent); color: var(--c-accent-ink); border-color: var(--c-accent); }

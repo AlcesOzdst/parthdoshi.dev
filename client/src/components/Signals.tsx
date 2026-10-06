@@ -504,11 +504,11 @@ export function Signals() {
   return (
     <section id="signals" className="section-spacing">
       <div>
-        <Reveal><p className="eyebrow mb-5">06 — Off the clock</p></Reveal>
+        <Reveal><span className="eyebrow mb-5 block">06 · Off the clock</span></Reveal>
         <Reveal delay={0.05}>
-          <p className="display text-3xl md:text-5xl mb-4 measure">
+          <h2 className="display text-3xl md:text-5xl mb-4 measure">
             Most things are just <span className="italic-accent">signals</span> once you slow them down.
-          </p>
+          </h2>
         </Reveal>
         <Reveal delay={0.1}>
           <p className="text-text-secondary measure mb-4 leading-relaxed">

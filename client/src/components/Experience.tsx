@@ -94,10 +94,10 @@ export function Experience({ onOpenResume }: { onOpenResume?: () => void }) {
         <Reveal>
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
             <div>
-              <p className="eyebrow mb-3">03 — Experience &amp; Leadership</p>
-              <h2 className="display text-3xl md:text-5xl leading-tight">
+              <h2 className="eyebrow mb-3">04 · Experience &amp; Leadership</h2>
+              <p className="display text-3xl md:text-5xl leading-tight">
                 Where I&rsquo;ve <span className="italic-accent">built &amp; led</span>.
-              </h2>
+              </p>
             </div>
             <div className="flex flex-wrap items-center gap-3">
               {onOpenResume ? (
@@ -110,14 +110,13 @@ export function Experience({ onOpenResume }: { onOpenResume?: () => void }) {
                   <span>Resume / CV ↗</span>
                 </button>
               ) : (
-                <Link href="/resume">
-                  <a
-                    className="btn !py-1.5 !px-3 font-mono text-xs inline-flex items-center gap-1.5 cursor-pointer text-accent border-accent/40 hover:border-accent"
-                    data-cursor="resume"
-                  >
-                    <FileText size={13} />
-                    <span>Resume / CV ↗</span>
-                  </a>
+                <Link
+                  href="/resume"
+                  className="btn !py-1.5 !px-3 font-mono text-xs inline-flex items-center gap-1.5 cursor-pointer text-accent border-accent/40 hover:border-accent"
+                  data-cursor="resume"
+                >
+                  <FileText size={13} />
+                  <span>Resume / CV ↗</span>
                 </Link>
               )}
               <a

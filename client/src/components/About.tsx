@@ -4,7 +4,7 @@ export function About() {
   return (
     <section id="about" className="section-spacing border-t border-border relative">
       <div className="shell">
-        <Reveal><p className="eyebrow mb-10">04 — Elsewhere</p></Reveal>
+        <Reveal><p className="eyebrow mb-10">04 · Elsewhere</p></Reveal>
 
         <div className="grid md:grid-cols-[1.5fr_1fr] gap-12 md:gap-16">
           <div>
@@ -32,7 +32,7 @@ export function About() {
                 ["ifaces", "UART · SPI · I²C · GPIO"],
                 ["tools", "Ghidra · Binwalk · Wireshark · Burp"],
                 ["based", "Pune, India"],
-                ["status", "open to internships, 2026–27"],
+                ["status", "open to internships, 2026-2027"],
               ].map(([k, v]) => (
                 <div key={k} className="spec-row items-baseline border-b border-border pb-3 last:border-0 last:pb-0">
                   <span className="spec-key">{k}</span>

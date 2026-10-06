@@ -1,0 +1,31 @@
+# DDoS Volumetric Simulation Toolkit
+Source: https://www.parthdoshi.me/projects/ddos-toolkit
+Date: 2025-06-01
+Author: Parth Doshi (https://www.parthdoshi.me/#person)
+
+---
+permissions: "-rw-r--r--"
+size: "1.8M"
+name: "ddos_toolkit.py"
+desc: "Python-based SYN Flood, UDP Amplification & HTTP GET Flood simulator for testing network resilience in sandboxed environments."
+---
+# DDoS Volumetric Simulation Toolkit
+
+To build resilient systems, you must learn how to break them. This toolkit was written in Python to simulate massive volumetric attacks against local infrastructure in a controlled sandbox.
+
+## Attack Vectors Supported
+
+- **SYN Flood**: Exhausting the target's connection queue.
+- **UDP Amplification**: Spoofed IP requests to open NTP/DNS servers.
+- **HTTP GET Flood**: Layer 7 exhaustion by requesting heavy assets.
+
+## The Script Structure
+
+The script leverages **asyncio** and raw sockets to bypass standard kernel limitations, maximizing the output of packets per second (PPS).
+
+- **Multi-threading**: Utilizes all CPU cores for packet generation.
+- **Randomization**: Payload sizes and intervals are randomized to bypass basic heuristic firewalls.
+
+## Verified Outcome
+
+Generated controlled traffic surges on an isolated local loop to test and tune iptables rate-limiting and null-routing rules in a safe, sandboxed environment.
