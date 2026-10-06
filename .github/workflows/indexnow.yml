@@ -1,0 +1,31 @@
+name: IndexNow URL Submission
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Submit URLs to IndexNow
+        run: |
+          curl -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d '{
+              "host": "www.parthdoshi.me",
+              "key": "e8d249f05a41498fa4c2194d6e9f285b",
+              "keyLocation": "https://www.parthdoshi.me/e8d249f05a41498fa4c2194d6e9f285b.txt",
+              "urlList": [
+                "https://www.parthdoshi.me/",
+                "https://www.parthdoshi.me/resume",
+                "https://www.parthdoshi.me/blog",
+                "https://www.parthdoshi.me/blog/building-in-public",
+                "https://www.parthdoshi.me/projects/ddos-toolkit",
+                "https://www.parthdoshi.me/projects/home-automation",
+                "https://www.parthdoshi.me/projects/noise-indicator",
+                "https://www.parthdoshi.me/projects/project-omnis",
+                "https://www.parthdoshi.me/projects/suricata-ids",
+                "https://www.parthdoshi.me/projects/thermal-response"
+              ]
+            }'
