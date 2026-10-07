@@ -124,7 +124,7 @@ export const routes: RouteMeta[] = [
   {
     path: "/resume",
     title: "Resume | Parth Doshi - Security Researcher & Embedded Systems",
-    description: "Credentials and experience of Parth Doshi: Embedded and IoT security, ECE (AI-ML) at MIT-WPU Pune, R&D intern at PHN Technology, President of Hack-X.",
+    description: "Credentials and experience of Parth Doshi: Ethical hacker and red teamer, penetration testing, IoT security, robotics & innovation intern, ECE (AI-ML) at MIT-WPU.",
     type: "profile",
     isIndexable: true,
     ogImage: "/og/resume.png",
