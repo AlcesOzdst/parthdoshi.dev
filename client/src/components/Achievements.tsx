@@ -2,13 +2,6 @@ import { Reveal } from "@/components/Reveal";
 
 const items = [
   {
-    tag: "Security",
-    metric: "CORS",
-    unit: "finding",
-    title: "Exposed Admin Panel Research",
-    detail: "Identified a CORS misconfiguration and exposed administrative panel that could lead to account takeover in security research."
-  },
-  {
     tag: "AI Security",
     metric: "Top",
     unit: "finalist",
@@ -36,7 +29,7 @@ export function Achievements() {
     <section id="achievements" className="section-spacing">
       <Reveal><h2 className="eyebrow mb-10">06 · Achievements &amp; Recognition</h2></Reveal>
 
-      <div className="grid sm:grid-cols-2 gap-5">
+      <div className="grid md:grid-cols-3 gap-5">
         {items.map((a, i) => (
           <Reveal key={a.tag} delay={i * 0.06}>
             <div className="card h-full p-6 md:p-7 flex flex-col">

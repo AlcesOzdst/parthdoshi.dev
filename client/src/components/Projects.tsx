@@ -45,18 +45,6 @@ const labWriteups = [
     tags: ["Suricata", "ARM", "Raspberry Pi"],
   },
   {
-    slug: "thermal-response",
-    title: "Autonomous Thermal Response Array",
-    desc: "ESP32 autonomous fire detection with MLX90640 IR thermal camera, MQ-2 sensor, and sub-2s CO2 suppression trigger.",
-    tags: ["ESP32", "Sensors", "Safety Systems"],
-  },
-  {
-    slug: "home-automation",
-    title: "IoT Home Automation Node",
-    desc: "ESP8266 NodeMCU smart home system with Blynk Cloud for remote relay-based appliance control via smartphone.",
-    tags: ["ESP8266", "IoT", "Relays"],
-  },
-  {
     slug: "noise-indicator",
     title: "Acoustic Noise Level Indicator",
     desc: "Analog circuit using electret mic, op-amp amplifier, and voltage comparators to drive a 5-band LED volume meter.",
@@ -136,7 +124,7 @@ export function Projects() {
               Research writeups &amp; lab experiments
             </h3>
           </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {labWriteups.map((w, idx) => (
               <Reveal key={w.slug} delay={idx * 0.04}>
                 <Link

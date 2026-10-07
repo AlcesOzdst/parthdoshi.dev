@@ -96,100 +96,6 @@ Content-Type: application/json
   },
   {
     number: "002",
-    title: "CORS Misconfiguration & Unauthenticated Admin Endpoints → Account Takeover",
-    program: "Under Armour Bug Bounty",
-    icon: "🛡️",
-    severity: "Critical",
-    cvss: "9.1 (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:N)",
-    cwe: "CWE-942: Permissive Cross-Origin Resource Sharing & CWE-306",
-    status: "Resolved · Hall of Fame",
-    date: "2024",
-    bounty: "Bounty & Hall of Fame Acknowledgment",
-    shortDesc:
-      "A permissive CORS origin reflection paired with an exposed administrative routing table enabled cross-origin session theft and silent full account takeover.",
-    tags: ["cors-reflection", "account-takeover", "api-security", "auth-bypass"],
-    callout:
-      "The server reflected arbitrary origin headers without verifying domain ownership while simultaneously allowing Access-Control-Allow-Credentials: true on session-bearing endpoints.",
-    overview:
-      "During security auditing of Under Armour's external web footprint, I mapped legacy staging endpoints routed behind an edge reverse proxy. While primary login gateways enforced strict origin validation, auxiliary internal admin endpoints reflected arbitrary 'Origin' headers sent in cross-site requests.",
-    technicalAnalysis:
-      "The application verified origins using a flawed regex matching prefix patterns, allowing subdomains like 'attacker-underarmour.com'. Furthermore, internal administrative API routes (/api/v2/internal/admin/sessions) failed to enforce authorization middleware, relying solely on edge proxy IP whitelisting that had slipped through during infrastructure migration.",
-    pocSnippet: {
-      language: "http",
-      code: `GET /api/v2/internal/admin/user/session-dump HTTP/1.1
-Host: api.target.com
-Origin: https://malicious-domain.com
-Cookie: session_token=s%3A7F8a99b2c...
-Sec-Fetch-Site: cross-site
-
-HTTP/1.1 200 OK
-Access-Control-Allow-Origin: https://malicious-domain.com
-Access-Control-Allow-Credentials: true
-Access-Control-Expose-Headers: Set-Cookie, X-Admin-Token
-Content-Type: application/json
-
-{"status":"success","user_id":"admin_0921","auth_hash":"e2c84...","permissions":["SUPERUSER"]}`,
-      caption: "CORS preflight & credential reflection leading to credential exfiltration via malicious payload.",
-    },
-    impact:
-      "An unauthenticated external attacker could lure an authenticated employee or user to a malicious page. A background script would execute silent cross-origin fetches, reading the reflected response body, extracting sensitive session tokens, and hijacking high-privilege administrative accounts.",
-    remediation:
-      "Under Armour implemented a strict origin allowlist containing only verified production domains, removed wildcard credentials policies, and refactored internal endpoint routing to require multi-factor JWT validation regardless of origin context.",
-    keyTakeaway:
-      "Never rely on network perimeter or regex prefix matches for cross-origin security. CORS policies must treat every domain as hostile unless explicitly validated against a hard-coded canonical origin set.",
-  },
-  {
-    number: "003",
-    title: "GraphQL Introspection Leakage Exposing Hidden Mutations & PII Storage Routes",
-    program: "Whatnot · HackerOne",
-    icon: "⚡",
-    severity: "High",
-    cvss: "8.2 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N)",
-    cwe: "CWE-200: Exposure of Sensitive Information via Introspection",
-    status: "Resolved · Triaged by Security Team",
-    date: "2024",
-    bounty: "Awarded Bounty",
-    shortDesc:
-      "Production GraphQL gateway left schema introspection enabled, revealing unreleased administrative mutations and hidden query fields for user PII.",
-    tags: ["graphql", "introspection", "information-disclosure", "schema-leak"],
-    callout:
-      "Introspection queries returned the entire AST schema of internal services, allowing precise parameter construction for unpublished administrative mutations.",
-    overview:
-      "While testing GraphQL gateway endpoints on a high-traffic live-stream commerce application, standard queries were restricted. However, submitting an obfuscated full introspection query payload (__schema and __type queries) bypassed rate-limiting and dumped the comprehensive API graph.",
-    technicalAnalysis:
-      "The GraphQL engine was configured with introspection enabled for staging environments, but a configuration drift during canary releases caused the introspection flag to remain active on production edge clusters. Analysis of the 14,000-line schema revealed deprecated endpoints containing sensitive user payment metadata and hidden debug mutations capable of adjusting inventory counts.",
-    pocSnippet: {
-      language: "graphql",
-      code: `query IntrospectAdminGraph {
-  __schema {
-    types {
-      name
-      fields {
-        name
-        type { name kind }
-        args { name type { name } }
-      }
-    }
-    mutationType {
-      name
-      fields {
-        name
-        description # Exposed internal developer comments
-      }
-    }
-  }
-}`,
-      caption: "Full schema extraction revealing internal mutation signatures and confidential developer annotations.",
-    },
-    impact:
-      "Attackers could map out the entire internal object model, discover administrative interfaces that were not linked anywhere in web assets, and formulate targeted IDOR or broken object level authorization (BOLA) attacks against unhardened backend microservices.",
-    remediation:
-      "Disabled GraphQL introspection across all production gateways using Apollo Server middleware flags, and instituted automated CI/CD security linters that fail builds if introspection is detected in production manifests.",
-    keyTakeaway:
-      "GraphQL without introspection disabled is equivalent to giving attackers your complete source code database schema. Defense in depth requires schema hiding combined with field-level authorization.",
-  },
-  {
-    number: "004",
     title: "Smart-Contract Reentrancy & Hash Collision Signature Bypass",
     program: "The Graph · Immunefi & HTB CTF",
     icon: "🔬",
@@ -281,20 +187,12 @@ export function Research() {
               <span className="mono-label hidden sm:inline-flex items-center gap-1.5 text-text-secondary">
                 <BookOpen size={13} className="text-accent" /> Click any item for Notion peek view
               </span>
-              <a
-                href="https://tryhackme.com/p/AlcesOzdst"
-                target="_blank"
-                rel="noreferrer"
-                className="mono-label u-link hover:text-text transition-colors inline-flex items-center gap-1"
-              >
-                tryhackme ↗
-              </a>
             </div>
           </div>
         </Reveal>
 
         {/* Findings Cards Grid */}
-        <div className="grid md:grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-2 gap-5">
           {findingsData.map((f, i) => (
             <Reveal key={f.number} delay={i * 0.08}>
               <div
