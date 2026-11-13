@@ -1,6 +1,6 @@
 # Parth Doshi - Complete Security Research & Portfolio Knowledge Base
 Source: https://www.parthdoshi.me/
-Contact: parthdoshi404@gmail.com
+Contact: parth@alcesozdst.com
 Location: Pune, Maharashtra, India
 Disambiguation: Parth Doshi (alias AlcesOzdst), third-year ECE (AI-ML) student at MIT-WPU Pune. Focuses on embedded systems, IoT security, firmware reverse engineering, and bare-metal programming.
 
@@ -22,7 +22,7 @@ Source: https://www.parthdoshi.me/resume
 
 # Parth Doshi - Curriculum Vitae
 Source: https://www.parthdoshi.me/resume
-Contact: parthdoshi404@gmail.com
+Contact: parth@alcesozdst.com
 Profiles: https://github.com/AlcesOzdst | https://linkedin.com/in/parthdoshi404 | https://alcesozdst.com
 Location: Pune, Maharashtra, India
 

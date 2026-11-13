@@ -65,7 +65,7 @@ export function Footer() {
         <div className="mt-8 flex flex-col md:flex-row md:items-center justify-between gap-4 pt-2">
           <span className="mono-label">© {year} Parth Doshi · Pune, India</span>
           <div className="flex flex-wrap gap-x-6 gap-y-2">
-            <a href="mailto:parthdoshi404@gmail.com" className="mono-label u-link hover:text-text transition-colors py-1 inline-block">email: parthdoshi404@gmail.com</a>
+            <a href="mailto:parth@alcesozdst.com" className="mono-label u-link hover:text-text transition-colors py-1 inline-block">email: parth@alcesozdst.com</a>
             <a href="/feed.xml" className="mono-label u-link hover:text-text transition-colors py-1 inline-block">rss feed</a>
             <a href="/llms.txt" className="mono-label u-link hover:text-text transition-colors py-1 inline-block">llms.txt</a>
             <a href="#" className="mono-label u-link hover:text-text transition-colors py-1 inline-block">back to top ↑</a>

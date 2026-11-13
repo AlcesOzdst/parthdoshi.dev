@@ -28,7 +28,7 @@ export const PERSON_GRAPH = {
   url: `${CANONICAL_HOST}/`,
   jobTitle: "Security Researcher & Embedded Systems Engineer",
   description: "Third-year ECE (AI-ML) student at MIT-WPU in Pune doing security research on embedded & IoT hardware, firmware reverse engineering, and bare-metal systems.",
-  email: "mailto:parthdoshi404@gmail.com",
+  email: "mailto:parth@alcesozdst.com",
   image: `${CANONICAL_HOST}/og/home.png`,
   address: {
     "@type": "PostalAddress",

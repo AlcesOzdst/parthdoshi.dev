@@ -75,8 +75,8 @@ export default function Resume() {
             </h1>
             <p className="text-xs text-text-secondary mb-2">
               Pune, Maharashtra &nbsp;·&nbsp;{" "}
-              <a href="mailto:parthdoshi404@gmail.com" className="hover:text-accent underline">
-                parthdoshi404@gmail.com
+              <a href="mailto:parth@alcesozdst.com" className="hover:text-accent underline">
+                parth@alcesozdst.com
               </a>{" "}
               &nbsp;·&nbsp;{" "}
               <a href="tel:7709906201" className="hover:text-accent">
@@ -96,8 +96,8 @@ export default function Resume() {
                 alcesozdst.com
               </a>
               <span className="text-text-secondary">|</span>
-              <a href="mailto:parthdoshi404@gmail.com" className="hover:underline">
-                parthdoshi404@gmail.com
+              <a href="mailto:parth@alcesozdst.com" className="hover:underline">
+                parth@alcesozdst.com
               </a>
             </div>
           </div>

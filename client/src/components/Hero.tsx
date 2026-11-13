@@ -49,7 +49,7 @@ export function Hero({ onOpenResume }: { onOpenResume?: () => void }) {
           ) : (
             <Magnetic><Link href="/resume" className="btn" data-cursor="resume">resume / cv ↗</Link></Magnetic>
           )}
-          <Magnetic><a href="mailto:parthdoshi404@gmail.com" className="btn" data-cursor="say hi">get in touch</a></Magnetic>
+          <Magnetic><a href="mailto:parth@alcesozdst.com" className="btn" data-cursor="say hi">get in touch</a></Magnetic>
           <Magnetic><Link href="/blog" className="btn" data-cursor="read">the log</Link></Magnetic>
         </motion.div>
       </motion.div>

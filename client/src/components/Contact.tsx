@@ -30,11 +30,11 @@ export function Contact() {
         </Reveal>
 
         <Reveal delay={0.15}>
-          <a href="mailto:parthdoshi404@gmail.com"
+          <a href="mailto:parth@alcesozdst.com"
              data-cursor="copy ↗"
              className="inline-block display tracking-[-0.01em] u-link"
              style={{ fontSize: "clamp(1.05rem, 3vw, 1.7rem)" }}>
-            parthdoshi404@gmail.com
+            parth@alcesozdst.com
           </a>
         </Reveal>
 

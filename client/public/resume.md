@@ -1,6 +1,6 @@
 # Parth Doshi - Curriculum Vitae
 Source: https://www.parthdoshi.me/resume
-Contact: parthdoshi404@gmail.com
+Contact: parth@alcesozdst.com
 Profiles: https://github.com/AlcesOzdst | https://linkedin.com/in/parthdoshi404 | https://alcesozdst.com
 Location: Pune, Maharashtra, India
 

@@ -266,7 +266,7 @@ I solved the Signal Tuner minigame on your site and demodulated all 3 carrier si
 Flag: ${SECRET_FLAG}
 
 Let's connect!`);
-  const mailtoUrl = `mailto:parthdoshi404@gmail.com?subject=${mailSubject}&body=${mailBody}`;
+  const mailtoUrl = `mailto:parth@alcesozdst.com?subject=${mailSubject}&body=${mailBody}`;
 
   // Canvas Oscilloscope Animation
   useEffect(() => {

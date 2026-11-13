@@ -29,7 +29,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
 
   const handleCopyText = () => {
     const resumeText = `PARTH DOSHI
-Pune, Maharashtra | parthdoshi404@gmail.com | +91-7709906201
+Pune, Maharashtra | parth@alcesozdst.com | +91-7709906201
 LinkedIn: linkedin.com/in/parthdoshi404 | GitHub: github.com/AlcesOzdst | Portfolio: parthdoshi.me
 Google Skills Boost: g.dev/Alcesozdst | TryHackMe: tryhackme.com/p/AlcesOzdst | Hack The Box | HackerOne
 
@@ -191,8 +191,8 @@ TECHNICAL SKILLS
                     </h1>
                     <p className="text-xs text-text-secondary mb-2">
                       Pune, Maharashtra &nbsp;·&nbsp;{" "}
-                      <a href="mailto:parthdoshi404@gmail.com" className="hover:text-accent underline">
-                        parthdoshi404@gmail.com
+                      <a href="mailto:parth@alcesozdst.com" className="hover:text-accent underline">
+                        parth@alcesozdst.com
                       </a>{" "}
                       &nbsp;·&nbsp; +91-7709906201
                     </p>
@@ -429,7 +429,7 @@ TECHNICAL SKILLS
             {/* Modal Bottom Bar */}
             <div className="px-6 py-2.5 border-t border-border bg-surface flex items-center justify-between text-xs font-mono text-text-secondary">
               <span>Press <kbd className="px-1.5 py-0.5 rounded bg-bg border border-border text-[10px]">Esc</kbd> to exit</span>
-              <span className="text-text-secondary/70">Original 1-page PDF · parthdoshi404@gmail.com</span>
+              <span className="text-text-secondary/70">Original 1-page PDF · parth@alcesozdst.com</span>
             </div>
           </motion.div>
         </div>

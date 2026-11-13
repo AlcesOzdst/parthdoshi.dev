@@ -126,7 +126,7 @@ console.log('Generating markdown mirrors...');
 // Resume markdown mirror
 const resumeMd = `# Parth Doshi - Curriculum Vitae
 Source: ${CANONICAL_HOST}/resume
-Contact: parthdoshi404@gmail.com
+Contact: parth@alcesozdst.com
 Profiles: https://github.com/AlcesOzdst | https://linkedin.com/in/parthdoshi404 | https://alcesozdst.com
 Location: Pune, Maharashtra, India
 
@@ -207,7 +207,7 @@ ${body}
 console.log('Generating llms-full.txt...');
 let llmsFull = `# Parth Doshi - Complete Security Research & Portfolio Knowledge Base
 Source: ${CANONICAL_HOST}/
-Contact: parthdoshi404@gmail.com
+Contact: parth@alcesozdst.com
 Location: Pune, Maharashtra, India
 Disambiguation: Parth Doshi (alias AlcesOzdst), third-year ECE (AI-ML) student at MIT-WPU Pune. Focuses on embedded systems, IoT security, firmware reverse engineering, and bare-metal programming.
 
@@ -278,7 +278,7 @@ const feedXml = `<?xml version="1.0" encoding="UTF-8"?>
       <guid isPermaLink="true">${CANONICAL_HOST}/blog/building-in-public</guid>
       <pubDate>Wed, 30 Sep 2026 00:00:00 GMT</pubDate>
       <description>Why I document my research in public: from raw UART flash extraction and logic analyzer captures to responsible vulnerability disclosures.</description>
-      <author>parthdoshi404@gmail.com (Parth Doshi)</author>
+      <author>parth@alcesozdst.com (Parth Doshi)</author>
     </item>
   </channel>
 </rss>
@@ -294,7 +294,7 @@ const expiryDate = new Date();
 expiryDate.setFullYear(expiryDate.getFullYear() + 1);
 const expiryIso = expiryDate.toISOString();
 
-const securityTxt = `Contact: mailto:parthdoshi404@gmail.com
+const securityTxt = `Contact: mailto:parth@alcesozdst.com
 Expires: ${expiryIso}
 Preferred-Languages: en
 Canonical: ${CANONICAL_HOST}/.well-known/security.txt
@@ -309,7 +309,7 @@ console.log('Saved security.txt.');
 // 7. Generate humans.txt
 const humansTxt = `/* TEAM */
   Researcher & Engineer: Parth Doshi
-  Contact: parthdoshi404@gmail.com
+  Contact: parth@alcesozdst.com
   Location: Pune, Maharashtra, India
   University: MIT World Peace University (MIT-WPU)
 

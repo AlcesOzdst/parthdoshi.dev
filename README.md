@@ -42,7 +42,7 @@ This project is **dual-licensed**:
   **CC BY-NC-ND 4.0**. See [`LICENSE-CONTENT.md`](./LICENSE-CONTENT.md). Share with credit;
   no commercial use, no derivatives.
 
-For permissions beyond these terms: parthdoshi404@gmail.com
+For permissions beyond these terms: parth@alcesozdst.com
 
 ---
 
