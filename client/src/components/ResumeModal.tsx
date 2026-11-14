@@ -29,12 +29,11 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
 
   const handleCopyText = () => {
     const resumeText = `PARTH DOSHI
-Pune, Maharashtra | parth@alcesozdst.com | +91-7709906201
+Pune, Maharashtra | parth@alcesozdst.com
 LinkedIn: linkedin.com/in/parthdoshi404 | GitHub: github.com/AlcesOzdst | Portfolio: parthdoshi.me
-Google Skills Boost: g.dev/Alcesozdst | TryHackMe: tryhackme.com/p/AlcesOzdst | Hack The Box | HackerOne
 
 PROFESSIONAL SUMMARY
-Cybersecurity student with hands-on experience in web application security, responsible vulnerability disclosure, embedded security research, and Linux-based environments. Built practical experience through Hack The Box, TryHackMe, HackerOne, and self-hosted security labs. Currently expanding into SOC operations through threat detection, log analysis, SIEM technologies, and incident response while actively developing defensive security projects.
+Cybersecurity student with hands-on experience in web application security, responsible vulnerability disclosure, embedded security research, and Linux-based environments. Developed practical skills through HackerOne, Hack The Box, TryHackMe, and self-hosted security labs. Experience includes hardware interfaces, network analysis, vulnerability assessment, embedded device testing, ESP32-based systems, IoT devices, and hardware-software integration, with an emphasis on Hardware Security.
 
 EDUCATION
 MIT World Peace University (MIT-WPU), Pune, India
@@ -42,53 +41,59 @@ B.Tech in Electronics & Communication Engineering (ECE), AI/ML Specialization
 Expected Graduation: May 2028
 
 EXPERIENCE
-Research & Development Intern | Jan 2025 – May 2025
-PHN Technology Pvt. Ltd. | Pune, India
-• Contributed to the research and development of IoT, embedded systems, and cybersecurity-focused solutions using ESP32, Raspberry Pi, and platforms.
+Research & Development | Internship | Jan 2025 – May 2025
+PHN Technology Pvt. Ltd. | On-site · Pune, India
+• Contributed to the research and development of IoT, embedded systems, and cybersecurity-focused solutions using ESP32, Raspberry Pi, and associated development platforms.
 • Performed vulnerability assessments and security testing for embedded and web-based applications using industry-standard security methodologies.
-• Assisted in developing ESP32 and Raspberry Pi-based IoT security prototypes.
+• Assisted in developing ESP32- and Raspberry Pi-based IoT security prototypes.
 • Documented security findings, testing procedures, and mitigation recommendations for internal R&D projects.
 
 Independent Security Research Projects | 2024 – Present
 HackerOne Bug Bounty Platform | Remote
-• Actively perform web application security assessments across public bug bounty programs on HackerOne.
-• Practiced identification of Broken Access Control, IDOR, Authentication, GraphQL and API security issues.
-• Documented testing methodology and findings to improve vulnerability assessment workflow.
+• Perform web application security assessments across public bug bounty programs on HackerOne.
+• Practice identifying Broken Access Control, IDOR, authentication, GraphQL, and API security issues.
+• Document testing methodologies and findings to improve vulnerability assessment workflows.
 
 President | Aug 2025 – Present
 Hack-X, Cybersecurity Club – MIT World Peace University | Pune, India
 • Lead the university cybersecurity community by organizing Capture The Flag (CTF) competitions, workshops, and technical events.
 • Coordinate club operations, executive members, and technical initiatives promoting hands-on cybersecurity learning.
 
-Assistant Sponsorship Executive | Sep 2023 – Sep 2024
-STeRG, MIT World Peace University | Pune, India
-• Managed sponsorship outreach and coordinated with industry partners to support technical events and student initiatives.
+COMMUNITY & INDUSTRY ENGAGEMENT
+Arsenal Volunteer | October 2026
+Black Hat India 2026 – Informa Markets | Bengaluru, India
+• Supported on-ground Arsenal operations and coordination, collaborating with the organizing team and fellow volunteers.
 
 PROJECTS
-Responsible Disclosure – IDOR in University ERP Portal | Burp Suite, Web Security | July 2024
-• Identified an Insecure Direct Object Reference (IDOR) vulnerability affecting the university ERP portal by manipulating student PRN identifiers.
-• Demonstrated unauthorized access to student profile resources using Burp Suite by modifying PRN parameters.
-• Assessed impact using CVSS v3.1 methodology and prepared a detailed proof-of-concept with remediation recommendations.
-• Responsibly disclosed findings to the university administration.
+Responsible Disclosure – IDOR in University ERP Portal | Burp Suite, Access Control Testing | July 2024
+• Co-discovered and responsibly disclosed an IDOR vulnerability (CVSS 6.4) in MIT-WPU's PwC-hosted student ERP portal, exposing student profile photos through PRN manipulation.
+• Authored a proof-of-concept report and disclosed the findings to PwC staff.
 
-ESP32 Marauder Custom Firmware | ESP32, PlatformIO, Embedded C++ | 2025
-• Customized ESP32 Marauder firmware for wireless security experimentation by integrating NRF24L01 support, OLED interface, and custom menu navigation.
-• Implemented embedded firmware enhancements using PlatformIO and ESP-IDF libraries for wireless security experimentation.
-• Worked with SPI, I2C, and RF communication modules during firmware development.
+SkillBridge | Node.js, MySQL | 2024
+• Built a peer-to-peer skill exchange platform with a Node.js/MySQL backend.
+
+Bare-Metal Sensor Hub – EPB-F340Mini | Keil C51, Embedded C | 2025
+• Developed multi-sensor firmware integrating an SSD1306 OLED, DHT11, HC-SR04, and KY-038 sensors across multiple design iterations.
+
+SENU – Physical Second Brain | ESP32-C3, Embedded C++, PlatformIO, I²C, RTC | 2026
+• Developed an embedded productivity device featuring OLED-based navigation, rotary encoder controls, RTC integration, configurable focus timers, and alarm management.
+• Implemented non-blocking buzzer playback, tactile-button handling, RTC synchronization, and interactive firmware functionality.
+
+Embedded Linux Security Lab | Kali Linux, QEMU, OpenWrt | 2026
+• Configured an emulated IoTGoat environment using QEMU to simulate an embedded Linux target for security testing.
+• Performed service discovery and network reconnaissance, identifying exposed SSH, HTTP, HTTPS, and UPnP services.
 
 SECURITY PLATFORMS
-• Google Developer Program: g.dev/Alcesozdst – skills profile with earned gamified badges
-• Hack The Box: cybersecurity researcher profile – skills in Weak Authentication, Misconfiguration, Reconnaissance
-• TryHackMe: tryhackme.com/p/AlcesOzdst
-• HackerOne: actively hunting on live programs for security assessment
+• Hack The Box: Cybersecurity researcher profile; skills include Weak Authentication, Misconfiguration, and Reconnaissance.
+• HackerOne: Actively participating in public bug bounty programs and security assessments.
 
 TECHNICAL SKILLS
-• Security: Burp Suite Professional, Nmap, Gobuster, ffuf, Wireshark, Metasploit, OpenVAS, LinPEAS, OWASP Top 10
-• Networking: TCP/IP, HTTP/HTTPS, DNS, SSH
-• Operating Systems: Linux, Kali Linux, Windows
-• Programming: Python, C, C++, Bash, JavaScript, TypeScript, SQL, Solidity
-• Embedded Systems: ESP32, Raspberry Pi, 8051, UART, SPI, I2C
-• Development & Cloud: Git, Docker, PlatformIO, MySQL, Google Cloud Fundamentals`;
+• Languages: Python, C, C++, Bash, JavaScript, SQL
+• Security Tools: Burp Suite Professional, Nmap, Gobuster, ffuf, Wireshark, Metasploit, LinPEAS
+• Security Domains: Web Application Security, IDOR/Broken Access Control, Embedded/Firmware Security
+• Networking: TCP/IP, HTTP/HTTPS, SSH
+• Embedded & Protocols: ESP32, Raspberry Pi, 8051 (C8051F340), UART, SPI, I2C, RS-232, RS-485
+• Development & Cloud: Node.js, MySQL, Git, Docker, PlatformIO, Google Cloud Fundamentals`;
 
     navigator.clipboard.writeText(resumeText).then(() => {
       setCopied(true);
@@ -99,72 +104,88 @@ TECHNICAL SKILLS
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 md:p-6 overflow-hidden">
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm cursor-pointer"
+            className="absolute inset-0 bg-black/85 backdrop-blur-md"
           />
 
           {/* Modal Container */}
           <motion.div
-            initial={{ scale: 0.96, opacity: 0, y: 10 }}
-            animate={{ scale: 1, opacity: 1, y: 0 }}
-            exit={{ scale: 0.96, opacity: 0, y: 10 }}
-            transition={{ type: "spring", damping: 25, stiffness: 280 }}
-            className="relative z-10 w-full max-w-4xl max-h-[92vh] bg-bg border border-border rounded-xl shadow-2xl flex flex-col overflow-hidden"
+            initial={{ opacity: 0, scale: 0.95, y: 15 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 15 }}
+            transition={{ type: "spring", duration: 0.35, bounce: 0.05 }}
+            className="relative w-full max-w-4xl max-h-[92vh] bg-surface border border-border rounded-xl shadow-2xl flex flex-col overflow-hidden z-10"
           >
-            {/* Top Toolbar - Single clear download button */}
-            <div className="px-5 py-3 border-b border-border bg-surface flex items-center justify-between select-none">
-              <div className="flex items-center gap-2">
-                <FileText size={16} className="text-accent" />
-                <span className="font-mono text-xs uppercase tracking-wider font-semibold text-text">
-                  Parth_Doshi_Resume.pdf
+            {/* Top Toolbar */}
+            <div className="flex items-center justify-between px-6 py-4 border-b border-border bg-surface/90 backdrop-blur z-20">
+              <div className="flex items-center gap-3">
+                <span className="mono-label uppercase tracking-widest text-accent text-xs">
+                  Curriculum Vitae
                 </span>
-                <span className="font-mono text-[10px] text-text-secondary hidden sm:inline">
-                  (Original 1-Page Document)
+                <span className="hidden sm:inline text-text-secondary text-xs">/</span>
+                <span className="hidden sm:inline font-mono text-xs text-text-secondary">
+                  Parth Doshi
                 </span>
               </div>
 
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setViewPdfPreview(!viewPdfPreview)}
-                  className="px-2.5 py-1.5 rounded bg-bg border border-border text-text-secondary hover:text-text text-xs font-mono flex items-center gap-1.5 transition-colors cursor-pointer hidden sm:flex"
-                  title="Toggle PDF original layout view"
+                  className="btn py-1.5 px-3 text-xs flex items-center gap-1.5 border border-border"
+                  title="Toggle PDF / Formatted Text"
                 >
-                  <Eye size={13} className={viewPdfPreview ? "text-accent" : ""} />
-                  <span>{viewPdfPreview ? "Text View" : "Original PDF"}</span>
+                  {viewPdfPreview ? (
+                    <>
+                      <FileText size={12} />
+                      <span className="hidden sm:inline">Web Version</span>
+                    </>
+                  ) : (
+                    <>
+                      <Eye size={12} />
+                      <span className="hidden sm:inline">PDF Preview</span>
+                    </>
+                  )}
                 </button>
 
                 <button
                   onClick={handleCopyText}
-                  className="px-2.5 py-1.5 rounded bg-bg border border-border text-text-secondary hover:text-text text-xs font-mono flex items-center gap-1.5 transition-colors cursor-pointer"
-                  title="Copy plain text"
+                  className="btn py-1.5 px-3 text-xs flex items-center gap-1.5 border border-border"
+                  title="Copy resume as plain text"
                 >
-                  {copied ? <Check size={13} className="text-accent" /> : <Copy size={13} />}
-                  <span>{copied ? "Copied!" : "Copy Text"}</span>
+                  {copied ? (
+                    <>
+                      <Check size={12} className="text-accent" />
+                      <span>Copied!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy size={12} />
+                      <span className="hidden sm:inline">Copy Text</span>
+                    </>
+                  )}
                 </button>
 
-                {/* The single official Download PDF button */}
                 <a
                   href="/Parth_Doshi_Resume.pdf"
                   download="Parth_Doshi_Resume.pdf"
-                  className="btn btn-solid !py-1.5 !px-3 text-xs font-mono flex items-center gap-1.5 cursor-pointer"
-                  title="Download original resume PDF"
+                  className="btn btn-solid py-1.5 px-3.5 text-xs flex items-center gap-1.5"
                 >
-                  <Download size={13} />
-                  <span>Download Resume (PDF)</span>
+                  <Download size={12} />
+                  <span>Download PDF</span>
                 </a>
 
                 <button
                   onClick={onClose}
-                  className="p-1.5 rounded hover:bg-bg text-text-secondary hover:text-accent transition-colors ml-1 cursor-pointer"
-                  title="Close (Esc)"
+                  className="p-1.5 text-text-secondary hover:text-text hover:bg-surface-hover rounded-md transition-colors ml-1"
+                  aria-label="Close modal"
                 >
-                  <X size={17} />
+                  <X size={18} />
                 </button>
               </div>
             </div>
@@ -193,8 +214,7 @@ TECHNICAL SKILLS
                       Pune, Maharashtra &nbsp;·&nbsp;{" "}
                       <a href="mailto:parth@alcesozdst.com" className="hover:text-accent underline">
                         parth@alcesozdst.com
-                      </a>{" "}
-                      &nbsp;·&nbsp; +91-7709906201
+                      </a>
                     </p>
                     <div className="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-accent">
                       <a href="https://linkedin.com/in/parthdoshi404" target="_blank" rel="noreferrer" className="hover:underline">
@@ -205,24 +225,8 @@ TECHNICAL SKILLS
                         GitHub
                       </a>
                       <span className="text-text-secondary">|</span>
-                      <a href="https://alcesozdst.com" target="_blank" rel="noreferrer" className="hover:underline">
+                      <a href="https://www.parthdoshi.me" target="_blank" rel="noreferrer" className="hover:underline">
                         Portfolio
-                      </a>
-                      <span className="text-text-secondary">|</span>
-                      <a href="https://g.dev/Alcesozdst" target="_blank" rel="noreferrer" className="hover:underline">
-                        Google Skills Boost
-                      </a>
-                      <span className="text-text-secondary">|</span>
-                      <a href="https://profile.hackthebox.com/profile/019c59d7-edfc-7172-b666-bedfbe635e49" target="_blank" rel="noreferrer" className="hover:underline">
-                        Hack The Box
-                      </a>
-                      <span className="text-text-secondary">|</span>
-                      <a href="https://tryhackme.com/p/AlcesOzdst" target="_blank" rel="noreferrer" className="hover:underline">
-                        TryHackMe
-                      </a>
-                      <span className="text-text-secondary">|</span>
-                      <a href="https://hackerone.com" target="_blank" rel="noreferrer" className="hover:underline">
-                        HackerOne
                       </a>
                     </div>
                   </div>
@@ -233,10 +237,7 @@ TECHNICAL SKILLS
                       Professional Summary
                     </h2>
                     <p className="text-text-secondary text-xs leading-relaxed text-justify">
-                      Cybersecurity student with hands-on experience in web application security, responsible vulnerability disclosure, embedded security
-                      research, and Linux-based environments. Built practical experience through Hack The Box, TryHackMe, HackerOne, and self-hosted
-                      security labs. Currently expanding into SOC operations through threat detection, log analysis, SIEM technologies, and incident response
-                      while actively developing defensive security projects.
+                      Cybersecurity student with hands-on experience in web application security, responsible vulnerability disclosure, embedded security research, and Linux-based environments. Developed practical skills through HackerOne, Hack The Box, TryHackMe, and self-hosted security labs. Experience includes hardware interfaces, network analysis, vulnerability assessment, embedded device testing, ESP32-based systems, IoT devices, and hardware-software integration, with an emphasis on Hardware Security.
                     </p>
                   </div>
 
@@ -262,20 +263,20 @@ TECHNICAL SKILLS
                     </h2>
 
                     <div className="space-y-4">
-                      {/* PHN Tech Intern */}
+                      {/* PHN Tech */}
                       <div>
                         <div className="flex justify-between items-baseline font-semibold text-text">
-                          <span>Research &amp; Development Intern</span>
+                          <span>Research &amp; Development | Internship</span>
                           <span className="font-normal font-mono text-[11px] text-text-secondary">Jan 2025 – May 2025</span>
                         </div>
                         <div className="flex justify-between items-baseline italic text-text-secondary text-[11px] mb-1.5">
                           <span>PHN Technology Pvt. Ltd.</span>
-                          <span>Pune, India</span>
+                          <span>On-site · Pune, India</span>
                         </div>
                         <ul className="list-disc list-outside ml-4 text-text-secondary space-y-1 text-xs">
-                          <li>Contributed to the research and development of IoT, embedded systems, and cybersecurity-focused solutions using ESP32, Raspberry Pi, and platforms.</li>
+                          <li>Contributed to the research and development of IoT, embedded systems, and cybersecurity-focused solutions using ESP32, Raspberry Pi, and associated development platforms.</li>
                           <li>Performed vulnerability assessments and security testing for embedded and web-based applications using industry-standard security methodologies.</li>
-                          <li>Assisted in developing ESP32 and Raspberry Pi-based IoT security prototypes.</li>
+                          <li>Assisted in developing ESP32- and Raspberry Pi-based IoT security prototypes.</li>
                           <li>Documented security findings, testing procedures, and mitigation recommendations for internal R&amp;D projects.</li>
                         </ul>
                       </div>
@@ -291,9 +292,9 @@ TECHNICAL SKILLS
                           <span>Remote</span>
                         </div>
                         <ul className="list-disc list-outside ml-4 text-text-secondary space-y-1 text-xs">
-                          <li>Actively perform web application security assessments across public bug bounty programs on HackerOne.</li>
-                          <li>Practiced identification of Broken Access Control, IDOR, Authentication, GraphQL and API security issues.</li>
-                          <li>Documented testing methodology and findings to improve vulnerability assessment workflow.</li>
+                          <li>Perform web application security assessments across public bug bounty programs on HackerOne.</li>
+                          <li>Practice identifying Broken Access Control, IDOR, authentication, GraphQL, and API security issues.</li>
+                          <li>Document testing methodologies and findings to improve vulnerability assessment workflows.</li>
                         </ul>
                       </div>
 
@@ -312,21 +313,31 @@ TECHNICAL SKILLS
                           <li>Coordinate club operations, executive members, and technical initiatives promoting hands-on cybersecurity learning.</li>
                         </ul>
                       </div>
+                    </div>
+                  </div>
 
-                      {/* STeRG */}
-                      <div>
-                        <div className="flex justify-between items-baseline font-semibold text-text">
-                          <span>Assistant Sponsorship Executive</span>
-                          <span className="font-normal font-mono text-[11px] text-text-secondary">Sep 2023 – Sep 2024</span>
-                        </div>
-                        <div className="flex justify-between items-baseline italic text-text-secondary text-[11px] mb-1.5">
-                          <span>STeRG, MIT World Peace University</span>
-                          <span>Pune, India</span>
-                        </div>
-                        <ul className="list-disc list-outside ml-4 text-text-secondary space-y-1 text-xs">
-                          <li>Managed sponsorship outreach and coordinated with industry partners to support technical events and student initiatives.</li>
-                        </ul>
+                  {/* Community & Industry Engagement */}
+                  <div>
+                    <h2 className="font-mono text-xs uppercase tracking-wider font-bold text-accent pb-1 border-b border-border mb-3">
+                      Community &amp; Industry Engagement
+                    </h2>
+                    <div>
+                      <div className="flex justify-between items-baseline font-semibold text-text">
+                        <span className="text-sm">Arsenal Volunteer</span>
+                        <span className="font-normal font-mono text-[11px] text-text-secondary">October 2026</span>
                       </div>
+                      <div className="flex justify-between items-baseline italic text-text-secondary text-[11px] mb-1.5">
+                        <span>
+                          Black Hat India 2026 – Informa Markets{" "}
+                          <a href="https://www.linkedin.com/in/parthdoshi404/details/volunteering-experiences" target="_blank" rel="noreferrer" className="text-accent underline inline-flex items-center gap-0.5">
+                            (Certificate) <ArrowUpRight size={10} />
+                          </a>
+                        </span>
+                        <span>Bengaluru, India</span>
+                      </div>
+                      <ul className="list-disc list-outside ml-4 text-text-secondary space-y-1 text-xs">
+                        <li>Supported on-ground Arsenal operations and coordination, collaborating with the organizing team and fellow volunteers.</li>
+                      </ul>
                     </div>
                   </div>
 
@@ -341,30 +352,77 @@ TECHNICAL SKILLS
                         <div className="flex justify-between items-baseline">
                           <span className="font-semibold text-text">
                             Responsible Disclosure – IDOR in University ERP Portal{" "}
-                            <span className="font-normal italic text-text-secondary">| Burp Suite, Web Security</span>
+                            <span className="font-normal italic text-text-secondary">| Burp Suite, Access Control Testing</span>
                           </span>
                           <span className="font-mono text-[11px] text-text-secondary">July 2024</span>
                         </div>
                         <ul className="list-disc list-outside ml-4 text-text-secondary space-y-1 text-xs mt-1">
-                          <li>Identified an Insecure Direct Object Reference (IDOR) vulnerability affecting the university ERP portal by manipulating student PRN identifiers.</li>
-                          <li>Demonstrated unauthorized access to student profile resources using Burp Suite by modifying PRN parameters.</li>
-                          <li>Assessed impact using CVSS v3.1 methodology and prepared a detailed proof-of-concept with remediation recommendations.</li>
-                          <li>Responsibly disclosed findings to the university administration.</li>
+                          <li>Co-discovered and responsibly disclosed an IDOR vulnerability (CVSS 6.4) in MIT-WPU's PwC-hosted student ERP portal, exposing student profile photos through PRN manipulation.</li>
+                          <li>Authored a proof-of-concept report and disclosed the findings to PwC staff.</li>
                         </ul>
                       </div>
 
                       <div>
                         <div className="flex justify-between items-baseline">
                           <span className="font-semibold text-text">
-                            ESP32 Marauder Custom Firmware{" "}
-                            <span className="font-normal italic text-text-secondary">| ESP32, PlatformIO, Embedded C++</span>
+                            SkillBridge{" "}
+                            <span className="font-normal italic text-text-secondary">
+                              | Node.js, MySQL{" "}
+                              <a href="https://github.com/AlcesOzdst/SkillBridge" target="_blank" rel="noreferrer" className="text-accent underline inline-flex items-center gap-0.5">
+                                (GitHub) <ArrowUpRight size={10} />
+                              </a>
+                            </span>
+                          </span>
+                          <span className="font-mono text-[11px] text-text-secondary">2024</span>
+                        </div>
+                        <ul className="list-disc list-outside ml-4 text-text-secondary space-y-1 text-xs mt-1">
+                          <li>Built a peer-to-peer skill exchange platform with a Node.js/MySQL backend.</li>
+                        </ul>
+                      </div>
+
+                      <div>
+                        <div className="flex justify-between items-baseline">
+                          <span className="font-semibold text-text">
+                            Bare-Metal Sensor Hub – EPB-F340Mini{" "}
+                            <span className="font-normal italic text-text-secondary">| Keil C51, Embedded C</span>
                           </span>
                           <span className="font-mono text-[11px] text-text-secondary">2025</span>
                         </div>
                         <ul className="list-disc list-outside ml-4 text-text-secondary space-y-1 text-xs mt-1">
-                          <li>Customized ESP32 Marauder firmware for wireless security experimentation by integrating NRF24L01 support, OLED interface, and custom menu navigation.</li>
-                          <li>Implemented embedded firmware enhancements using PlatformIO and ESP-IDF libraries for wireless security experimentation.</li>
-                          <li>Worked with SPI, I2C, and RF communication modules during firmware development.</li>
+                          <li>Developed multi-sensor firmware integrating an SSD1306 OLED, DHT11, HC-SR04, and KY-038 sensors across multiple design iterations.</li>
+                        </ul>
+                      </div>
+
+                      <div>
+                        <div className="flex justify-between items-baseline">
+                          <span className="font-semibold text-text">
+                            SENU – Physical Second Brain{" "}
+                            <span className="font-normal italic text-text-secondary">
+                              | ESP32-C3, Embedded C++, PlatformIO, I²C, RTC{" "}
+                              <a href="https://github.com/AlcesOzdst/SENU" target="_blank" rel="noreferrer" className="text-accent underline inline-flex items-center gap-0.5">
+                                (GitHub) <ArrowUpRight size={10} />
+                              </a>
+                            </span>
+                          </span>
+                          <span className="font-mono text-[11px] text-text-secondary">2026</span>
+                        </div>
+                        <ul className="list-disc list-outside ml-4 text-text-secondary space-y-1 text-xs mt-1">
+                          <li>Developed an embedded productivity device featuring OLED-based navigation, rotary encoder controls, RTC integration, configurable focus timers, and alarm management.</li>
+                          <li>Implemented non-blocking buzzer playback, tactile-button handling, RTC synchronization, and interactive firmware functionality.</li>
+                        </ul>
+                      </div>
+
+                      <div>
+                        <div className="flex justify-between items-baseline">
+                          <span className="font-semibold text-text">
+                            Embedded Linux Security Lab{" "}
+                            <span className="font-normal italic text-text-secondary">| Kali Linux, QEMU, OpenWrt</span>
+                          </span>
+                          <span className="font-mono text-[11px] text-text-secondary">2026</span>
+                        </div>
+                        <ul className="list-disc list-outside ml-4 text-text-secondary space-y-1 text-xs mt-1">
+                          <li>Configured an emulated IoTGoat environment using QEMU to simulate an embedded Linux target for security testing.</li>
+                          <li>Performed service discovery and network reconnaissance, identifying exposed SSH, HTTP, HTTPS, and UPnP services.</li>
                         </ul>
                       </div>
                     </div>
@@ -377,21 +435,10 @@ TECHNICAL SKILLS
                     </h2>
                     <div className="space-y-1 text-xs text-text-secondary">
                       <div>
-                        <strong className="text-text">Google Developer Program:</strong>{" "}
-                        <a href="https://g.dev/Alcesozdst" target="_blank" rel="noreferrer" className="text-accent underline">
-                          g.dev/Alcesozdst
-                        </a>{" "}
-                        – skills profile with earned gamified badges
+                        <strong className="text-text">Hack The Box:</strong> Cybersecurity researcher profile; skills include Weak Authentication, Misconfiguration, and Reconnaissance.
                       </div>
                       <div>
-                        <strong className="text-text">Hack The Box:</strong> cybersecurity researcher profile – skills in Weak Authentication, Misconfiguration, Reconnaissance
-                      </div>
-                      <div>
-                        <strong className="text-text">TryHackMe:</strong>{" "}
-                        <a href="https://tryhackme.com/p/AlcesOzdst" target="_blank" rel="noreferrer" className="text-accent underline">
-                          tryhackme.com/p/AlcesOzdst
-                        </a>{" "}
-                        &nbsp;&nbsp;|&nbsp;&nbsp; <strong className="text-text">HackerOne:</strong> actively hunting on live programs for security assessment
+                        <strong className="text-text">HackerOne:</strong> Actively participating in public bug bounty programs and security assessments.
                       </div>
                     </div>
                   </div>
@@ -403,22 +450,22 @@ TECHNICAL SKILLS
                     </h2>
                     <div className="space-y-1 text-xs text-text-secondary">
                       <div>
-                        <strong className="text-text">Security:</strong> Burp Suite Professional, Nmap, Gobuster, ffuf, Wireshark, Metasploit, OpenVAS, LinPEAS, OWASP Top 10
+                        <strong className="text-text">• Languages:</strong> Python, C, C++, Bash, JavaScript, SQL
                       </div>
                       <div>
-                        <strong className="text-text">Networking:</strong> TCP/IP, HTTP/HTTPS, DNS, SSH
+                        <strong className="text-text">• Security Tools:</strong> Burp Suite Professional, Nmap, Gobuster, ffuf, Wireshark, Metasploit, LinPEAS
                       </div>
                       <div>
-                        <strong className="text-text">Operating Systems:</strong> Linux, Kali Linux, Windows
+                        <strong className="text-text">• Security Domains:</strong> Web Application Security, IDOR/Broken Access Control, Embedded/Firmware Security
                       </div>
                       <div>
-                        <strong className="text-text">Programming:</strong> Python, C, C++, Bash, JavaScript, TypeScript, SQL, Solidity
+                        <strong className="text-text">• Networking:</strong> TCP/IP, HTTP/HTTPS, SSH
                       </div>
                       <div>
-                        <strong className="text-text">Embedded Systems:</strong> ESP32, Raspberry Pi, 8051, UART, SPI, I2C
+                        <strong className="text-text">• Embedded &amp; Protocols:</strong> ESP32, Raspberry Pi, 8051 (C8051F340), UART, SPI, I2C, RS-232, RS-485
                       </div>
                       <div>
-                        <strong className="text-text">Development &amp; Cloud:</strong> Git, Docker, PlatformIO, MySQL, Google Cloud Fundamentals
+                        <strong className="text-text">• Development &amp; Cloud:</strong> Node.js, MySQL, Git, Docker, PlatformIO, Google Cloud Fundamentals
                       </div>
                     </div>
                   </div>
