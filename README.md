@@ -3,7 +3,7 @@
 > Personal engineering portfolio, security research publications, and interactive hardware lab showcase of **Parth Doshi** (AlcesOzdst).
 
 [![Website](https://img.shields.io/badge/Production-parthdoshi.me-blue?style=flat-square&logo=googlechrome&logoColor=white)](https://www.parthdoshi.me)
-[![License: Proprietary](https://img.shields.io/badge/Code-Proprietary-red?style=flat-square)](./LICENSE)
+[![License: All Rights Reserved](https://img.shields.io/badge/License-All%20Rights%20Reserved-red?style=flat-square)](./LICENSE)
 [![Content: CC BY-NC-ND 4.0](https://img.shields.io/badge/Content-CC%20BY--NC--ND%204.0-lightgrey?style=flat-square)](./LICENSE-CONTENT.md)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.6-blue?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-19-61dafb?style=flat-square&logo=react&logoColor=black)](https://react.dev/)
@@ -76,41 +76,6 @@ parthdoshi.dev/
 
 ---
 
-## Local Development
-
-### Prerequisites
-- Node.js >= 20.x
-- npm >= 10.x
-
-### Setup
-
-```bash
-# Clone the repository
-git clone https://github.com/AlcesOzdst/parthdoshi.dev.git
-cd parthdoshi.dev
-
-# Install dependencies
-npm install
-
-# Start local development server (Vite on :5173)
-npm run dev
-```
-
-### Build & Verification
-
-```bash
-# Run production build (Vite + SSR bundle + OG images + SEO mirrors + Prerendering)
-npm run build
-
-# Run automated SEO verification audit (validates canonicals, OG tags, titles, JSON-LD)
-npm run seo:audit
-
-# Preview the production build locally
-npm run preview
-```
-
----
-
 ## Security & Disclosure
 
 If you discover a security vulnerability or misconfiguration on `parthdoshi.me` or associated subdomains, please review the security policy at [/.well-known/security.txt](https://www.parthdoshi.me/.well-known/security.txt) and disclose responsibly to:
@@ -121,12 +86,12 @@ If you discover a security vulnerability or misconfiguration on `parthdoshi.me` 
 
 ## License
 
-This repository is **dual-licensed**:
+Copyright (c) 2026 Parth Doshi. All rights reserved.
 
-- **Source Code**: Proprietary. All rights reserved. See [`LICENSE`](./LICENSE). Unauthorized copying, modification, redistribution, or commercial use is strictly prohibited without prior written permission.
-- **Published Research & Content**: Written blog posts, project writeups, and documentation under `client/src/content/` are licensed under [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)](./LICENSE-CONTENT.md).
+- **Source Code**: All rights reserved. Unauthorized copying, modification, distribution, hosting, or deployment of this software is strictly prohibited. See [`LICENSE`](./LICENSE).
+- **Written Content**: Research writeups, technical articles, and documentation under `client/src/content/` are licensed under [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)](./LICENSE-CONTENT.md).
 
-For permissions beyond this scope, contact [parth@alcesozdst.com](mailto:parth@alcesozdst.com).
+For permissions or inquiries, contact [parth@alcesozdst.com](mailto:parth@alcesozdst.com).
 
 ---
 
