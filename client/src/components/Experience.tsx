@@ -13,6 +13,8 @@ interface RoleItem {
   summary: string;
   highlights: string[];
   tech: string[];
+  credentialUrl?: string;
+  credentialLabel?: string;
 }
 
 const experiences: RoleItem[] = [
@@ -31,6 +33,23 @@ const experiences: RoleItem[] = [
       "Refocused club initiatives toward physical hardware security, embedded bus auditing, and offensive security labs.",
     ],
     tech: ["Cybersecurity Leadership", "CTF Architecture", "Hardware Security", "Embedded Systems", "Workshops"],
+  },
+  {
+    id: "blackhat",
+    role: "Arsenal Volunteer",
+    organization: "Black Hat India 2026 - Informa Markets",
+    location: "Bengaluru, India",
+    period: "October 2026",
+    summary:
+      "Selected as an Arsenal Volunteer for Black Hat India 2026, facilitating on-ground technical demonstrations, tool operations, and community coordination.",
+    highlights: [
+      "Supported on-ground Arsenal operations and tool demonstrations, coordinating with open-source security tool developers and researchers.",
+      "Assisted the organizing committee and fellow volunteers with stage coordination, briefings, and attendee engagements at Bengaluru.",
+      "Facilitated hands-on interaction between presenters and security practitioners across cutting-edge open-source offensive and defensive tools.",
+    ],
+    tech: ["Black Hat Arsenal", "Security Tooling", "Technical Demonstrations", "Community Operations", "Informa Markets"],
+    credentialUrl: "https://www.linkedin.com/in/parthdoshi404/details/volunteering-experiences",
+    credentialLabel: "Verified Certificate",
   },
   {
     id: "phn-intern",
@@ -83,7 +102,7 @@ export function Experience({ onOpenResume }: { onOpenResume?: () => void }) {
   const [activeFilter, setActiveFilter] = useState<"all" | "security" | "embedded">("all");
 
   const filteredItems = experiences.filter((item) => {
-    if (activeFilter === "security") return item.id === "president" || item.id === "hackerone";
+    if (activeFilter === "security") return item.id === "president" || item.id === "hackerone" || item.id === "blackhat";
     if (activeFilter === "embedded") return item.id === "phn-intern" || item.id === "president";
     return true;
   });
@@ -191,9 +210,23 @@ export function Experience({ onOpenResume }: { onOpenResume?: () => void }) {
                     <span className="mono-label font-medium">{item.period}</span>
                   </div>
 
-                  <p className="mono-label text-accent mb-4 block">
-                    {item.organization} &nbsp;·&nbsp; {item.location}
-                  </p>
+                  <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+                    <p className="mono-label text-accent block">
+                      {item.organization} &nbsp;·&nbsp; {item.location}
+                    </p>
+                    {item.credentialUrl && (
+                      <a
+                        href={item.credentialUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1 font-mono text-[11px] text-accent hover:underline uppercase tracking-wider"
+                        data-cursor="cert"
+                      >
+                        <span>{item.credentialLabel || "Credential"}</span>
+                        <ArrowUpRight size={11} />
+                      </a>
+                    )}
+                  </div>
 
                   <p className="text-sm text-text-secondary leading-relaxed mb-5">
                     {item.summary}

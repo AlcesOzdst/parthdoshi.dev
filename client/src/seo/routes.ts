@@ -135,7 +135,7 @@ export const routes: RouteMeta[] = [
       { name: "Home", path: "/" },
       { name: "Resume", path: "/resume" },
     ],
-    keywords: ["Parth Doshi Resume", "Cybersecurity Student", "Embedded Systems Intern", "MIT-WPU Pune", "Hack-X President"],
+    keywords: ["Parth Doshi Resume", "Cybersecurity Student", "Embedded Systems Intern", "MIT-WPU Pune", "Hack-X President", "Black Hat Arsenal Volunteer"],
     jsonLd: {
       "@context": "https://schema.org",
       "@graph": [

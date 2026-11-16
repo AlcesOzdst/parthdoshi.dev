@@ -1,7 +1,7 @@
 # Parth Doshi
 > Pune-based third-year ECE (AI-ML) student at MIT-WPU researching embedded systems security, firmware reverse engineering, hardware interfaces, and responsible disclosures.
 
-Parth Doshi (online alias AlcesOzdst) is a security researcher focusing on hardware interfaces (UART, SPI, I2C), firmware extraction and analysis (Binwalk, Ghidra), bare-metal microcontroller programming (C8051, ESP32), and vulnerability assessments. President of Hack-X (MIT-WPU cybersecurity club) and active researcher on Hack The Box and public disclosure programs.
+Parth Doshi (online alias AlcesOzdst) is a security researcher focusing on hardware interfaces (UART, SPI, I2C), firmware extraction and analysis (Binwalk, Ghidra), bare-metal microcontroller programming (C8051, ESP32), and vulnerability assessments. President of Hack-X (MIT-WPU cybersecurity club), Arsenal Volunteer at Black Hat India 2026, and active researcher on Hack The Box and public disclosure programs.
 
 ## Core pages
 - [Home](https://www.parthdoshi.me/): Portfolio, active research areas, selected builds, and hardware workbench notes
